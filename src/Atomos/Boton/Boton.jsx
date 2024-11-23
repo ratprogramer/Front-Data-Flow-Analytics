@@ -1,5 +1,5 @@
-export function Boton({onClick}){
+export function Boton({type, text}){
     return(
-        <button onClick={onClick}></button>
+        <button type={type}>{text}</button>
     )
 }
