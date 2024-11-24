@@ -8,9 +8,9 @@ export function LoginForm(){
     const { register, handleSubmit, formState: {errors} } = useForm()
     
     const  onSubmit = async (data) => {
-        const response = await usePostFetch("http://localhost:3000/productos/login")
+        const response = await usePostFetch("http://localhost:3001/producto/login", data)
         if(response.success){
-            console.log(response.message)
+            console.log(response)
         }else{
             console.log(response)
         }
@@ -32,7 +32,7 @@ export function LoginForm(){
                 validaciones={{
                     require: "El usuario es obligatorio",
                     minLength:{
-                        value:8,
+                        value:4,
                         message:"El Dni debe tener como minimo 8 caracteres"
                     }
                 }}
