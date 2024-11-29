@@ -1,0 +1,7 @@
+.loginForm-organismo{
+    display: flex;
+    flex-direction: column;
+    height: 97.9vh;
+    justify-content: center;
+    align-items: center;
+}

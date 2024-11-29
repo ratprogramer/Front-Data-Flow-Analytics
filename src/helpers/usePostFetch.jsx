@@ -7,7 +7,6 @@ export async function usePostFetch(url, data) {
     });
 
     const result = await response.json();
-
     return result || "Sin mensaje en la respuesta";
   } catch (error) {
     return `Error: ${error || "Error inesperado"}`;

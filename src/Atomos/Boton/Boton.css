@@ -1,0 +1,15 @@
+.btn-atomo{
+    background-color: #1E3148;
+    color: #FFFF;
+    width: 17.5rem;
+    font-size: 18px;
+    padding: 4px;
+    height: 2.5rem;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+
+.btn-atomo:hover {
+    background-color: #005072;
+}

@@ -1,0 +1,16 @@
+.inputTxt-atomo{
+    background-color: #66cbed;
+    color: #ffffff;
+    width: 17rem;
+    font-size: 18px;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 4px;
+    padding-left: 7px;
+    margin-bottom: 24px;
+}
+
+.inputTxt-atomo::placeholder{
+    color: #edececb9;
+}

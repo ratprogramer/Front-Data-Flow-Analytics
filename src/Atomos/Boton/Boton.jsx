@@ -1,5 +1,6 @@
+import "./Boton.css";
 export function Boton({type, text}){
     return(
-        <button type={type}>{text}</button>
+        <button className="btn-atomo" type={type}>{text}</button>
     )
 }

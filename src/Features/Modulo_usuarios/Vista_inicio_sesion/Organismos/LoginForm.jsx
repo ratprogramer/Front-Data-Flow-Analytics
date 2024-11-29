@@ -1,18 +1,22 @@
+import Swal from 'sweetalert2';
+
 import { Boton } from "../../../../Atomos/Boton/Boton"
 import { InputGroup } from "../../../../Moleculas/InputGroup/InputGroup"
 
 import { usePostFetch } from "../../../../helpers/usePostFetch"
 import { useForm } from "react-hook-form"
 
+import "./LoginForm.css"
+
 export function LoginForm(){
     const { register, handleSubmit, formState: {errors} } = useForm()
     
     const  onSubmit = async (data) => {
         const response = await usePostFetch("http://localhost:3001/producto/login", data)
-        if(response.success){
-            console.log(response)
+        if(!response.success){
+            Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
-            console.log(response)
+            console.log(response);
         }
     }
 
@@ -22,7 +26,7 @@ export function LoginForm(){
         }
     }
     return(
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
+        <form onSubmit={handleSubmit(onSubmit, onError)} className="loginForm-organismo">
             <InputGroup
                 id="dni"
                 type="text"
@@ -53,7 +57,7 @@ export function LoginForm(){
                 }}
             />
 
-            <Boton text="Iniciar sesion" type="submit"></Boton>
+            <Boton text="Ingresar" type="submit"></Boton>
         </form>
     )
 }
