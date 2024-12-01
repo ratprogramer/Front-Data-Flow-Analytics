@@ -1,8 +1,8 @@
-import { LoginForm } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Organismos/LoginForm"
+import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion"
 function App() {
   return (
     <>
-      <LoginForm></LoginForm>
+      <InicioSesion></InicioSesion>
     </>
   )
 }

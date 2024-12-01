@@ -1,0 +1,14 @@
+.inicioSesion-pagina{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    align-items: center;
+    gap: 100px;
+    background-color: antiquewhite;
+    justify-content: space-around;
+    background: linear-gradient(to bottom, #001d2e, #0072b1);
+}
+.titulo{
+    font-size: 44px;
+}
