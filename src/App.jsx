@@ -1,8 +1,16 @@
-import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion"
+import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
+import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <>
-      <InicioSesion></InicioSesion>
+      <Router>
+        <Routes>
+          <Route path="/" element={<InicioSesion/>}/>
+          <Route path="/menu" element={<MenuPrincipal/>}/>
+        </Routes>
+      </Router>
     </>
   )
 }

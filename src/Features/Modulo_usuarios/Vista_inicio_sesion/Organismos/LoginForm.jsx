@@ -1,28 +1,29 @@
 import Swal from 'sweetalert2';
 
-import { Boton } from "../../../../Atomos/Boton/Boton"
+import { InputSub } from '../../../../Atomos/InputSub/InputSub';
 import { InputGroup } from "../../../../Moleculas/InputGroup/InputGroup"
+import "./LoginForm.css"
 
 import { usePostFetch } from "../../../../helpers/usePostFetch"
 import { useForm } from "react-hook-form"
-
-import "./LoginForm.css"
+import { useNavigate } from "react-router-dom";
 
 export function LoginForm(){
     const { register, handleSubmit, formState: {errors} } = useForm()
-    
+    const navigate = useNavigate();
+
     const  onSubmit = async (data) => {
         const response = await usePostFetch("http://localhost:3001/producto/login", data)
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
-            console.log(response);
+            navigate('/menu')
         }
     }
 
     const onError = (errors) => {
         for (const error in errors){
-            alert(errors[error].message)
+            Swal.fire('Error', errors[error].message, 'error');
         }
     }
     return(
@@ -57,7 +58,7 @@ export function LoginForm(){
                 }}
             />
 
-            <Boton text="Ingresar" type="submit"></Boton>
+            <InputSub text="Ingresar" type="submit"></InputSub>
         </form>
     )
 }

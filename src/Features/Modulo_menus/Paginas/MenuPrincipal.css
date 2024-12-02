@@ -1,0 +1,15 @@
+.MenuPrincipal-container-pagina{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    height: 99.8vh;
+}
+
+.Menu-titulo-container{
+    width: 22.5rem;
+    font-size: 30px;
+    color: #00a8e1;
+}

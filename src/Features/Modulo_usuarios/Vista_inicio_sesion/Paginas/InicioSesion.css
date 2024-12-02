@@ -4,6 +4,7 @@
     height: 100vh;
     color: #fff;
     align-items: center;
+    width: 100%;
     gap: 100px;
     background-color: antiquewhite;
     justify-content: space-around;
