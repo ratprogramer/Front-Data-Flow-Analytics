@@ -1,7 +1,7 @@
-.btns-container-menu{
+.botones-indicepp_pt-container{
+    gap: 30px;
     display: flex;
     align-items: center;
-    gap: 30px;
     flex-direction: column;
-    height: 64vh;
+    height: 97vh;
 }

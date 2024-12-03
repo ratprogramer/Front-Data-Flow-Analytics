@@ -1,0 +1,17 @@
+.flecha-img{
+    width: 30px;
+}
+
+.tituloPagina-container{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    cursor: pointer;
+    padding-left: 20px;
+    gap: 18px;
+}
+
+.titulo-modulo-txt{
+    font-size: 23px;
+    color: #00a8e1; 
+}
