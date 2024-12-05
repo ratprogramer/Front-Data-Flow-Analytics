@@ -13,7 +13,7 @@ export function LoginForm(){
     const navigate = useNavigate();
 
     const  onSubmit = async (data) => {
-        const response = await usePostFetch("http://localhost:3001/producto/login", data)
+        const response = await usePostFetch("http://localhost:3001/login", data)
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
