@@ -4,7 +4,7 @@ import "./MenuPrincipalBotones.css"
 export function MenuPrincipalBotones(){
     return(
         <div className="btns-container-menu">
-            <Boton path={"/menu_Derivado_lacteo_fermentado"} text={"Derivado Lácteo Fermentado"}></Boton>
+            <Boton path={"/menu_Derivado_lacteo_fermentado"} text={"Derivado Lácteo Fermentado`"}></Boton>
             <Boton path={"/"} text={"Producto UHT"}></Boton>
             <Boton path={"/"} text={"Materia Prima"}></Boton>
             <Boton path={"/"} text={"Aguas y Enjuagues"}></Boton>
