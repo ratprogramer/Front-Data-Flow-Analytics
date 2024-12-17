@@ -1,6 +1,9 @@
-export async function usePostFetch(url, data) {
+import dotenv from "dotenv";
+dotenv.config();
+
+export async function usePostFetch(endPoint, data) {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(process.env.DOMINIO + endPoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

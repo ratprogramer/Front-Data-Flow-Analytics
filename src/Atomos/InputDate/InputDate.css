@@ -1,0 +1,32 @@
+.input-container {
+    position: relative;
+}
+
+.placeholder {
+    position: absolute;
+    top: 1%;
+    left: 10px;
+    transform: translateY(59%);
+    color: gray;
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
+}
+
+input:focus + .placeholder,
+input:not(:placeholder-shown) + .placeholder {
+    top: -10px;
+    font-size: 0.8em;
+    color: #007BFF;
+}
+input{
+    background-color: #66cbed;
+    color: #ffffff;
+    width: 17rem;
+    font-size: 18px;
+    height: 2rem;
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 4px;
+    padding-left: 7px;
+    margin-bottom: 24px;
+}
