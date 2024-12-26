@@ -1,12 +1,14 @@
 import Swal from 'sweetalert2';
 
 import { InputSub } from '../../../../Atomos/InputSub/InputSub';
-import { InputGroup } from "../../../../Moleculas/InputGroup/InputGroup"
 import "./LoginForm.css"
 
+import { decodeToken } from '../../../../helpers/decodeToken';
 import { usePostFetch } from "../../../../helpers/usePostFetch"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom";
+import { Label } from '../../../../Atomos/Label/Label';
+import { InputTxt } from '../../../../Atomos/InputTxt/InputTxt';
 
 export function LoginForm(){
     const { register, handleSubmit, formState: {errors} } = useForm()
@@ -17,46 +19,29 @@ export function LoginForm(){
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
+            const id = decodeToken(response.result)
+            sessionStorage.setItem("userID", id )
             navigate('/menu')
         }
     }
 
     const onError = (errors) => {
         for (const error in errors){
-            Swal.fire('Error', errors[error].message, 'error');
+            Swal.fire('Error', "Credenciales invalidas" , 'error');
         }
     }
     return(
         <form onSubmit={handleSubmit(onSubmit, onError)} className="loginForm-organismo">
-            <InputGroup
-                id="dni"
-                type="text"
-                placeholder="Ingrese usuario"
-                label="Usuario"
-                register={register}
-                validaciones={{
-                    require: "El usuario es obligatorio",
-                    minLength:{
-                        value:4,
-                        message:"El Dni debe tener como minimo 8 caracteres"
-                    }
-                }}
-            />
+            <div className='group-container'>
+                <Label htmlFor={"dni"} text={"Usuario"}></Label>
+                <InputTxt id={"dni"} placeholder={"Ingrese usuario"} register={register} type={"text"} validaciones={{ require: "El usuario es obligatorio"}}></InputTxt>
+            </div>
             
-            <InputGroup
-                id="contraseña"
-                type="password"
-                placeholder="Ingrese contraseña"
-                label="Contraseña"
-                register={register}
-                validaciones={{
-                    require: "La contraseña es obligatoria",
-                    minLength:{
-                        value:8,
-                        message:"La contraseña debe tener como minimo 8 caracteres"
-                    }
-                }}
-            />
+            <div className='group-container'>
+                <Label htmlFor={"contraseña"} text={"Contraseña"}></Label>
+                <InputTxt id={"contraseña"} placeholder={"Ingrese contraseña"} register={register} type={"password"} validaciones={{require: "La contraseña es obligatoria"}}></InputTxt>
+            </div>
+
 
             <InputSub text="Ingresar" type="submit"></InputSub>
         </form>

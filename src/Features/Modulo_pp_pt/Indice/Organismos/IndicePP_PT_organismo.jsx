@@ -1,6 +1,5 @@
 import { BotonesIndicePP_PT } from "../Moleculas/BotonesIndicePP_PT";
-import { TituloPagina } from "../../../../Moleculas/InputGroup/TituloPagina";
-
+import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
 export function IndicePP_PT_organismo(){
     return(
         <div className="Indice-container-organismo">

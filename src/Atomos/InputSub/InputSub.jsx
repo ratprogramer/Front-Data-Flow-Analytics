@@ -1,6 +1,6 @@
 import "./InputSub.css";
-export function InputSub({type, text}){
+export function InputSub({ text}){
     return(
-        <input className="inputSub-atomo" type={type} value={text}/>
+        <input className="inputSub-atomo" type="submit" value={text}/>
     )
 }

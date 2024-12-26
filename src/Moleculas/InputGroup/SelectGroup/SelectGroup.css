@@ -1,0 +1,6 @@
+.inputGroup-molecula{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    color: #0aabe2;
+}

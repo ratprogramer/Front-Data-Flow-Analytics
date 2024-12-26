@@ -1,9 +1,8 @@
-import dotenv from "dotenv";
 
 export async function usePostFetch(endPoint, data) {
   try {
-    dotenv.config();
-    const response = await fetch( process.env.DOMINIO + endPoint, {
+    console.log(import.meta.env.VITE_DOMINIO + endPoint)
+    const response = await fetch( "http://localhost:3001" + endPoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

@@ -8,7 +8,7 @@ input:not(:placeholder-shown) + .placeholder {
 input{
     background-color: #66cbed;
     color: #ffffff;
-    width: 17rem;
+    width: 80vw;
     font-size: 18px;
     height: 2rem;
     border: 1px solid black;
