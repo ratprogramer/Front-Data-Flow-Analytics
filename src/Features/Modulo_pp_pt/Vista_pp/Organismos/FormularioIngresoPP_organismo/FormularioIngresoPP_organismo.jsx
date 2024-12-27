@@ -4,19 +4,30 @@ import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/Sel
 import { usePostFetch } from "../../../../../helpers/usePostFetch" 
 import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGroup";
 import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
+import { useNavigate } from "react-router-dom";
+import { decodeToken } from "../../../../../helpers/decodeToken";
 
 import "./FormularioIngresoPP_organismo.css"
+import Swal from "sweetalert2";
 
 export function FormularioIngresoPP_organismo(){
     const { register, handleSubmit, formState: {errors} } = useForm()
-
+    const navigate = useNavigate();
     
     const  onSubmit = async (data) => {
-        data[responsable_analisis] = 1;
+        const token = sessionStorage.getItem("token");
+        if(!token){
+            Swal.fire('Error', 'No se encontraron credenciales validas en el sistema', 'error');
+            navigate('/');
+            return
+        }
+        const decode = decodeToken(token);
+        data["responsable_analisis"] = parseInt(decode.id);
         const response = await usePostFetch("/producto/registrar_pp", data)
         if(!response.success){
             Swal.fire('Error', JSON.stringify(response) , 'error');
         }else{
+            Swal.fire('Exito', 'Producto en proceso registrado con exito' , 'success');
             navigate('/menu')
         }
     }
@@ -38,7 +49,7 @@ export function FormularioIngresoPP_organismo(){
                 <div className="formulario-pp-campos">
                     <SelectGroup id={"nombre_pp"} register={register} label={"Nombre del producto *"} opciones={opcionesNombreProducto} validaciones={validaciones}></SelectGroup>
             
-                    <TimeGroup id={"fecha_analisis"} label={"Fecha de analisis *"}  type={"date"} register={register} validaciones={validaciones}></TimeGroup>
+                    <TimeGroup id={"fecha_analisis"} label={"Fecha de analisis *"}  type={"date"} register={register} validaciones={validaciones} defaultDate={true}></TimeGroup>
 
                     <TimeGroup id={"fecha_toma_muestra"} label={"Fecha de toma de muestra *"} register={register} type={"date"} validaciones={validaciones}></TimeGroup>
 

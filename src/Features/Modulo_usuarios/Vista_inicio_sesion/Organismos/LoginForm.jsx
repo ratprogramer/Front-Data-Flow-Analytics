@@ -19,8 +19,8 @@ export function LoginForm(){
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
-            const id = decodeToken(response.result)
-            sessionStorage.setItem("userID", id )
+
+            sessionStorage.setItem("token", response.result )
             navigate('/menu')
         }
     }

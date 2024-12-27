@@ -1,8 +1,6 @@
 
 
 export function decodeToken(token) {
-    console.log(token);
-    
     const [header, payload, last] = token.split(".");
     if (!payload) {
       throw new Error("Token no válido");
