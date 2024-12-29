@@ -1,0 +1,37 @@
+.card-pp-molecula-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3%;
+    width: 85%;
+    height: 110px;
+    border: 1px solid black;
+    padding: 1%;
+    border-radius: 16px;
+    background-color: #00a8e1;
+    color: white;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    transition: all 0.1s;
+}
+
+.card-pp-molecula-container:active {
+    background-color: #01a3da;
+    transform: scale(0.97); /* Simula un efecto de clic */
+}
+
+.card-pp-estado{
+    width: 60px;
+}
+
+.estado-img-pp{
+    width: 100%;
+    height: 100%;
+}
+h1{
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.data-pp-molecula{
+    line-height:0.35;
+}

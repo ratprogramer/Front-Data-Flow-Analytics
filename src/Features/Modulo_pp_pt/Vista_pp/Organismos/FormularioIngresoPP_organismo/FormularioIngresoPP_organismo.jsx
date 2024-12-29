@@ -38,7 +38,7 @@ export function FormularioIngresoPP_organismo(){
         }
     }
 
-    const opcionesNombreProducto = [{value:"bebida semi elaborada", placeHolder:"Bebida semi elaborada"},{value:"bebida pasteurizada", placeHolder:"Bebida pasteurizada"},{value:"corte de bebida lactea", placeHolder:"Corte de bebida lactea"}];
+    const opcionesNombreProducto = [{value:"Bebida semi elaborada", placeHolder:"Bebida semi elaborada"},{value:"Bebida pasteurizada", placeHolder:"Bebida pasteurizada"},{value:"Corte de bebida lactea", placeHolder:"Corte de bebida lactea"}];
 
     const opcionesPuntoToma = [{value:"Tanque 7", placeHolder:"Tanque 7"},{value:"Tanque 9", placeHolder:"Tanque 9"},{value:"Tanque 10", placeHolder:"Tanque 10"},{value:"Tanque 12", placeHolder:"Tanque 12"},{value:"alternativo", placeHolder:"Punto de toma alternativo"}];
 
