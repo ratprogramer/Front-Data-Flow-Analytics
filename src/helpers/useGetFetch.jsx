@@ -8,6 +8,6 @@ export async function useGetFetch(endPoint) {
         const result = await response.json();
         return result || "Sin mensaje en la respuesta";
     } catch (error) {
-        return `Error: ${error || "Error inesperado"}`;
+        Swal.fire("Error", "Error interno del servidor", "error");
     }
 }

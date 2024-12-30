@@ -1,13 +1,16 @@
 .card-pp-molecula-container{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 3%;
     width: 85%;
-    height: 110px;
+    height: 92px;
     border: 1px solid black;
-    padding: 1%;
-    border-radius: 16px;
+    padding-left: 2%;
+    padding-right: 1.5%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    border-radius: 10px;
     background-color: #00a8e1;
     color: white;
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
@@ -20,7 +23,7 @@
 }
 
 .card-pp-estado{
-    width: 60px;
+    width: 50px;
 }
 
 .estado-img-pp{
@@ -28,7 +31,8 @@
     height: 100%;
 }
 h1{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    color: rgb(245, 246, 248);
     font-weight: 200;
 }
 

@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./CardPP_molecula.css";
 
-export function CardPP_molecula({nombreMuestra = "Nombre de la muestra", lote = "1234", fechaAnalisis = "01/01/2021", responsableAnalisis = "Juan Perez"}){
+export function CardPP_molecula({nombreMuestra, lote, fechaAnalisis, responsableAnalisis, id}){
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/ingreso_resultado_producto_p", {
+            state: { id }
+        });
+    }
     return(
         <>
             <div className="card-pp-molecula-container">
