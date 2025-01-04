@@ -1,0 +1,15 @@
+.formulrio-registro-pp-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+}
+
+.formulario-pp-campos{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}

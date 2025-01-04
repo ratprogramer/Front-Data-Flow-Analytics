@@ -1,10 +1,10 @@
 import { BotonesIndice } from "../../../../../Moleculas/BotonesIndice/BotonesIndice";
 import { TituloPagina } from "../../../../../Moleculas/TituloPagina/TituloPagina";
-export function SubIndicePP_organismo(){
-    const botones = [{path:"/ingreso_producto_p", text:"Registrar producto"}, {path:"/productos_registrados_pp", text:"Ingresar resultado "}]
+export function SubIndicePT_organismo(){
+    const botones = [{path:"/ingreso_producto_t", text:"Registrar producto"}, {path:"/productos_registrados_pt", text:"Ingresar resultado"}]
     return(
         <div className="Indice-container-organismo">
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Producto en proceso"}></TituloPagina>
+            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Producto terminado"}></TituloPagina>
             <BotonesIndice botones={botones}></BotonesIndice>
         </div>
     )
