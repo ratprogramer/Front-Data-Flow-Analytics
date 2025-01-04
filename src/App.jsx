@@ -6,6 +6,8 @@ import { Pp_Registrados } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/Pp_Regi
 import "./app.css"
 import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
 import { SubIndicePP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/SubindicePP/SubIndicePP";
+import { FormularioResultadoPP_organismo } from "./Features/Modulo_pp_pt/Vista_pp/Organismos/FormularioResultadoPP_organismo/FormularioResultadoPP_organismo";
+import { FormularioResultadoPP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
           
           <Route path="/sub_menu_pp" element ={<SubIndicePP/>}/> 
           <Route path="/ingreso_producto_p" element={<FormularioRegistroPP_pagina/>}></Route>
-          <Route path="/productos_registrados_pp" element={<Pp_Registrados></Pp_Registrados>}></Route>
+          <Route path="/productos_registrados_pp" element={<Pp_Registrados/>}></Route>
+          <Route path="/ingreso_resultado_producto_p" element={<FormularioResultadoPP/>}/>
         </Routes>
       </Router>
     </>

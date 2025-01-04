@@ -1,6 +1,6 @@
 import "./InputLst.css";
 
-export function InputLst({ id, opciones, register, onChange }) {
+export function InputLst({ id, opciones, register, onChange, placeHolder = true }) {
     return (
         <select
             className="selectInput"
@@ -8,9 +8,11 @@ export function InputLst({ id, opciones, register, onChange }) {
             defaultValue=""
             onChange={onChange} // Asegura que puedas manejar el cambio
         >
-            <option value="" disabled>
-                Seleccione una opción
-            </option>
+            {placeHolder && (
+                <option value="" disabled>
+                    Seleccione una opción
+                </option>
+            )}
             {opciones.map((opcion, indx) => (
                 <option key={indx} value={opcion.value}>
                     {opcion.placeHolder}

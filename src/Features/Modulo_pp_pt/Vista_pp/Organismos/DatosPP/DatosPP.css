@@ -1,0 +1,18 @@
+.datosPP-organismo-container{
+    color: #20abe2;
+    font-size: 18px;
+    width: 80%;
+    padding: 6px;
+    padding-left: 12px;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+}
+
+.container-box-datos-pp{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.datos-pp-txt{
+    font-size: 18px;
+}

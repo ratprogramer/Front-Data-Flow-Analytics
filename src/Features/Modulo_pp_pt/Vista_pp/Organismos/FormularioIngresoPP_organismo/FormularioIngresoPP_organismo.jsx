@@ -17,7 +17,11 @@ export function FormularioIngresoPP_organismo() {
     handleSubmit,
     formState: { errors },
     watch
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
+    },
+  });
   const navigate = useNavigate();
 
   const [isAlternativo, setIsAlternativo] = useState(false);
@@ -25,7 +29,7 @@ export function FormularioIngresoPP_organismo() {
   const puntoMuestraValue = watch("punto_muestra", "");
 
   const onSubmit = async (data) => {
-    if(data["nombre_pp"] == '' || data[punto_muestra] == ''){
+    if(data["nombre_pp"] == '' || data["punto_muestra"] == ''){
         Swal.fire("Error", "Los campos con * son obligatorios", "error");
         return
     }

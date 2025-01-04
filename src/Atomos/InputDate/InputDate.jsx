@@ -8,6 +8,7 @@ export function InputDate({ id, type, register, validaciones, defaultDate}) {
     if (defaultDate) {
       const today = new Date().toISOString().split("T")[0]; // Formato "YYYY-MM-DD"
       setSelectedDate(today);
+      register(id, validaciones).onChange({ target: { value: today } });
     }
   }, [defaultDate]);
 
@@ -15,9 +16,7 @@ export function InputDate({ id, type, register, validaciones, defaultDate}) {
     <input
       id={id}
       type={type}
-      value={selectedDate} 
       {...register(id, validaciones)}
-      onChange={(e) => setSelectedDate(e.target.value)}
     />
   );
 }

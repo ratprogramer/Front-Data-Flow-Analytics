@@ -1,0 +1,7 @@
+.formularioResultadoPP-pagina-container{
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+
+    justify-content: center;
+}

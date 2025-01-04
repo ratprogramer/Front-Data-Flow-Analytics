@@ -36,6 +36,7 @@ export function Pp_Registrados_organismo(){
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}
+                    id={producto.id}
                 />
                 ))
             }
