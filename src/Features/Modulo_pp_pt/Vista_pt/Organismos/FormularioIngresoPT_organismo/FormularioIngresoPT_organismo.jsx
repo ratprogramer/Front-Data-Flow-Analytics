@@ -18,7 +18,11 @@ export function FormularioIngresoPT_organismo() {
     handleSubmit,
     formState: { errors },
     watch
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
+    },
+  });
 
 
   const location = useLocation();
@@ -43,7 +47,9 @@ export function FormularioIngresoPT_organismo() {
     data["responsable_analisis"] = parseInt(decode.id);
     data["id_producto_proceso"] = parseInt(id);
     console.log(data);
-  };
+    navigate("/menu");
+    Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+  }; 
 
   const onError = (errors) => {
     for (const error in errors) {
@@ -69,11 +75,20 @@ export function FormularioIngresoPT_organismo() {
   return (
     <>
       <form
-        className="formulrio-registro-pp-container"
+        className="formulrio-registro-pt-container"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <div className="formulario-pp-campos">
-          
+        <div className="formulario-pt-campos">
+
+          <TimeGroup
+            id={"fecha_analisis"}
+            label={"Fecha de analisis *"}
+            type={"date"}
+            register={register}
+            validaciones={validaciones}
+            defaultDate={true}
+          ></TimeGroup>
+
           <TimeGroup
             id={"fecha_env"}
             label={"Fecha de envasado *"}

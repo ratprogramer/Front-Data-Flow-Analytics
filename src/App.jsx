@@ -13,7 +13,10 @@ import { Pp_Registrados } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/Pp_Regi
 
 import { SubIndicePT } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/SubindicePT/SubIndicePT";
 import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
-import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioRegistroPT/FormularioRegistroPT_pagina"; 
+import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioRegistroPT/FormularioRegistroPT_pagina";
+import { Pt_Registrados } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/Pt_Registrados/Pt_Registrados";
+import { FormularioResultadoPT } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioResultadoPT/FormularioResultadoPT";
+
 
 function App() {
   return (
@@ -33,8 +36,8 @@ function App() {
           <Route path="/sub_menu_pt" element ={<SubIndicePT/>}/> 
           <Route path="/productos_registrados_pp_" element={<PP_Registrados_PrePT_pagina/>}></Route>
           <Route path="/ingreso_producto_t" element={<FormularioRegistroPT_pagina/>}></Route>
-          <Route path="/productos_registrados_pt" element={<h1>a</h1>}></Route>
-          <Route path="/ingreso_resultado_producto_t" element={<h1>a</h1>}/>
+          <Route path="/productos_registrados_pt" element={<Pt_Registrados/>}></Route>
+          <Route path="/ingreso_resultado_producto_t" element={<FormularioResultadoPT/>}/>
 
 
         </Routes>

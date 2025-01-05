@@ -7,9 +7,9 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
-import "./FormularioResultadoPP_organismo.css";
+import "./FormularioResultadoPT_organismo.css";
 
-export function FormularioResultadoPP_organismo (){
+export function FormularioResultadoPT_organismo (){
     const location = useLocation();
     const { id } = location.state || {};
     const {
@@ -36,8 +36,7 @@ export function FormularioResultadoPP_organismo (){
         }
         const decode = decodeToken(token);
         data["responsable_analisis"] = parseInt(decode.id);
-        data["id_pp"] = id;
-        console.log(data);
+        data["id_pt"] = id;
         
         const response = await usePostFetch("/producto/registrar_r", data);
         if (!response.success) {
@@ -64,12 +63,12 @@ export function FormularioResultadoPP_organismo (){
       const validaciones = { required: "los campos con * son obligatorios" };
 
     return(
-         <>
+     <>
       <form
-        className="formulrio-resultado-pp-container"
+        className="formulrio-resultado-pt-container"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <div className="formulario-resultado-pp-campos">
+        <div className="formulario-resultado-pt-campos">
           <TimeGroup
             id={"fecha_analisis"}
             label={"Fecha de analisis *"}
