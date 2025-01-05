@@ -7,6 +7,7 @@ import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGro
 import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
+import { useLocation } from "react-router-dom";
 
 import "./FormularioIngresoPT_organismo.css";
 import Swal from "sweetalert2";
@@ -17,18 +18,31 @@ export function FormularioIngresoPT_organismo() {
     handleSubmit,
     formState: { errors },
     watch
-  } = useForm({
-    defaultValues: {
-      fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
-    },
-  });
+  } = useForm();
+
+
+  const location = useLocation();
+  const { id } = location.state || 123;
+
 
   const navigate = useNavigate();
 
-  const puntoMuestraValue = watch("punto_muestra", "");
 
   const onSubmit = async (data) => {
-     console.log(data);
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      Swal.fire(
+        "Error",
+        "No se encontraron credenciales validas en el sistema",
+        "error"
+      );
+      navigate("/");
+      return;
+    }
+    const decode = decodeToken(token);
+    data["responsable_analisis"] = parseInt(decode.id);
+    data["id_producto_proceso"] = parseInt(id);
+    console.log(data);
   };
 
   const onError = (errors) => {

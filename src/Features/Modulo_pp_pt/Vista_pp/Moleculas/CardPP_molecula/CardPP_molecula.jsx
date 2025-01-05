@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "./CardPP_molecula.css";
 
-export function CardPP_molecula({nombreMuestra, lote, fechaAnalisis, responsableAnalisis, id}){
+export function CardPP_molecula({nombreMuestra, lote, fechaAnalisis, responsableAnalisis, id, navRoute}){
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/ingreso_resultado_producto_p", {
+        navigate(navRoute, {
             state: { id, nombreMuestra, lote }
         });
     }

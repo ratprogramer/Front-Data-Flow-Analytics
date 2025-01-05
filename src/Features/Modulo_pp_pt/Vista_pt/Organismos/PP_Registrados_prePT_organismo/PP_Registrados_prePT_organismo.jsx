@@ -1,9 +1,8 @@
-import { CardPP_molecula } from "../../Moleculas/CardPP_molecula/CardPP_molecula"
+import { CardPP_molecula } from "../../../Vista_pp/Moleculas/CardPP_molecula/CardPP_molecula" 
 import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
-import "./Pp_Registrados_organismo.css"
 
-export function Pp_Registrados_organismo(){
+export function PP_Registrados_prePT_organismo(){
     const [productos, setProductos] = useState([])
     useEffect( () => {
         const fetchData = async () => {
@@ -17,9 +16,6 @@ export function Pp_Registrados_organismo(){
         fetchData();
     }, [])
 
-    useEffect(() => {
-        console.log(productos);
-    }, [productos])
 
     const formatFecha = (fechaISO) => {
         const fecha = new Date(fechaISO);
@@ -32,7 +28,7 @@ export function Pp_Registrados_organismo(){
                 productos.map((producto, index) => (
                     <CardPP_molecula
                     key={index}
-                    navRoute={"/ingreso_resultado_producto_p"}
+                    navRoute={"/ingreso_producto_t"}
                     nombreMuestra={producto.nombre_pp}
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
