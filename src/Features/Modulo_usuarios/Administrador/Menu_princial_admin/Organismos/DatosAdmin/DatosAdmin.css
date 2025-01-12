@@ -1,0 +1,23 @@
+.datosUsuario-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    background-color: #00a8e1;
+    align-self: flex-end;
+}
+
+.img-perfil{
+    width: 100%;
+    height: 100%;
+}
+
+.img-perfil-container{
+    width: 7rem;
+    height: 7rem;
+    border: 2px solid black;
+    border-radius: 70px;
+}
+

@@ -12,7 +12,7 @@ export function CardPT_molecula({nombreMuestra, lote, fechaAnalisis, responsable
         <>
             <div className="card-pt-molecula-container" onClick={handleClick}>
                 <div className="data-pt-molecula">
-                    <h1 className="nombre-muestra">nombre producto</h1>
+                    <h1 className="nombre-muestra">{nombreMuestra}</h1>
                     <p>Lote: {lote}</p>
                     <p>Fecha de analisis: {fechaAnalisis}</p>   
                     <p>Responsable de analisis: {responsableAnalisis}</p>    

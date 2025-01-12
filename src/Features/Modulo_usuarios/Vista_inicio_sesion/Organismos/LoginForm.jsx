@@ -19,9 +19,14 @@ export function LoginForm(){
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
-
             sessionStorage.setItem("token", response.result )
-            navigate('/menu')
+            if(response.rol == "analista"){
+                navigate('/menu')
+            }else if (response.rol == "administrador"){
+                navigate('/menu_admin')
+            }else{
+                Swal.fire('Error', 'Error iniciando sesion', 'error');
+            }
         }
     }
 

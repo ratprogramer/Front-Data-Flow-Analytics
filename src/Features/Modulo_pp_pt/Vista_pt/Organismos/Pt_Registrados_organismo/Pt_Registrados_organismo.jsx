@@ -8,8 +8,10 @@ export function Pt_Registrados_organismo(){
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await useGetFetch("/producto/producto_terminado");
+                const response = await useGetFetch("/producto/producto_terminado_nom_pp");
                 setProductos(response.result);
+                console.log(response.result);
+                
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
             }
@@ -32,7 +34,7 @@ export function Pt_Registrados_organismo(){
                     <CardPT_molecula
                     key={index}
                     navRoute={"/ingreso_resultado_producto_t"}
-                    nombreMuestra={"Nombre producto"} // cambiarlo luego de cambios al back
+                    nombreMuestra={producto.nombre_pp} // cambiarlo luego de cambios al back
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}

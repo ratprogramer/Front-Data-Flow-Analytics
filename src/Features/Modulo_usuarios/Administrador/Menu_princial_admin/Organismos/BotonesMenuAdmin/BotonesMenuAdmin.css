@@ -1,0 +1,7 @@
+.btns-container-menu{
+    display: flex;
+    align-items: center;
+    gap: 6%;
+    flex-direction: column;
+    height: 64vh;
+}

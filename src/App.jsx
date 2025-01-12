@@ -1,10 +1,19 @@
-import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
-import { IndicePP_PT } from "./Features/Modulo_pp_pt/Indice/Paginas/IndicePP_PT";
-import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 import "./app.css"
+
+import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
+
+import { MenuPrincipalAdmin } from "./Features/Modulo_usuarios/Administrador/Menu_princial_admin/Pagina/MenuPrincipalAdmin/MenuPrincipalAdmin";
+import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrador/Vista_registro_usuario/Pagina/Registro_Usuario_Pagina";
+
+
+
+
+
+import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
+
+import { IndicePP_PT } from "./Features/Modulo_pp_pt/Indice/Paginas/IndicePP_PT";
 import { SubIndicePP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/SubindicePP/SubIndicePP";
 import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
 import { FormularioResultadoPP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
@@ -24,6 +33,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<InicioSesion/>}/>
+          
+
           <Route path="/menu" element={<MenuPrincipal/>}/>
 
           <Route path="/menu_Derivado_lacteo_fermentado" element={<IndicePP_PT/>}/>
@@ -40,6 +51,8 @@ function App() {
           <Route path="/ingreso_resultado_producto_t" element={<FormularioResultadoPT/>}/>
 
 
+          <Route path="/menu_admin" element={<MenuPrincipalAdmin/>}/>
+          <Route path="/registro_usuario" element={<Registro_Usuario_Pagina/>}/>
         </Routes>
       </Router>
     </>
