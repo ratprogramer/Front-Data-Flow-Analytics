@@ -29,7 +29,7 @@ export function Pt_Registrados_organismo(){
 
     return(
         <div className="pt_registrados_container">
-            { 
+            { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPT_molecula
                     key={index}

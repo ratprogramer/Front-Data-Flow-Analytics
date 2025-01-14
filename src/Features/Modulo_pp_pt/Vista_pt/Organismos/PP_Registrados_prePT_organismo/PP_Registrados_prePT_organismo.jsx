@@ -24,7 +24,7 @@ export function PP_Registrados_prePT_organismo(){
 
     return(
         <div className="pp_registrados_container">
-            { 
+            { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPP_molecula
                     key={index}
