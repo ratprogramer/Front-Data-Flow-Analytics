@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
 import { usePostFetch } from "../../../../../helpers/usePostFetch";
@@ -44,9 +43,11 @@ export function FormularioIngresoPT_organismo() {
       return;
     }
     const decode = decodeToken(token);
+    console.log(decode);
+    
     data["responsable_analisis"] = parseInt(decode.id);
     data["id_producto_proceso"] = parseInt(id);
-    console.log(data);
+    console.log(data); // ESTE FALTA HACERLE EL FETCH CON EL BACK, YA LO ANOTE, LO HAGO APENAS FELIPE ME SOLUCIONE LO DEL ID (SAMUEL 12/02/2025)
     navigate("/menu");
     Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
   }; 

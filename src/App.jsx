@@ -27,35 +27,136 @@ import { Pt_Registrados } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/Pt_Regi
 import { FormularioResultadoPT } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioResultadoPT/FormularioResultadoPT";
 
 
+import { ProtectedRoute } from "./helpers/ProtectedRoute";
+
+
+
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<InicioSesion/>}/>
-          
+  <Router>
+    <Routes>
+      <Route path="/" element={<InicioSesion />} />
 
-          <Route path="/menu" element={<MenuPrincipal/>}/>
+      <Route
+        path="/menu"
+        element={
+          <ProtectedRoute>
+            <MenuPrincipal />
+          </ProtectedRoute>
+        }
+      />
 
-          <Route path="/menu_Derivado_lacteo_fermentado" element={<IndicePP_PT/>}/>
-          
-          <Route path="/sub_menu_pp" element ={<SubIndicePP/>}/> 
-          <Route path="/ingreso_producto_p" element={<FormularioRegistroPP_pagina/>}></Route>
-          <Route path="/productos_registrados_pp" element={<Pp_Registrados/>}></Route>
-          <Route path="/ingreso_resultado_producto_p" element={<FormularioResultadoPP/>}/>
+      <Route
+        path="/menu_Derivado_lacteo_fermentado"
+        element={
+          <ProtectedRoute>
+            <IndicePP_PT />
+          </ProtectedRoute>
+        }
+      />
 
-          <Route path="/sub_menu_pt" element ={<SubIndicePT/>}/> 
-          <Route path="/productos_registrados_pp_" element={<PP_Registrados_PrePT_pagina/>}></Route>
-          <Route path="/ingreso_producto_t" element={<FormularioRegistroPT_pagina/>}></Route>
-          <Route path="/productos_registrados_pt" element={<Pt_Registrados/>}></Route>
-          <Route path="/ingreso_resultado_producto_t" element={<FormularioResultadoPT/>}/>
+      <Route
+        path="/sub_menu_pp"
+        element={
+          <ProtectedRoute>
+            <SubIndicePP />
+          </ProtectedRoute>
+        }
+      />
 
+      <Route
+        path="/ingreso_producto_p"
+        element={
+          <ProtectedRoute>
+            <FormularioRegistroPP_pagina />
+          </ProtectedRoute>
+        }
+      />
 
-          <Route path="/menu_admin" element={<MenuPrincipalAdmin/>}/>
-          <Route path="/registro_usuario" element={<Registro_Usuario_Pagina/>}/>
-        </Routes>
-      </Router>
-    </>
+      <Route
+        path="/productos_registrados_pp"
+        element={
+          <ProtectedRoute>
+            <Pp_Registrados />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/ingreso_resultado_producto_p"
+        element={
+          <ProtectedRoute>
+            <FormularioResultadoPP />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/sub_menu_pt"
+        element={
+          <ProtectedRoute>
+            <SubIndicePT />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/productos_registrados_pp_"
+        element={
+          <ProtectedRoute>
+            <PP_Registrados_PrePT_pagina />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/ingreso_producto_t"
+        element={
+          <ProtectedRoute>
+            <FormularioRegistroPT_pagina />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/productos_registrados_pt"
+        element={
+          <ProtectedRoute>
+            <Pt_Registrados />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/ingreso_resultado_producto_t"
+        element={
+          <ProtectedRoute>
+            <FormularioResultadoPT />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/menu_admin"
+        element={
+          <ProtectedRoute>
+            <MenuPrincipalAdmin />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/registro_usuario"
+        element={
+          <ProtectedRoute>
+            <Registro_Usuario_Pagina />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  </Router>
+</>
   )
 }
 

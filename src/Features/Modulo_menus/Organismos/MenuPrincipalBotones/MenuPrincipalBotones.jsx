@@ -1,4 +1,4 @@
-import { Boton } from "../../../Atomos/Boton/Boton";
+import { Boton } from "../../../../Atomos/Boton/Boton";
 import "./MenuPrincipalBotones.css"
 
 export function MenuPrincipalBotones(){

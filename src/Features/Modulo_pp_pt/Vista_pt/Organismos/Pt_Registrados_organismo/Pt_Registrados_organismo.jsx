@@ -24,7 +24,7 @@ export function Pt_Registrados_organismo(){
 
     const formatFecha = (fechaISO) => {
         const fecha = new Date(fechaISO);
-        return fecha.toLocaleDateString(); // Formatea la fecha según la configuración local
+        return fecha.toLocaleDateString();
     };
 
     return(
@@ -34,7 +34,7 @@ export function Pt_Registrados_organismo(){
                     <CardPT_molecula
                     key={index}
                     navRoute={"/ingreso_resultado_producto_t"}
-                    nombreMuestra={producto.nombre_pp} // cambiarlo luego de cambios al back
+                    nombreMuestra={producto.nombre_pp} 
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}

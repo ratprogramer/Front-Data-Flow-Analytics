@@ -16,10 +16,12 @@ export function LoginForm(){
 
     const  onSubmit = async (data) => {
         const response = await usePostFetch("/login", data)
+        
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
             sessionStorage.setItem("token", response.result )
+
             if(response.rol == "analista"){
                 navigate('/menu')
             }else if (response.rol == "administrador"){

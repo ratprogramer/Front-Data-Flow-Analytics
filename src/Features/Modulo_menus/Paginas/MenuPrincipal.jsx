@@ -1,5 +1,5 @@
-import { DatosUsuario } from "../Organismos/DatosUsuario";
-import { MenuPrincipalBotones } from "../Organismos/MenuPrincipalBotones";
+import { DatosUsuario } from "../Organismos/DatosUsuario/DatosUsuario";
+import { MenuPrincipalBotones } from "../Organismos/MenuPrincipalBotones/MenuPrincipalBotones";
 import "./MenuPrincipal.css"
 
 export function MenuPrincipal(){

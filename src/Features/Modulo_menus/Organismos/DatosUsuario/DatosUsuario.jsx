@@ -17,17 +17,5 @@ export function DatosUsuario({rol, nombre}){
                 <img className="img-perfil" src="src\imgs\foto-perfil.png" alt="Foto Perfil" />
             </div>
         </div>
-        /*
-        <div className="datosUsuario-container">
-            <div className="datosUsuario">
-                <h1><b>Rol: </b>{rol}</h1>
-                <h1><b>Nombre: </b>{nombre}</h1>
-                <h1><b>Fecha: </b>{año}-{mes}-{dia}</h1>
-            </div>
-            <div className="img-perfil">
-                <img src="" alt="" />
-            </div>
-        </div>
-        */
     )
 }
