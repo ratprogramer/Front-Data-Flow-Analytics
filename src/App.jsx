@@ -32,7 +32,6 @@ import { ProtectedRoute } from "./helpers/ProtectedRoute";
 
 
 function App() {
-  // comentario de prueba
   return (
     <>
   <Router>
