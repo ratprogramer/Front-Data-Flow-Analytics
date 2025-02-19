@@ -7,6 +7,7 @@ import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGro
 import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
+import { useEffect } from "react";
 
 import "./FormularioIngresoPP_organismo.css";
 import Swal from "sweetalert2";
@@ -25,8 +26,9 @@ export function FormularioIngresoPP_organismo() {
   const navigate = useNavigate();
 
   const [isAlternativo, setIsAlternativo] = useState(false);
+  const [isBsemi, setIsBsemi] = useState(false);
+  const [isBpas, setIsBpas] = useState(false);
 
-  const puntoMuestraValue = watch("punto_muestra", "");
 
   const onSubmit = async (data) => {
     if(data["nombre_pp"] == '' || data["punto_muestra"] == ''){
@@ -72,8 +74,17 @@ export function FormularioIngresoPP_organismo() {
     { value: "Tanque 9", placeHolder: "Tanque 9" },
     { value: "Tanque 10", placeHolder: "Tanque 10" },
     { value: "Tanque 12", placeHolder: "Tanque 12" },
-    { value: "alternativo", placeHolder: "Punto de toma alternativo" },
+    { value: "Alternativo", placeHolder: "Punto de toma alternativo" },
   ];
+
+  const tanqueBebidaSemi = [
+    { value: "Fabricacion", placeHolder: "Fabricación" }
+  ];
+
+  const tanqueBebidaPast = [
+    { value: "Pasteurizador", placeHolder: "Pasteurizador" }
+  ];
+
 
   const validaciones = { required: "los campos con * son obligatorios" };
   return (
@@ -89,6 +100,10 @@ export function FormularioIngresoPP_organismo() {
             label={"Nombre del producto *"}
             opciones={opcionesNombreProducto}
             validaciones={validaciones}
+            onChange={(e) => {
+              setIsBpas(e.target.value === "Bebida pasteurizada") 
+              setIsBsemi(e.target.value === "Bebida semi elaborada")}
+            } 
           ></SelectGroup>
 
           <TimeGroup
@@ -98,6 +113,7 @@ export function FormularioIngresoPP_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
+            isDisabled={true}
           ></TimeGroup>
 
           <TimeGroup
@@ -106,6 +122,8 @@ export function FormularioIngresoPP_organismo() {
             register={register}
             type={"date"}
             validaciones={validaciones}
+            rangeMode={"past"}
+            rangeDays={4}
           ></TimeGroup>
 
           <TimeGroup
@@ -120,12 +138,13 @@ export function FormularioIngresoPP_organismo() {
             id={"punto_muestra"}
             register={register}
             label={"Punto de toma de muestra *"}
-            opciones={opcionesPuntoToma}
+            opciones={isBpas ? tanqueBebidaPast : isBsemi ? tanqueBebidaSemi : opcionesPuntoToma}
             validaciones={validaciones}
-            onChange={(e) => setIsAlternativo(e.target.value === "alternativo")}
+            placeHolder={ isBpas || isBsemi ? false : true }
+            onChange={(e) => setIsAlternativo(e.target.value === "Alternativo")}
           ></SelectGroup>
 
-          {puntoMuestraValue === "alternativo" && (
+          {isAlternativo && (
             <TxtGroup
               id={"punto_alterno"}
               label={"Punto de toma alternativo *"}
