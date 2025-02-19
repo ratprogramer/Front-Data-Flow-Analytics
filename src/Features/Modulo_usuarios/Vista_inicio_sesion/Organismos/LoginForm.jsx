@@ -15,19 +15,20 @@ export function LoginForm(){
     const navigate = useNavigate();
 
     const  onSubmit = async (data) => {
+
         const response = await usePostFetch("/login", data)
-        
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
         }else{
             sessionStorage.setItem("token", response.result )
-
-            if(response.rol == "analista"){
+            const token = decodeToken(response.result)
+            
+            if(token.rol == "Analista"){
                 navigate('/menu')
-            }else if (response.rol == "administrador"){
+            }else if (token.rol == "administrador"){
                 navigate('/menu_admin')
             }else{
-                Swal.fire('Error', 'Error iniciando sesion', 'error');
+                Swal.fire('Error', 'Credenciales invalidas', 'error');
             }
         }
     }
