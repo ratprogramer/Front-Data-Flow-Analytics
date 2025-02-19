@@ -18,24 +18,24 @@ export function LoginForm() {
   } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    const response = await usePostFetch("/login", data);
+    const  onSubmit = async (data) => {
 
-    if (!response.success) {
-      Swal.fire("Error", "Credenciales invalidas", "error");
-    } else {
-      sessionStorage.setItem("token", response.result);
-      console.log(response.rol);
-
-      if (response.rol == "Analista") {
-        navigate("/menu");
-      } else if (response.rol == "Administrador") {
-        navigate("/menu_admin");
-      } else {
-        Swal.fire("Error", "Error iniciando sesion", "error");
-      }
+        const response = await usePostFetch("/login", data)
+        if(!response.success){
+            Swal.fire('Error', 'Credenciales invalidas', 'error');
+        }else{
+            sessionStorage.setItem("token", response.result )
+            const token = decodeToken(response.result)
+            
+            if(token.rol == "Analista"){
+                navigate('/menu')
+            }else if (token.rol == "administrador"){
+                navigate('/menu_admin')
+            }else{
+                Swal.fire('Error', 'Credenciales invalidas', 'error');
+            }
+        }
     }
-  };
 
   const onError = (errors) => {
     for (const error in errors) {
