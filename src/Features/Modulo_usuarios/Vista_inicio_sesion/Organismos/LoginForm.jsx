@@ -15,7 +15,9 @@ export function LoginForm(){
     const navigate = useNavigate();
 
     const  onSubmit = async (data) => {
-
+        if (data.dni.length > 10 || data.dni.length < 7){
+            return Swal.fire('Error', 'Credenciales invalidas', 'error');
+        }
         const response = await usePostFetch("/login", data)
         if(!response.success){
             Swal.fire('Error', 'Credenciales invalidas', 'error');
