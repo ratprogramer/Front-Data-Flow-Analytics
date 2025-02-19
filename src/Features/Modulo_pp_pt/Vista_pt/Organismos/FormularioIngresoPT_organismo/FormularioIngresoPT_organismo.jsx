@@ -60,8 +60,7 @@ export function FormularioIngresoPT_organismo() {
 
   const opcionesPresentacion = [
     { value: "1000", placeHolder: "1000 ml" },
-    { value: "200", placeHolder: "200 ml" },
-    { value: "200", placeHolder: "Preguntar son ml" }
+    { value: "200", placeHolder: "200 ml" }
   ];
 
   const opcionesMaquina = [
