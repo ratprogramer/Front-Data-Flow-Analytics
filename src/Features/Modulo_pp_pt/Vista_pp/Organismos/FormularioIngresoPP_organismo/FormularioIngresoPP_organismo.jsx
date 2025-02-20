@@ -85,7 +85,6 @@ export function FormularioIngresoPP_organismo() {
     { value: "Pasteurizador", placeHolder: "Pasteurizador" }
   ];
 
-
   const validaciones = { required: "los campos con * son obligatorios" };
   return (
     <>

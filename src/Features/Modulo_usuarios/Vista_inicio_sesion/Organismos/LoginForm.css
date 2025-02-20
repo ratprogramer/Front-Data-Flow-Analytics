@@ -3,10 +3,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 85%;
 }
 
 .group-container{
     display: flex;
     margin-bottom: 24px;
     flex-direction: column;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .loginForm-organismo {
+        width: 40%;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
+        padding: 3rem;
+        border-radius: 10px;
+    }
+    
+    .group-container {
+        width: 100%;
+    }
+    
 }

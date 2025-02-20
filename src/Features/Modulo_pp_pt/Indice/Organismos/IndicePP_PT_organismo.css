@@ -1,0 +1,13 @@
+.Indice-container-organismo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.Indice-container-organismo > * {
+  padding: 0 1rem;
+  max-width: 95%;
+  width: 100%;
+  text-align: center;
+}

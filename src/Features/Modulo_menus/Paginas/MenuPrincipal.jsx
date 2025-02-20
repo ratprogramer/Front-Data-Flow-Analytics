@@ -6,10 +6,10 @@ export function MenuPrincipal(){
     return(
         <div className="MenuPrincipal-container-pagina">
             <div className="main-menu-container">
-                <h1  className="Menu-titulo-container" >Menú</h1>
-                <MenuPrincipalBotones></MenuPrincipalBotones>
+                <h1 className="Menu-titulo-container">Menú</h1>
+                <MenuPrincipalBotones />
             </div>
-            <DatosUsuario></DatosUsuario>
+            <DatosUsuario />
         </div>
     )
 }

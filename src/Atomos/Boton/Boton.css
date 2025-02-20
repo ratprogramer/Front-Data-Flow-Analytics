@@ -1,7 +1,7 @@
-.btn-atomo{
+.btn-atomo {
     background-color: #00a8e1;
     color: #FFFF;
-    width: 22.5rem;
+    width: 100%;
     font-size: 18px;
     padding: 5px;
     padding-left: 20px;
@@ -11,8 +11,18 @@
     border-radius: 15px;
     transition: 0.3s;
     box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.699);
+    cursor: pointer;
 }
 
+@media (min-width: 768px) {
+    .btn-atomo {
+        width: 80%;
+        height: 5rem;
+        text-align: center;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
 
 .btn-atomo:hover {
     background-color: #005072;

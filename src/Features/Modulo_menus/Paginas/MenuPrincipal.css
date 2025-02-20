@@ -11,6 +11,21 @@
 .Menu-titulo-container{
     width: 22.5rem;
     font-weight: 550;
-    font-size: 23px;
+    font-size: 36px;
     color: #00a8e1;
+}
+
+@media screen and (min-width: 768px) {
+    .MenuPrincipal-container-pagina {
+        width: 99.8vw;
+    }
+    .Menu-titulo-container {
+        width: 50%;
+        padding-left: 5rem;
+        font-size: 48px;
+    }
+    .main-menu-container {
+        background: red;
+        
+    }
 }

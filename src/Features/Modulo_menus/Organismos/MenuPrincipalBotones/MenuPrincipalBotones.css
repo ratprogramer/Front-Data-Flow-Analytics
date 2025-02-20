@@ -1,7 +1,17 @@
-.btns-container-menu{
-    display: flex;
-    align-items: center;
-    gap: 6%;
-    flex-direction: column;
-    height: 64vh;
+.btns-container-menu {
+  display: flex;
+  align-items: center;
+  gap: 6%;
+  flex-direction: column;
+  height: 64vh;
+}
+
+@media (min-width: 768px) {
+  .btns-container-menu {
+    display: grid;
+    width: 99vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 70vh;
+  }
 }

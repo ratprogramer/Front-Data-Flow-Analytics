@@ -6,7 +6,7 @@ export function InicioSesion(){
         <div className="inicioSesion-pagina">
             <h1 className="titulo">Bienvenido</h1>
             <LoginForm/>
-            <img src="src\imgs\LogoNormal2.png"></img>
+            <img src="src\imgs\LogoNormal2.png" />
         </div>
     )
 }

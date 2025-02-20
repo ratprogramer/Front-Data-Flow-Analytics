@@ -1,41 +1,63 @@
-.card-pp-molecula-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3%;
-    width: 85%;
-    height: 92px;
-    border: 1px solid black;
-    padding-left: 2%;
-    padding-right: 1.5%;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    border-radius: 10px;
-    background-color: #00a8e1;
-    color: white;
-    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
-    transition: all 0.1s;
+.card-pp-molecula-container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 3%;
+
+  border: 1px solid black;
+  border-radius: 10px;
+
+  padding: 0.5% 1.5% 0.5% 2%;
+  background-color: #00a8e1;
+  color: white;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.75);
+  transition: all 0.1s;
+  cursor: pointer;
+
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-pp-molecula-container:active {
-    background-color: #01a3da;
-    transform: scale(0.97); /* Simula un efecto de clic */
+  background-color: #01a3da;
+  transform: scale(0.97);
 }
 
-.card-pp-estado{
-    width: 50px;
+.card-pp-estado {
+  width: 50px;
 }
 
-.estado-img-pp{
-    width: 100%;
-    height: 100%;
+.estado-img-pp {
+  width: 100%;
+  height: 100%;
 }
-.nombre-muestra{
+
+.nombre-muestra {
+  font-size: 1.4rem;
+  color: rgb(245, 246, 248);
+  font-weight: 200;
+}
+
+.data-pp-molecula {
+  line-height: 0.35;
+}
+
+@media screen and (min-width: 1024px) {
+  .nombre-muestra {
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  .card-pp-molecula-container {
+    width: 77%;
+  }
+
+  .data-pp-molecula {
     font-size: 1.4rem;
-    color: rgb(245, 246, 248);
-    font-weight: 200;
-}
-
-.data-pp-molecula{
-    line-height:0.35;
+  }
 }

@@ -1,19 +1,27 @@
-.flecha-img{
-    width: 30px;
+.tituloPagina-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 18px;
 }
 
-.tituloPagina-container{
-    display: flex;
-    width: 100vw;
-    align-items: center;
-    justify-content: left;
-    cursor: pointer;
-    padding-left: 20px;
-    gap: 18px;
+.flecha-img {
+  width: 30px;
 }
 
-.titulo-modulo-txt{
-    font-weight: 550;
-    font-size: 23px;
-    color: #00a8e1; 
+.titulo-modulo-txt {
+  font-weight: 550;
+  font-size: 23px;
+  color: #00a8e1;
+}
+
+@media screen and (min-width: 768px) {
+    .titulo-modulo-txt {
+        font-weight: 550;
+        font-size: 1.8rem;
+        color: #00a8e1;
+    }
+    
 }

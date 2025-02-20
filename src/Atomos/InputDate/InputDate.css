@@ -1,18 +1,28 @@
-
 input:focus + .placeholder,
 input:not(:placeholder-shown) + .placeholder {
-    top: -10px;
-    font-size: 0.8em;
-    color: #007BFF;
+  top: -10px;
+  font-size: 0.8em;
+  color: #007bff;
 }
-input{
-    background-color: #66cbed;
-    color: #ffffff;
-    width: 80vw;
-    font-size: 18px;
-    height: 2rem;
-    border: 1px solid black;
-    border-radius: 7px;
-    padding: 4px;
-    padding-left: 7px;
+input {
+  background-color: #66cbed;
+  color: #ffffff;
+  font-size: 18px;
+  height: 2rem;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 4px;
+  padding-left: 7px;
+  width: 98%;
+  
+}
+
+@media screen and (min-width: 768px) {
+    input {
+        font-size: 24px;
+        height: 2rem;
+        display: flex;
+        align-self: center;
+        width: 99%;
+    }
 }
