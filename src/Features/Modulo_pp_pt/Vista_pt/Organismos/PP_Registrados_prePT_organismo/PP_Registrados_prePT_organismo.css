@@ -1,0 +1,9 @@
+.pp_registrados_container {
+  height: 94.2dvh;
+}
+
+.pp_registrados_container h1 {
+  width: 95%;
+  color: #00a8e1;
+  text-align: center;
+}

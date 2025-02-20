@@ -1,6 +1,7 @@
 import { CardPP_molecula } from "../../../Vista_pp/Moleculas/CardPP_molecula/CardPP_molecula" 
 import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
+import './PP_Registrados_prePT_organismo.css'
 
 export function PP_Registrados_prePT_organismo(){
     const [productos, setProductos] = useState([])
