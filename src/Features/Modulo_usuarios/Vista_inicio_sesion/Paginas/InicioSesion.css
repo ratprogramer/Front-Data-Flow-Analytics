@@ -1,12 +1,11 @@
 .inicioSesion-pagina{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100dvh;
     color: #fff;
     align-items: center;
-    width: 100%;
+    width: 100dvw;
     gap: 100px;
-    background-color: antiquewhite;
     justify-content: space-around;
     background: linear-gradient(to bottom, #001d2e, #0072b1);
 }
