@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useState } from "react";
 import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
@@ -13,25 +13,97 @@ import "./FormularioIngresoPP_organismo.css";
 import Swal from "sweetalert2";
 
 export function FormularioIngresoPP_organismo() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch
-  } = useForm({
-    defaultValues: {
-      fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
-    },
-  });
+  const {register, handleSubmit, formState: { errors }, watch } = useForm({defaultValues: { fecha_analisis: new Date().toISOString().split("T")[0]}});
   const navigate = useNavigate();
-
   const [isAlternativo, setIsAlternativo] = useState(false);
+
   const [isBsemi, setIsBsemi] = useState(false);
   const [isBpas, setIsBpas] = useState(false);
+  const [tanque, setTanque] = useState("");
+  const [posLote, setPos] = useState(undefined);
+  const [lote, setLote] = useState(false);
 
+  const creadorLote = () => {
+    let lotecito = "";
+  
+    if (isBsemi) {
+      lotecito = "BsFa";
+    } else if (isBpas) {
+      lotecito = "BpPs";
+    } else if (isAlternativo) {
+      lotecito = "CbAl"; // Caso de tanque alternativo
+    } else if (tanque) {
+      lotecito = "Cb" + tanque; // Caso de tanque normal
+    }
+  
+    setLote(lotecito);
+  };
+  
+  useEffect(() => {
+    creadorLote();
+  }, [tanque, isBsemi, isBpas, isAlternativo]); 
+  
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    let inputVal = e.target.value;
+    if (inputVal.length > 5) {
+      inputVal = inputVal.slice(0, 5);
+    }
+
+    setPos(inputVal);
+  };
+
+
+
+  const opcionesNombreProducto = [
+    { value: "Bebida semi elaborada", placeHolder: "Bebida semi elaborada" },
+    { value: "Bebida pasteurizada", placeHolder: "Bebida pasteurizada" },
+    { value: "Corte de bebida lactea", placeHolder: "Corte de bebida lactea" },
+  ];
+  
+  const opcionesPuntoToma = [
+    { value: "Tanque 7", placeHolder: "Tanque 7" },
+    { value: "Tanque 9", placeHolder: "Tanque 9" },
+    { value: "Tanque 10", placeHolder: "Tanque 10" },
+    { value: "Tanque 12", placeHolder: "Tanque 12" },
+    { value: "Alternativo", placeHolder: "Punto de toma alternativo" },
+  ];
+  
+  const tanqueBebidaSemi = [
+    { value: "Fabricación", placeHolder: "Fabricación" }
+  ];
+  
+  const tanqueBebidaPast = [
+    { value: "Pasteurizador", placeHolder: "Pasteurizador" }
+  ];
+  
+  const validaciones = { required: "Los campos con * son obligatorios" };
+  const validacionesLote = {
+    required: "Los campos con * son obligatorios",
+    pattern: {
+      value: /^[0-9]+$/,
+      message: "Solo se permiten números en el Lote",
+    },
+    minLength: {
+      value: 5,
+      message: "El lote debe tener al menos 5 dígitos",
+    },
+    maxLength: {
+      value: 5,
+      message: "El lote no puede tener más de 5 dígitos",
+    },
+  };
 
   const onSubmit = async (data) => {
-    if(data["nombre_pp"] == '' || data["punto_muestra"] == ''){
+    if(data["nombre_pp"] == '' ){
+        Swal.fire("Error", "Los campos con * son obligatorios", "error");
+        return
+    }
+    if(data["punto_muestra"] == '' ){
+        isBpas ? data["punto_muestra"] = "Pasteurizador" : isBsemi ? data["punto_muestra"] = "Fabricación" : data["punto_muestra"] = "";
+    }
+    if(data["punto_muestra"] == '' ){
         Swal.fire("Error", "Los campos con * son obligatorios", "error");
         return
     }
@@ -46,9 +118,14 @@ export function FormularioIngresoPP_organismo() {
       navigate("/");
       return;
     }
+
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
-    const response = await usePostFetch("/producto/registrar_pp", data);
+    data["lote"] = lote + posLote;
+    console.log(token);
+
+    const response = await usePostFetch("/producto/registrar_pp", data, token);
+    
     if (!response.success) {
       Swal.fire("Error", JSON.stringify(response), "error");
     } else {
@@ -62,36 +139,12 @@ export function FormularioIngresoPP_organismo() {
       Swal.fire("Error", errors[error].message, "error");
     }
   };
-
-  const opcionesNombreProducto = [
-    { value: "Bebida semi elaborada", placeHolder: "Bebida semi elaborada" },
-    { value: "Bebida pasteurizada", placeHolder: "Bebida pasteurizada" },
-    { value: "Corte de bebida lactea", placeHolder: "Corte de bebida lactea" },
-  ];
-
-  const opcionesPuntoToma = [
-    { value: "Tanque 7", placeHolder: "Tanque 7" },
-    { value: "Tanque 9", placeHolder: "Tanque 9" },
-    { value: "Tanque 10", placeHolder: "Tanque 10" },
-    { value: "Tanque 12", placeHolder: "Tanque 12" },
-    { value: "Alternativo", placeHolder: "Punto de toma alternativo" },
-  ];
-
-  const tanqueBebidaSemi = [
-    { value: "Fabricacion", placeHolder: "Fabricación" }
-  ];
-
-  const tanqueBebidaPast = [
-    { value: "Pasteurizador", placeHolder: "Pasteurizador" }
-  ];
-
-  const validaciones = { required: "los campos con * son obligatorios" };
   return (
     <>
       <form
         className="formulrio-registro-pp-container"
         onSubmit={handleSubmit(onSubmit, onError)}
-      >
+        >
         <div className="formulario-pp-campos">
           <SelectGroup
             id={"nombre_pp"}
@@ -100,8 +153,9 @@ export function FormularioIngresoPP_organismo() {
             opciones={opcionesNombreProducto}
             validaciones={validaciones}
             onChange={(e) => {
-              setIsBpas(e.target.value === "Bebida pasteurizada") 
-              setIsBsemi(e.target.value === "Bebida semi elaborada")}
+                setIsBpas(e.target.value === "Bebida pasteurizada")
+                setIsBsemi(e.target.value === "Bebida semi elaborada")
+              }
             } 
           ></SelectGroup>
 
@@ -111,8 +165,9 @@ export function FormularioIngresoPP_organismo() {
             type={"date"}
             register={register}
             validaciones={validaciones}
-            defaultDate={true}
             isDisabled={true}
+            defaultDate={true}
+
           ></TimeGroup>
 
           <TimeGroup
@@ -140,7 +195,13 @@ export function FormularioIngresoPP_organismo() {
             opciones={isBpas ? tanqueBebidaPast : isBsemi ? tanqueBebidaSemi : opcionesPuntoToma}
             validaciones={validaciones}
             placeHolder={ isBpas || isBsemi ? false : true }
-            onChange={(e) => setIsAlternativo(e.target.value === "Alternativo")}
+            onChange={(e) => {
+              setIsAlternativo(e.target.value === "Alternativo")
+              if(e.target.value.startsWith("Tanque ")){
+                setTanque("T" + e.target.value.split(" ")[1]);
+                creadorLote();
+              }
+            }}
           ></SelectGroup>
 
           {isAlternativo && (
@@ -149,15 +210,20 @@ export function FormularioIngresoPP_organismo() {
               label={"Punto de toma alternativo *"}
               placeholder={"Ingrese el punto alternativo"}
               register={register}
-              validaciones={validaciones}
             ></TxtGroup>
           )}
+          {
+            // <p>{lote}</p>
+          }
           <TxtGroup
             id={"lote"}
             label={"Lote *"}
             placeholder={"Ingrese el lote"}
             register={register}
-            validaciones={validaciones}
+            type={"number"}
+            validaciones={validacionesLote}
+            onChange={(e) => handleChange(e)}
+            value={posLote}
           ></TxtGroup>
 
           <TxtGroup
