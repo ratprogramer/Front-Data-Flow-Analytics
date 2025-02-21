@@ -9,17 +9,20 @@ import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrado
 
 import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
 
-import { IndicePP_PT } from "./Features/Modulo_pp_pt/Indice/Paginas/IndicePP_PT";
-import { SubIndicePP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/SubindicePP/SubIndicePP";
-import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
-import { FormularioResultadoPP } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
-import { Pp_Registrados } from "./Features/Modulo_pp_pt/Vista_pp/Paginas/Pp_Registrados/Pp_Registrados";
+import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
+import { SubIndicePP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/SubindicePP/SubIndicePP";
+import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
+import { FormularioResultadoPP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
+import { Pp_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/Pp_Registrados/Pp_Registrados";
 
-import { SubIndicePT } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/SubindicePT/SubIndicePT";
-import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
-import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioRegistroPT/FormularioRegistroPT_pagina";
-import { Pt_Registrados } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/Pt_Registrados/Pt_Registrados";
-import { FormularioResultadoPT } from "./Features/Modulo_pp_pt/Vista_pt/Paginas/FormularioResultadoPT/FormularioResultadoPT";
+import { FormularioRegistroSB_pagina } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioRegistroSB/FormularioRegistroSB_pagina";
+
+
+import { SubIndicePT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/SubindicePT/SubIndicePT";
+import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
+import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/FormularioRegistroPT/FormularioRegistroPT_pagina";
+import { Pt_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/Pt_Registrados/Pt_Registrados";
+import { FormularioResultadoPT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/FormularioResultadoPT/FormularioResultadoPT";
 
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 
@@ -84,6 +87,14 @@ function App() {
             }
           />
 
+          <Route
+            path="/ingreso_saborizacion"
+            element={
+              <ProtectedRoute>
+                <FormularioRegistroSB_pagina />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/sub_menu_pt"
             element={

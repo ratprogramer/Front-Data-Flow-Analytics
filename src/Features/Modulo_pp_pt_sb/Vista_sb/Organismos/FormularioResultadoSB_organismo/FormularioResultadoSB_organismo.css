@@ -1,0 +1,15 @@
+.formulrio-resultado-pt-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 78vh;
+    align-items: center;
+}
+
+.formulario-resultado-pt-campos{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}

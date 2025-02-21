@@ -1,0 +1,16 @@
+.formulrio-registro-pt-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 90vh;
+    width: 100vw;
+    align-items: center;
+}
+
+.formulario-pt-campos{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}

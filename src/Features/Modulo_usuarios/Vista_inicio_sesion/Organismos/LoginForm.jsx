@@ -29,7 +29,7 @@ export function LoginForm() {
             sessionStorage.setItem("token", response.result )
             const token = decodeToken(response.result)
             
-            if(token.rol == "analista"){
+            if(token.rol == "Analista"){
                 navigate('/menu')
             }else if (token.rol == "Administrador"){
                 navigate('/menu_admin')
