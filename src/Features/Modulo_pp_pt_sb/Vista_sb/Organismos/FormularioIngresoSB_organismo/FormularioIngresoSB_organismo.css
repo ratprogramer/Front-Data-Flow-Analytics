@@ -14,22 +14,23 @@
   width: 95%;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .formulrio-registro-pt-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 60%;
-    background: red;
+    width: 10rem;
+    background: blue;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
     border-radius: 10px;
 
   }
 
   .formulario-pt-campos {
-    width: 100%;
+    width: 40%;
     font-size: 1.8rem;
     display: flex;
     flex-direction: column;
+    background: red;
   }
 }

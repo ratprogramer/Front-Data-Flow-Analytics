@@ -16,7 +16,7 @@ export function FormularioIngresoSB_organismo() {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
   } = useForm({
     defaultValues: {
       fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
@@ -25,30 +25,30 @@ export function FormularioIngresoSB_organismo() {
 
   const navigate = useNavigate();
 
-  const [lote, setLote] = useState("")
-  const [tanque, setTanque] = useState("")
-  const [isMora, setIsMora] = useState(false)
-  const [isFresa, setIsFresa] = useState(false)
-  const [isMelocoton, setIsMelocoton] = useState(false)
-  const [isKumis, setIsKumis] = useState(false)
-  const [posLote, setPos] = useState(undefined)
-  
+  const [lote, setLote] = useState("");
+  const [tanque, setTanque] = useState("");
+  const [isMora, setIsMora] = useState(false);
+  const [isFresa, setIsFresa] = useState(false);
+  const [isMelocoton, setIsMelocoton] = useState(false);
+  const [isKumis, setIsKumis] = useState(false);
+  const [posLote, setPos] = useState(undefined);
+
   const creadorLote = () => {
     let lotecito = "";
-  
+
     if (isMora) {
       lotecito = "Mo";
     } else if (isFresa) {
       lotecito = "Fr";
     } else if (isMelocoton) {
-      lotecito = "Me"; 
+      lotecito = "Me";
     } else if (isKumis) {
-      lotecito = "Ku"; 
+      lotecito = "Ku";
     }
-    lotecito += tanque; 
+    lotecito += tanque;
     setLote(lotecito);
   };
-  
+
   const handleChange = (e) => {
     console.log(e.target.value);
     let inputVal = e.target.value;
@@ -61,38 +61,41 @@ export function FormularioIngresoSB_organismo() {
 
   useEffect(() => {
     creadorLote();
-  }, [tanque, isMora, isFresa,isMelocoton, isKumis]); 
-  
+  }, [tanque, isMora, isFresa, isMelocoton, isKumis]);
 
   const onSubmit = async (data) => {
-        if(data["sabor"] == '' ){
-            Swal.fire("Error", "Los campos con * son obligatorios", "error");
-            return
-        }
-        const token = sessionStorage.getItem("token");
-        if (!token) {
-          Swal.fire(
-            "Error",
-            "No se encontraron credenciales validas en el sistema",
-            "error"
-          );
-          navigate("/");
-          return;
-        }
-        const decode = decodeToken(token);
-        data["responsable_analisis"] = parseInt(decode.id);
-        data["lote"] = lote + posLote;
-        console.log(data);
-        
-        const response = await usePostFetch("/producto/registrar_saborizacion", data, token);
-        
-        if (!response.success) {
-          Swal.fire("Error", JSON.stringify(response), "error");
-        } else {
-          Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
-          navigate("/menu");
-        }
-      }; 
+    if (data["sabor"] == "") {
+      Swal.fire("Error", "Los campos con * son obligatorios", "error");
+      return;
+    }
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      Swal.fire(
+        "Error",
+        "No se encontraron credenciales validas en el sistema",
+        "error"
+      );
+      navigate("/");
+      return;
+    }
+    const decode = decodeToken(token);
+    data["responsable_analisis"] = parseInt(decode.id);
+    data["lote"] = lote + posLote;
+    console.log(data);
+
+    const response = await usePostFetch(
+      "/producto/registrar_saborizacion",
+      data,
+      token
+    );
+
+    if (!response.success) {
+      Swal.fire("Error", JSON.stringify(response), "error");
+    } else {
+      Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+      navigate("/menu");
+    }
+  };
 
   const onError = (errors) => {
     for (const error in errors) {
@@ -122,17 +125,17 @@ export function FormularioIngresoSB_organismo() {
     },
   };
 
-  const opcionesSabor =  [
+  const opcionesSabor = [
     { value: "Mora", placeHolder: "Mora" },
     { value: "Melocoton", placeHolder: "Melocoton" },
     { value: "Fresa", placeHolder: "Fresa" },
-    { value: "Kumis", placeHolder: "Kumis" }
+    { value: "Kumis", placeHolder: "Kumis" },
   ];
   const opcionesPuntoToma = [
     { value: "Tanque 7", placeHolder: "Tanque 7" },
     { value: "Tanque 9", placeHolder: "Tanque 9" },
     { value: "Tanque 10", placeHolder: "Tanque 10" },
-    { value: "Tanque 12", placeHolder: "Tanque 12" }
+    { value: "Tanque 12", placeHolder: "Tanque 12" },
   ];
   return (
     <>
@@ -141,7 +144,6 @@ export function FormularioIngresoSB_organismo() {
         onSubmit={handleSubmit(onSubmit, onError)}
       >
         <div className="formulario-pt-campos">
-
           <SelectGroup
             id={"sabor"}
             register={register}
@@ -150,13 +152,12 @@ export function FormularioIngresoSB_organismo() {
             placeHolder={true}
             validaciones={validaciones}
             onChange={(e) => {
-              setIsFresa(e.target.value === "Fresa")
-              setIsMora(e.target.value === "Mora")
-              setIsKumis(e.target.value === "Kumis")
-              setIsMelocoton(e.target.value === "Melocoton")
-            }
-          } 
-          ></SelectGroup>
+              setIsFresa(e.target.value === "Fresa");
+              setIsMora(e.target.value === "Mora");
+              setIsKumis(e.target.value === "Kumis");
+              setIsMelocoton(e.target.value === "Melocoton");
+            }}
+          />
 
           <TimeGroup
             id={"fecha_analisis"}
@@ -166,7 +167,7 @@ export function FormularioIngresoSB_organismo() {
             validaciones={validaciones}
             defaultDate={true}
             isDisabled={true}
-          ></TimeGroup>
+          />
 
           <TimeGroup
             id={"fecha_toma_muestra"}
@@ -176,7 +177,7 @@ export function FormularioIngresoSB_organismo() {
             validaciones={validaciones}
             rangeDays={4}
             rangeMode={"past"}
-          ></TimeGroup>
+          />
 
           <TimeGroup
             id={"hora_toma_muestra"}
@@ -195,13 +196,11 @@ export function FormularioIngresoSB_organismo() {
             placeHolder={true}
             validaciones={validaciones}
             onChange={(e) => {
-              if(e.target.value.startsWith("Tanque ")){
+              if (e.target.value.startsWith("Tanque ")) {
                 setTanque("T" + e.target.value.split(" ")[1]);
               }
             }}
-          ></SelectGroup>
-
-
+          />
 
           <TxtGroup
             id={"lote"}
@@ -212,7 +211,7 @@ export function FormularioIngresoSB_organismo() {
             validaciones={validacionesLote}
             onChange={(e) => handleChange(e)}
             value={posLote}
-          ></TxtGroup>
+          />
 
           <TxtGroup
             id={"observaciones"}
@@ -220,9 +219,9 @@ export function FormularioIngresoSB_organismo() {
             placeholder={"Ingrese las observaciones"}
             register={register}
             validaciones={validacionesObservaciones}
-          ></TxtGroup>
+          />
+          <InputSub text={"Ingresar"} />
         </div>
-        <InputSub text={"Ingresar"} />
       </form>
     </>
   );
