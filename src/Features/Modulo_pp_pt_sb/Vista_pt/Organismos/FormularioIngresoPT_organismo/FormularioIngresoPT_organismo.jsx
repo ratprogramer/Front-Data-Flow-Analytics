@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 export function FormularioIngresoPT_organismo() {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
     watch
@@ -105,6 +106,9 @@ export function FormularioIngresoPT_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
+            baseDateName="fecha_env"
+            control={control}
+            rangeDays={4}
           ></TimeGroup>
 
           <TxtGroup
