@@ -94,6 +94,12 @@ export function FormularioIngresoPP_organismo() {
       message: "El lote no puede tener más de 5 dígitos",
     },
   };
+  const validacionesObservaciones = {
+    maxLength: {
+      value: 100,
+      message: "El campo de observaciones no puede tener más de 100 caracteres",
+    },
+  };
 
   const onSubmit = async (data) => {
     if(data["nombre_pp"] == '' ){
@@ -231,6 +237,7 @@ export function FormularioIngresoPP_organismo() {
             label={"Observaciones"}
             placeholder={"Ingrese las observaciones"}
             register={register}
+            validaciones={validacionesObservaciones}
           ></TxtGroup>
         </div>
         <InputSub text={"Ingresar"}></InputSub>
