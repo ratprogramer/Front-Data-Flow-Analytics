@@ -84,7 +84,7 @@ export function FormularioIngresoSB_organismo() {
             opciones={opcionesSabor}
             placeHolder={true}
             validaciones={validaciones}
-          ></SelectGroup>
+          />
 
           <TimeGroup
             id={"fecha_analisis"}
@@ -93,7 +93,7 @@ export function FormularioIngresoSB_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-          ></TimeGroup>
+          />
 
           <TimeGroup
             id={"fecha_toma_muestra"}
@@ -102,7 +102,7 @@ export function FormularioIngresoSB_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-          ></TimeGroup>
+          />
 
           <TimeGroup
             id={"hora_toma_muestra"}
@@ -111,7 +111,7 @@ export function FormularioIngresoSB_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-          ></TimeGroup>
+          />
 
           <SelectGroup
             id={"tanque"}
@@ -120,7 +120,7 @@ export function FormularioIngresoSB_organismo() {
             opciones={opcionesPuntoToma}
             placeHolder={true}
             validaciones={validaciones}
-          ></SelectGroup>
+          />
 
 
 
@@ -130,16 +130,16 @@ export function FormularioIngresoSB_organismo() {
             placeholder={"Ingrese el lote del producto terminado"}
             register={register}
             validaciones={validaciones}
-          ></TxtGroup>
+          />
 
           <TxtGroup
             id={"observaciones"}
             label={"Observaciones"}
             placeholder={"Ingrese las observaciones"}
             register={register}
-          ></TxtGroup>
+          />
         </div>
-        <InputSub text={"Ingresar"}></InputSub>
+        <InputSub text={"Ingresar"} />
       </form>
     </>
   );

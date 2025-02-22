@@ -17,7 +17,6 @@ import { Pp_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/Pp_R
 
 import { FormularioRegistroSB_pagina } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioRegistroSB/FormularioRegistroSB_pagina";
 
-
 import { SubIndicePT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/SubindicePT/SubIndicePT";
 import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
 import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/FormularioRegistroPT/FormularioRegistroPT_pagina";
@@ -79,7 +78,7 @@ function App() {
           />
 
           <Route
-            path="/ingreso_resultado_producto_p"
+            path=" "
             element={
               <ProtectedRoute>
                 <FormularioResultadoPP />

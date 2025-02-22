@@ -18,26 +18,26 @@ export function LoginForm() {
   } = useForm();
   const navigate = useNavigate();
 
-    const  onSubmit = async (data) => {
-        if (data.dni.length > 11 || data.dni.length < 7){
-            return Swal.fire('Error', 'Credenciales invalidas', 'error');
-        }
-        const response = await usePostFetch("/login", data)
-        if(!response.success){
-            Swal.fire('Error', 'Credenciales invalidas', 'error');
-        }else{
-            sessionStorage.setItem("token", response.result )
-            const token = decodeToken(response.result)
-            
-            if(token.rol == "Analista"){
-                navigate('/menu')
-            }else if (token.rol == "Administrador"){
-                navigate('/menu_admin')
-            }else{
-                Swal.fire('Error', 'Credenciales invalidas', 'error');
-            }
-        }
+  const onSubmit = async (data) => {
+    if (data.dni.length > 11 || data.dni.length < 7) {
+      return Swal.fire("Error", "Credenciales invalidas", "error");
     }
+    const response = await usePostFetch("/login", data);
+    if (!response.success) {
+      Swal.fire("Error", "Credenciales invalidas", "error");
+    } else {
+      sessionStorage.setItem("token", response.result);
+      const token = decodeToken(response.result);
+
+      if (token.rol == "analista") {
+        navigate("/menu");
+      } else if (token.rol == "Administrador") {
+        navigate("/menu_admin");
+      } else {
+        Swal.fire("Error", "Credenciales invalidas", "error");
+      }
+    }
+  };
 
   const onError = (errors) => {
     for (const error in errors) {
