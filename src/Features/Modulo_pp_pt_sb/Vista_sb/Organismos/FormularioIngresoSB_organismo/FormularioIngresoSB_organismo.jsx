@@ -185,7 +185,7 @@ export function FormularioIngresoSB_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-          ></TimeGroup>
+          />
 
           <SelectGroup
             id={"tanque"}
@@ -222,7 +222,7 @@ export function FormularioIngresoSB_organismo() {
             validaciones={validacionesObservaciones}
           ></TxtGroup>
         </div>
-        <InputSub text={"Ingresar"}></InputSub>
+        <InputSub text={"Ingresar"} />
       </form>
     </>
   );
