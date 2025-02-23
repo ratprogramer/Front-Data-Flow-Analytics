@@ -138,91 +138,89 @@ export function FormularioIngresoSB_organismo() {
     { value: "Tanque 12", placeHolder: "Tanque 12" },
   ];
   return (
-    <>
-      <form
-        className="formulrio-registro-pt-container"
-        onSubmit={handleSubmit(onSubmit, onError)}
-      >
-        <div className="formulario-pt-campos">
-          <SelectGroup
-            id={"sabor"}
-            register={register}
-            label={"Sabor *"}
-            opciones={opcionesSabor}
-            placeHolder={true}
-            validaciones={validaciones}
-            onChange={(e) => {
-              setIsFresa(e.target.value === "Fresa");
-              setIsMora(e.target.value === "Mora");
-              setIsKumis(e.target.value === "Kumis");
-              setIsMelocoton(e.target.value === "Melocoton");
-            }}
-          />
+    <form
+      className="formulrio-registro-pt-container"
+      onSubmit={handleSubmit(onSubmit, onError)}
+    >
+      <div className="formulario-pt-campos">
+        <SelectGroup
+          id={"sabor"}
+          register={register}
+          label={"Sabor *"}
+          opciones={opcionesSabor}
+          placeHolder={true}
+          validaciones={validaciones}
+          onChange={(e) => {
+            setIsFresa(e.target.value === "Fresa");
+            setIsMora(e.target.value === "Mora");
+            setIsKumis(e.target.value === "Kumis");
+            setIsMelocoton(e.target.value === "Melocoton");
+          }}
+        />
 
-          <TimeGroup
-            id={"fecha_analisis"}
-            label={"Fecha de analisis *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-            isDisabled={true}
-          />
+        <TimeGroup
+          id={"fecha_analisis"}
+          label={"Fecha de analisis *"}
+          type={"date"}
+          register={register}
+          validaciones={validaciones}
+          defaultDate={true}
+          isDisabled={true}
+        />
 
-          <TimeGroup
-            id={"fecha_toma_muestra"}
-            label={"Fecha de toma de muestra *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            rangeDays={4}
-            rangeMode={"past"}
-          />
+        <TimeGroup
+          id={"fecha_toma_muestra"}
+          label={"Fecha de toma de muestra *"}
+          type={"date"}
+          register={register}
+          validaciones={validaciones}
+          rangeDays={4}
+          rangeMode={"past"}
+        />
 
-          <TimeGroup
-            id={"hora_toma_muestra"}
-            label={"Hora de toma de muestra *"}
-            type={"time"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-          />
+        <TimeGroup
+          id={"hora_toma_muestra"}
+          label={"Hora de toma de muestra *"}
+          type={"time"}
+          register={register}
+          validaciones={validaciones}
+          defaultDate={true}
+        />
 
-          <SelectGroup
-            id={"tanque"}
-            register={register}
-            label={"Tanque *"}
-            opciones={opcionesPuntoToma}
-            placeHolder={true}
-            validaciones={validaciones}
-            onChange={(e) => {
-              if (e.target.value.startsWith("Tanque ")) {
-                setTanque("T" + e.target.value.split(" ")[1]);
-              }
-            }}
-          />
+        <SelectGroup
+          id={"tanque"}
+          register={register}
+          label={"Tanque *"}
+          opciones={opcionesPuntoToma}
+          placeHolder={true}
+          validaciones={validaciones}
+          onChange={(e) => {
+            if (e.target.value.startsWith("Tanque ")) {
+              setTanque("T" + e.target.value.split(" ")[1]);
+            }
+          }}
+        />
 
-          <TxtGroup
-            id={"lote"}
-            label={"Lote *"}
-            placeholder={"Ingrese el lote del producto terminado"}
-            register={register}
-            type={"number"}
-            validaciones={validacionesLote}
-            onChange={(e) => handleChange(e)}
-            value={posLote}
-          />
+        <TxtGroup
+          id={"lote"}
+          label={"Lote *"}
+          placeholder={"Ingrese el lote del producto terminado"}
+          register={register}
+          type={"number"}
+          validaciones={validacionesLote}
+          onChange={(e) => handleChange(e)}
+          value={posLote}
+        />
 
-          <TxtGroup
-            id={"observaciones"}
-            label={"Observaciones"}
-            placeholder={"Ingrese las observaciones"}
-            register={register}
-            validaciones={validacionesObservaciones}
-          />
-          <InputSub text={"Ingresar"} />
-        </div>
-      </form>
-    </>
+        <TxtGroup
+          id={"observaciones"}
+          label={"Observaciones"}
+          placeholder={"Ingrese las observaciones"}
+          register={register}
+          validaciones={validacionesObservaciones}
+        />
+        <InputSub text={"Ingresar"} />
+      </div>
+    </form>
   );
 }
