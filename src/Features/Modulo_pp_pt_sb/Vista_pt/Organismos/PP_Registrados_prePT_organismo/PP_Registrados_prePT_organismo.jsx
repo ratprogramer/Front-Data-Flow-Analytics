@@ -14,7 +14,7 @@ export function PP_Registrados_prePT_organismo(){
         const fetchData = async () => {
             try {
                 const response = await useGetFetch("/producto/producto_proceso");
-                if(!response.success){
+                if(response.tokenExpirado){
                     navigate("/")
                     Swal.fire(
                         "Error",
