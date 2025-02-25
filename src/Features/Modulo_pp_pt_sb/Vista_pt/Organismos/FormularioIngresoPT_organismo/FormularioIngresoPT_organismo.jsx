@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
 import { usePostFetch } from "../../../../../helpers/usePostFetch";
@@ -7,51 +8,59 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
-
+import { useState } from "react";
 import "./FormularioIngresoPT_organismo.css";
 import Swal from "sweetalert2";
 
 export function FormularioIngresoPT_organismo() {
   const {
     register,
-    control,
     handleSubmit,
-    formState: { errors },
-    watch
+    watch,
+    setValue  
   } = useForm({
     defaultValues: {
-      fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
+      fecha_analisis: new Date().toISOString().split("T")[0],
+      fecha_env: new Date().toISOString().split("T")[0],
+      fecha_vencimiento: ""
     },
   });
 
 
+  const fecha_env = watch("fecha_env");
+  useEffect(() => {
+    if (fecha_env) {
+      const nuevaFecha = new Date(fecha_env);
+      nuevaFecha.setDate(nuevaFecha.getDate() + 60);
+      setValue("fecha_vencimiento", nuevaFecha.toISOString().split("T")[0]);
+    }
+  }, [fecha_env, setValue]);
+
+
+  const [lote, setLote] = useState(undefined)
+
   const location = useLocation();
   const { id } = location.state || 123;
-
-
   const navigate = useNavigate();
-
 
   const onSubmit = async (data) => {
     const token = sessionStorage.getItem("token");
     if (!token) {
       Swal.fire(
         "Error",
-        "No se encontraron credenciales validas en el sistema",
+        "No se encontraron credenciales válidas en el sistema",
         "error"
       );
       navigate("/");
       return;
     }
     const decode = decodeToken(token);
-    console.log(decode);
-    
     data["responsable_analisis"] = parseInt(decode.id);
     data["id_producto_proceso"] = parseInt(id);
-    console.log(data); // ESTE FALTA HACERLE EL FETCH CON EL BACK, YA LO ANOTE, LO HAGO APENAS FELIPE ME SOLUCIONE LO DEL ID (SAMUEL 12/02/2025)
+    console.log(data);
     navigate("/menu");
-    Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
-  }; 
+    Swal.fire("Éxito", "Producto en proceso registrado con éxito", "success");
+  };
 
   const onError = (errors) => {
     for (const error in errors) {
@@ -60,108 +69,147 @@ export function FormularioIngresoPT_organismo() {
   };
 
   const opcionesPresentacion = [
-    { value: "1000", placeHolder: "1000 ml" },
-    { value: "200", placeHolder: "200 ml" }
+    { value: "1000 ml", placeHolder: "1000 ml" },
+    { value: "200 ml", placeHolder: "200 ml" }
   ];
 
   const opcionesMaquina = [
-    { value: "m1", placeHolder: "Máquina 1" },
-    { value: "m2", placeHolder: "Máquina 2" },
-    { value: "m3", placeHolder: "Máquina 3" },
-    { value: "m4", placeHolder: "Máquina 4" },
+    { value: "M1", placeHolder: "Máquina 1" },
+    { value: "M2", placeHolder: "Máquina 2" },
+    { value: "M3", placeHolder: "Máquina 3" },
+    { value: "M4", placeHolder: "Máquina 4" },
   ];
 
-  const validaciones = { required: "los campos con * son obligatorios" };
-  
+  const opcionesRef = [
+    { value: "Mora", placeHolder: "Mora" },
+    { value: "Melocoton", placeHolder: "Melocoton" },
+    { value: "Fresa", placeHolder: "Fresa" },
+    { value: "Kumis", placeHolder: "Kumis" },
+  ];
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    let inputVal = e.target.value;
+    if (inputVal.length > 5) {
+      inputVal = inputVal.slice(0, 5);
+    }
+    setLote(inputVal)
+  }
+  const validaciones = { required: "Los campos con * son obligatorios" };
+  const validacionesLote = {
+    required: "Los campos con * son obligatorios",
+    pattern: {
+      value: /^[0-9]+$/,
+      message: "Solo se permiten números en el Lote",
+    },
+    minLength: {
+      value: 5,
+      message: "El lote debe tener al menos 5 dígitos",
+    },
+    maxLength: {
+      value: 5,
+      message: "El lote no puede tener más de 5 dígitos",
+    },
+  };
+  const validacionesObservaciones = {
+    maxLength: {
+      value: 100,
+      message: "El campo de observaciones no puede tener más de 100 caracteres",
+    },
+  };
+
+
   return (
-    <>
-      <form
-        className="formulrio-registro-pt-container"
-        onSubmit={handleSubmit(onSubmit, onError)}
-      >
-        <div className="formulario-pt-campos">
+    <form
+      className="formulrio-registro-pt-container"
+      onSubmit={handleSubmit(onSubmit, onError)}
+    >
+      <div className="formulario-pt-campos">
+        <TimeGroup
+          id={"fecha_analisis"}
+          label={"Fecha de análisis *"}
+          type={"date"}
+          register={register}
+          validaciones={validaciones}
+          defaultDate={true}
+          isDisabled={true}
+        />
 
-          <TimeGroup
-            id={"fecha_analisis"}
-            label={"Fecha de analisis *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-          ></TimeGroup>
+        <TimeGroup
+          id={"fecha_env"}
+          label={"Fecha de envasado *"}
+          type={"date"}
+          register={register}
+          validaciones={validaciones}
+          rangeMode={"past"}
+          rangeDays={4}
+          defaultDate={true}
+        />
 
-          <TimeGroup
-            id={"fecha_env"}
-            label={"Fecha de envasado *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-          ></TimeGroup>
+        <TimeGroup
+          id={"fecha_vencimiento"}
+          label={"Fecha de vencimiento *"}
+          type={"date"}
+          register={register}
+          validaciones={validaciones}
+          baseDate={fecha_env}
+          isDisabled={true}
+          rangeDays={4}  
+        />
 
-          <TimeGroup
-            id={"fecha_vencimiento"}
-            label={"Fecha de vencimiento *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-            baseDateName="fecha_env"
-            control={control}
-            rangeDays={4}
-          ></TimeGroup>
+        <SelectGroup
+          id={"ref"}
+          register={register}
+          label={"Referencia *"}
+          opciones={opcionesRef}
+          validaciones={validaciones}
+        />
 
-          <TxtGroup
-            id={"ref"}
-            label={"Referencia *"}
-            placeholder={"Ingrese la referencia del producto terminado"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
+        <SelectGroup
+          id={"maquina_envasadora"}
+          register={register}
+          label={"Máquina envasadora *"}
+          opciones={opcionesMaquina}
+          validaciones={validaciones}
+        />
 
-          <SelectGroup
-            id={"presentacion"}
-            register={register}
-            label={"Presentacion del producto *"}
-            opciones={opcionesPresentacion}
-            validaciones={validaciones}
-          ></SelectGroup>
+        <SelectGroup
+          id={"presentacion"}
+          register={register}
+          label={"Presentación del producto *"}
+          opciones={opcionesPresentacion}
+          validaciones={validaciones}
+        />
+
+        <TimeGroup
+          id={"hora_empaque"}
+          label={"Hora de empaque *"}
+          register={register}
+          type={"time"}
+          validaciones={validaciones}
+        />
+
+        <TxtGroup
+          id={"lote"}
+          label={"Lote *"}
+          placeholder={"Ingrese el lote del producto terminado"}
+          register={register}
+          value={lote}
+          validaciones={validacionesLote}
+          type="number"
+          onChange={(e) => handleChange(e)}
+        />
 
 
-          <TxtGroup
-            id={"lote"}
-            label={"Lote *"}
-            placeholder={"Ingrese el lote del producto terminado"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
-
-
-          <TimeGroup
-            id={"hora_empaque"}
-            label={"Hora de empaque *"}
-            register={register}
-            type={"time"}
-            validaciones={validaciones}
-          ></TimeGroup>
-
-          <SelectGroup
-            id={"maquina_envasadora"}
-            register={register}
-            label={"Maquina envasadora *"}
-            opciones={opcionesMaquina}
-            validaciones={validaciones}
-          ></SelectGroup>
-
-          <TxtGroup
-            id={"observaciones"}
-            label={"Observaciones"}
-            placeholder={"Ingrese las observaciones"}
-            register={register}
-          ></TxtGroup>
-        </div>
-        <InputSub text={"Ingresar"}></InputSub>
-      </form>
-    </>
+        <TxtGroup
+          id={"observaciones"}
+          label={"Observaciones"}
+          placeholder={"Ingrese las observaciones"}
+          register={register}
+          validaciones={validacionesObservaciones}
+        />
+      </div>
+      <InputSub text={"Ingresar"} />
+    </form>
   );
 }

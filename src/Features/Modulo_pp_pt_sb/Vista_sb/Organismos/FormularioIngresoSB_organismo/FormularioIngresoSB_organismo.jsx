@@ -90,7 +90,7 @@ export function FormularioIngresoSB_organismo() {
     );
 
     if (!response.success) {
-      Swal.fire("Error", JSON.stringify(response), "error");
+      Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
       Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
       navigate("/menu");
