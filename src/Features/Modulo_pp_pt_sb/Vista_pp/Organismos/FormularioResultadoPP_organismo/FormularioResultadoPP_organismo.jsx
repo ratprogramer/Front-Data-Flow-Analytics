@@ -7,6 +7,7 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
+
 import "./FormularioResultadoPP_organismo.css";
 
 export function FormularioResultadoPP_organismo (){
@@ -16,6 +17,7 @@ export function FormularioResultadoPP_organismo (){
         register,
         handleSubmit,
         formState: { errors },
+        setValue
       } = useForm({
         defaultValues: {
           fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
@@ -63,6 +65,67 @@ export function FormularioResultadoPP_organismo (){
     
       const validaciones = { required: "los campos con * son obligatorios" };
 
+
+    const validacionesColiformes1 =  (event) => {
+        let value = event.target.value;
+        
+        value = value.replace(/[^0-9<>]/g, "");
+        
+        if (value.startsWith("<") || value.startsWith(">")) {
+            value = value.slice(0, 3); 
+            const numberPart = value.slice(1);
+            if (!/^[1-9]$|^10$/.test(numberPart)) {
+            value = value.slice(0, 2); 
+            }
+        } else {
+            value = value.slice(0, 3); 
+            if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+            value = value.slice(0, value.length - 1); 
+            }
+        }
+        
+        setValue("e_coli", value, { shouldValidate: true });
+    };
+    const validacionesColiformes2 =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("coliformes", value, { shouldValidate: true });
+    };
+    const validacionesMoho =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|[1-4]\d{2}|500)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("mohos_ley", value, { shouldValidate: true });
+    };
     return(
          <>
       <form
@@ -77,6 +140,7 @@ export function FormularioResultadoPP_organismo (){
             register={register}
             validaciones={validaciones}
             defaultDate={true}
+            isDisabled={true}
           ></TimeGroup>
 
           <TxtGroup
@@ -84,6 +148,7 @@ export function FormularioResultadoPP_organismo (){
             label={"E. Coli *"}
             placeholder={"Ingrese cantidad de E. coli."}
             register={register}
+            onChange={validacionesColiformes1}
             validaciones={validaciones}
           ></TxtGroup>
 
@@ -92,6 +157,7 @@ export function FormularioResultadoPP_organismo (){
             label={"Coliformes totales *"}
             placeholder={"Ingrese cantidad de coliformes totales"}
             register={register}
+            onChange={validacionesColiformes2}
             validaciones={validaciones}
           ></TxtGroup>
 
@@ -100,6 +166,7 @@ export function FormularioResultadoPP_organismo (){
             label={"Mohos y levaduras *"}
             placeholder={"Ingrese cantidad de mohos y levaduras"}
             register={register}
+            onChange={validacionesMoho}
             validaciones={validaciones}
           ></TxtGroup>
         

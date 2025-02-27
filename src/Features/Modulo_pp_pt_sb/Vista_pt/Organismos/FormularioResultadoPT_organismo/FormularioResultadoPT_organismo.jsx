@@ -62,73 +62,137 @@ export function FormularioResultadoPT_organismo (){
     
       const validaciones = { required: "los campos con * son obligatorios" };
 
-    return(
-     <>
-      <form
-        className="formulrio-resultado-pt-container"
-        onSubmit={handleSubmit(onSubmit, onError)}
-      >
-        <div className="formulario-resultado-pt-campos">
-          <TimeGroup
-            id={"fecha_analisis"}
-            label={"Fecha de analisis *"}
-            type={"date"}
-            register={register}
-            validaciones={validaciones}
-            defaultDate={true}
-          ></TimeGroup>
-
-          <TxtGroup
-            id={"e_coli"}
-            label={"E. Coli *"}
-            placeholder={"Ingrese cantidad de E. coli."}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
-
-        <TxtGroup
-            id={"coliformes"}
-            label={"Coliformes totales *"}
-            placeholder={"Ingrese cantidad de coliformes totales"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
-
-        <TxtGroup
-            id={"mohos_ley"}
-            label={"Mohos y levaduras *"}
-            placeholder={"Ingrese cantidad de mohos y levaduras"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
+      const validacionesColiformes1 =  (event) => {
+        let value = event.target.value;
         
-          <TxtGroup
-            id={"observaciones"}
-            label={"Observaciones"}
-            placeholder={"Ingrese las observaciones"}
-            register={register}
-          ></TxtGroup>
-          
-          <SelectGroup
-            id={"cabina"}
-            register={register}
-            label={"Cabina"}
-            opciones={opcionesCoNC}
-            validaciones={validaciones}
-            placeHolder={false}
-          ></SelectGroup>
+        value = value.replace(/[^0-9<>]/g, "");
+        
+        if (value.startsWith("<") || value.startsWith(">")) {
+            value = value.slice(0, 3); 
+            const numberPart = value.slice(1);
+            if (!/^[1-9]$|^10$/.test(numberPart)) {
+            value = value.slice(0, 2); 
+            }
+        } else {
+            value = value.slice(0, 3); 
+            if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+            value = value.slice(0, value.length - 1); 
+            }
+        }
+        
+        setValue("e_coli", value, { shouldValidate: true });
+    };
+    const validacionesColiformes2 =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("coliformes", value, { shouldValidate: true });
+    };
+    const validacionesMoho =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|[1-4]\d{2}|500)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("mohos_ley", value, { shouldValidate: true });
+    };
+    return(
+      <>
+        <form
+          className="formulrio-resultado-pp-container"
+          onSubmit={handleSubmit(onSubmit, onError)}
+        >
+          <div className="formulario-resultado-pp-campos">
+            <TimeGroup
+              id={"fecha_analisis"}
+              label={"Fecha de analisis *"}
+              type={"date"}
+              register={register}
+              validaciones={validaciones}
+              defaultDate={true}
+              isDisabled={true}
+            ></TimeGroup>
 
-          <SelectGroup
-            id={"medio_cultivo"}
-            register={register}
-            label={"Medio de cultivo"}
-            opciones={opcionesCoNC}
-            validaciones={validaciones}
-            placeHolder={false}
-          ></SelectGroup>
-        </div>
-        <InputSub text={"Ingresar"}></InputSub>
-      </form>
-    </>
+            <TxtGroup
+              id={"e_coli"}
+              label={"E. Coli *"}
+              placeholder={"Ingrese cantidad de E. coli."}
+              register={register}
+              onChange={validacionesColiformes1}
+              validaciones={validaciones}
+            ></TxtGroup>
+
+          <TxtGroup
+              id={"coliformes"}
+              label={"Coliformes totales *"}
+              placeholder={"Ingrese cantidad de coliformes totales"}
+              register={register}
+              onChange={validacionesColiformes2}
+              validaciones={validaciones}
+            ></TxtGroup>
+
+          <TxtGroup
+              id={"mohos_ley"}
+              label={"Mohos y levaduras *"}
+              placeholder={"Ingrese cantidad de mohos y levaduras"}
+              register={register}
+              onChange={validacionesMoho}
+              validaciones={validaciones}
+            ></TxtGroup>
+          
+            <TxtGroup
+              id={"observaciones"}
+              label={"Observaciones"}
+              placeholder={"Ingrese las observaciones"}
+              register={register}
+            ></TxtGroup>
+            
+            <SelectGroup
+              id={"cabina"}
+              register={register}
+              label={"Cabina"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+            ></SelectGroup>
+
+            <SelectGroup
+              id={"medio_cultivo"}
+              register={register}
+              label={"Medio de cultivo"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+            ></SelectGroup>
+          </div>
+          <InputSub text={"Ingresar"}></InputSub>
+        </form>
+      </>
     )
 }

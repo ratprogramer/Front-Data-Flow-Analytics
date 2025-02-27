@@ -78,7 +78,7 @@ function App() {
           />
 
           <Route
-            path=" "
+            path="/ingreso_resultado_producto_p"
             element={
               <ProtectedRoute>
                 <FormularioResultadoPP />

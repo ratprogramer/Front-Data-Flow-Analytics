@@ -1,17 +1,25 @@
 import { CardPT_molecula } from "../../Moleculas/CardPT_molecula/CardPT_molecula" 
 import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
+import { useNavigate } from "react-router-dom"
 import "./Pt_Registrados_organismo.css"
 
 export function Pt_Registrados_organismo(){
     const [productos, setProductos] = useState([])
+    const navigate = useNavigate()
     useEffect( () => {
         const fetchData = async () => {
             try {
                 const response = await useGetFetch("/producto/producto_terminado_nom_pp");
+                if(response.tokenExpirado){
+                    navigate("/")
+                    Swal.fire(
+                        "Error",
+                        response.message,
+                        "error"
+                    );
+                }
                 setProductos(response.result);
-                console.log(response.result);
-                
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
             }
