@@ -85,8 +85,7 @@ export function FormularioIngresoSB_organismo() {
 
     const response = await usePostFetch(
       "/producto/registrar_saborizacion",
-      data,
-      token
+      data, navigate
     );
 
     if (!response.success) {

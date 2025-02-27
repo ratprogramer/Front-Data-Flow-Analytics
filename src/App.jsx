@@ -10,12 +10,19 @@ import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrado
 import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
 
 import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
+
+
 import { SubIndicePP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/SubindicePP/SubIndicePP";
 import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
-import { FormularioResultadoPP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
 import { Pp_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/Pp_Registrados/Pp_Registrados";
+import { FormularioResultadoPP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
 
+
+import { SubIndiceSB } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/SubindiceSB/SubIndiceSB";
 import { FormularioRegistroSB_pagina } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioRegistroSB/FormularioRegistroSB_pagina";
+import { Sb_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/Sb_Registrados/Sb_Registrados";
+import { FormularioResultadoSB } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioResultadoSB/FormularioResultadoSB";
+
 
 import { SubIndicePT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/SubindicePT/SubIndicePT";
 import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
@@ -69,7 +76,7 @@ function App() {
           />
 
           <Route
-            path="/productos_registrados_pp"
+            path="/registrados_pp"
             element={
               <ProtectedRoute>
                 <Pp_Registrados />
@@ -87,13 +94,41 @@ function App() {
           />
 
           <Route
-            path="/ingreso_saborizacion"
+            path="/sub_menu_sb"
+            element={
+              <ProtectedRoute>
+                <SubIndiceSB/>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/ingreso_sb"
             element={
               <ProtectedRoute>
                 <FormularioRegistroSB_pagina />
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/registrados_sb"
+            element={
+              <ProtectedRoute>
+                <Sb_Registrados />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/ingreso_resultado_sb"
+            element={
+              <ProtectedRoute>
+                <FormularioResultadoSB/>
+              </ProtectedRoute>
+            }
+          />
+
           <Route
             path="/sub_menu_pt"
             element={

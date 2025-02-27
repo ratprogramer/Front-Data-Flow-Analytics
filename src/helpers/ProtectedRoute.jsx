@@ -18,16 +18,26 @@ export const ProtectedRoute = ({ children }) => {
     });
     return <Navigate to="/" />;
   }
+  try {
+    const decode = decodeToken(token);
 
-  const decode = decodeToken(token);
-  if (!decode?.iat) {
+    // Verificar si el token está expirado
+    if (!decode?.iat || (decode.exp && decode.exp * 1000 < Date.now())) {
+      Swal.fire({
+        title: "Error",
+        text: "Tu sesión ha expirado. Inicia sesión nuevamente.",
+        icon: "error",
+      });
+      return <Navigate to="/" />;
+    }
+
+    return children;
+  } catch (error) {
     Swal.fire({
       title: "Error",
-      text: "No tienes acceso aún :c",
+      text: "Token inválido",
       icon: "error",
     });
     return <Navigate to="/" />;
   }
-
-  return children;
 };

@@ -1,12 +1,13 @@
-
-export async function usePostFetch(endPoint, data, token = undefined) {
+import Swal from "sweetalert2";
+export async function usePostFetch(endPoint, data, navigate, token = true) {
   try {
     let response;
+    const tokenUser = sessionStorage.getItem('token');
     if(token){
       response = await fetch( "http://localhost:3001" + endPoint, {
         method: "POST",
         headers: {  
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${tokenUser}`,
           "Content-Type": "application/json" 
         },
         body: JSON.stringify(data),
@@ -21,9 +22,19 @@ export async function usePostFetch(endPoint, data, token = undefined) {
     }
     
     const result = await response.json();
-
+    
+    if(result.tokenExpirado){
+        navigate("/")
+        Swal.fire(
+            "Error",
+            result.message,
+            "error"
+        );
+    }
     return result || "Sin mensaje en la respuesta";
   } catch (error) {
     Swal.fire("Error", "Error interno del servidor", "error");
+    console.log(error);
+    
   }
 }

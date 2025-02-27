@@ -136,7 +136,7 @@ export function FormularioIngresoPP_organismo() {
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
     data["lote"] = lote + posLote;
-    const response = await usePostFetch("/producto/registrar_pp", data, token);
+    const response = await usePostFetch("/producto/registrar_pp", data, navigate);
 
     if (!response.success) {
       Swal.fire("Error", JSON.stringify(response.message), "error");

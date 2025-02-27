@@ -7,15 +7,17 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
-import "./FormularioResultadoPT_organismo.css";
+import { verificadorResultados } from "../../../../../helpers/verificadorResultados";
+import "./FormularioResultadoSB_organismo.css";
 
-export function FormularioResultadoPT_organismo (){
+export function FormularioResultadoSB_organismo (){
     const location = useLocation();
     const { id } = location.state || {};
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue
       } = useForm({
         defaultValues: {
           fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
@@ -36,13 +38,14 @@ export function FormularioResultadoPT_organismo (){
         }
         const decode = decodeToken(token);
         data["responsable_analisis"] = parseInt(decode.id);
-        data["id_pt"] = id;
+        data["id_sb"] = id;
         
-        const response = await usePostFetch("/producto/registrar_r", data);
+        const objeto = await verificadorResultados("id_sb", id, data, navigate);
+        const response = await usePostFetch("/producto/registrar_r", objeto.data, navigate);
         if (!response.success) {
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {
-          Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+          Swal.fire("Exito", "Saborizacion registrada con exito", "success");
           navigate("/menu");
         }
         
@@ -59,16 +62,81 @@ export function FormularioResultadoPT_organismo (){
         { value: "C", placeHolder: "Cumple" },
         { value: "NC", placeHolder: "No cumple" }
       ];
-    
       const validaciones = { required: "los campos con * son obligatorios" };
+      const validacionesObservaciones = {
+        maxLength: {
+          value: 100,
+          message: "El campo de observaciones no puede tener más de 100 caracteres",
+        },
+      };
 
+    const validacionesColiformes1 =  (event) => {
+        let value = event.target.value;
+        
+        value = value.replace(/[^0-9<>]/g, "");
+        
+        if (value.startsWith("<") || value.startsWith(">")) {
+            value = value.slice(0, 3); 
+            const numberPart = value.slice(1);
+            if (!/^[1-9]$|^10$/.test(numberPart)) {
+            value = value.slice(0, 2); 
+            }
+        } else {
+            value = value.slice(0, 3); 
+            if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+            value = value.slice(0, value.length - 1); 
+            }
+        }
+        
+        setValue("e_coli", value, { shouldValidate: true });
+    };
+    const validacionesColiformes2 =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("coliformes", value, { shouldValidate: true });
+    };
+    const validacionesMoho =  (event) => {
+      let value = event.target.value;
+      
+      value = value.replace(/[^0-9<>]/g, "");
+      
+      if (value.startsWith("<") || value.startsWith(">")) {
+          value = value.slice(0, 3); 
+          const numberPart = value.slice(1);
+          if (!/^[1-9]$|^10$/.test(numberPart)) {
+          value = value.slice(0, 2); 
+          }
+      } else {
+          value = value.slice(0, 3); 
+          if (!/^(11|[1-9]\d?|[1-4]\d{2}|500)?$/.test(value)) {
+          value = value.slice(0, value.length - 1); 
+          }
+      }
+      
+      setValue("mohos_ley", value, { shouldValidate: true });
+    };
     return(
-     <>
+    <>
       <form
-        className="formulrio-resultado-pt-container"
+        className="formulrio-resultado-pp-container"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <div className="formulario-resultado-pt-campos">
+        <div className="formulario-resultado-pp-campos">
           <TimeGroup
             id={"fecha_analisis"}
             label={"Fecha de analisis *"}
@@ -76,6 +144,7 @@ export function FormularioResultadoPT_organismo (){
             register={register}
             validaciones={validaciones}
             defaultDate={true}
+            isDisabled={true}
           ></TimeGroup>
 
           <TxtGroup
@@ -83,6 +152,7 @@ export function FormularioResultadoPT_organismo (){
             label={"E. Coli *"}
             placeholder={"Ingrese cantidad de E. coli."}
             register={register}
+            onChange={validacionesColiformes1}
             validaciones={validaciones}
           ></TxtGroup>
 
@@ -91,6 +161,7 @@ export function FormularioResultadoPT_organismo (){
             label={"Coliformes totales *"}
             placeholder={"Ingrese cantidad de coliformes totales"}
             register={register}
+            onChange={validacionesColiformes2}
             validaciones={validaciones}
           ></TxtGroup>
 
@@ -99,6 +170,7 @@ export function FormularioResultadoPT_organismo (){
             label={"Mohos y levaduras *"}
             placeholder={"Ingrese cantidad de mohos y levaduras"}
             register={register}
+            onChange={validacionesMoho}
             validaciones={validaciones}
           ></TxtGroup>
         
@@ -107,6 +179,7 @@ export function FormularioResultadoPT_organismo (){
             label={"Observaciones"}
             placeholder={"Ingrese las observaciones"}
             register={register}
+            validaciones={validacionesObservaciones}
           ></TxtGroup>
           
           <SelectGroup

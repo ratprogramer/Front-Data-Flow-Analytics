@@ -19,7 +19,7 @@ export function Formulario_Registro_Usuario() {
 
   const onSubmit = async (data) => {
     data["rol"] = "analista"
-    const response = await usePostFetch("/register", data);
+    const response = await usePostFetch("/register", data, navigate);
     if (!response.success) {
       Swal.fire("Error", JSON.stringify(response), "error");
     } else {

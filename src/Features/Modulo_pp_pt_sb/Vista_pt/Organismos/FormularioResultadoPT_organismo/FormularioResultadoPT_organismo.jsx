@@ -38,7 +38,8 @@ export function FormularioResultadoPT_organismo (){
         data["responsable_analisis"] = parseInt(decode.id);
         data["id_pt"] = id;
         
-        const response = await usePostFetch("/producto/registrar_r", data);
+        const objeto = await verificadorResultados("id_pt", id, data, navigate);
+        const response = await usePostFetch("/producto/registrar_r", objeto.data, navigate);
         if (!response.success) {
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {

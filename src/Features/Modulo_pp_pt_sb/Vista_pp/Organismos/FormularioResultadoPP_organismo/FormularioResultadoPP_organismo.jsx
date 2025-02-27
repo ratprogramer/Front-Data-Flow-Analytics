@@ -7,6 +7,7 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
+import { verificadorResultados } from "../../../../../helpers/verificadorResultados";
 
 import "./FormularioResultadoPP_organismo.css";
 
@@ -39,9 +40,12 @@ export function FormularioResultadoPP_organismo (){
         const decode = decodeToken(token);
         data["responsable_analisis"] = parseInt(decode.id);
         data["id_pp"] = id;
-        console.log(data);
         
-        const response = await usePostFetch("/producto/registrar_r", data);
+        const objeto = await verificadorResultados("id_pp", id, data, navigate);
+        
+        //GENERAR SWITCHEO DE RUTAS DEPENDIENDO DE OBJETO.TIPO
+
+        const response = await usePostFetch("/producto/registrar_r", objeto.data, navigate);
         if (!response.success) {
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {
@@ -62,9 +66,13 @@ export function FormularioResultadoPP_organismo (){
         { value: "C", placeHolder: "Cumple" },
         { value: "NC", placeHolder: "No cumple" }
       ];
-    
       const validaciones = { required: "los campos con * son obligatorios" };
-
+      const validacionesObservaciones = {
+        maxLength: {
+          value: 100,
+          message: "El campo de observaciones no puede tener más de 100 caracteres",
+        },
+      };
 
     const validacionesColiformes1 =  (event) => {
         let value = event.target.value;
@@ -175,6 +183,7 @@ export function FormularioResultadoPP_organismo (){
             label={"Observaciones"}
             placeholder={"Ingrese las observaciones"}
             register={register}
+            validaciones={validacionesObservaciones}
           ></TxtGroup>
           
           <SelectGroup

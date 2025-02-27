@@ -22,7 +22,7 @@ export function LoginForm() {
     if (data.dni.length > 11 || data.dni.length < 7) {
       return Swal.fire("Error", "Credenciales invalidas", "error");
     }
-    const response = await usePostFetch("/login", data);
+    const response = await usePostFetch("/login", data, navigate, false);
     if (!response.success) {
       Swal.fire("Error", "Credenciales invalidas", "error");
     } else {

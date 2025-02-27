@@ -7,7 +7,6 @@ export function IndicePP_PT() {
   return (
     <div className="indicepppt">
       <IndicePP_PT_organismo />
-      <CardPP_molecula />
       <DatosUsuario />
     </div>
   );

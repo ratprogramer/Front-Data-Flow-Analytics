@@ -1,24 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import "./CardSB_molecula.css";
 
-export function CardSB_molecula({nombreMuestra, lote, fechaAnalisis, responsableAnalisis, id, id_PP, navRoute}){
+export function CardSB_molecula({sabor, lote, fechaAnalisis, responsableAnalisis, id, navRoute}){
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(navRoute, {
-            state: { id_PP, id, nombreMuestra, lote }
+            state: { id, sabor, lote }
         });
     }
     return(
         <>
-            <div className="card-pt-molecula-container" onClick={handleClick}>
-                <div className="data-pt-molecula">
-                    <h1 className="nombre-muestra">{nombreMuestra}</h1>
+            <div className="card-pp-molecula-container" onClick={handleClick}>
+                <div className="data-pp-molecula">
+                    <h1 className="nombre-muestra">{sabor}</h1>
                     <p>Lote: {lote}</p>
                     <p>Fecha de analisis: {fechaAnalisis}</p>   
                     <p>Responsable de analisis: {responsableAnalisis}</p>    
                 </div>
-                <div className="card-pt-estado">
-                    <img className="estado-img-pt" src="src\imgs\estado1.png" alt="" />
+                <div className="card-pp-estado">
+                    <img className="estado-img-pp" src="src\imgs\estado1.png" alt="" />
                 </div>
             </div>
         </>

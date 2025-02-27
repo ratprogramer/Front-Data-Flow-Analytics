@@ -1,14 +1,13 @@
 import { TituloPagina } from "../../../../../Moleculas/TituloPagina/TituloPagina";
-import { DatosPT } from "../../Organismos/DatosPT/DatosPT";
-import { FormularioResultadoPT_organismo } from "../../Organismos/FormularioResultadoPT_organismo/FormularioResultadoPT_organismo";
-import './FormularioResultadoPT.css';
-
-export function FormularioResultadoPT (){
+import { DatosSB } from "../../Organismos/DatosSB/DatosSB";
+import { FormularioResultadoSB_organismo } from "../../Organismos/FormularioResultadoSB_organismo/FormularioResultadoSB_organismo";
+import './FormularioResultadoSB.css';
+export function FormularioResultadoSB (){
     return(
         <div className="formularioResultadoPT-pagina-container">
-            <TituloPagina path={"/productos_registrados_pt"} text={"Resultado"}></TituloPagina>
-            <DatosPT></DatosPT>
-            <FormularioResultadoPT_organismo></FormularioResultadoPT_organismo>
+            <TituloPagina path={"/registrados_sb"} text={"Resultado"}></TituloPagina>
+            <DatosSB></DatosSB>
+            <FormularioResultadoSB_organismo></FormularioResultadoSB_organismo>
         </div>
     )
 }
