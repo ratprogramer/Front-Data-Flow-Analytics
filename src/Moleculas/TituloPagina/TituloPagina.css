@@ -18,14 +18,15 @@
 }
 
 @media screen and (min-width: 768px) {
-    .titulo-modulo-txt {
-        font-weight: 550;
-        font-size: 1.8rem;
-        color: #00a8e1;
-    }
-    .tituloPagina-container {
-        justify-content: flex-start;
-        gap: 20px;
-    }
-    
+  .tituloPagina-container {
+    justify-content: flex-start;
+    gap: 20px;
+
+  }
+
+  .titulo-modulo-txt {
+    font-weight: 550;
+    font-size: 1.8rem;
+    color: #00a8e1;
+  }
 }
