@@ -1,4 +1,4 @@
-.card-pp-molecula-container {
+.card-sb-molecula-container {
   width: 85%;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
   border-radius: 10px;
 
   padding: 0.5% 1.5% 0.5% 2%;
-  background-color: #00a8e1;
+  background: #00a8e1;
   color: white;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.75);
   transition: all 0.1s;
@@ -23,7 +23,7 @@
   align-items: center;
 }
 
-.card-pp-molecula-container:active {
+.card-sb-molecula-container:active {
   background-color: #01a3da;
   transform: scale(0.97);
 }

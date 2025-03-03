@@ -13,19 +13,13 @@ import "./FormularioIngresoPT_organismo.css";
 import Swal from "sweetalert2";
 
 export function FormularioIngresoPT_organismo() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue  
-  } = useForm({
+  const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       fecha_analisis: new Date().toISOString().split("T")[0],
       fecha_env: new Date().toISOString().split("T")[0],
-      fecha_vencimiento: ""
+      fecha_vencimiento: "",
     },
   });
-
 
   const fecha_env = watch("fecha_env");
   useEffect(() => {
@@ -36,8 +30,7 @@ export function FormularioIngresoPT_organismo() {
     }
   }, [fecha_env, setValue]);
 
-
-  const [lote, setLote] = useState(undefined)
+  const [lote, setLote] = useState(undefined);
 
   const location = useLocation();
   const { id } = location.state || 123;
@@ -57,10 +50,14 @@ export function FormularioIngresoPT_organismo() {
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
     data["id_pp"] = parseInt(id);
-    const response = await usePostFetch("/producto/registrar_pt", data, navigate);
+    const response = await usePostFetch(
+      "/producto/registrar_pt",
+      data,
+      navigate
+    );
     if (!response.success) {
       console.log(response);
-      
+
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
       Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
@@ -76,7 +73,7 @@ export function FormularioIngresoPT_organismo() {
 
   const opcionesPresentacion = [
     { value: "1000 ml", placeHolder: "1000 ml" },
-    { value: "200 ml", placeHolder: "200 ml" }
+    { value: "200 ml", placeHolder: "200 ml" },
   ];
 
   const opcionesMaquina = [
@@ -99,8 +96,8 @@ export function FormularioIngresoPT_organismo() {
     if (inputVal.length > 5) {
       inputVal = inputVal.slice(0, 5);
     }
-    setLote(inputVal)
-  }
+    setLote(inputVal);
+  };
   const validaciones = { required: "Los campos con * son obligatorios" };
   const validacionesLote = {
     required: "Los campos con * son obligatorios",
@@ -123,7 +120,6 @@ export function FormularioIngresoPT_organismo() {
       message: "El campo de observaciones no puede tener más de 100 caracteres",
     },
   };
-
 
   return (
     <form
@@ -160,7 +156,7 @@ export function FormularioIngresoPT_organismo() {
           validaciones={validaciones}
           baseDate={fecha_env}
           isDisabled={true}
-          rangeDays={4}  
+          rangeDays={4}
         />
 
         <SelectGroup
@@ -206,7 +202,6 @@ export function FormularioIngresoPT_organismo() {
           onChange={(e) => handleChange(e)}
         />
 
-
         <TxtGroup
           id={"observaciones"}
           label={"Observaciones"}
@@ -214,8 +209,8 @@ export function FormularioIngresoPT_organismo() {
           register={register}
           validaciones={validacionesObservaciones}
         />
+        <InputSub text={"Ingresar"} />
       </div>
-      <InputSub text={"Ingresar"} />
     </form>
   );
 }

@@ -57,7 +57,7 @@ export function LoginForm() {
           register={register}
           type={"text"}
           validaciones={{ require: "El usuario es obligatorio" }}
-        ></InputTxt>
+        />
       </div>
 
       <div className="group-container">
@@ -68,7 +68,7 @@ export function LoginForm() {
           register={register}
           type={"password"}
           validaciones={{ require: "La contraseña es obligatoria" }}
-        ></InputTxt>
+        />
       </div>
 
       <InputSub text="Ingresar" type="submit" />

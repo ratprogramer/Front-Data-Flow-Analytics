@@ -1,5 +1,5 @@
 .card-pp-molecula-container {
-  width: 85%;
+  width: 97%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -10,17 +10,14 @@
   border-radius: 10px;
 
   padding: 0.5% 1.5% 0.5% 2%;
-  background-color: #00a8e1;
+  background: #00a8e1;
   color: white;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.75);
   transition: all 0.1s;
   cursor: pointer;
 
-  margin: 0 auto;
-  display: flex;
+  margin-bottom: 0.5rem;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .card-pp-molecula-container:active {
@@ -39,7 +36,7 @@
 
 .nombre-muestra {
   font-size: 1.4rem;
-  color: rgb(245, 246, 248);
+  color: #fff;
   font-weight: 200;
 }
 
@@ -48,13 +45,15 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .card-pp-molecula-container {
+    width: 77%;
+    margin: 0 auto;
+    gap: 0;
+  }
+
   .nombre-muestra {
     font-size: 1.8rem;
     font-weight: 300;
-  }
-
-  .card-pp-molecula-container {
-    width: 77%;
   }
 
   .data-pp-molecula {

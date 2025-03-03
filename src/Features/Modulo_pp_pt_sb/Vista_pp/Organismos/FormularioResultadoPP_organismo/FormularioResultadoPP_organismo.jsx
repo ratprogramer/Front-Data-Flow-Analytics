@@ -110,80 +110,80 @@ export function FormularioResultadoPP_organismo (){
       };
     
 
-      const opcionesCoNC = [
-        { value: "C", placeHolder: "Cumple" },
-        { value: "NC", placeHolder: "No cumple" }
-      ];
-      const validaciones = { required: "los campos con * son obligatorios" };
-      const validacionesObservaciones = {
-        maxLength: {
-          value: 100,
-          message: "El campo de observaciones no puede tener más de 100 caracteres",
-        },
-      };
+  const opcionesCoNC = [
+    { value: "C", placeHolder: "Cumple" },
+    { value: "NC", placeHolder: "No cumple" },
+  ];
+  const validaciones = { required: "los campos con * son obligatorios" };
+  const validacionesObservaciones = {
+    maxLength: {
+      value: 100,
+      message: "El campo de observaciones no puede tener más de 100 caracteres",
+    },
+  };
 
-    const validacionesColiformes1 =  (event) => {
-        let value = event.target.value;
-        
-        value = value.replace(/[^0-9<>]/g, "");
-        
-        if (value.startsWith("<") || value.startsWith(">")) {
-            value = value.slice(0, 3); 
-            const numberPart = value.slice(1);
-            if (!/^[1-9]$|^10$/.test(numberPart)) {
-            value = value.slice(0, 2); 
-            }
-        } else {
-            value = value.slice(0, 3); 
-            if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
-            value = value.slice(0, value.length - 1); 
-            }
-        }
-        
-        setValue("e_coli", value, { shouldValidate: true });
-    };
-    const validacionesColiformes2 =  (event) => {
-      let value = event.target.value;
-      
-      value = value.replace(/[^0-9<>]/g, "");
-      
-      if (value.startsWith("<") || value.startsWith(">")) {
-          value = value.slice(0, 3); 
-          const numberPart = value.slice(1);
-          if (!/^[1-9]$|^10$/.test(numberPart)) {
-          value = value.slice(0, 2); 
-          }
-      } else {
-          value = value.slice(0, 3); 
-          if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
-          value = value.slice(0, value.length - 1); 
-          }
+  const validacionesColiformes1 = (event) => {
+    let value = event.target.value;
+
+    value = value.replace(/[^0-9<>]/g, "");
+
+    if (value.startsWith("<") || value.startsWith(">")) {
+      value = value.slice(0, 3);
+      const numberPart = value.slice(1);
+      if (!/^[1-9]$|^10$/.test(numberPart)) {
+        value = value.slice(0, 2);
       }
-      
-      setValue("coliformes", value, { shouldValidate: true });
-    };
-    const validacionesMoho =  (event) => {
-      let value = event.target.value;
-      
-      value = value.replace(/[^0-9<>]/g, "");
-      
-      if (value.startsWith("<") || value.startsWith(">")) {
-          value = value.slice(0, 3); 
-          const numberPart = value.slice(1);
-          if (!/^[1-9]$|^10$/.test(numberPart)) {
-          value = value.slice(0, 2); 
-          }
-      } else {
-          value = value.slice(0, 3); 
-          if (!/^(11|[1-9]\d?|[1-4]\d{2}|500)?$/.test(value)) {
-          value = value.slice(0, value.length - 1); 
-          }
+    } else {
+      value = value.slice(0, 3);
+      if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+        value = value.slice(0, value.length - 1);
       }
-      
-      setValue("mohos_ley", value, { shouldValidate: true });
-    };
-    return(
-         <>
+    }
+
+    setValue("e_coli", value, { shouldValidate: true });
+  };
+  const validacionesColiformes2 = (event) => {
+    let value = event.target.value;
+
+    value = value.replace(/[^0-9<>]/g, "");
+
+    if (value.startsWith("<") || value.startsWith(">")) {
+      value = value.slice(0, 3);
+      const numberPart = value.slice(1);
+      if (!/^[1-9]$|^10$/.test(numberPart)) {
+        value = value.slice(0, 2);
+      }
+    } else {
+      value = value.slice(0, 3);
+      if (!/^(11|[1-9]\d?|100)?$/.test(value)) {
+        value = value.slice(0, value.length - 1);
+      }
+    }
+
+    setValue("coliformes", value, { shouldValidate: true });
+  };
+  const validacionesMoho = (event) => {
+    let value = event.target.value;
+
+    value = value.replace(/[^0-9<>]/g, "");
+
+    if (value.startsWith("<") || value.startsWith(">")) {
+      value = value.slice(0, 3);
+      const numberPart = value.slice(1);
+      if (!/^[1-9]$|^10$/.test(numberPart)) {
+        value = value.slice(0, 2);
+      }
+    } else {
+      value = value.slice(0, 3);
+      if (!/^(11|[1-9]\d?|[1-4]\d{2}|500)?$/.test(value)) {
+        value = value.slice(0, value.length - 1);
+      }
+    }
+
+    setValue("mohos_ley", value, { shouldValidate: true });
+  };
+  return (
+    <>
       <form
         className="formulrio-resultado-pp-container"
         onSubmit={handleSubmit(onSubmit, onError)}
@@ -198,127 +198,61 @@ export function FormularioResultadoPP_organismo (){
             defaultDate={true}
             isDisabled={true}
           ></TimeGroup>
-          { primero ? (
-            <>
-              <TxtGroup
-              id={"e_coli"}
-              label={"E. Coli *"}
-              placeholder={"Ingrese cantidad de E. coli."}
-              register={register}
-              onChange={validacionesColiformes1}
-              validaciones={validaciones}
-              ></TxtGroup>
-              <TxtGroup
-              id={"coliformes"}
-              label={"Coliformes totales *"}
-              placeholder={"Ingrese cantidad de coliformes totales"}
-              register={register}
-              onChange={validacionesColiformes2}
-              validaciones={validaciones}
-              ></TxtGroup>
-              
-              <TxtGroup
-              id={"mohos_ley"}
-              label={"Mohos y levaduras *"}
-              placeholder={"Ingrese cantidad de mohos y levaduras"}
-              register={register}
-              onChange={validacionesMoho}
-              validaciones={validaciones}
-              ></TxtGroup>
-              
-              <TxtGroup
-              id={"observaciones"}
-              label={"Observaciones"}
-              placeholder={"Ingrese las observaciones"}
-              register={register}
-              validaciones={validacionesObservaciones}
-              onChange={(e) => setObservaciones(e.target.value)}
-              value={observaciones}
-              ></TxtGroup>
-              
-              <SelectGroup
-              id={"cabina"}
-              register={register}
-              label={"Cabina"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
-              placeHolder={false}
-              ></SelectGroup>
-              
-              <SelectGroup
-              id={"medio_cultivo"}
-              register={register}
-              label={"Medio de cultivo"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
-              placeHolder={false}
-              ></SelectGroup>
-            </>
-          ) : (
-            <>
-              <TxtGroup
-              id={"e_coli"}
-              label={"E. Coli *"}
-              placeholder={"Ingrese cantidad de E. coli."}
-              register={register}
-              onChange={validacionesColiformes1}
-              value={e_coli}
-              validaciones={validaciones}
-            ></TxtGroup>
-            
-            <TxtGroup
-              id={"coliformes"}
-              label={"Coliformes totales *"}
-              placeholder={"Ingrese cantidad de coliformes totales"}
-              register={register}
-              value={coliformes}
-              onChange={validacionesColiformes2}
-              validaciones={validaciones}
-            ></TxtGroup>
 
-            <TxtGroup
-              id={"mohos_ley"}
-              label={"Mohos y levaduras *"}
-              placeholder={"Ingrese cantidad de mohos y levaduras"}
-              register={register}
-              onChange={validacionesMoho}
-              validaciones={validaciones}
-            ></TxtGroup>
+          <TxtGroup
+            id={"e_coli"}
+            label={"E. Coli *"}
+            placeholder={"Ingrese cantidad de E. coli."}
+            register={register}
+            onChange={validacionesColiformes1}
+            validaciones={validaciones}
+          ></TxtGroup>
+
+        <TxtGroup
+            id={"coliformes"}
+            label={"Coliformes totales *"}
+            placeholder={"Ingrese cantidad de coliformes totales"}
+            register={register}
+            onChange={validacionesColiformes2}
+            validaciones={validaciones}
+          ></TxtGroup>
+
+        <TxtGroup
+            id={"mohos_ley"}
+            label={"Mohos y levaduras *"}
+            placeholder={"Ingrese cantidad de mohos y levaduras"}
+            register={register}
+            onChange={validacionesMoho}
+            validaciones={validaciones}
+          ></TxtGroup>
+        
+          <TxtGroup
+            id={"observaciones"}
+            label={"Observaciones"}
+            placeholder={"Ingrese las observaciones"}
+            register={register}
+            validaciones={validacionesObservaciones}
+          ></TxtGroup>
           
-            <TxtGroup
-              id={"observaciones"}
-              label={"Observaciones"}
-              placeholder={"Ingrese las observaciones"}
-              register={register}
-              onChange={(e) => setObservaciones(e.target.value)}
-              validaciones={validacionesObservaciones}
-              value={observaciones}
-            ></TxtGroup>
-            
-            <SelectGroup
-              id={"cabina"}
-              register={register}
-              label={"Cabina"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
-              placeHolder={false}
-            ></SelectGroup>
+          <SelectGroup
+            id={"cabina"}
+            register={register}
+            label={"Cabina"}
+            opciones={opcionesCoNC}
+            validaciones={validaciones}
+            placeHolder={false}
+          ></SelectGroup>
 
-            <SelectGroup
-              id={"medio_cultivo"}
-              register={register}
-              label={"Medio de cultivo"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
-              placeHolder={false}
-            ></SelectGroup>
-                
-            </>
-          )
-          }
+          <SelectGroup
+            id={"medio_cultivo"}
+            register={register}
+            label={"Medio de cultivo"}
+            opciones={opcionesCoNC}
+            validaciones={validaciones}
+            placeHolder={false}
+          ></SelectGroup>
         </div>
-        <InputSub text={"Ingresar"}></InputSub>
       </form>
     </>
-    )
+  );
 }
