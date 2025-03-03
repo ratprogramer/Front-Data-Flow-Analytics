@@ -198,59 +198,124 @@ export function FormularioResultadoPP_organismo (){
             defaultDate={true}
             isDisabled={true}
           ></TimeGroup>
+          { primero ? (
+            <>
+              <TxtGroup
+              id={"e_coli"}
+              label={"E. Coli *"}
+              placeholder={"Ingrese cantidad de E. coli."}
+              register={register}
+              onChange={validacionesColiformes1}
+              validaciones={validaciones}
+              ></TxtGroup>
+              <TxtGroup
+              id={"coliformes"}
+              label={"Coliformes totales *"}
+              placeholder={"Ingrese cantidad de coliformes totales"}
+              register={register}
+              onChange={validacionesColiformes2}
+              validaciones={validaciones}
+              ></TxtGroup>
+              
+              <TxtGroup
+              id={"mohos_ley"}
+              label={"Mohos y levaduras *"}
+              placeholder={"Ingrese cantidad de mohos y levaduras"}
+              register={register}
+              onChange={validacionesMoho}
+              validaciones={validaciones}
+              ></TxtGroup>
+              
+              <TxtGroup
+              id={"observaciones"}
+              label={"Observaciones"}
+              placeholder={"Ingrese las observaciones"}
+              register={register}
+              validaciones={validacionesObservaciones}
+              onChange={(e) => setObservaciones(e.target.value)}
+              value={observaciones}
+              ></TxtGroup>
+              
+              <SelectGroup
+              id={"cabina"}
+              register={register}
+              label={"Cabina"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+              ></SelectGroup>
+              
+              <SelectGroup
+              id={"medio_cultivo"}
+              register={register}
+              label={"Medio de cultivo"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+              ></SelectGroup>
+            </>
+          ) : (
+            <>
+              <TxtGroup
+              id={"e_coli"}
+              label={"E. Coli *"}
+              placeholder={"Ingrese cantidad de E. coli."}
+              register={register}
+              onChange={validacionesColiformes1}
+              value={e_coli}
+              validaciones={validaciones}
+            ></TxtGroup>
+            
+            <TxtGroup
+              id={"coliformes"}
+              label={"Coliformes totales *"}
+              placeholder={"Ingrese cantidad de coliformes totales"}
+              register={register}
+              value={coliformes}
+              onChange={validacionesColiformes2}
+              validaciones={validaciones}
+            ></TxtGroup>
 
-          <TxtGroup
-            id={"e_coli"}
-            label={"E. Coli *"}
-            placeholder={"Ingrese cantidad de E. coli."}
-            register={register}
-            onChange={validacionesColiformes1}
-            validaciones={validaciones}
-          ></TxtGroup>
-
-        <TxtGroup
-            id={"coliformes"}
-            label={"Coliformes totales *"}
-            placeholder={"Ingrese cantidad de coliformes totales"}
-            register={register}
-            onChange={validacionesColiformes2}
-            validaciones={validaciones}
-          ></TxtGroup>
-
-        <TxtGroup
-            id={"mohos_ley"}
-            label={"Mohos y levaduras *"}
-            placeholder={"Ingrese cantidad de mohos y levaduras"}
-            register={register}
-            onChange={validacionesMoho}
-            validaciones={validaciones}
-          ></TxtGroup>
-        
-          <TxtGroup
-            id={"observaciones"}
-            label={"Observaciones"}
-            placeholder={"Ingrese las observaciones"}
-            register={register}
-            validaciones={validacionesObservaciones}
-          ></TxtGroup>
+            <TxtGroup
+              id={"mohos_ley"}
+              label={"Mohos y levaduras *"}
+              placeholder={"Ingrese cantidad de mohos y levaduras"}
+              register={register}
+              onChange={validacionesMoho}
+              validaciones={validaciones}
+            ></TxtGroup>
           
-          <SelectGroup
-            id={"cabina"}
-            register={register}
-            label={"Cabina"}
-            opciones={opcionesCoNC}
-            validaciones={validaciones}
-            placeHolder={false}
-          ></SelectGroup>
+            <TxtGroup
+              id={"observaciones"}
+              label={"Observaciones"}
+              placeholder={"Ingrese las observaciones"}
+              register={register}
+              onChange={(e) => setObservaciones(e.target.value)}
+              validaciones={validacionesObservaciones}
+              value={observaciones}
+            ></TxtGroup>
+            
+            <SelectGroup
+              id={"cabina"}
+              register={register}
+              label={"Cabina"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+            ></SelectGroup>
 
-          <SelectGroup
-            id={"medio_cultivo"}
-            register={register}
-            label={"Medio de cultivo"}
-            opciones={opcionesCoNC}
-            validaciones={validaciones}
-            placeHolder={false}
-          ></SelectGroup>
+            <SelectGroup
+              id={"medio_cultivo"}
+              register={register}
+              label={"Medio de cultivo"}
+              opciones={opcionesCoNC}
+              validaciones={validaciones}
+              placeHolder={false}
+            ></SelectGroup>
+                
+            </>
+          )
+          }
         </div>
       </form>
     </>
