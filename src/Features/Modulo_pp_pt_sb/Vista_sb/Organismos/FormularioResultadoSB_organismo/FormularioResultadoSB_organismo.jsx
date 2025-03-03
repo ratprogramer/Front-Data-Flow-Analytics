@@ -7,7 +7,7 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
-import { verificadorResultados } from "../../../../../helpers/verificadorResultados";
+import { controladorResultados } from "../../../../../helpers/controladorResultados";
 import "./FormularioResultadoSB_organismo.css";
 
 export function FormularioResultadoSB_organismo (){
@@ -40,7 +40,7 @@ export function FormularioResultadoSB_organismo (){
         data["responsable_analisis"] = parseInt(decode.id);
         data["id_sb"] = id;
         
-        const objeto = await verificadorResultados("id_sb", id, data, navigate);
+        const objeto = await controladorResultados("id_sb", id, data, navigate);
         const response = await usePostFetch("/producto/registrar_r", objeto.data, navigate);
         if (!response.success) {
           Swal.fire("Error", JSON.stringify(response), "error");
