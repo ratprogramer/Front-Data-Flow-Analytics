@@ -5,7 +5,6 @@ export const  controladorResultados = async (tipo, id, data, navigate, post = tr
     try{
         let dataFetch = {};
         const resultados = await usePostFetch(`/producto/obtenerResultadosId`, data, navigate);
-        console.log(resultados.result[0]);
         if(resultados.success){
             if (!resultados.result) {
                 const {fecha_analisis, e_coli, coliformes, observaciones, cabina, medio_cultivo, responsable_analisis } = data;
@@ -13,7 +12,7 @@ export const  controladorResultados = async (tipo, id, data, navigate, post = tr
                 dataFetch["fecha_24h"] = fecha_analisis;
                 dataFetch[`${tipo}`] = id;
                 dataFetch["responsable_analisis_24"] = responsable_analisis;
-                return {dataFetch: dataFetch, tipo: "24h", data: resultados.result[0]};
+                return {dataFetch: dataFetch, tipo: "24h"};
             }else{
                 const {fecha_analisis, mohos_ley, observaciones, responsable_analisis} = data;
                 dataFetch = {mohos_ley, observaciones};
@@ -23,6 +22,7 @@ export const  controladorResultados = async (tipo, id, data, navigate, post = tr
                 
                 return {dataFetch: dataFetch, tipo: "5d", data: resultados.result[0]};
             }
+            
         }else{
             Swal.fire("Error", "Error interno al registrar resultados", "error");
         }

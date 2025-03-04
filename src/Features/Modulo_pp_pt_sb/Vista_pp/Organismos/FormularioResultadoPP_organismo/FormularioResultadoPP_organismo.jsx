@@ -32,9 +32,14 @@ export function FormularioResultadoPP_organismo (){
       const [e_coli, setE_coli] = useState("")
       const [coliformes, setColiformes] = useState("")
       const [observaciones, setObservaciones] = useState("")
-      const [cabina, setCabina] = useState("")
-      const [medio_cultivo, setMedio_cultivo] = useState("")
-
+      const [opcionesCabina, setOpcionesCabina] = useState( [
+        { value: "C", placeHolder: "Cumple" },
+        { value: "NC", placeHolder: "No cumple" },
+      ])
+      const [opcionesMedio_cultivo, setOpcionesMedio_cultivo] = useState( [
+        { value: "C", placeHolder: "Cumple" },
+        { value: "NC", placeHolder: "No cumple" }
+      ])
 
       useEffect(() => {
         const fetchData = async () => {
@@ -43,23 +48,33 @@ export function FormularioResultadoPP_organismo (){
             const response = await usePostFetch(`/producto/obtenerResultadosId`, data, navigate)
             if(response.success){
               if (response.result[0]) {
-                console.log(response.result[0]);
-                
+                switch(response.result[0].medio_cultivo){
+                  case "C":
+                    response.result[0].medio_cultivo = [{ value: "C", placeHolder: "Cumple" }];
+                    break;
+                  case "NC":
+                    response.result[0].medio_cultivo = [{ value: "NC", placeHolder: "No cumple" }];
+                    break;
+                }
+                switch(response.result[0].cabina){
+                  case "C":
+                    response.result[0].cabina = [{value: "C", placeHolder: "Cumple"}];
+                    break;
+                  case "NC":
+                    response.result[0].cabina = [{value: "NC", placeHolder: "No cumple"}];
+                    break;
+                }
                 setPrimero(false);
                 setE_coli(response.result[0].e_coli);
                 setColiformes(response.result[0].coliformes);
                 setObservaciones(response.result[0].observaciones);
-                setMedio_cultivo(response.result[0].medio_cultivo);
-                setCabina(response.result[0].cabina);
+                setOpcionesMedio_cultivo(response.result[0].medio_cultivo);
+                setOpcionesCabina(response.result[0].cabina);
 
 
                 setValue("e_coli", response.result[0].e_coli);
                 setValue("coliformes", response.result[0].coliformes);
                 setValue("observaciones", response.result[0].observaciones);
-                setValue("cabina", response.result[0].cabina);
-                setValue("medio_cultivo", response.result[0].medio_cultivo);
-                
-                
               }
             }
           } catch (error) {
@@ -90,11 +105,18 @@ export function FormularioResultadoPP_organismo (){
         
 
         const objeto = await controladorResultados("id_pp", id, data, navigate);
+        console.log(objeto.dataFetch);
         
-        //GENERAR SWITCHEO DE RUTAS DEPENDIENDO DE OBJETO.TIPO
+        let response = {};
+        if(objeto.tipo == "24h"){
+          response = await usePostFetch("/producto/registrar_resultado", objeto.dataFetch, navigate);
+        }else{
+          // update 
+        }
         
-        const response = await usePostFetch("/producto/registrar_r", objeto.dataFetch, navigate);
         if (!response.success) {
+          console.log(response);
+          
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {
           Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
@@ -253,6 +275,7 @@ export function FormularioResultadoPP_organismo (){
               validaciones={validaciones}
               placeHolder={false}
               ></SelectGroup>
+              <InputSub text={"Ingresar"}></InputSub>
             </>
           ) : (
             <>
@@ -263,7 +286,6 @@ export function FormularioResultadoPP_organismo (){
               register={register}
               onChange={validacionesColiformes1}
               value={e_coli}
-              validaciones={validaciones}
             ></TxtGroup>
             
             <TxtGroup
@@ -273,7 +295,6 @@ export function FormularioResultadoPP_organismo (){
               register={register}
               value={coliformes}
               onChange={validacionesColiformes2}
-              validaciones={validaciones}
             ></TxtGroup>
 
             <TxtGroup
@@ -299,8 +320,7 @@ export function FormularioResultadoPP_organismo (){
               id={"cabina"}
               register={register}
               label={"Cabina"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
+              opciones={opcionesCabina}
               placeHolder={false}
             ></SelectGroup>
 
@@ -308,14 +328,13 @@ export function FormularioResultadoPP_organismo (){
               id={"medio_cultivo"}
               register={register}
               label={"Medio de cultivo"}
-              opciones={opcionesCoNC}
-              validaciones={validaciones}
+              opciones={opcionesMedio_cultivo}
               placeHolder={false}
             ></SelectGroup>
-                
+            <InputSub text={"Ingresar"}></InputSub>
             </>
           )
-          }
+        }
         </div>
       </form>
     </>
