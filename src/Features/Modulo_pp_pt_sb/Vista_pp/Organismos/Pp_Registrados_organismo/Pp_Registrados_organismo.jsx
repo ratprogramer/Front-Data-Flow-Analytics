@@ -11,6 +11,8 @@ export function Pp_Registrados_organismo(){
         const fetchData = async () => {
             try {
                 const response = await useGetFetch("/producto/producto_proceso", navigate);
+                console.log(response.result);
+                
                 setProductos(response.result);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);

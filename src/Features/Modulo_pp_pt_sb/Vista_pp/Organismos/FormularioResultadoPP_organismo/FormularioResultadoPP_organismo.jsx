@@ -46,6 +46,8 @@ export function FormularioResultadoPP_organismo (){
           try {
             let data = { id_pp: id };
             const response = await usePostFetch(`/producto/obtenerResultadosId`, data, navigate)
+            console.log(response);
+            
             if(response.success){
               if (response.result[0]) {
                 switch(response.result[0].medio_cultivo){
@@ -105,18 +107,15 @@ export function FormularioResultadoPP_organismo (){
         
 
         const objeto = await controladorResultados("id_pp", id, data, navigate);
-        console.log(objeto.dataFetch);
         
         let response = {};
         if(objeto.tipo == "24h"){
           response = await usePostFetch("/producto/registrar_resultado", objeto.dataFetch, navigate);
         }else{
-          // update 
+          response = await usePostFetch("/producto/registrar_resultado_actualizado", objeto.dataFetch, navigate, true, "PATCH");
         }
         
         if (!response.success) {
-          console.log(response);
-          
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {
           Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
@@ -245,7 +244,6 @@ export function FormularioResultadoPP_organismo (){
               placeholder={"Ingrese cantidad de mohos y levaduras"}
               register={register}
               onChange={validacionesMoho}
-              validaciones={validaciones}
               ></TxtGroup>
               
               <TxtGroup

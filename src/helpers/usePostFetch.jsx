@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
-export async function usePostFetch(endPoint, data, navigate, token = true) {
+export async function usePostFetch(endPoint, data, navigate, token = true, method = "POST") {
   try {
     let response;
     const tokenUser = sessionStorage.getItem('token');
     if(token){
       response = await fetch( "http://localhost:3001" + endPoint, {
-        method: "POST",
+        method: method,
         headers: {  
           Authorization: `Bearer ${tokenUser}`,
           "Content-Type": "application/json" 

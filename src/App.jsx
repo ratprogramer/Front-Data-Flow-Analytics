@@ -30,6 +30,8 @@ import { FormularioRegistroPT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt
 import { Pt_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/Pt_Registrados/Pt_Registrados";
 import { FormularioResultadoPT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/FormularioResultadoPT/FormularioResultadoPT";
 
+import { PrePrevisualizacion } from "./Features/Modulo_informes/Organismos/PrePrevisualizacion/PrePrevisualizacion";
+
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 
 function App() {
@@ -170,6 +172,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <FormularioResultadoPT />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/seleccion_muestras"
+            element={
+              <ProtectedRoute>
+                <PrePrevisualizacion />
               </ProtectedRoute>
             }
           />
