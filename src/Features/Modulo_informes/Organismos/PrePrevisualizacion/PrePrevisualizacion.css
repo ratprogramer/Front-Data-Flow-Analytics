@@ -30,7 +30,6 @@
     align-self: center;
     border-radius: 10px;
     box-shadow: 0 5px 10px 0 #666;
-    
 
     & .fltr {
       width: 95%;
@@ -68,9 +67,9 @@
       align-items: center;
       justify-content: space-between;
       color: #666;
-      
+
       & #lt {
-       width: 90%;
+        width: 90%;
       }
     }
   }
@@ -79,7 +78,7 @@
     height: 95%;
     padding: 0 1rem;
   }
-  
+
   & .crd {
     width: 400px;
     height: 150px;
@@ -102,4 +101,3 @@
     }
   }
 }
-
