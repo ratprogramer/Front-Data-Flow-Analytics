@@ -51,7 +51,6 @@ export function FormularioIngresoPP_organismo() {
   }, [tanque, isBsemi, isBpas, isAlternativo]);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     let inputVal = e.target.value;
     if (inputVal.length > 5) {
       inputVal = inputVal.slice(0, 5);

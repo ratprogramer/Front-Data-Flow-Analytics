@@ -104,13 +104,14 @@ export function FormularioResultadoSB_organismo (){
       data["responsable_analisis"] = parseInt(decode.id);
       data["id_sb"] = id;
       
-
+      
       const objeto = await controladorResultados("id_sb", id, data, navigate);
       
       let response = {};
       if(objeto.tipo == "24h"){
         response = await usePostFetch("/producto/registrar_resultado", objeto.dataFetch, navigate);
       }else{
+        console.log(objeto.dataFetch);
         response = await usePostFetch("/producto/registrar_resultado_actualizado", objeto.dataFetch, navigate, true, "PATCH");
       }
       

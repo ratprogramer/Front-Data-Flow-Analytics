@@ -50,14 +50,8 @@ export function FormularioIngresoPT_organismo() {
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
     data["id_pp"] = parseInt(id);
-    const response = await usePostFetch(
-      "/producto/registrar_pt",
-      data,
-      navigate
-    );
+    const response = await usePostFetch("/producto/registrar_pt",data,navigate);
     if (!response.success) {
-      console.log(response);
-
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
       Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
@@ -91,7 +85,6 @@ export function FormularioIngresoPT_organismo() {
   ];
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     let inputVal = e.target.value;
     if (inputVal.length > 5) {
       inputVal = inputVal.slice(0, 5);
