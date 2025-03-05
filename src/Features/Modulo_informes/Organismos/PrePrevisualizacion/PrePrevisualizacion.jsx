@@ -1,23 +1,140 @@
 import { useState } from "react";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
-
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
   const [shwFltrs, setShwFltrs] = useState(false);
+  const [dateRange, setDateRange] = useState([]); 
 
   const toggleFilters = () => setShwFltrs((prev) => !prev);
 
-  const cards = [
-    { id: 1, name: "card1", type: "pp" },
-    { id: 2, name: "card2", type: "pp" },
-    { id: 3, name: "card3", type: "pt" },
-    { id: 4, name: "card4", type: "pt" },
-    { id: 5, name: "card5", type: "rpp" },
-    { id: 6, name: "card6", type: "rpt" },
-  ];
+  const formatDateToDMY = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "";
+    
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
 
+
+  const cards = [
+    {
+        id: 1,
+        nombre_pp: "Bebida semi elaborada",
+        fecha_analisis: "2025-03-04T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-04T05:00:00.000Z",
+        hora_toma_muestra: "23:38:00",
+        lote: "BsFa23248",
+        punto_muestra: "Fabricación",
+        punto_alterno: null,
+        observaciones: "wqe",
+        responsable_analisis: 1
+    },
+    {
+        id: 2,
+        nombre_pp: "Bebida semi elaborada",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-01T05:00:00.000Z",
+        hora_toma_muestra: "20:25:00",
+        lote: "BsFa11111",
+        punto_muestra: "Fabricación",
+        punto_alterno: null,
+        observaciones: "popis",
+        responsable_analisis: 1
+    },
+    {
+        id: 3,
+        nombre_pp: "Bebida semi elaborada",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-05T05:00:00.000Z",
+        hora_toma_muestra: "19:29:00",
+        lote: "BsFa22222",
+        punto_muestra: "Fabricación",
+        punto_alterno: null,
+        observaciones: "",
+        responsable_analisis: 1
+    },
+    {
+        id: 4,
+        nombre_pp: "Corte de bebida lactea",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
+        hora_toma_muestra: "22:26:00",
+        lote: "CbT933333",
+        punto_muestra: "Tanque 9",
+        punto_alterno: null,
+        observaciones: "",
+        responsable_analisis: 1
+    },
+    {
+        id: 5,
+        nombre_pp: "Corte de bebida lactea",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
+        hora_toma_muestra: "19:28:00",
+        lote: "CbT1044444",
+        punto_muestra: "Tanque 10",
+        punto_alterno: null,
+        observaciones: "",
+        responsable_analisis: 1
+    },
+    {
+        id: 6,
+        nombre_pp: "Bebida semi elaborada",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
+        hora_toma_muestra: "08:27:00",
+        lote: "BsFa55555",
+        punto_muestra: "Fabricación",
+        punto_alterno: null,
+        observaciones: "",
+        responsable_analisis: 1
+    },
+    {
+        id: 7,
+        nombre_pp: "Bebida semi elaborada",
+        fecha_analisis: "2025-03-05T05:00:00.000Z",
+        fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
+        hora_toma_muestra: "19:45:00",
+        lote: "BsFa11111",
+        punto_muestra: "Fabricación",
+        punto_alterno: null,
+        observaciones: "",
+        responsable_analisis: 1
+    },
+    {
+      id: 1,
+      sabor: "Mora",
+      fecha_analisis: "2025-03-05T05:00:00.000Z",
+      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
+      hora_toma_muestra: "19:30:00",
+      tanque: "Tanque 9",
+      lote: "MoT911111",
+      observaciones: "",
+      responsable_analisis: 1
+  },
+];
+const getFilteredCards = () => {
+  // Si no hay dos fechas seleccionadas, mostramos todo
+  if (dateRange.length < 2) {
+    return cards;
+  }
+
+  // Obtén la fecha de inicio y fin
+  const [start, end] = dateRange;
+  
+  // Filtra el arreglo original
+  return cards.filter((card) => {
+    const cardDate = new Date(card.fecha_analisis);
+
+    // Compara si la fecha del card está dentro del rango
+    return cardDate >= start && cardDate <= end;
+  });
+};
   return (
     <div className="filtros">
       <div className="titulo">
@@ -67,10 +184,9 @@ export function PrePrevisualizacion() {
           <div className="fltr">
             <p>Filtros</p>
             <select name="tipo">
-              <option value="mpp">Muestra PP</option>
-              <option value="mpt">Muestra PT</option>
-              <option value="rpp">Resultado PP</option>
-              <option value="rpt">Resultado PT</option>
+              <option value="mpp">Producto en proceso</option>
+              <option value="mpt">Producto terminado</option>
+              <option value="rpp">Saborización</option>
             </select>
           </div>
 
@@ -82,7 +198,7 @@ export function PrePrevisualizacion() {
               type="text"
               placeholder="Seleccionar rango de fechas"
               ref={(el) =>
-                el && flatpickr(el, { mode: "range", dateFormat: "Y-m-d" })
+                el && flatpickr(el, { mode: "range", dateFormat: "Y-m-d", maxDate: "today", onChange: (selectedDates) => {setDateRange(selectedDates)}})
               }
             />
           </div>
@@ -93,11 +209,7 @@ export function PrePrevisualizacion() {
             <input type="number" name="lote" id="lt" />
           </div>
 
-          <button
-            onClick={toggleFilters}
-          >
-            X
-          </button>
+          <button onClick={toggleFilters}>X</button>
         </div>
       )}
 
@@ -105,15 +217,26 @@ export function PrePrevisualizacion() {
         <p>
           seleccionados: <span>{3}</span>
         </p>
-        {cards.map((card, index) => (
-          <div className="crd" key={index}>
-            <div className="sup"></div>
-            <div className="info">
-              <h3>{card.name}</h3>
-              <p>{card.type}</p>
-            </div>
-          </div>
-        ))}
+        {/* 3. Usar la función de formateo en el map */}
+        {getFilteredCards().map((card) => {
+  const fechaAnalisisFormateada = formatDateToDMY(card.fecha_analisis);
+  return (
+    <div className="crd" key={card.id}>
+      <div className="sup"></div>
+      <div className="info">
+        {card.nombre_pp ? (
+          <h3>{card.nombre_pp}</h3>
+        ) : card.sabor ? (
+          <h3>{card.sabor}</h3>
+        ) : (
+          <h3>Error al cargar la muestra :c</h3>
+        )}
+        <p>{fechaAnalisisFormateada}</p>
+        <p>{card.lote}</p>
+      </div>
+    </div>
+  );
+})}
       </div>
     </div>
   );
