@@ -93,11 +93,7 @@ export function PrePrevisualizacion() {
             <input type="number" name="lote" id="lt" />
           </div>
 
-          <button
-            onClick={toggleFilters}
-          >
-            X
-          </button>
+          <button onClick={toggleFilters}>X</button>
         </div>
       )}
 
