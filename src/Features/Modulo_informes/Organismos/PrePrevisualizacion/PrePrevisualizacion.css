@@ -1,1 +1,105 @@
---Comentario para que se suba el archivo al git
+.filtros {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & hr {
+    width: 95%;
+  }
+
+  & .titulo {
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    & .tt {
+      font-size: 24px;
+      font-weight: bolder;
+    }
+  }
+
+  & .tabFilt {
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    align-self: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 #666;
+    
+
+    & .fltr {
+      width: 95%;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+
+      & .ptit {
+        font-weight: bold;
+      }
+
+      & select {
+        width: 80%;
+        border-radius: 10px;
+        background: #66cbed;
+        color: #fff;
+        outline: none;
+      }
+    }
+
+    & .rfch {
+      width: 95%;
+      display: flex;
+      align-items: center;
+      color: #666;
+
+      & .fechas {
+        display: flex;
+      }
+    }
+
+    & .lt {
+      width: 95%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #666;
+      
+      & #lt {
+       width: 90%;
+      }
+    }
+  }
+
+  & .selected {
+    height: 95%;
+    padding: 0 1rem;
+  }
+  
+  & .crd {
+    width: 400px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: .5rem;
+
+    & .sup {
+      background: green;
+      width: 100%;
+      height: 5%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    & .info {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 0 .5rem;
+    }
+  }
+}
+
