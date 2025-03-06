@@ -42,7 +42,7 @@ export function PrePrevisualizacion() {
       </div>
 
       {!shwFltrs && (
-        <button onClick={toggleFilters}>
+        <button className="btnMenu" onClick={toggleFilters}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -82,7 +82,12 @@ export function PrePrevisualizacion() {
               type="text"
               placeholder="Seleccionar rango de fechas"
               ref={(el) =>
-                el && flatpickr(el, { mode: "range", dateFormat: "Y-m-d" })
+                el &&
+                flatpickr(el, {
+                  mode: "range",
+                  dateFormat: "Y-m-d",
+                  locale: { rangeSeparator: " a " },
+                })
               }
             />
           </div>
