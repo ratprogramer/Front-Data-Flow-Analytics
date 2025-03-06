@@ -4,17 +4,22 @@
   flex-direction: column;
 
   & .btnMenu {
-    background: red;
     width: fit-content;
     display: flex;
-    position: fixed; 
+    position: fixed;
     top: 40px;
     right: 10px;
     border-radius: 5px;
     z-index: 9999;
     cursor: pointer;
+    outline: none;
+    border: none;
   }
-  
+
+  & .btnMenu:hover {
+    box-shadow: 0 0 10px 0 #ccc;
+  }
+
   & hr {
     width: 95%;
   }
@@ -41,7 +46,23 @@
     width: 95%;
     align-self: center;
     border-radius: 10px;
+    position: absolute;
+    background: #fff;
+    margin: 3rem 0 0 0;
     box-shadow: 0 5px 10px 0 #666;
+
+    & .btnX {
+      cursor: pointer;
+      font-size: larger;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      margin: 0.5rem 0 0 0;
+    }
+
+    & .btnX:hover {
+      box-shadow: 0 0 10px 0 #ccc;
+    }
 
     & .fltr {
       width: 95%;
@@ -89,6 +110,17 @@
   & .selected {
     height: 95%;
     padding: 0 1rem;
+
+    & .slctP {
+      font-weight: bold;
+
+      & .slct {
+        background: #ccc;
+        padding: 3px 7px;
+        border-radius: 50%;
+        font-weight: lighter;
+      }
+    }
   }
 
   & .crd {
@@ -96,7 +128,7 @@
     height: 150px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 
     & .sup {
       background: green;
@@ -109,7 +141,7 @@
       display: flex;
       flex-direction: column;
       align-items: start;
-      padding: 0 .5rem;
+      padding: 0 0.5rem;
     }
   }
 }
