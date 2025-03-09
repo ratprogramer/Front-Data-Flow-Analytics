@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import "./PrePrevisualizacion.css";
@@ -6,9 +6,12 @@ import "./PrePrevisualizacion.css";
 export function PrePrevisualizacion() {
   const [shwFltrs, setShwFltrs] = useState(false);
   const [dateRange, setDateRange] = useState([]);
+  const [productType, setProductType] = useState(""); // Estado para el filtro de tipo
+  const [loteFilter, setLoteFilter] = useState(""); // Estado para el filtro de lote
 
   const toggleFilters = () => setShwFltrs((prev) => !prev);
-
+  
+  
   const formatDateToDMY = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -21,119 +24,45 @@ export function PrePrevisualizacion() {
   };
 
   const cards = [
-    {
-      id: 1,
-      nombre_pp: "Bebida semi elaborada",
-      fecha_analisis: "2025-03-04T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-04T05:00:00.000Z",
-      hora_toma_muestra: "23:38:00",
-      lote: "BsFa23248",
-      punto_muestra: "Fabricación",
-      punto_alterno: null,
-      observaciones: "wqe",
-      responsable_analisis: 1,
-    },
-    {
-      id: 2,
-      nombre_pp: "Bebida semi elaborada",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-01T05:00:00.000Z",
-      hora_toma_muestra: "20:25:00",
-      lote: "BsFa11111",
-      punto_muestra: "Fabricación",
-      punto_alterno: null,
-      observaciones: "popis",
-      responsable_analisis: 1,
-    },
-    {
-      id: 3,
-      nombre_pp: "Bebida semi elaborada",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-05T05:00:00.000Z",
-      hora_toma_muestra: "19:29:00",
-      lote: "BsFa22222",
-      punto_muestra: "Fabricación",
-      punto_alterno: null,
-      observaciones: "",
-      responsable_analisis: 1,
-    },
-    {
-      id: 4,
-      nombre_pp: "Corte de bebida lactea",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
-      hora_toma_muestra: "22:26:00",
-      lote: "CbT933333",
-      punto_muestra: "Tanque 9",
-      punto_alterno: null,
-      observaciones: "",
-      responsable_analisis: 1,
-    },
-    {
-      id: 5,
-      nombre_pp: "Corte de bebida lactea",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
-      hora_toma_muestra: "19:28:00",
-      lote: "CbT1044444",
-      punto_muestra: "Tanque 10",
-      punto_alterno: null,
-      observaciones: "",
-      responsable_analisis: 1,
-    },
-    {
-      id: 6,
-      nombre_pp: "Bebida semi elaborada",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
-      hora_toma_muestra: "08:27:00",
-      lote: "BsFa55555",
-      punto_muestra: "Fabricación",
-      punto_alterno: null,
-      observaciones: "",
-      responsable_analisis: 1,
-    },
-    {
-      id: 7,
-      nombre_pp: "Bebida semi elaborada",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
-      hora_toma_muestra: "19:45:00",
-      lote: "BsFa11111",
-      punto_muestra: "Fabricación",
-      punto_alterno: null,
-      observaciones: "",
-      responsable_analisis: 1,
-    },
-    {
-      id: 1,
-      sabor: "Mora",
-      fecha_analisis: "2025-03-05T05:00:00.000Z",
-      fecha_toma_muestra: "2025-03-03T05:00:00.000Z",
-      hora_toma_muestra: "19:30:00",
-      tanque: "Tanque 9",
-      lote: "MoT911111",
-      observaciones: "",
-      responsable_analisis: 1,
-    },
+    { id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
+    { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
+    { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
+    { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
   ];
+
   const getFilteredCards = () => {
-    // Si no hay dos fechas seleccionadas, mostramos todo
-    if (dateRange.length < 2) {
-      return cards;
+    let filteredCards = cards;
+
+    if (dateRange.length === 2) {
+      const [start, end] = dateRange;
+      filteredCards = filteredCards.filter((card) => {
+        const cardDate = new Date(card.fecha_analisis);
+        return cardDate >= start && cardDate <= end;
+      });
     }
 
-    // Obtén la fecha de inicio y fin
-    const [start, end] = dateRange;
+    if (productType) {
+      filteredCards = filteredCards.filter((card) => {
+        if (productType === "all") return true;
+        if (productType === "pp") return card.id_pp !== undefined;
+        if (productType === "pt") return card.id_pt !== undefined;
+        if (productType === "sb") return card.id_sb !== undefined;
+        return true;
+      });
+    }
 
-    // Filtra el arreglo original
-    return cards.filter((card) => {
-      const cardDate = new Date(card.fecha_analisis);
-
-      // Compara si la fecha del card está dentro del rango
-      return cardDate >= start && cardDate <= end;
-    });
+    if (loteFilter.trim() !== "") {
+      const search = loteFilter.replace(/\D/g, ""); 
+      filteredCards = filteredCards.filter((card) => {
+        const cardNumbers = card.lote.replace(/\D/g, ""); 
+        const regex = new RegExp(`^${search}`);
+        return regex.test(cardNumbers);
+      });
+    }
+    
+    return filteredCards;
   };
+
   return (
     <div className="filtros">
       <div className="titulo">
@@ -182,7 +111,7 @@ export function PrePrevisualizacion() {
         <div className="tabFilt">
           <div className="fltr">
             <p>Filtros</p>
-            <select name="tipo">
+            <select name="tipo" onChange={(e) => setProductType(e.target.value)}>
               <option value="mpp">Producto en proceso</option>
               <option value="mpt">Producto terminado</option>
               <option value="rpp">Saborización</option>
@@ -202,6 +131,8 @@ export function PrePrevisualizacion() {
                   mode: "range",
                   dateFormat: "Y-m-d",
                   locale: { rangeSeparator: " a " },
+                  maxDate: "today",
+                  onChange: (selectedDates) => setDateRange(selectedDates),
                 })
               }
             />
@@ -210,7 +141,13 @@ export function PrePrevisualizacion() {
           <hr />
           <div className="lt">
             <p>Lote</p>
-            <input type="number" name="lote" id="lt" />
+            <input 
+              type="text" 
+              name="lote" 
+              id="lt" 
+              value={loteFilter}
+              onChange={(e) => setLoteFilter(e.target.value)}
+            />
           </div>
 
           <button className="btnX" onClick={toggleFilters}>
@@ -223,26 +160,15 @@ export function PrePrevisualizacion() {
         <p className="slctP">
           seleccionados: <span className="slct">{3}</span>
         </p>
-        {/* 3. Usar la función de formateo en el map */}
-        {getFilteredCards().map((card) => {
-          const fechaAnalisisFormateada = formatDateToDMY(card.fecha_analisis);
-          return (
-            <div className="crd" key={card.id}>
-              <div className="sup"></div>
-              <div className="info">
-                {card.nombre_pp ? (
-                  <h3>{card.nombre_pp}</h3>
-                ) : card.sabor ? (
-                  <h3>{card.sabor}</h3>
-                ) : (
-                  <h3>Error al cargar la muestra :c</h3>
-                )}
-                <p>{fechaAnalisisFormateada}</p>
-                <p>{card.lote}</p>
-              </div>
+        {getFilteredCards().map((card, index) => (
+          <div className="crd" key={index}>
+            <div className="info">
+              <h3>{card.nombre_pp || card.sabor || "Error al cargar"}</h3>
+              <p>{formatDateToDMY(card.fecha_analisis)}</p>
+              <p>{card.lote}</p>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

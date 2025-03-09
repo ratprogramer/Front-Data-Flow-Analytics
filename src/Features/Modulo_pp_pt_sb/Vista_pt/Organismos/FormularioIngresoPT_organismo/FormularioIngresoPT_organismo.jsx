@@ -33,7 +33,7 @@ export function FormularioIngresoPT_organismo() {
   const [lote, setLote] = useState(undefined);
 
   const location = useLocation();
-  const { id } = location.state || 123;
+  const { id_pp } = location.state || 123;
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -49,9 +49,11 @@ export function FormularioIngresoPT_organismo() {
     }
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
-    data["id_pp"] = parseInt(id);
+    data["id_pp"] = parseInt(id_pp);
     const response = await usePostFetch("/producto/registrar_pt",data,navigate);
     if (!response.success) {
+      console.log(response);
+      
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
       Swal.fire("Exito", "Producto en proceso registrado con exito", "success");

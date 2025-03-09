@@ -6,13 +6,13 @@ export function CardPP_molecula({
   lote,
   fechaAnalisis,
   responsableAnalisis,
-  id,
+  id_pp,
   navRoute,
 }) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(navRoute, {
-      state: { id, nombreMuestra, lote },
+      state: { id_pp, nombreMuestra, lote },
     });
   };
   return (
