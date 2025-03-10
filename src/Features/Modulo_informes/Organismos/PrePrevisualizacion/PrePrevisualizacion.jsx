@@ -6,8 +6,37 @@ import "./PrePrevisualizacion.css";
 export function PrePrevisualizacion() {
   const [shwFltrs, setShwFltrs] = useState(false);
   const [dateRange, setDateRange] = useState([]);
-  const [productType, setProductType] = useState(""); // Estado para el filtro de tipo
-  const [loteFilter, setLoteFilter] = useState(""); // Estado para el filtro de lote
+  const [productType, setProductType] = useState("");
+  const [loteFilter, setLoteFilter] = useState("");
+  const [cards, setCards] = useState([]);
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [nSlct, setNSlct] = useState(0);
+
+  useEffect(() => {
+    // luego aqui pongo el fetch cuando felipe acabe la ruta
+    let cards = [{ id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
+    { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
+    { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
+    { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" }];
+    const cardsWithSelect = cards.map((card) => ({ ...card, select: false }));
+    setCards(cardsWithSelect)
+    ;
+
+    
+  }, []);
+
+  useEffect(() => {
+    setNSlct(cards.filter((card) => card.select).length);
+    setSelectedCards(cards.filter((card) => card.select));
+  }, [cards]);
+
+  const handleSelect = (index) => {
+    setCards(prev => 
+      prev.map((card, i) => 
+        i == index ? {...card, select: !card.select} : card
+      )
+    )
+  };
 
   const toggleFilters = () => setShwFltrs((prev) => !prev);
   const formatDateToDMY = (dateString) => {
@@ -21,12 +50,6 @@ export function PrePrevisualizacion() {
     return `${day}/${month}/${year}`;
   };
 
-  const cards = [
-    { id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
-    { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
-    { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
-    { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
-  ];
 
   const getFilteredCards = () => {
     let filteredCards = cards;
@@ -156,34 +179,37 @@ export function PrePrevisualizacion() {
 
       <div className="selected">
         <p className="slctP">
-          seleccionados: <span className="slct">{3}</span>
+          seleccionados: <span className="slct">{nSlct}</span>
         </p>
         {getFilteredCards().map((card, index) => (
-          <div className="crd" key={index}>
+          <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
             <div className="info">
               <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
-                {/* <span>
-                  <svg  
-                    width="24"  
-                    height="24"  
-                    viewBox="0 0 24 24"  
-                    fill="none"  
-                    stroke="currentColor"  
-                    strokeWidth="1"  
-                    strokeLinecap="round"  
-                    strokeLinejoin="round"  
-                    >
+                {card.select &&
+                  <span>
+                    <svg  
+                      width="28"  
+                      height="28"  
+                      viewBox="0 0 24 24"  
+                      fill="none"  
+                      stroke="currentColor"  
+                      strokeWidth="2"  
+                      strokeLinecap="round"  
+                      strokeLinejoin="round"  
+                      >
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                       <path d="M9 12l2 2l4 -4" />
                       </svg>
-                </span> */}
+                </span>
+                }
               </h3>
               <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
               <p>Lote: <span className="sPan">{card.lote}</span></p>
             </div>
           </div>
         ))}
+<<<<<<< HEAD
         <div className="crd" id="crdSlct">
             <div className="info">
               <h3>Muestra de ejemplo seleccionada
@@ -208,6 +234,8 @@ export function PrePrevisualizacion() {
               <p>Lote: <span className="sPan">12345</span></p>
             </div>
           </div>
+=======
+>>>>>>> d2719afc336e7684348674fbff210c07cdb3c559
       </div>
     </div>
   );

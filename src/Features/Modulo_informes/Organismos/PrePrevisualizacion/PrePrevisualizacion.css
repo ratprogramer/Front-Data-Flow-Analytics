@@ -167,11 +167,11 @@
     }
   }
 
-  #crdSlct {
+  & .crdSlct {
     background: #eee;
     height: max-content;
     box-shadow: inset 0 0 10px 5px #ddd;
-
+    transition: all 0.2s;
     & svg {
       color: green;
     }
