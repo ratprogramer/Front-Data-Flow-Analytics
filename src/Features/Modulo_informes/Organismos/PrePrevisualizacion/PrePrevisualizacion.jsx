@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
+  const navigate = useNavigate();
   const [shwFltrs, setShwFltrs] = useState(false);
   const [dateRange, setDateRange] = useState([]);
   const [productType, setProductType] = useState("");
@@ -36,6 +38,14 @@ export function PrePrevisualizacion() {
         i == index ? {...card, select: !card.select} : card
       )
     )
+  };
+
+  const handleNavigate = () => {
+    if(selectedCards.length === 0){
+      alert("Pendejo")
+    }else{
+      navigate("/informe", { state: { selectedCards } });
+    }
   };
 
   const toggleFilters = () => setShwFltrs((prev) => !prev);
@@ -209,7 +219,31 @@ export function PrePrevisualizacion() {
             </div>
           </div>
         ))}
+        <button className="btnSlct" onClick={handleNavigate}>Seleccionar</button>
       </div>
     </div>
   );
 }
+
+
+
+/*
+import { useLocation } from "react-router-dom";
+
+export function OtraVista() {
+  const location = useLocation();
+  const selectedCards = location.state?.selectedCards || []; // Accede a los datos
+
+  return (
+    <div>
+      <h1>Resumen de Selección</h1>
+      <ul>
+        {selectedCards.map((card, index) => (
+          <li key={index}>{card.nombre_pp || card.sabor} - Lote: {card.lote}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+*/
