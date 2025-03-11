@@ -129,6 +129,8 @@
     border-radius: 10px;
     border: 1px solid #ccc;
     margin-bottom: 0.5rem;
+    cursor: pointer;
+
 
     & .sup {
       background: green;
