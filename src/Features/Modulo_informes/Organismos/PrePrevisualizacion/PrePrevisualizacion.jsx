@@ -17,10 +17,17 @@ export function PrePrevisualizacion() {
 
   useEffect(() => {
     // luego aqui pongo el fetch cuando felipe acabe la ruta
-    let cards = [{ id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
-    { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
-    { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
-    { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" }];
+    let cards = [
+      { id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
+      { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
+      { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+    ];
     const cardsWithSelect = cards.map((card) => ({ ...card, select: false }));
     setCards(cardsWithSelect)
     ;
@@ -161,21 +168,22 @@ export function PrePrevisualizacion() {
         <p className="slctP">
           seleccionados: <span className="slct">{nSlct}</span>
         </p>
-        {getFilteredCards().map((card, index) => (
-          <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
-            <div className="info">
-              <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
-                {card.select &&
-                  <span>
+        <div className="conj">
+          {getFilteredCards().map((card, index) => (
+            <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
+              <div className="info">
+                <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
+                  {card.select &&
                     <CircleCheckBig />
-                </span>
-                }
-              </h3>
-              <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
-              <p>Lote: <span className="sPan">{card.lote}</span></p>
+                  }
+                </h3>
+                <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
+                <p>Lote: <span className="sPan">{card.lote}</span></p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+
+        </div>
         <button className="btnSlct" onClick={handleNavigate}>Seleccionar</button>
       </div>
     </div>
