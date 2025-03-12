@@ -45,7 +45,7 @@ export function FormularioResultadoSB_organismo (){
     useEffect(() => {
       const fetchData = async () => {
         try {
-          let data = { id_sb: id };
+          let data = { id_sb: id_sb };
           const response = await usePostFetch(`/producto/obtenerResultadosId`, data, navigate)
           if(response.success){
             if (response.result[0]) {
