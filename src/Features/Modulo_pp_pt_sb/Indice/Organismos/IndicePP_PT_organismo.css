@@ -4,6 +4,13 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 1rem;
+  background: transparent;
+
+  & h1 {
+    color: #000;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
 }
 
 .Indice-container-organismo > * {

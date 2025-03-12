@@ -1,23 +1,30 @@
-.datosUsuario-container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    font-size: 15px;
-    color: white;
-    background-color: #00a8e1;
-    align-self: flex-end;
+.datosUsuario-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  color: white;
+  background-color: #0284c7;
+  align-self: flex-end;
 }
 
-.img-perfil{
-    width: 100%;
-    height: 100%;
+.img-perfil {
+  width: 100%;
+  height: 100%;
 }
 
-.img-perfil-container{
-    width: 7rem;
-    height: 7rem;
-    border: 2px solid black;
-    border-radius: 70px;
+.img-perfil-container {
+  height: 85%;
+  width: 20%;
+  border: 2px solid black;
+  border-radius: 100%;
 }
 
+.datosUsuario {
+  font-size: 16px;
+  font-weight: normal;
+
+  & span {
+    font-weight: bold;
+  }
+}

@@ -9,9 +9,9 @@ export function DatosUsuario({rol, nombre}){
     return(
         <div className="datosUsuario-container">
             <div className="datosUsuario">
-                <h2>Microbiologa</h2>
-                <h2>Julia R. Chalarca</h2>
-                <h2><b>Fecha: </b>{año}-{mes}-{dia}</h2>
+                <p>Microbiologa</p>
+                <p>Julia R. Chalarca</p>
+                <p><span>Fecha:</span> {año}-{mes}-{dia}</p>
             </div>
             <div className="img-perfil-container">
                 <img className="img-perfil" src="src\imgs\foto-perfil.png" alt="Foto Perfil" />

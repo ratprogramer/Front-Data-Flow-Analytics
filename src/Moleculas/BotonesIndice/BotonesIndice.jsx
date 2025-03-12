@@ -5,7 +5,7 @@ export function BotonesIndice({ botones }){
     return(
         <div className="botones-indicepp_pt-container">
             {botones.map((boton, index) => (
-            <Boton key={index} path={boton.path} text={boton.text} />
+            <Boton key={index} path={boton.path} text={boton.text} icon={boton.icon}/>
             ))}
         </div>
     )
