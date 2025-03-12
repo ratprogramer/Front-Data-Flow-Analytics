@@ -16,7 +16,7 @@ import { useEffect } from "react";
 
 export function FormularioResultadoSB_organismo (){
   const location = useLocation();
-  const { id } = location.state || {};
+  const { id_sb } = location.state || {};
   const {
       register,
       handleSubmit,
@@ -102,10 +102,10 @@ export function FormularioResultadoSB_organismo (){
       }
       const decode = decodeToken(token);
       data["responsable_analisis"] = parseInt(decode.id);
-      data["id_sb"] = id;
+      data["id_sb"] = id_sb;
       
       
-      const objeto = await controladorResultados("id_sb", id, data, navigate);
+      const objeto = await controladorResultados("id_sb", id_sb, data, navigate);
       
       let response = {};
       if(objeto.tipo == "24h"){

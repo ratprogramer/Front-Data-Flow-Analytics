@@ -11,6 +11,8 @@ export function Pt_Registrados_organismo(){
         const fetchData = async () => {
             try {
                 const response = await useGetFetch("/producto/producto_terminado_nom_pp");
+                console.log(response.result);
+                
                 if(response.tokenExpirado){
                     navigate("/")
                     Swal.fire(
@@ -46,7 +48,7 @@ export function Pt_Registrados_organismo(){
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}
-                    id={producto.id}
+                    id_PT={producto.id_pt}
                     id_PP={producto.id_producto_proceso}
                 />
                 ))
