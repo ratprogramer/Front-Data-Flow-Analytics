@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "./CardSB_molecula.css";
 
-export function CardSB_molecula({sabor, lote, fechaAnalisis, responsableAnalisis, id, navRoute}){
+export function CardSB_molecula({sabor, lote, fechaAnalisis, responsableAnalisis, id_sb, navRoute}){
     const navigate = useNavigate();
     const handleClick = () => {
         navigate(navRoute, {
-            state: { id, sabor, lote }
+            state: { id_sb, sabor, lote }
         });
     }
     return(

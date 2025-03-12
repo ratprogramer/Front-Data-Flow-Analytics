@@ -11,8 +11,6 @@ export function Pp_Registrados_organismo(){
         const fetchData = async () => {
             try {
                 const response = await useGetFetch("/producto/producto_proceso", navigate);
-                console.log(response.result);
-                
                 setProductos(response.result);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
@@ -39,7 +37,7 @@ export function Pp_Registrados_organismo(){
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}
-                    id={producto.id}
+                    id_pp={producto.id_pp}
                 />
                 ))
             }

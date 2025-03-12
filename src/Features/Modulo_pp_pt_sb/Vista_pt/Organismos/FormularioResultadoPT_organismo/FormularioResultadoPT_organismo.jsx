@@ -15,7 +15,7 @@ import { useEffect } from "react";
 
 export function FormularioResultadoPT_organismo() {
     const location = useLocation();
-    const { id } = location.state || {};
+    const { id_PT } = location.state || {};
     const {
         register,
         handleSubmit,
@@ -44,7 +44,7 @@ export function FormularioResultadoPT_organismo() {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            let data = { id_pt: id };
+            let data = { id_pt: id_PT };
             const response = await usePostFetch(`/producto/obtenerResultadosId`, data, navigate)
             if(response.success){
               if (response.result[0]) {
@@ -101,10 +101,10 @@ export function FormularioResultadoPT_organismo() {
         }
         const decode = decodeToken(token);
         data["responsable_analisis"] = parseInt(decode.id);
-        data["id_pt"] = id;
+        data["id_pt"] = id_PT;
         
 
-        const objeto = await controladorResultados("id_pt", id, data, navigate);
+        const objeto = await controladorResultados("id_pt", id_PT, data, navigate);
         
         let response = {};
         if(objeto.tipo == "24h"){
