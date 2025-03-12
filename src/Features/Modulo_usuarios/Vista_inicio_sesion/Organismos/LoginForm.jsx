@@ -30,7 +30,7 @@ export function LoginForm() {
       const token = decodeToken(response.result);
 
       if (token.rol == "Analista" || token.rol == "analista") {
-        navigate("/menu");
+        navigate("/menu_Derivado_lacteo_fermentado");
       } else if (token.rol == "Administrador") {
         navigate("/menu_admin");
       } else {
