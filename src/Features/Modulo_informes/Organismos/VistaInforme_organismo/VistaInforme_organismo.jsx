@@ -1,23 +1,18 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom"
-import { useState } from "react";
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from "@react-pdf/renderer";
+import { useLocation } from "react-router-dom";
+import { InformePDF } from "../../Moleculas/InformePFD";
+import "./VistaInforme_organismo.css";
 
-import "./VistaInforme_organismo.css"
-
-export function VistaInforme_organismo(){
+export const VistaInforme_organismo = () => {
     const location = useLocation();
-    const [selectedCards, setSelectedCards] = useState([]);
-    useEffect(() => {
-        const selectedCard = location.state?.selectedCards || [];
-        setSelectedCards(selectedCard);
-    }, [])
+    const selectedCards = location.state?.selectedCards || [];
 
-
-    
-    return(
-        <div>
-            <h1>ola</h1>
+    return (
+        <div className="informe-container">
+            {selectedCards.length > 0 ? (
+                <InformePDF selectedCards={selectedCards} />
+            ) : (
+                <p>No hay productos seleccionados.</p>
+            )}
         </div>
-    )
+    );
 }

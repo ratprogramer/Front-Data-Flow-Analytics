@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
+import { CircleCheckBig, Filter, ArrowLeft } from "lucide-react";
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
@@ -96,45 +97,14 @@ export function PrePrevisualizacion() {
 
   return (
     <div className="filtros">
-      <div className="titulo">
-        <svg
-          className="lftArr"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M5 12l6 6" />
-          <path d="M5 12l6 -6" />
-        </svg>
+      <div className="titulo" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}>
+        <ArrowLeft className="bck" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}/>  
         <p className="tt">Informes y registros</p>
       </div>
 
       {!shwFltrs && (
         <button className="btnMenu" onClick={toggleFilters}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 6l16 0" />
-            <path d="M4 12l16 0" />
-            <path d="M4 18l16 0" />
-          </svg>
+          <Filter />
         </button>
       )}
 
@@ -197,20 +167,7 @@ export function PrePrevisualizacion() {
               <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
                 {card.select &&
                   <span>
-                    <svg  
-                      width="28"  
-                      height="28"  
-                      viewBox="0 0 24 24"  
-                      fill="none"  
-                      stroke="currentColor"  
-                      strokeWidth="2"  
-                      strokeLinecap="round"  
-                      strokeLinejoin="round"  
-                      >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                      <path d="M9 12l2 2l4 -4" />
-                      </svg>
+                    <CircleCheckBig />
                 </span>
                 }
               </h3>

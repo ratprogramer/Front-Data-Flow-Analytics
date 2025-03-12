@@ -1,0 +1,26 @@
+.btnDscrgr{
+  height: 2rem;
+  
+  display: flex;
+  align-items: center;
+  
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #87cefa;
+  outline: none;
+  
+  cursor: pointer;
+  
+  &:hover {
+    background: #3e8fc1;
+    color: #000;
+  }
+
+  & p {
+    display: flex;
+    align-items: center;
+    
+    gap: 4px;
+  }
+}
+
