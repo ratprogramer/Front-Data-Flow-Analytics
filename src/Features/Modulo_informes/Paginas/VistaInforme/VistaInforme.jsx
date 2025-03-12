@@ -4,11 +4,16 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./VistaInforme.css"
 import { ArrowLeft } from "lucide-react";
+import { useEffect, useState } from "react";
 
 
 export function VistaInforme(){
     const location = useLocation();
-    const selectedCards = location.state?.selectedCards || [];
+    const [selectedCards, setSelectedCards] = useState([]);
+    useEffect(() => {
+        const selectedCards = location.state?.selectedCards || [];
+        setSelectedCards(selectedCards);
+    }, []);
     const navigate = useNavigate();
 
 
