@@ -1,10 +1,19 @@
-.label-atomo{
+.label-atomo[data-variant="login"]{
     font-size: 18px;
     user-select: none;
 }
 
+.label-atomo[data-variant="formulario"] {
+    color: #000;
+    font-weight: normal;
+}
+
+.red-asterisk {
+    color: red;
+}
+
 @media screen and (min-width: 768px) {
-    .label-atomo{
+    .label-atomo[data-variant="login"]{
         font-size: 24px;
         user-select: none;
     }

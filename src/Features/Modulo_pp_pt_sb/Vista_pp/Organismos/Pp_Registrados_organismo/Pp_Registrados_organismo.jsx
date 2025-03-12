@@ -31,14 +31,14 @@ export function Pp_Registrados_organismo(){
             { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPP_molecula
-                    key={index}
-                    navRoute={"/ingreso_resultado_producto_p"}
-                    nombreMuestra={producto.nombre_pp}
-                    lote={producto.lote}
-                    fechaAnalisis={formatFecha(producto.fecha_analisis)}
-                    responsableAnalisis={producto.responsable_analisis}
-                    id_pp={producto.id_pp}
-                />
+                        key={index}
+                        navRoute={"/ingreso_resultado_producto_p"}
+                        nombreMuestra={producto.nombre_pp}
+                        lote={producto.lote}
+                        fechaAnalisis={formatFecha(producto.fecha_analisis)}
+                        responsableAnalisis={producto.responsable_analisis}
+                        id_pp={producto.id_pp}
+                    />
                 ))
             }
         </div>

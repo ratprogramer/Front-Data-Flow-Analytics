@@ -1,5 +1,5 @@
 import { set, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
 import { usePostFetch } from "../../../../../helpers/usePostFetch";
@@ -7,7 +7,6 @@ import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGro
 import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
-import { useEffect } from "react";
 
 import "./FormularioIngresoPP_organismo.css";
 import Swal from "sweetalert2";
@@ -160,47 +159,57 @@ export function FormularioIngresoPP_organismo() {
           <SelectGroup
             id={"nombre_pp"}
             register={register}
-            label={"Nombre del producto *"}
+            label={"Nombre del producto"}
             opciones={opcionesNombreProducto}
             validaciones={validaciones}
             onChange={(e) => {
               setIsBpas(e.target.value === "Bebida pasteurizada");
               setIsBsemi(e.target.value === "Bebida semi elaborada");
             }}
+            
+            variant={'formulario'}
           />
 
           <TimeGroup
             id={"fecha_analisis"}
-            label={"Fecha de analisis *"}
+            label={"Fecha de analisis"}
             type={"date"}
             register={register}
             validaciones={validaciones}
             isDisabled={true}
             defaultDate={true}
+
+            variant='formulario'
           />
 
           <TimeGroup
             id={"fecha_toma_muestra"}
-            label={"Fecha de toma de muestra *"}
+            label={"Fecha de toma de muestra"}
             register={register}
             type={"date"}
             validaciones={validaciones}
             rangeMode={"past"}
             rangeDays={4}
+
+            variant='formulario'
           />
 
           <TimeGroup
             id={"hora_toma_muestra"}
-            label={"Hora de toma de muestra *"}
+            label={"Hora de toma de muestra"}
             register={register}
             type={"time"}
             validaciones={validaciones}
+
+            dataRequired='ture'
+            variant='formulario'
           />
 
           <SelectGroup
+            dataRequired={'true'}
             id={"punto_muestra"}
             register={register}
-            label={"Punto de toma de muestra *"}
+            label={"Punto de toma de muestra"}
             opciones={
               isBpas
                 ? tanqueBebidaPast
@@ -217,14 +226,19 @@ export function FormularioIngresoPP_organismo() {
                 creadorLote();
               }
             }}
+
+            variant='formulario'
           />
 
           {isAlternativo && (
             <TxtGroup
               id={"punto_alterno"}
-              label={"Punto de toma alternativo *"}
+              label={"Punto de toma alternativo"}
               placeholder={"Ingrese el punto alternativo"}
               register={register}
+
+              dataRequired={'true'}
+              variant='formulario'
             />
           )}
           {
@@ -232,13 +246,16 @@ export function FormularioIngresoPP_organismo() {
           }
           <TxtGroup
             id={"lote"}
-            label={"Lote *"}
+            label={"Lote"}
             placeholder={"Ingrese el lote"}
             register={register}
             type={"number"}
             validaciones={validacionesLote}
             onChange={(e) => handleChange(e)}
             value={posLote}
+
+            variant="formulario"
+            dataRequired="true"
           />
 
           <TxtGroup
@@ -247,8 +264,10 @@ export function FormularioIngresoPP_organismo() {
             placeholder={"Ingrese las observaciones"}
             register={register}
             validaciones={validacionesObservaciones}
+
+            variant='formulario'
           />
-          <InputSub text={"Ingresar"} />
+          <InputSub text={"Ingresar"} variant={'formulario'} />
         </div>
       </form>
     </>

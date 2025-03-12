@@ -1,16 +1,24 @@
-.formulario-registro-pp-container {
+.formulrio-registro-pp-container {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
 
+
 .formulario-pp-campos {
+  width: 90vw;
+    
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  background: #fff;
+
+  border: 1px solid #e4e4e7;
+  padding: 1rem;
+  border-radius: 10px;
+  
   gap: 1.5rem;
-  width: 95vw;
 }
 
 @media screen and (min-width: 768px) {

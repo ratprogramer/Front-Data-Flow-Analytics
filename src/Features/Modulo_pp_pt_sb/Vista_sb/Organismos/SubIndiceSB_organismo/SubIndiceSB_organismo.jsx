@@ -1,9 +1,11 @@
 import { BotonesIndice } from "../../../../../Moleculas/BotonesIndice/BotonesIndice";
 import { TituloPagina } from "../../../../../Moleculas/TituloPagina/TituloPagina";
+import { FilePlus, FileChartColumn } from 'lucide-react';
+
 export function SubIndiceSB_organismo() {
   const botones = [
-    { path: "/ingreso_sb", text: "Registrar saborizacion" },
-    { path: "/registrados_sb", text: "Ingresar resultado " },
+    { path: "/ingreso_sb", text: "Registrar saborizacion", icon: <FilePlus /> },
+    { path: "/registrados_sb", text: "Ingresar resultado ", icon: <FileChartColumn /> },
   ];
   return (
     <div className="Indice-container-organismo">

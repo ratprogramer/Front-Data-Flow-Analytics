@@ -30,9 +30,8 @@ export function IndicePP_PT_organismo() {
   return (
     <div className="Indice-container-organismo">
       {/* <TituloPagina path={"/"} text={"Derivado Lacteo Fermentado"} /> */}
-      <h1>Derivado Lácteo Fermentado</h1>
+      <h1>Menú</h1>
       <BotonesIndice botones={botones} />
-
     </div>
   );
 }

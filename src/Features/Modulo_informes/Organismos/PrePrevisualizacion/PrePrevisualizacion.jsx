@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
+import { CircleCheckBig, Filter, ArrowLeft } from "lucide-react";
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
@@ -16,10 +17,17 @@ export function PrePrevisualizacion() {
 
   useEffect(() => {
     // luego aqui pongo el fetch cuando felipe acabe la ruta
-    let cards = [{ id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
-    { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
-    { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
-    { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" }];
+    let cards = [
+      { id_pp: 1, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-03-04T05:00:00.000Z", lote: "BsFa98765" },
+      { id_pp: 2, nombre_pp: "Bebida semi elaborada", fecha_analisis: "2025-02-20T05:00:00.000Z", lote: "BsFa54321" },
+      { id_sb: 1, sabor: "Mora", fecha_analisis: "2025-02-10T05:00:00.000Z", lote: "MoT911111" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+      { id_pt: 7, nombre_pp: "Aguacate", fecha_analisis: "2025-02-15T05:00:00.000Z", lote: "BsFa12345" },
+    ];
     const cardsWithSelect = cards.map((card) => ({ ...card, select: false }));
     setCards(cardsWithSelect)
     ;
@@ -96,45 +104,14 @@ export function PrePrevisualizacion() {
 
   return (
     <div className="filtros">
-      <div className="titulo">
-        <svg
-          className="lftArr"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M5 12l14 0" />
-          <path d="M5 12l6 6" />
-          <path d="M5 12l6 -6" />
-        </svg>
+      <div className="titulo" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}>
+        <ArrowLeft className="bck" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}/>  
         <p className="tt">Informes y registros</p>
       </div>
 
       {!shwFltrs && (
         <button className="btnMenu" onClick={toggleFilters}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 6l16 0" />
-            <path d="M4 12l16 0" />
-            <path d="M4 18l16 0" />
-          </svg>
+          <Filter />
         </button>
       )}
 
@@ -191,34 +168,22 @@ export function PrePrevisualizacion() {
         <p className="slctP">
           seleccionados: <span className="slct">{nSlct}</span>
         </p>
-        {getFilteredCards().map((card, index) => (
-          <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
-            <div className="info">
-              <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
-                {card.select &&
-                  <span>
-                    <svg  
-                      width="28"  
-                      height="28"  
-                      viewBox="0 0 24 24"  
-                      fill="none"  
-                      stroke="currentColor"  
-                      strokeWidth="2"  
-                      strokeLinecap="round"  
-                      strokeLinejoin="round"  
-                      >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                      <path d="M9 12l2 2l4 -4" />
-                      </svg>
-                </span>
-                }
-              </h3>
-              <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
-              <p>Lote: <span className="sPan">{card.lote}</span></p>
+        <div className="conj">
+          {getFilteredCards().map((card, index) => (
+            <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
+              <div className="info">
+                <h3>{card.nombre_pp || card.sabor || "Error al cargar"} 
+                  {card.select &&
+                    <CircleCheckBig />
+                  }
+                </h3>
+                <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
+                <p>Lote: <span className="sPan">{card.lote}</span></p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+
+        </div>
         <button className="btnSlct" onClick={handleNavigate}>Seleccionar</button>
       </div>
     </div>
