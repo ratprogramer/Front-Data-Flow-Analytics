@@ -11,7 +11,7 @@ export function DatosUsuario({rol, nombre}){
     return(
         <div className="datosUsuario-container">
             <div className="datosUsuario">
-                <p><span><ChartLine /></span>Microbiologa</p>
+                <p><span><ChartLine /></span>Analista</p>
                 <p><span><UserRound /></span>Julia R. Chalarca</p>
                 <p><span><CalendarFold /></span><span className="fecha">Fecha:</span> {año}-{mes}-{dia}</p>
             </div>
