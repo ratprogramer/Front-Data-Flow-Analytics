@@ -1,4 +1,4 @@
-.inputTxt-atomo{
+.inputTxt-atomo[data-variant="login"] {
     background-color: #66cbed;
     color: #ffffff;
     font-size: 18px;
@@ -7,9 +7,34 @@
     border-radius: 7px;
 }
 
-.inputTxt-atomo::placeholder{
+.inputTxt-atomo[data-variant="login"]::placeholder {
     color: #edececb9;
 }
-.inputTxt-atomo:focus {
+
+.inputTxt-atomo[data-variant="login"]:focus {
     outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/*=========== estilos para el formulario ===========*/
+.inputTxt-atomo[data-variant="formulario"] {
+    color: #000;
+    outline: none;
+    background: #fff;
+    border: 1px solid #e4e4e7;
+
+}
+
+.inputTxt-atomo[data-variant="formulario"]::placeholder {
+    color: #71717a;
 }

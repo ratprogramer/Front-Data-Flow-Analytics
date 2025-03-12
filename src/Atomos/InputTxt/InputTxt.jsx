@@ -8,6 +8,8 @@ export function InputTxt({
   validaciones,
   value,
   onChange,
+
+  variant
 }) {
   // Desestructura las funciones de RHF
   const {
@@ -20,6 +22,9 @@ export function InputTxt({
   return (
     <input
       className="inputTxt-atomo"
+
+      data-variant={variant}
+
       id={id}
       name={name}
       ref={ref}

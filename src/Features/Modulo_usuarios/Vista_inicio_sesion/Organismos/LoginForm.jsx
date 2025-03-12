@@ -50,28 +50,32 @@ export function LoginForm() {
       className="loginForm-organismo"
     >
       <div className="group-container">
-        <Label htmlFor={"dni"} text={"Usuario"}></Label>
+        <Label htmlFor={"dni"} text={"Usuario"} variant={'login'}></Label>
         <InputTxt
           id={"dni"}
           placeholder={"Ingrese usuario"}
           register={register}
           type={"text"}
           validaciones={{ require: "El usuario es obligatorio" }}
+
+          variant={'login'}
         />
       </div>
 
       <div className="group-container">
-        <Label htmlFor={"contraseña"} text={"Contraseña"}></Label>
+        <Label htmlFor={"contraseña"} text={"Contraseña"} variant={'login'}></Label>
         <InputTxt
           id={"contraseña"}
           placeholder={"Ingrese contraseña"}
           register={register}
           type={"password"}
           validaciones={{ require: "La contraseña es obligatoria" }}
+
+          variant='login'
         />
       </div>
 
-      <InputSub text="Ingresar" type="submit" />
+      <InputSub text="Ingresar" type="submit" variant='login' />
     </form>
   );
 }
