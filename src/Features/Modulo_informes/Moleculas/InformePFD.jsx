@@ -32,10 +32,34 @@ padding: 5
 });
 
 export const InformePDF = ({ selectedCards }) => {
+    const formatDateToDMY = (dateString) => {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return "";
+        
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
+    
     const dataPP = selectedCards.filter(card => card.tipo === "PP");
     const dataPT = selectedCards.filter(card => card.tipo === "PT");
     const dataSB = selectedCards.filter(card => card.tipo === "SB");
 
+
+    dataPP.forEach(card => {
+        card.fecha_analisis = formatDateToDMY(card.fecha_analisis);
+        card.fecha_toma_muestra = formatDateToDMY(card.fecha_toma_muestra);
+    })
+    dataPT.forEach(card => {
+        card.fecha_analisis = formatDateToDMY(card.fecha_analisis);
+        card.fecha_vencimiento = formatDateToDMY(card.fecha_vencimiento);
+    })
+    dataSB.forEach(card => {
+        card.fecha_analisis = formatDateToDMY(card.fecha_analisis);
+        card.fecha_toma_muestra = formatDateToDMY(card.fecha_toma_muestra);
+    })
     const renderTable = (title, data, headers, fields) => (
         <>
             <Text style={{ textAlign: "center", fontSize: 14, marginVertical: 10, fontWeight: "bold" }}>
