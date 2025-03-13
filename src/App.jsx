@@ -4,7 +4,7 @@ import "./app.css";
 
 import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
 
-import { MenuPrincipalAdmin } from "./Features/Modulo_usuarios/Administrador/Menu_princial_admin/Pagina/MenuPrincipalAdmin/MenuPrincipalAdmin";
+import { MenuPrincipalAdmin }  from "./Features/Modulo_usuarios/Administrador/Menu_princial_admin/Pagina/MenuPrincipalAdmin/MenuPrincipalAdmin";
 import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrador/Vista_registro_usuario/Pagina/Registro_Usuario_Pagina";
 
 import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";

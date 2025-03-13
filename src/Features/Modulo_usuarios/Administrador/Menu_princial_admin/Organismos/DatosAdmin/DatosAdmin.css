@@ -7,7 +7,7 @@
     align-items: flex-start;
   
     color: white;
-    background-color: #0284c7;
+    background: transparent;
   }
   
   .datosUsuario {
@@ -21,6 +21,7 @@
     font-weight: normal;
     margin: 0;
     padding: 0 0 0 0.5rem;
+    background: transparent;
   
     & p {
       width: 100%;
@@ -56,7 +57,7 @@
       align-items: center;
   
       color: white;
-      background-color: #0284c7;
+      background: transparent;
     }
   
     .datosUsuario {
@@ -70,6 +71,7 @@
       font-weight: normal;
       margin: 0;
       padding: 0 0 0 0.5rem;
+      background: transparent;
   
       & p {
         width: 100%;
@@ -91,7 +93,6 @@
   
       & .fecha {
         font-weight: bold;
-        background: transparent;
       }
     }
   }

@@ -1,0 +1,44 @@
+.samples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  
+  gap: 20px;
+
+  & .sample-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #0000000d;
+    
+    padding: 20px;
+    
+    & .sample-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      
+      & .sample-status {
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      & .completed {
+        background: #e6f7ee;
+        color: #27ae60;
+      }
+
+      & .pending {
+        background: #fef5e7;
+        color: #e67e22;
+      }
+
+    }
+    
+    & .sample-details p {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+  }
+}
+

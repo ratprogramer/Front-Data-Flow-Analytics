@@ -3,10 +3,8 @@ import { TxtGroup } from "../../../../../../Moleculas/InputGroup/TxtGroup/TxtGro
 import { usePostFetch } from "../../../../../../helpers/usePostFetch";
 import { InputSub } from "../../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
-
-
-import "./Formulario_Registro_Usuario.css";
 import Swal from "sweetalert2";
+import "./Formulario_Registro_Usuario.css";
 
 export function Formulario_Registro_Usuario() {
   const {
@@ -36,38 +34,46 @@ export function Formulario_Registro_Usuario() {
 
   const validaciones = { required: "los campos con * son obligatorios" };
   return (
-    <>
-      <form
-        className="formulrio-registro-pp-container"
-        onSubmit={handleSubmit(onSubmit, onError)}
-      >
-        <div className="formulario-pp-campos">
-          <TxtGroup
-            id={"dni"}
-            label={"Numero de documento *"}
-            placeholder={"Ingrese el documento del analista"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
+    <form
+      className="formulario-registro-usuario"
+      onSubmit={handleSubmit(onSubmit, onError)}
+    >
+      <h3>Registro de Analista</h3>
+      <div className="formulario-usuario-campos">
+        <TxtGroup
+          id={"dni"}
+          label={"Numero de documento"}
+          placeholder={"Ingrese el documento del analista"}
+          register={register}
+          validaciones={validaciones}
 
-          <TxtGroup
-            id={"nombre"}
-            label={"Nombre *"}
-            placeholder={"Ingrese el nombre del analista"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
+          variant={'formulario'}
+          dataRequired
+        />
 
-          <TxtGroup
-            id={"contraseña"}
-            label={"Contraseña *"}
-            placeholder={"Ingrese la contraseña del analista"}
-            register={register}
-            validaciones={validaciones}
-          ></TxtGroup>
-        </div>
-        <InputSub text={"Ingresar"}></InputSub>
-      </form>
-    </>
+        <TxtGroup
+          id={"nombre"}
+          label={"Nombre"}
+          placeholder={"Ingrese el nombre del analista"}
+          register={register}
+          validaciones={validaciones}
+
+          variant={'formulario'}
+          dataRequired
+        />
+
+        <TxtGroup
+          id={"contraseña"}
+          label={"Contraseña"}
+          placeholder={"Ingrese la contraseña del analista"}
+          register={register}
+          validaciones={validaciones}
+
+          variant={'formulario'}
+          dataRequired
+        />
+      <InputSub text={"Ingresar"} variant={'formulario'}></InputSub>
+      </div>
+    </form>
   );
 }

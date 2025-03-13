@@ -1,0 +1,52 @@
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+  gap: 20px;
+
+  & .analysis-card {
+    padding: 20px;
+
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #0000000d;
+
+    & .analysis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-bottom: 15px;
+
+      & .analysis-status {
+        padding: 4px 8px;
+
+        border-radius: 4px;
+
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      & .completed {
+        background: #e6f7ee;
+        color: #27ae60;
+      }
+
+      & .in-progress {
+        background: #e7f3fe;
+        color: #3498db;
+      }
+      
+      & .pending {
+        background: #fef5e7;
+        color: #e67e22;
+      }
+    }
+
+    & .analysis-details p {
+      margin-bottom: 8px;
+
+      font-size: 14px;
+    }
+  }
+}

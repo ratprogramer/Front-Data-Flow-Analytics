@@ -1,15 +1,20 @@
-.formulrio-registro-pp-container{
+.formulario-registro-usuario{
+    width: 50%;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 90vh;
+    justify-self: center;
     align-items: center;
+    padding: 30px 0;
+    border-radius: 10px;
+    border: 1px solid #e4e4e7;
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.formulario-pp-campos{
-
+.formulario-usuario-campos{
+    width: 90%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 24px;
 }
