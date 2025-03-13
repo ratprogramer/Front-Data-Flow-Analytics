@@ -1,12 +1,12 @@
 .btns-container-menu {
   display: flex;
   align-items: center;
-  gap: 6%;
   flex-direction: column;
   height: 64vh;
+  gap: 6%;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .btns-container-menu {
     display: grid;
     width: 95vw;

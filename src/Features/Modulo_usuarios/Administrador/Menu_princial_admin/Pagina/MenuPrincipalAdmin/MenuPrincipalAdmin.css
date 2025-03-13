@@ -1,16 +1,36 @@
-.MenuPrincipal-container-pagina-admin{
+.MenuPrincipal-container-pagina-admin {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black;
     height: 99.8vh;
-}
-
-.Menu-titulo-container-admin{
-    width: 22.5rem;
+  }
+  
+  .Menu-titulo-container-admin {
+    width: 80vw;
     font-weight: 550;
-    font-size: 23px;
+    font-size: 36px;
     color: #00a8e1;
-}
+  }
+  
+  @media screen and (min-width: 768px) {
+    .MenuPrincipal-container-pagina-admin {
+      width: 99.8vw;
+      display: flex;
+      align-items: center;
+    }
+    .Menu-titulo-container-admin {
+      font-size: 48px;
+      padding-left: 3rem;
+    }
+    .main-menu-container-admin {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 75%;
+      width: 90%;
+      flex-wrap: wrap inherit;
+    }
+  }
+  

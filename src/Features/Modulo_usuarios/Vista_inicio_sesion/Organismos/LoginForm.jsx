@@ -31,7 +31,7 @@ export function LoginForm() {
 
       if (token.rol == "Analista" || token.rol == "analista") {
         navigate("/menu_Derivado_lacteo_fermentado");
-      } else if (token.rol == "Administrador") {
+      } else if (token.rol == "Administrador" || token.rol == "administrador") {
         navigate("/menu_admin");
       } else {
         Swal.fire("Error", "Credenciales invalidas", "error");

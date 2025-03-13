@@ -1,7 +1,32 @@
-.btns-container-menu{
+.btns-container-menu {
+  width: 90vw;
+  height: 64vh;
+  
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .btns-container-menu {
+    width: 95vw;
+    height: 80vh;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    gap: 10px;
+  }
+
+  .btns-container-menu button {
+    width: 80%;
+    height: 80%;
+
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 6%;
-    flex-direction: column;
-    height: 64vh;
+
+    margin-left: 3rem;
+  }
 }

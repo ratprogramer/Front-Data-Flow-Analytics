@@ -7,9 +7,9 @@ export function MenuPrincipalAdmin(){
         <div className="MenuPrincipal-container-pagina-admin">
             <div className="main-menu-container-admin">
                 <h1  className="Menu-titulo-container-admin" >Menú</h1>
-                <BotonesMenuAdmin></BotonesMenuAdmin>
+                <BotonesMenuAdmin />
             </div>
-            <DatosAdmin></DatosAdmin>
+            <DatosAdmin />
         </div>
     )
 }

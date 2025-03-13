@@ -1,4 +1,6 @@
+import { UserRound, CalendarFold, ChartLine } from "lucide-react";
 import "./DatosAdmin.css"
+
 
 export function DatosAdmin({rol, nombre}){
     const fecha = new Date();
@@ -9,25 +11,10 @@ export function DatosAdmin({rol, nombre}){
     return(
         <div className="datosUsuario-container">
             <div className="datosUsuario">
-                <h2>Administrador</h2>
-                <h2>El jefaso</h2>
-                <h2><b>Fecha: </b>{año}-{mes}-{dia}</h2>
-            </div>
-            <div className="img-perfil-container">
-                <img className="img-perfil" src="src\imgs\foto-perfil.png" alt="Foto Perfil" />
+                <p><span><ChartLine /></span> Administrador</p>
+                <p><span><UserRound /></span> El jefaso</p>
+                <p><span><CalendarFold /></span> <span className="fecha">Fecha:</span> {año}-{mes}-{dia}</p>
             </div>
         </div>
-        /*
-        <div className="datosUsuario-container">
-            <div className="datosUsuario">
-                <h1><b>Rol: </b>{rol}</h1>
-                <h1><b>Nombre: </b>{nombre}</h1>
-                <h1><b>Fecha: </b>{año}-{mes}-{dia}</h1>
-            </div>
-            <div className="img-perfil">
-                <img src="" alt="" />
-            </div>
-        </div>
-        */
     )
 }
