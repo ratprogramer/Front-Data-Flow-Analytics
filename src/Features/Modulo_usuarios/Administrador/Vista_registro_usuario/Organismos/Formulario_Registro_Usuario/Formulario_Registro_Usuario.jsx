@@ -38,7 +38,7 @@ export function Formulario_Registro_Usuario() {
       className="formulario-registro-usuario"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
-      <h3>Registro de Analista</h3>
+      <p>Registro de Analista</p>
       <div className="formulario-usuario-campos">
         <TxtGroup
           id={"dni"}

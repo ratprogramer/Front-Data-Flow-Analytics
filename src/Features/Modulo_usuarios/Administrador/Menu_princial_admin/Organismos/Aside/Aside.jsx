@@ -39,6 +39,7 @@ export const Aside = ({ activeSection, setActiveSection }) => {
           <div className="user-info">
             <h3>Administrador</h3>
             <p>Nombre del Administrador</p>
+            
           </div>
         </div>
     </aside>

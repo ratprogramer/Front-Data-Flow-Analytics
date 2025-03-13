@@ -1,8 +1,9 @@
+import './BotonAdmin.css'
 export const ButtonAdmin = ({ className = "", onClick, icon, label, isActive }) => {
   return (
     <button className={`nav-item ${isActive ? "active" : ""} ${className}`} onClick={onClick}>
-      {icon && icon}
-      <span>{label}</span>
+      <span className='iconBtn'>{icon && icon}</span>
+      <p className='labelBtn'>{label}</p>
     </button>
   );
 };

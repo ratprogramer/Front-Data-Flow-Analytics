@@ -14,7 +14,7 @@ const chartData = [
 export const Dashboard = () => {
   return (
     <div className="dashboard-content">
-      <h1>Dashboard de General de Muestras</h1>
+      <h1>Dashboard General de Muestras</h1>
       <div className="summary-cards">
         {[{ title: "Total de muestras", value: 76, subtitle: "Hoy" },
           { title: "Muestras completadas", value: 64, subtitle: "84% del total", className: "green" },

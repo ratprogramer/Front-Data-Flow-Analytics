@@ -70,7 +70,6 @@ export const MenuPrincipalAdmin = () => {
               {currentDate}
             </div>
           </header>
-          
           <div className="content-container">{renderContent()}</div>
         </main>
       </div>
