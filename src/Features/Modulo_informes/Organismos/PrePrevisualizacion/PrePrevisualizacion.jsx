@@ -84,10 +84,12 @@ export function PrePrevisualizacion() {
 
     if (productType) {
       filteredCards = filteredCards.filter((card) => {
+        console.log(productType);
+        
         if (productType === "all") return true;
-        if (productType === "pp") return card.id_pp !== undefined;
-        if (productType === "pt") return card.id_pt !== undefined;
-        if (productType === "sb") return card.id_sb !== undefined;
+        if (productType === "pp") return card.tipo == "PP";
+        if (productType === "pt") return card.tipo == "PT";
+        if (productType === "sb") return card.tipo == "SB";
         return true;
       });
     }
@@ -122,9 +124,10 @@ export function PrePrevisualizacion() {
           <div className="fltr">
             <p>Filtros</p>
             <select name="tipo" onChange={(e) => setProductType(e.target.value)}>
-              <option value="mpp">Producto en proceso</option>
-              <option value="mpt">Producto terminado</option>
-              <option value="rpp">Saborización</option>
+              <option value="all">Todos</option>
+              <option value="pp">Producto en proceso</option>
+              <option value="pt">Producto terminado</option>
+              <option value="sb">Saborización</option>
             </select>
           </div>
 
@@ -172,8 +175,8 @@ export function PrePrevisualizacion() {
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (
-            <div className={`crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
-              <div className="info">
+            <div className={`info crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
+              <div className={`info crd ${card.select ? "crdSlct" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} 
                   {card.select &&
                     <CircleCheckBig />
