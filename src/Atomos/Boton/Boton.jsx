@@ -1,5 +1,5 @@
-import "./Boton.css";
 import { useNavigate } from "react-router-dom";
+import "./Boton.css";
 
 export function Boton({path, text, icon}){
     const navigate = useNavigate();
