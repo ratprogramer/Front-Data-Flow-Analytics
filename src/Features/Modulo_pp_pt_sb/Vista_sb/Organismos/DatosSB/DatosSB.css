@@ -1,4 +1,4 @@
-.datosPP-organismo-container{
+.datosSB-organismo-container{
     color: #20abe2;
     font-size: 18px;
     width: 92%;
@@ -8,11 +8,11 @@
     background-color: #d9d9d9;
 }
 
-.container-box-datos-pp{
+.container-box-datos-sb{
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.datos-pp-txt{
+.container-box-datos-sb p{
     font-size: 18px;
 }

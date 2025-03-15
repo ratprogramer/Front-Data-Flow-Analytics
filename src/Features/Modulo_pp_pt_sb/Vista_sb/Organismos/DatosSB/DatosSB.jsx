@@ -5,10 +5,10 @@ export function DatosSB() {
     const location = useLocation();
     const { sabor, lote } = location.state || {};
     return (
-        <div className='container-box-datos-pp'>
-            <div className="datosPP-organismo-container">
-                <h1 className='datos-pp-txt'>{sabor}</h1>
-                <h1 className='datos-pp-txt'>Lote: {lote}</h1>
+        <div className='container-box-datos-sb'>
+            <div className="datosSB-organismo-container">
+                <p>{sabor}</p>
+                <p>Lote: {lote}</p>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
-import "./DatosPP.css";
 import { useLocation } from "react-router-dom";
+import "./DatosPP.css";
 
 export function DatosPP() {
   const location = useLocation();
@@ -7,8 +7,8 @@ export function DatosPP() {
   return (
     <div className="container-box-datos-pp">
       <div className="datosPP-organismo-container">
-        <h1 className="datos-pp-txt">{nombreMuestra}</h1>
-        <h1 className="datos-pp-txt">Lote: {lote}</h1>
+        <p className="ttPp">{nombreMuestra}</p>
+        <p>Lote: {lote}</p>
       </div>
     </div>
   );
