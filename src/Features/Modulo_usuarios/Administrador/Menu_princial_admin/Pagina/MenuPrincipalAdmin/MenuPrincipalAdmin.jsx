@@ -38,6 +38,7 @@ import { Reportes } from "../../Organismos/Reportes/Reportes";
 import { Configuracion } from "../../Organismos/Configuraciones/Configuracion";
 import { Usuarios } from "../../Organismos/Usuarios/Usuarios";
 import { UsuariosAdd } from "../../Organismos/Usuarios/UsuariosAdd/UsuariosAdd.jsx";
+import { LogOut } from "lucide-react";
 import "./MenuPrincipalAdmin.css";
 
 export const MenuPrincipalAdmin = () => {
@@ -69,6 +70,7 @@ export const MenuPrincipalAdmin = () => {
               <Icon name="calendar" />
               {currentDate}
             </div>
+            <LogOut className="logOut" onClick={()=> { alert('LogOut')/* aquí iría la función para cerrar la sesión */ }}/>
           </header>
           <div className="content-container">{renderContent()}</div>
         </main>
