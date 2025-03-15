@@ -40,6 +40,7 @@ import { Usuarios } from "../../Organismos/Usuarios/Usuarios";
 import { UsuariosAdd } from "../../Organismos/Usuarios/UsuariosAdd/UsuariosAdd.jsx";
 import { LogOut } from "lucide-react";
 import "./MenuPrincipalAdmin.css";
+import { useNavigate } from "react-router-dom";
 
 export const MenuPrincipalAdmin = () => {
     const [activeSection, setActiveSection] = useState("dashboard");
@@ -60,6 +61,7 @@ export const MenuPrincipalAdmin = () => {
     };
   
     const renderContent = () => sections[activeSection] || <div>Seleccione una opción</div>;
+    const navigate = useNavigate();
   
     return (
       <div className="app-container">
@@ -70,7 +72,7 @@ export const MenuPrincipalAdmin = () => {
               <Icon name="calendar" />
               {currentDate}
             </div>
-            <LogOut className="logOut" onClick={()=> { alert('LogOut')/* aquí iría la función para cerrar la sesión */ }}/>
+            <LogOut className="logOut" onClick={() => navigate("/")}/>
           </header>
           <div className="content-container">{renderContent()}</div>
         </main>

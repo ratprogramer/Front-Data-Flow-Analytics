@@ -144,7 +144,7 @@ export function FormularioIngresoSB_organismo() {
         <SelectGroup
           id={"sabor"}
           register={register}
-          label={"Sabor *"}
+          label={"Sabor"}
           opciones={opcionesSabor}
           placeHolder={true}
           validaciones={validaciones}
@@ -158,7 +158,7 @@ export function FormularioIngresoSB_organismo() {
 
         <TimeGroup
           id={"fecha_analisis"}
-          label={"Fecha de analisis *"}
+          label={"Fecha de analisis"}
           type={"date"}
           register={register}
           validaciones={validaciones}
@@ -168,7 +168,7 @@ export function FormularioIngresoSB_organismo() {
 
         <TimeGroup
           id={"fecha_toma_muestra"}
-          label={"Fecha de toma de muestra *"}
+          label={"Fecha de toma de muestra"}
           type={"date"}
           register={register}
           validaciones={validaciones}
@@ -178,7 +178,7 @@ export function FormularioIngresoSB_organismo() {
 
         <TimeGroup
           id={"hora_toma_muestra"}
-          label={"Hora de toma de muestra *"}
+          label={"Hora de toma de muestra"}
           type={"time"}
           register={register}
           validaciones={validaciones}
@@ -188,7 +188,7 @@ export function FormularioIngresoSB_organismo() {
         <SelectGroup
           id={"tanque"}
           register={register}
-          label={"Tanque *"}
+          label={"Tanque"}
           opciones={opcionesPuntoToma}
           placeHolder={true}
           validaciones={validaciones}
@@ -201,13 +201,16 @@ export function FormularioIngresoSB_organismo() {
 
         <TxtGroup
           id={"lote"}
-          label={"Lote *"}
+          label={"Lote"}
           placeholder={"Ingrese el lote del producto terminado"}
           register={register}
           type={"number"}
           validaciones={validacionesLote}
           onChange={(e) => handleChange(e)}
           value={posLote}
+
+          dataRequired={'true'}
+          variant={'formulario'}
         />
 
         <TxtGroup
@@ -216,8 +219,10 @@ export function FormularioIngresoSB_organismo() {
           placeholder={"Ingrese las observaciones"}
           register={register}
           validaciones={validacionesObservaciones}
+
+          variant={'formulario'}
         />
-        <InputSub text={"Ingresar"} />
+        <InputSub text={"Ingresar"} variant={'formulario'}/>
       </div>
     </form>
   );

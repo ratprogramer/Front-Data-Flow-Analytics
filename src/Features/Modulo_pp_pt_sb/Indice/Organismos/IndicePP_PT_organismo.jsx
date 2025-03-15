@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice";
-import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
-// import { ClipboardList, Flask, FileCheck, BarChart3 } from "lucide-react";
-// import { ClipboardList, FlaskRoundIcon as Flask, FileCheck, BarChart3 } from "lucide-react"
-// import { ClipboardList, Flask, FileCheck, BarChart3 } from "lucide-react";
-import { ClipboardList, FlaskConical, FileCheck, BarChart3 } from "lucide-react";
+// import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
+import { ClipboardList, FlaskConical, FileCheck, BarChart3, LogOut } from "lucide-react";
 
 import "./IndicePP_PT_organismo.css";
+import { useNavigate } from "react-router-dom";
 
 export function IndicePP_PT_organismo() {
   const botones = [
@@ -16,7 +14,9 @@ export function IndicePP_PT_organismo() {
     { path: "/seleccion_muestras", text: "Informes", icon: <BarChart3 /> },
   ];
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+  // const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,7 +30,10 @@ export function IndicePP_PT_organismo() {
   return (
     <div className="Indice-container-organismo">
       {/* <TituloPagina path={"/"} text={"Derivado Lacteo Fermentado"} /> */}
-      <h1>Menú</h1>
+      <div className="tttlo">
+        <h1>Menú</h1>
+        <LogOut style={{cursor: 'pointer'}} onClick={() => navigate("/")}/>
+      </div>
       <BotonesIndice botones={botones} />
     </div>
   );

@@ -48,7 +48,7 @@
     & .tt {
       font-size: 24px;
       font-weight: bolder;
-      padding-right: 1rem;
+      padding-left: 1rem;
     }
   }
 
@@ -64,6 +64,7 @@
     background: #fff;
     margin: 3rem 0 0 0;
     box-shadow: 0 5px 10px 0 #666;
+    position: fixed;
 
     & .btnX {
       cursor: pointer;
@@ -71,7 +72,6 @@
       outline: none;
       border: none;
       border-radius: 5px;
-      margin: 0.5rem 0 0 0;
     }
 
     & .btnX:hover {
@@ -91,9 +91,9 @@
       & select {
         width: 80%;
         border-radius: 10px;
-        background: #66cbed;
-        color: #fff;
+        color: #000;
         outline: none;
+        border: 1px solid #ddd;
       }
     }
 
@@ -116,7 +116,7 @@
       color: #666;
 
       & #lt {
-        width: 90%;
+        width: 85%;
       }
     }
   }
@@ -197,6 +197,13 @@
       color: green;
     }
   }
+}
+
+.xTab {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (min-width: 768px) {

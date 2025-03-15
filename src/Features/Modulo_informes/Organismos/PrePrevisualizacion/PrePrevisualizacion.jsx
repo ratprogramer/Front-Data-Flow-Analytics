@@ -109,7 +109,7 @@ export function PrePrevisualizacion() {
   return (
     <div className="filtros">
       <div className="titulo" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}>
-        <ArrowLeft className="bck" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}/>  
+        {/* <ArrowLeft className="bck" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}/>   */}
         <p className="tt">Informes y registros</p>
       </div>
 
@@ -121,14 +121,21 @@ export function PrePrevisualizacion() {
 
       {shwFltrs && (
         <div className="tabFilt">
+          <div className="xTab">
+            <p>Filters</p>
+          <button className="btnX" onClick={toggleFilters}>
+            X
+          </button>
+          </div>
           <div className="fltr">
-            <p>Filtros</p>
-            <select name="tipo" onChange={(e) => setProductType(e.target.value)}>
+            <p>Tipo</p>
+            <select className="slc" name="tipo" onChange={(e) => setProductType(e.target.value)}>
               <option value="all">Todos</option>
               <option value="pp">Producto en proceso</option>
               <option value="pt">Producto terminado</option>
               <option value="sb">Saborización</option>
             </select>
+
           </div>
 
           <hr />
@@ -153,7 +160,7 @@ export function PrePrevisualizacion() {
 
           <hr />
           <div className="lt">
-            <p>Lote</p>
+            <p>Lote:</p>
             <input 
               type="text" 
               name="lote" 
@@ -162,10 +169,6 @@ export function PrePrevisualizacion() {
               onChange={(e) => setLoteFilter(e.target.value)}
             />
           </div>
-
-          <button className="btnX" onClick={toggleFilters}>
-            X
-          </button>
         </div>
       )}
 
@@ -187,7 +190,6 @@ export function PrePrevisualizacion() {
               </div>
             </div>
           ))}
-
         </div>
         <button className="btnSlct" onClick={handleNavigate}>Seleccionar</button>
       </div>

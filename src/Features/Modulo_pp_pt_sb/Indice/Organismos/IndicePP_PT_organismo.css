@@ -2,24 +2,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   margin-bottom: 1rem;
   background: transparent;
+  width: 95%;
+}
 
-  & h1 {
-    color: #000;
-    text-align: left;
-    margin-bottom: 2rem;
-  }
+.tttlo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Indice-container-organismo > * {
-  padding: 0 1rem;
-  width: 93.5%;
+  width: 100%;
   text-align: center;
 }
 
 @media screen and (min-width: 1024px) {
+  .tttlo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .menu-aside {
     width: 200px;
     left: 0;
