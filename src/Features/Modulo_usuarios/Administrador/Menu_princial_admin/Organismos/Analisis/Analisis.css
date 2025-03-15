@@ -55,10 +55,7 @@
 
   .analysis-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .analysis-card {
-    width: 70%;
+    gap: 10px;
   }
 
   .analysis-header {
