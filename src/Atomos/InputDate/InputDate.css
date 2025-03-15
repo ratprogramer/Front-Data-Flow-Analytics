@@ -21,7 +21,7 @@ input {
 
 input[type="time"]::-webkit-calendar-picker-indicator {
   position: relative;
-  width: 75%;
+  width: 78%;
   display: flex;
   left: 0;
   top: 0;
@@ -41,8 +41,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   input {
     font-size: 24px;
     height: 2rem;
+
     display: flex;
-    align-self: center;
-    width: 99%;
+    width: 98.5%;
+    justify-content: space-between;
+  }
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+
+    font-size: 24px;
+    cursor: pointer;
+    width: 100vw;
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 100vw;
+    font-size: 24px;
+
+    cursor: pointer;
   }
 }
