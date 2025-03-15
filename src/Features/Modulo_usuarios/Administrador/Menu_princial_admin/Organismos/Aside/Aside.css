@@ -87,4 +87,8 @@
   .sidebar-header {
     height: 3.2rem;
   }
+
+  .sidebar .user-profile .avatar {
+    background: transparent;
+  }
 }
