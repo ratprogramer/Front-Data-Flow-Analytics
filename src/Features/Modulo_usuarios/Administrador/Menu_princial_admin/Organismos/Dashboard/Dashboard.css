@@ -102,3 +102,25 @@
     overflow-x: auto;
   }
 }
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  .summary-cards {
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    & .card h3 {
+      font-size: medium;
+
+      margin-bottom: 5px;
+    }
+
+    & .card .card-value {
+      font-size: 24px;
+    }
+  }
+}

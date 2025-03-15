@@ -1,83 +1,90 @@
 .sidebar {
   width: 256px;
-  
   display: flex;
   flex-direction: column;
-  
   background: #fff;
   border-right: 1px solid #e0e0e0;
-  
-  & .sidebar-header {
-    display: flex;
-    align-items: center;
-    
-    padding: 10px;
-  
-    border-bottom: 1px solid #e0e0e0;
-  
-    & img {
-      width: 30px;
-      height: 30px;
-    }
-
-    & h2 {
-      margin-left: 10px;
-      
-      font-size: 18px;
-    }
-  }
-
-  & .sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    
-    padding: 20px 0;
-    
-    
-  }
-  
-  & .user-profile {
-    display: flex;
-    align-items: center;
-    
-    border-top: 1px solid #e0e0e0;
-    
-    padding: 20px;
-    
-    & .avatar {
-      width: 40px;
-      height: 40px;
-      
-      border-radius: 50%;
-      background: #e0e0e0;
-      
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      margin-right: 10px;
-      
-      font-weight: bold;
-    }
-    & h3 {
-      margin-bottom: 2px;
-      
-      font-size: 14px;
-    }
-    
-    & p {
-      color: #777;
-      font-size: 12px;
-    }
-  }
+  transition: width 0.3s ease-in-out;
 }
 
+.sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
 
+.sidebar .sidebar-header img {
+  width: 30px;
+  height: 30px;
+}
 
+.sidebar .sidebar-header h2 {
+  margin-left: 10px;
+  font-size: 18px;
+}
 
+.sidebar .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px 0;
+}
 
+.sidebar .user-profile {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding: 20px;
+}
 
+.sidebar .user-profile .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-weight: bold;
+}
 
+.sidebar .user-profile h3 {
+  margin-bottom: 2px;
+  font-size: 14px;
+}
 
+.sidebar .user-profile p {
+  color: #777;
+  font-size: 12px;
+}
 
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    height: 100vh;
+  }
+
+  .sidebar .sidebar-header h2,
+  .sidebar .user-profile h3,
+  .sidebar .user-profile p,
+  .labelBtn {
+    display: none;
+  }
+
+  .sidebar .sidebar-header,
+  .sidebar .user-profile {
+    justify-content: center;
+  }
+
+  .sidebar-header {
+    height: 3.2rem;
+  }
+}
