@@ -43,7 +43,7 @@ export function CardPP_molecula({
 
       <div className={`card-pp-molecula-container ${handleState('aprobado')}`} onClick={handleClick}>
         <div className="data-pp-molecula">
-          <h1 className="nombre-muestra">{nombreMuestra}</h1>
+          <p className="nombre-muestra">{nombreMuestra}</p>
           <p>Lote: <span>{lote}</span></p>
           <p>Fecha de análisis: <span>{fechaAnalisis}</span></p>
           <p>Responsable de análisis: <span>{responsableAnalisis}</span></p>

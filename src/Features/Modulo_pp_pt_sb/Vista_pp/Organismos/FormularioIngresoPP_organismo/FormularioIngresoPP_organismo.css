@@ -38,6 +38,6 @@
     font-size: 1.8rem;
     display: flex;
     flex-direction: column;
-    height: 43.75rem; 
+    gap: 15px;
   }
 }

@@ -62,3 +62,31 @@
   transform: translateY(-4px);
   box-shadow: 0 4px 12px #ccc;
 }
+
+@media screen and (max-width: 768px) {
+  .card-pp-molecula-container {
+    width: 80%;
+    height: 5rem;
+  }
+
+  .data-pp-molecula p {
+    font-size: 12px;
+  }
+  
+}
+
+@media screen and (min-width: 768px) {
+  .card-pp-molecula-container {
+    width: 80%;
+    height: 6rem;
+  }
+
+  .data-pp-molecula p {
+    font-size: 12px;
+  }
+
+  .data-pp-molecula .nombre-muestra {
+    font-size: 16px;
+  }
+  
+}

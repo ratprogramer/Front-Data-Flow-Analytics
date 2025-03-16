@@ -6,13 +6,43 @@
   height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .pp_registrados_container {
+    display: grid;
+    width: 99.1vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .pp_registrados_container {
     display: grid;
     width: 99.1vw;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     margin: 0;
     padding: 0;
   }
+
+  .pp_registrados_container .card-pp-molecula-container {
+    width: 80%;
+    height: 6rem;
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  .pp_registrados_container {
+    display: grid;
+    width: 99.1vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+  }
+  
 }

@@ -19,7 +19,7 @@ export const ProtectedRoute = ({ children }) => {
     return <Navigate to="/" />;
   }
   try {
-    const decode = decodeToken(token);
+    const decode = decodeToken(token);    
 
     // Verificar si el token está expirado
     if (!decode?.iat || (decode.exp && decode.exp * 1000 < Date.now())) {
@@ -38,6 +38,7 @@ export const ProtectedRoute = ({ children }) => {
       text: "Token inválido",
       icon: "error",
     });
+    console.log(error);
     return <Navigate to="/" />;
   }
 };

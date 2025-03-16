@@ -11,6 +11,7 @@ export async function usePostFetch(endPoint, data, navigate, token = true, metho
           "Content-Type": "application/json" 
         },
         body: JSON.stringify(data),
+        
       });
     }else{
       
