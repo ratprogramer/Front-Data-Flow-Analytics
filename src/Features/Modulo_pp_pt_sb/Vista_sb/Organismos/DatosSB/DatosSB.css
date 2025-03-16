@@ -1,18 +1,52 @@
-.datosSB-organismo-container{
-    color: #20abe2;
-    font-size: 18px;
-    width: 92%;
-    padding: 6px;
-    padding-left: 12px;
+.container-box-datos-sb {
+    background: #ddd;
     border-radius: 10px;
-    background-color: #d9d9d9;
-}
-
-.container-box-datos-sb{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.container-box-datos-sb p{
+    width: 50%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .datosSB-organismo-container {
+    margin: 0;
+    padding: .5rem;
+  
+  }
+  
+  .datosSB-organismo-container p {
     font-size: 18px;
-}
+    margin: 0;
+    padding: 0;
+  }
+  
+  .datosSB-organismo-container .ttPp {
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container-box-datos-sb {
+      background: #ddd;
+      border-radius: 10px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .datosSB-organismo-container {
+      margin: 0;
+      padding: .5rem;
+    }
+    
+    .datosSB-organismo-container p {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .datosSB-organismo-container .ttPp {
+      font-size: 24px;
+      margin: 0;
+      padding: 0;
+    }
+  }

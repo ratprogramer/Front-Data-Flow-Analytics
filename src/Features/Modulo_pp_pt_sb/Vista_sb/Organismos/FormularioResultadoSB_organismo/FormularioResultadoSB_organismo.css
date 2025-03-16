@@ -1,4 +1,4 @@
-.formulrio-resultado-pt-container{
+.formulrio-resultado-sb-container{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -6,9 +6,10 @@
     align-items: center;
 }
 
-.formulario-resultado-pt-campos{
+.formulario-resultado-sb-campos{
     display: flex;
+    width: 95%;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
 }

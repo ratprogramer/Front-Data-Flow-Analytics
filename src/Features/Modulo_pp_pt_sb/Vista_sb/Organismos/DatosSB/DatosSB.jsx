@@ -7,7 +7,7 @@ export function DatosSB() {
     return (
         <div className='container-box-datos-sb'>
             <div className="datosSB-organismo-container">
-                <p>{sabor}</p>
+                <p className="ttPp">{sabor}</p>
                 <p>Lote: {lote}</p>
             </div>
         </div>

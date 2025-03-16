@@ -5,9 +5,9 @@ import './FormularioResultadoSB.css';
 export function FormularioResultadoSB (){
     return(
         <div className="formularioResultadoPT-pagina-container">
-            <TituloPagina path={"/registrados_sb"} text={"Resultado"}></TituloPagina>
-            <DatosSB></DatosSB>
-            <FormularioResultadoSB_organismo></FormularioResultadoSB_organismo>
+            <TituloPagina path={"/registrados_sb"} text={"Resultado"} />
+            <DatosSB />
+            <FormularioResultadoSB_organismo />
         </div>
     )
 }

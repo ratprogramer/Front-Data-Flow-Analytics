@@ -206,45 +206,57 @@ const validacionesMoho = (event) => {
 return (
   <>
     <form
-      className="formulrio-resultado-pp-container"
+      className="formulrio-resultado-sb-container"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
-      <div className="formulario-resultado-pp-campos">
+      <div className="formulario-resultado-sb-campos">
         <TimeGroup
           id={"fecha_analisis"}
-          label={"Fecha de analisis *"}
+          label={"Fecha de analisis"}
           type={"date"}
           register={register}
           validaciones={validaciones}
           defaultDate={true}
           isDisabled={true}
-        ></TimeGroup>
+
+          dataRequired
+          variant={'formulario'}
+        />
         { primero ? (
           <>
             <TxtGroup
             id={"e_coli"}
-            label={"E. Coli *"}
+            label={"E. Coli"}
             placeholder={"Ingrese cantidad de E. coli."}
             register={register}
             onChange={validacionesColiformes1}
             validaciones={validaciones}
-            ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+            />
             <TxtGroup
             id={"coliformes"}
-            label={"Coliformes totales *"}
+            label={"Coliformes totales"}
             placeholder={"Ingrese cantidad de coliformes totales"}
             register={register}
             onChange={validacionesColiformes2}
             validaciones={validaciones}
-            ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+            />
             
             <TxtGroup
             id={"mohos_ley"}
-            label={"Mohos y levaduras *"}
+            label={"Mohos y levaduras"}
             placeholder={"Ingrese cantidad de mohos y levaduras"}
             register={register}
             onChange={validacionesMoho}
-            ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+            />
             
             <TxtGroup
             id={"observaciones"}
@@ -254,7 +266,9 @@ return (
             validaciones={validacionesObservaciones}
             onChange={(e) => setObservaciones(e.target.value)}
             value={observaciones}
-            ></TxtGroup>
+
+            variant={'formulario'}
+            />
             
             <SelectGroup
             id={"cabina"}
@@ -263,7 +277,9 @@ return (
             opciones={opcionesCoNC}
             validaciones={validaciones}
             placeHolder={false}
-            ></SelectGroup>
+
+            variant={'formulario'}
+            />
             
             <SelectGroup
             id={"medio_cultivo"}
@@ -272,8 +288,10 @@ return (
             opciones={opcionesCoNC}
             validaciones={validaciones}
             placeHolder={false}
-            ></SelectGroup>
-            <InputSub text={"Ingresar"}></InputSub>
+
+            variant={'formulario'}
+            />
+            <InputSub text={"Ingresar"} variant={'formulario'} />
           </>
         ) : (
           <>
@@ -284,7 +302,10 @@ return (
             register={register}
             onChange={validacionesColiformes1}
             value={e_coli}
-          ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+          />
           
           <TxtGroup
             id={"coliformes"}
@@ -293,7 +314,10 @@ return (
             register={register}
             value={coliformes}
             onChange={validacionesColiformes2}
-          ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+          />
 
           <TxtGroup
             id={"mohos_ley"}
@@ -302,7 +326,10 @@ return (
             register={register}
             onChange={validacionesMoho}
             validaciones={validaciones}
-          ></TxtGroup>
+
+            variant={'formulario'}
+            dataRequired
+          />
         
           <TxtGroup
             id={"observaciones"}
@@ -312,7 +339,9 @@ return (
             onChange={(e) => setObservaciones(e.target.value)}
             validaciones={validacionesObservaciones}
             value={observaciones}
-          ></TxtGroup>
+
+            variant={'formulario'}
+          />
           
           <SelectGroup
             id={"cabina"}
@@ -320,7 +349,9 @@ return (
             label={"Cabina"}
             opciones={opcionesCabina}
             placeHolder={false}
-          ></SelectGroup>
+
+            variant={'formulario'}
+          />
 
           <SelectGroup
             id={"medio_cultivo"}
@@ -328,8 +359,10 @@ return (
             label={"Medio de cultivo"}
             opciones={opcionesMedio_cultivo}
             placeHolder={false}
-          ></SelectGroup>
-          <InputSub text={"Ingresar"}></InputSub>
+
+            variant={'formulario'}
+          />
+          <InputSub text={"Ingresar"} variant={'formulario'} />
           </>
         )
       }
