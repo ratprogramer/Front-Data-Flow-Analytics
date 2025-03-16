@@ -1,63 +1,83 @@
 .card-sb-molecula-container {
-  width: 85%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 3%;
-
-  border: 1px solid black;
-  border-radius: 10px;
-
-  padding: 0.5% 1.5% 0.5% 2%;
-  background: #00a8e1;
-  color: white;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.75);
-  transition: all 0.1s;
+  width: 90%;
+  height: 6rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
   cursor: pointer;
-
-  margin: 0 auto;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-top: 4px solid transparent;
+  position: relative;
+  margin: 0.3rem .6rem;
+
+  & .nombre-muestra-sb {
+    color: #000;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 8px;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+  }
 }
 
-.card-sb-molecula-container:active {
-  background-color: #01a3da;
-  transform: scale(0.97);
+.data-sb-molecula {
+  flex-grow: 1;
 }
 
-.card-pp-estado {
-  width: 50px;
+.data-sb-molecula p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #000;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & span {
+    background: #eee;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    padding: 1px 5px;
+    border-radius: 15px;
+  }
 }
 
-.estado-img-pp {
-  width: 100%;
-  height: 100%;
+.card-sb-molecula-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px #ccc;
 }
 
-.nombre-muestra {
-  font-size: 1.4rem;
-  color: rgb(245, 246, 248);
-  font-weight: 200;
-}
-
-.data-pp-molecula {
-  line-height: 0.35;
-}
-
-@media screen and (min-width: 1024px) {
-  .nombre-muestra {
-    font-size: 1.8rem;
-    font-weight: 300;
+@media screen and (max-width: 768px) {
+  .card-sb-molecula-container {
+    width: 80%;
+    height: 5rem;
   }
 
-  .card-pp-molecula-container {
-    width: 77%;
+  .data-sb-molecula p {
+    font-size: 12px;
+  }
+  
+}
+
+@media screen and (min-width: 768px) {
+  .card-sb-molecula-container {
+    width: 80%;
+    height: 6rem;
   }
 
-  .data-pp-molecula {
-    font-size: 1.4rem;
+  .data-sb-molecula p {
+    font-size: 12px;
   }
+
+  .data-sb-molecula .nombre-muestra-sb {
+    font-size: 16px;
+  }
+  
 }

@@ -11,14 +11,11 @@ export function CardSB_molecula({sabor, lote, fechaAnalisis, responsableAnalisis
     return(
         <>
             <div className="card-sb-molecula-container" onClick={handleClick}>
-                <div className="data-pp-molecula">
-                    <h1 className="nombre-muestra">{sabor}</h1>
-                    <p>Lote: {lote}</p>
-                    <p>Fecha de analisis: {fechaAnalisis}</p>   
-                    <p>Responsable de analisis: {responsableAnalisis}</p>    
-                </div>
-                <div className="card-pp-estado">
-                    <img className="estado-img-pp" src="src\imgs\estado1.png" alt="" />
+                <div className="data-sb-molecula">
+                    <h1 className="nombre-muestra-sb">{sabor}</h1>
+                    <p>Lote: <span>{lote}</span></p>
+                    <p>Fecha de analisis: <span>{fechaAnalisis}</span></p>   
+                    <p>Responsable de analisis: <span>{responsableAnalisis}</span></p>    
                 </div>
             </div>
         </>
