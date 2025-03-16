@@ -23,7 +23,7 @@
   stroke: #00ffff;
   stroke-dasharray: 48, 144;
   stroke-dashoffset: 192;
-  animation: dash_682 1s linear infinite;
+  animation: dash_682 2s linear infinite;
   animation-delay: 0s;
 }
 
@@ -33,7 +33,7 @@
   stroke-dasharray: 48, 144;
   stroke-dashoffset: 192;
   animation: dash_682 1s linear infinite;
-  animation-delay: 1s;
+  animation-delay: 0s;
 }
 
 @keyframes dash_682 {
