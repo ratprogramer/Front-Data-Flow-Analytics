@@ -2,8 +2,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: #4141413f;
     align-items: center;
     width: 85%;
+    border: 1px solid #696969;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
+    padding: 3rem 1.5rem;
+    border-radius: 10px;
+}
+
+.input-lg-container {
+    display: flex;
+    align-items: center;
+    background: #66cbed23;
+    border-radius: 7px;
+    padding-inline: 10px;
 }
 
 .group-container{
@@ -15,9 +28,15 @@
 
 @media screen and (min-width: 768px) {
     .loginForm-organismo {
-        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #4141413f;
+        align-items: center;
+        width: 30%;
+        border: 1px solid #696969;
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
-        padding: 3rem;
+        padding: 3rem 1.5rem;
         border-radius: 10px;
     }
     

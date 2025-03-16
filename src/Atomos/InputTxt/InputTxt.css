@@ -1,9 +1,9 @@
 .inputTxt-atomo[data-variant="login"] {
-    background-color: #66cbed;
+    background-color: transparent;
     color: #ffffff;
     font-size: 18px;
     height: 2rem;
-    border: 1px solid black;
+    border: none;
     border-radius: 7px;
 }
 

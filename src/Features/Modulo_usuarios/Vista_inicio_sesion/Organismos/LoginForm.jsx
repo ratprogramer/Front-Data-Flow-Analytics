@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Label } from "../../../../Atomos/Label/Label";
 import { InputTxt } from "../../../../Atomos/InputTxt/InputTxt";
+import { User, Lock } from "lucide-react";
 
 export function LoginForm() {
   const {
@@ -50,29 +51,36 @@ export function LoginForm() {
       className="loginForm-organismo"
     >
       <div className="group-container">
-        <Label htmlFor={"dni"} text={"Usuario"} variant={'login'}></Label>
-        <InputTxt
-          id={"dni"}
-          placeholder={"Ingrese usuario"}
-          register={register}
-          type={"text"}
-          validaciones={{ require: "El usuario es obligatorio" }}
+        <Label htmlFor={"dni"} text={""} variant={'login'}></Label>
+        <div className="input-lg-container">
+          <User />
+          <InputTxt
+            id={"dni"}
+            placeholder={"Ingrese usuario"}
+            register={register}
+            type={"text"}
+            validaciones={{ require: "El usuario es obligatorio" }}
 
-          variant={'login'}
-        />
+            variant={'login'}
+          />
+        </div>
       </div>
 
       <div className="group-container">
-        <Label htmlFor={"contraseña"} text={"Contraseña"} variant={'login'}></Label>
-        <InputTxt
-          id={"contraseña"}
-          placeholder={"Ingrese contraseña"}
-          register={register}
-          type={"password"}
-          validaciones={{ require: "La contraseña es obligatoria" }}
+        <Label htmlFor={"contraseña"} text={""} variant={'login'}></Label>
 
-          variant='login'
-        />
+        <div className="input-lg-container">
+          <Lock />
+          <InputTxt
+            id={"contraseña"}
+            placeholder={"Ingrese contraseña"}
+            register={register}
+            type={"password"}
+            validaciones={{ require: "La contraseña es obligatoria" }}
+
+            variant='login'
+          />
+        </div>
       </div>
 
       <InputSub text="Ingresar" type="submit" variant='login' />
