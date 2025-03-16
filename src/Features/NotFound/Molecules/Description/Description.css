@@ -1,0 +1,16 @@
+.description {
+  max-width: 500px;
+  color: #ffffff;
+  opacity: 0.8;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 0.8; transform: translateY(0); }
+}

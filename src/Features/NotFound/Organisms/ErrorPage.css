@@ -1,0 +1,60 @@
+.error-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #001242 0%, #0047cc 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-page::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 240, 255, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+}
+
+.error-content {
+  position: relative;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.btn404 {
+  background: #00f0ff;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #001242;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn404:hover {
+  background: #001242;
+  color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}

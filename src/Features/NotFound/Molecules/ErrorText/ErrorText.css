@@ -1,0 +1,32 @@
+.error-text {
+  position: relative;
+  perspective: 1000px;
+  z-index: 1;
+}
+
+.error-404 {
+  font-size: 140px;
+  color: #00f0ff;
+  font-weight: bold;
+  text-shadow: 
+    0 0 20px rgba(0, 240, 255, 0.5),
+    0 0 40px rgba(0, 240, 255, 0.3),
+    0 0 60px rgba(0, 240, 255, 0.1);
+  margin: 0;
+  transform: rotateX(20deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.error-message {
+  font-size: 48px;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 12px;
+  transform: translateY(-20px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { transform: rotateX(20deg) translateY(0); }
+  50% { transform: rotateX(20deg) translateY(-20px); }
+}

@@ -33,7 +33,7 @@ import { FormularioResultadoPT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Pagin
 import { PrePrevisualizacion } from "./Features/Modulo_informes/Organismos/PrePrevisualizacion/PrePrevisualizacion";
 import { VistaInforme } from "./Features/Modulo_informes/Paginas/VistaInforme/VistaInforme";
 
-
+import { ErrorPage } from "./Features/NotFound/Organisms/ErrorPage";
 
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 
@@ -214,6 +214,8 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
     </>
