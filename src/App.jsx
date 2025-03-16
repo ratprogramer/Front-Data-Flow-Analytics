@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 import "./app.css";
 
 import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
@@ -36,8 +36,22 @@ import { VistaInforme } from "./Features/Modulo_informes/Paginas/VistaInforme/Vi
 import { ErrorPage } from "./Features/NotFound/Organisms/ErrorPage";
 
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
+import { LoadPage } from "./Features/LoadPage/LoadPage";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <LoadPage />
+    );
+  }
+
   return (
     <>
       <Router>
