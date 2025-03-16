@@ -17,9 +17,6 @@ export function CardPT_molecula({nombreMuestra, lote, fechaAnalisis, responsable
                     <p>Fecha de analisis: {fechaAnalisis}</p>   
                     <p>Responsable de analisis: {responsableAnalisis}</p>    
                 </div>
-                <div className="card-pt-estado">
-                    <img className="estado-img-pt" src="src\imgs\estado1.png" alt="" />
-                </div>
             </div>
         </>
     )
