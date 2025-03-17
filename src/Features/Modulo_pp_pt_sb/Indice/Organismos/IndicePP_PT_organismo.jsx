@@ -8,26 +8,40 @@ export function IndicePP_PT_organismo() {
   const [openSection, setOpenSection] = useState(null);
   const navigate = useNavigate();
 
-  const botones = [
-    // { path: "/sub_menu_pp", text: "Producto en Proceso", icon: <ClipboardList /> },
-    // { path: "/sub_menu_sb", text: "Saborización", icon: <FlaskConical /> },
-    // { path: "/sub_menu_pt", text: "Producto Terminado", icon: <FileCheck /> },
-    { path: "/seleccion_muestras", text: "Informes", icon: <BarChart3 /> },
-  ];
-
   const sections = [
-    { id: "pp", title: "Producto en proceso", icon: <ClipboardList />, buttons: [
-      { path: "/ingreso_producto_p", text: "Registrar producto en proceso", icon: <FilePlus /> },
-      { path: "/registrados_pp", text: "Ingresar resultado ", icon: <FileChartColumn /> },
-    ]},
-    { id: "sb", title: "Saborización", icon: <FlaskConical />, buttons: [
-      { path: "/ingreso_sb", text: "Registrar saborización", icon: <FilePlus /> },
-      { path: "/registrados_sb", text: "Ingresar resultado ", icon: <FileChartColumn /> },
-    ]},
-    { id: "pt", title: "Producto terminado", icon: <FileCheck />, buttons: [
-      { path: "/productos_registrados_pp_", text: "Registrar producto", icon: <FilePlus /> },
-      { path: "/productos_registrados_pt", text: "Ingresar resultado", icon: <FileChartColumn /> },
-    ]},
+    {
+      id: "pp",
+      title: "Producto en proceso",
+      icon: <ClipboardList />,
+      buttons: [
+        { path: "/ingreso_producto_p", text: "Registrar producto", icon: <FilePlus /> },
+        { path: "/registrados_pp", text: "Ingresar resultado", icon: <FileChartColumn /> },
+      ],
+    },
+    {
+      id: "sb",
+      title: "Saborización",
+      icon: <FlaskConical />,
+      buttons: [
+        { path: "/ingreso_sb", text: "Registrar saborización", icon: <FilePlus /> },
+        { path: "/registrados_sb", text: "Ingresar resultado", icon: <FileChartColumn /> },
+      ],
+    },
+    {
+      id: "pt",
+      title: "Producto terminado",
+      icon: <FileCheck />,
+      buttons: [
+        { path: "/productos_registrados_pp_", text: "Registrar producto", icon: <FilePlus /> },
+        { path: "/productos_registrados_pt", text: "Ingresar resultado", icon: <FileChartColumn /> },
+      ],
+    },
+    {
+      id: "informes",
+      title: "Informes",
+      icon: <BarChart3 />,
+      buttons: [{ path: "/seleccion_muestras", text: "Informes", icon: <BarChart3 /> }],
+    },
   ];
 
   const toggleSection = (id) => {
@@ -38,22 +52,24 @@ export function IndicePP_PT_organismo() {
     <div className="Indice-container-organismo">
       <div className="tttlo">
         <h1>Menú</h1>
-        <LogOut style={{ cursor: 'pointer' }} onClick={() => navigate("/")} />
+        <LogOut style={{ cursor: "pointer" }} onClick={() => navigate("/")} />
       </div>
 
-      {sections.map(({ id, title, buttons }) => (
+      {sections.map(({ id, title, icon, buttons }) => (
         <div key={id} className="btn-sctn-cntnr">
           <div className="btn-sctn" onClick={() => toggleSection(id)}>
-            <span>
-              {sections.find((section) => section.id === id)?.icon}
-            </span>
+            <span>{icon}</span>
             {title}
           </div>
-          {openSection === id && <BotonesIndice botones={buttons} />}
+          {openSection === id && (
+            <div className="buttons-container">
+              {buttons.map((button, index) => (
+                <BotonesIndice key={index} botones={[button]} />
+              ))}
+            </div>
+          )}
         </div>
       ))}
-      <BotonesIndice botones={botones} />
-
     </div>
   );
 }

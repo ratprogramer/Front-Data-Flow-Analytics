@@ -75,6 +75,32 @@
   }
 }
 
+.buttons-container {
+  width: 90%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  
+  margin: 5px 0 0 1rem;
+  padding: 0 0 0 .5rem;
+  
+  border-left: 3px solid #007bff;
+  
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .tttlo {
     display: flex;
