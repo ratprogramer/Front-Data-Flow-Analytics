@@ -11,18 +11,15 @@ import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrado
 
 import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
 
-
 import { SubIndicePP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/SubindicePP/SubIndicePP";
 import { FormularioRegistroPP_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioRegistroPP/FormularioRegistroPP";
 import { Pp_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/Pp_Registrados/Pp_Registrados";
 import { FormularioResultadoPP } from "./Features/Modulo_pp_pt_sb/Vista_pp/Paginas/FormularioResultadoPP/FormularioResultadoPP";
 
-
 import { SubIndiceSB } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/SubindiceSB/SubIndiceSB";
 import { FormularioRegistroSB_pagina } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioRegistroSB/FormularioRegistroSB_pagina";
 import { Sb_Registrados } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/Sb_Registrados/Sb_Registrados";
 import { FormularioResultadoSB } from "./Features/Modulo_pp_pt_sb/Vista_sb/Paginas/FormularioResultadoSB/FormularioResultadoSB";
-
 
 import { SubIndicePT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/SubindicePT/SubIndicePT";
 import { PP_Registrados_PrePT_pagina } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/PP_Registrados_PrePT_pagina/PP_Registrados_PrePT_pagina";
