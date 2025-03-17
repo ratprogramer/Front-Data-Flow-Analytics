@@ -62,7 +62,8 @@ function App() {
             path="/menu"
             element={
               <ProtectedRoute>
-                <MenuPrincipal />
+                {/* <MenuPrincipal /> */}
+                <IndicePP_PT />
               </ProtectedRoute>
             }
           />

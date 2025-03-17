@@ -1,7 +1,6 @@
 .botones-indicepp_pt-container {
-  gap: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 50vw;
+  width: 90vw;
 }
