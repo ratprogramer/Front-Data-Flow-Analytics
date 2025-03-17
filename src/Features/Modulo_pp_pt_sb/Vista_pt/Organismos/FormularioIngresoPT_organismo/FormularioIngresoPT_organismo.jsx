@@ -124,7 +124,7 @@ export function FormularioIngresoPT_organismo() {
       <div className="formulario-pt-campos">
         <TimeGroup
           id={"fecha_analisis"}
-          label={"Fecha de análisis *"}
+          label={"Fecha de análisis"}
           type={"date"}
           register={register}
           validaciones={validaciones}
@@ -134,18 +134,20 @@ export function FormularioIngresoPT_organismo() {
 
         <TimeGroup
           id={"fecha_env"}
-          label={"Fecha de envasado *"}
+          label={"Fecha de envasado"}
           type={"date"}
           register={register}
           validaciones={validaciones}
           rangeMode={"past"}
           rangeDays={4}
           defaultDate={true}
+
+          dataRequired
         />
 
         <TimeGroup
           id={"fecha_vencimiento"}
-          label={"Fecha de vencimiento *"}
+          label={"Fecha de vencimiento"}
           type={"date"}
           register={register}
           validaciones={validaciones}
@@ -157,44 +159,55 @@ export function FormularioIngresoPT_organismo() {
         <SelectGroup
           id={"ref"}
           register={register}
-          label={"Referencia *"}
+          label={"Referencia"}
           opciones={opcionesRef}
           validaciones={validaciones}
+
+          dataRequired
         />
 
         <SelectGroup
           id={"maquina_envasadora"}
           register={register}
-          label={"Máquina envasadora *"}
+          label={"Máquina envasadora"}
           opciones={opcionesMaquina}
           validaciones={validaciones}
+
+          dataRequired
         />
 
         <SelectGroup
           id={"presentacion"}
           register={register}
-          label={"Presentación del producto *"}
+          label={"Presentación del producto"}
           opciones={opcionesPresentacion}
           validaciones={validaciones}
+
+          dataRequired
         />
 
         <TimeGroup
           id={"hora_empaque"}
-          label={"Hora de empaque *"}
+          label={"Hora de empaque"}
           register={register}
           type={"time"}
           validaciones={validaciones}
+
+          dataRequired
         />
 
         <TxtGroup
           id={"lote"}
-          label={"Lote *"}
+          label={"Lote"}
           placeholder={"Ingrese el lote del producto terminado"}
           register={register}
           value={lote}
           validaciones={validacionesLote}
           type="number"
           onChange={(e) => handleChange(e)}
+
+          dataRequired
+          variant={"formulario"}
         />
 
         <TxtGroup
@@ -203,8 +216,10 @@ export function FormularioIngresoPT_organismo() {
           placeholder={"Ingrese las observaciones"}
           register={register}
           validaciones={validacionesObservaciones}
+
+          variant={"formulario"}
         />
-        <InputSub text={"Ingresar"} />
+        <InputSub text={"Ingresar"} variant={"formulario"}/>
       </div>
     </form>
   );

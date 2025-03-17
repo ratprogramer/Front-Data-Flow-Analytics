@@ -174,6 +174,9 @@ export function FormularioIngresoSB_organismo() {
           validaciones={validaciones}
           rangeDays={4}
           rangeMode={"past"}
+
+          dataRequired={'true'}
+          variant={'formulario'}
         />
 
         <TimeGroup
@@ -183,6 +186,9 @@ export function FormularioIngresoSB_organismo() {
           register={register}
           validaciones={validaciones}
           defaultDate={true}
+
+          dataRequired={'true'}
+          variant={'formulario'}
         />
 
         <SelectGroup
