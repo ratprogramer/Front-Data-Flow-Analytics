@@ -1,24 +1,18 @@
-import { BarChart } from "../../Organismos/Grafica/BarChart";
+import { BarCharts } from "../../Organismos/Grafica/BarChart";
 import { Icon } from "../../Organismos/IconList/Icon";
+import { useState } from "react";
 import "./Dashboard.css";
 
-const chartData = [
-  { hour: "8:00", expected: 12, completed: 10 },
-  { hour: "10:00", expected: 18, completed: 15 },
-  { hour: "12:00", expected: 15, completed: 16 },
-  { hour: "14:00", expected: 20, completed: 18 },
-  { hour: "16:00", expected: 24, completed: 19 },
-  { hour: "18:00", expected: 10, completed: 8 },
-];
-
 export const Dashboard = () => {
+
+  const [filter, setFilter] = useState(1);
   return (
     <div className="dashboard-content">
       <h1>Dashboard General de Muestras</h1>
       <div className="summary-cards">
-        {[{ title: "Total de muestras", value: 76, subtitle: "Hoy" },
-          { title: "Muestras completadas", value: 64, subtitle: "84% del total", className: "green" },
-          { title: "Muestras pendientes", value: 12, subtitle: "16% del total", className: "orange" }
+        {[{ title: "Total de muestras", value: 14, subtitle: "Hoy" },
+          { title: "Muestras completadas", value: 12, subtitle: "84% del total", className: "green" },
+          { title: "Muestras pendientes", value: 2, subtitle: "16% del total", className: "orange" }
         ].map(({ title, value, subtitle, className = "" }, index) => (
           <div className="card" key={index}>
             <h3>{title}</h3>
@@ -31,14 +25,18 @@ export const Dashboard = () => {
         <h2>Estadísticas de Muestras</h2>
         <p>Comparativa entre muestras esperadas y realizadas</p>
         <div className="chart-filters">
-          {["Hoy", "Este mes", "Histórico"].map((label, index) => (
-            <button key={index} className={`filter-button ${index === 0 ? "active" : ""}`}>
-              <Icon name="calendar" /> {label}
-            </button>
-          ))}
+        <button className={`filter-button ${filter === 1 ? "active" : ""}`} onClick={() => setFilter(1)}>
+              <Icon name="calendar" /> Hoy
+        </button>
+        <button className={`filter-button ${filter === 2  ? "active" : ""}`} onClick={() => setFilter(2)}>
+              <Icon name="calendar" /> Este mes            
+        </button>
+        <button className={`filter-button ${filter === 3  ? "active" : ""}`} onClick={() => setFilter(3)}>
+              <Icon name="calendar" /> Este año
+        </button>
         </div>
         <div className="chart">
-          <BarChart data={chartData} />
+          <BarCharts filter={filter} />
         </div>
       </div>
     </div>
