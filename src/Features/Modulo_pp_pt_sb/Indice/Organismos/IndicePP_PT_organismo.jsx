@@ -54,22 +54,40 @@ export function IndicePP_PT_organismo() {
         <h1>Menú</h1>
         <LogOut style={{ cursor: "pointer" }} onClick={() => navigate("/")} />
       </div>
-
-      {sections.map(({ id, title, icon, buttons }) => (
-        <div key={id} className="btn-sctn-cntnr">
-          <div className="btn-sctn" onClick={() => toggleSection(id)}>
-            <span>{icon}</span>
-            {title}
-          </div>
-          {openSection === id && (
-            <div className="buttons-container">
-              {buttons.map((button, index) => (
-                <BotonesIndice key={index} botones={[button]} />
-              ))}
+  
+      {/* Renderizar todas las secciones excepto "Informes" */}
+      {sections
+        .filter(({ id }) => id !== "informes")
+        .map(({ id, title, icon, buttons }) => (
+          <div key={id} className="btn-sctn-cntnr">
+            <div className="btn-sctn" onClick={() => toggleSection(id)}>
+              <span>{icon}</span>
+              {title}
             </div>
-          )}
+            {openSection === id && (
+              <div className="buttons-container">
+                {buttons.map((button, index) => (
+                  <BotonesIndice key={index} botones={[button]} />
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+  
+      {/* Renderizar "Informes" como un botón independiente pero con el mismo estilo */}
+      {sections.find(({ id }) => id === "informes") && (
+        <div className="btn-sctn-a">
+          <BotonesIndice
+            botones={[
+              {
+                path: "/seleccion_muestras",
+                text: "Informes",
+                icon: <BarChart3 />,
+              },
+            ]}
+          />
         </div>
-      ))}
+      )}
     </div>
   );
 }
