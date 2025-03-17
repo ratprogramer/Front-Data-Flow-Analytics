@@ -1,4 +1,4 @@
-/* Asegura que el contenedor de rutas tenga posición relativa */
+/* El contenedor de rutas tenga posición relativa */
 .route-transition-container {
   position: relative;
   width: 100%;
