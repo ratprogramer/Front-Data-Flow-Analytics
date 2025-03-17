@@ -4,7 +4,7 @@ import { FormularioIngresoSB_organismo } from "../../Organismos/FormularioIngres
 export function FormularioRegistroSB_pagina() {
   return (
     <>
-      <TituloPagina path={"/sub_menu_sb"} text={"Registro"} />
+      <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Registro"} />
       <FormularioIngresoSB_organismo />
     </>
   );

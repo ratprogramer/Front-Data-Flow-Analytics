@@ -9,8 +9,8 @@ export function SubIndicePT_organismo(){
     ]
     return(
         <div className="Indice-container-organismo">
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Producto terminado"}></TituloPagina>
-            <BotonesIndice botones={botones}></BotonesIndice>
+            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Producto terminado"} />
+            <BotonesIndice botones={botones} />
         </div>
     )
 }

@@ -5,7 +5,7 @@ import "./FormularioRegistroPP.css"
 export function FormularioRegistroPP_pagina(){
     return(
         <div className="FormularioIngresoPP-container-pagina">
-            <TituloPagina path={"/sub_menu_pp"} text={"Registro"} />
+            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Registro"} />
             <FormularioIngresoPP_organismo />
         </div>
     )

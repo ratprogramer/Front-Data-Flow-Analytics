@@ -4,7 +4,7 @@ import { FormularioIngresoPT_organismo } from "../../Organismos/FormularioIngres
 export function FormularioRegistroPT_pagina(){
     return(
         <>
-            <TituloPagina path={"/sub_menu_pt"} text={"Registro"} />
+            <TituloPagina path={"/productos_registrados_pp_"} text={"Registro"} />
             <FormularioIngresoPT_organismo />
         </>
     )

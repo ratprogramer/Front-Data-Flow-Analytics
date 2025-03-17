@@ -6,7 +6,7 @@ export function PP_Registrados_PrePT_pagina(){
     
     return(
         <div className="contPrePtPag">
-            <TituloPagina path={"/sub_menu_pt"} text={"Productos en proceso"} />
+            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Productos en proceso"} />
             <PP_Registrados_prePT_organismo />
         </div>
     )
