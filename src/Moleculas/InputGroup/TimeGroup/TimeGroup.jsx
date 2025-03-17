@@ -16,7 +16,7 @@ export function TimeGroup({
     }){
     return(
         <div className="inputGroup-molecula">
-            <Label htmlFor={id} text={label} dataRequired={'true'} variant={'formulario'}/>
+            <Label htmlFor={id} text={label} dataRequired={dataRequired} variant={'formulario'}/>
             <InputDate 
                 id={id} 
                 type={type} 
@@ -26,6 +26,7 @@ export function TimeGroup({
                 isDisabled={isDisabled} 
                 rangeDays={rangeDays} 
                 rangeMode={rangeMode} 
+                dataRequired={dataRequired}
             />
         </div>
     )

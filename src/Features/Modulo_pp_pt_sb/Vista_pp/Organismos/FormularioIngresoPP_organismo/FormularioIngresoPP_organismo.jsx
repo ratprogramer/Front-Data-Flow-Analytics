@@ -140,7 +140,7 @@ export function FormularioIngresoPP_organismo() {
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
       Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
-      navigate("/menu");
+      navigate("/sub_menu_pp");
     }
   };
 
@@ -190,7 +190,8 @@ export function FormularioIngresoPP_organismo() {
             validaciones={validaciones}
             rangeMode={"past"}
             rangeDays={4}
-
+            
+            dataRequired='ture'
             variant='formulario'
           />
 

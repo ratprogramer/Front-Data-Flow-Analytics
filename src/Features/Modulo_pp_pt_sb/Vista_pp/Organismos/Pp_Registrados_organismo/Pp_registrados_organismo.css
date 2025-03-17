@@ -40,7 +40,7 @@
     display: grid;
     width: 99.1vw;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     margin: 0;
     padding: 0;
   }

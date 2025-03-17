@@ -4,8 +4,6 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pi
 const today = new Date();
 const formattedDate = today.toLocaleDateString('es-ES');
 
-
-
 const dataHoy = [
   { fecha: formattedDate, Completadas: 12, Totales: 14 }
 ];
@@ -38,7 +36,6 @@ const dataAño = [
 ];
 
 export const BarCharts = ({ filter }) => {
-  
   
   return (
     <>

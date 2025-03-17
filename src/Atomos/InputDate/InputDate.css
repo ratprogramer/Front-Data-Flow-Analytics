@@ -37,6 +37,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+input[type="date"]:disabled {
+  background: #eee;
+  color: #999;
+}
+
 @media screen and (min-width: 768px) {
   input {
     font-size: 24px;
