@@ -4,9 +4,10 @@ import { useGetFetch } from "../../../../helpers/useGetFetch";
 
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
-import { CircleCheckBig, Filter, ArrowLeft } from "lucide-react";
+import { CircleCheckBig, Filter } from "lucide-react";
 import "./PrePrevisualizacion.css";
 import Swal from "sweetalert2";
+import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
 
 export function PrePrevisualizacion() {
   const navigate = useNavigate();
@@ -108,10 +109,8 @@ export function PrePrevisualizacion() {
 
   return (
     <div className="filtros">
-      <div className="titulo" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}>
-        {/* <ArrowLeft className="bck" onClick={() => navigate("/menu_Derivado_lacteo_fermentado")}/>   */}
-        <p className="tt">Informes y registros</p>
-      </div>
+      <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Informes y registros"} />
+
 
       {!shwFltrs && (
         <button className="btnMenu" onClick={toggleFilters}>

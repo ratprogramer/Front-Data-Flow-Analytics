@@ -1,0 +1,53 @@
+/* Asegura que el contenedor de rutas tenga posición relativa */
+.route-transition-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Clases para slide-left  (animación al navegar o ir a una nueva ruta)*/
+.slide-left-enter {
+  transform: translateX(100%);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-left-enter-active {
+  transform: translateX(0);
+  transition: all 300ms ease-in-out;
+}
+
+.slide-left-exit {
+  transform: translateX(0);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-left-exit-active {
+  transform: translateX(-100%);
+  transition: all 300ms ease-in-out;
+}
+
+/* Clases para slide-right (animación al volver) */
+.slide-right-enter {
+  transform: translateX(-100%);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-right-enter-active {
+  transform: translateX(0);
+  transition: all 300ms ease-in-out;
+}
+
+.slide-right-exit {
+  transform: translateX(0);
+  position: absolute;
+  width: 100%;
+}
+
+.slide-right-exit-active {
+  transform: translateX(100%);
+  transition: all 300ms ease-in-out;
+}
