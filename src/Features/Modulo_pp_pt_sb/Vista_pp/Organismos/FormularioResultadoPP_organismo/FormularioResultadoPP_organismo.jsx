@@ -1,4 +1,4 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
 import { usePostFetch } from "../../../../../helpers/usePostFetch";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useLocation } from "react-router-dom";
 import { controladorResultados } from "../../../../../helpers/controladorResultados";
+import Swal from "sweetalert2";
 
 import "./FormularioResultadoPP_organismo.css";
 import { useState } from "react";
