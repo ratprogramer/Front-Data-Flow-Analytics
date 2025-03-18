@@ -24,3 +24,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b3b3b3;
 }
+
+.inputTxt-atomo[data-variant="login"]:-webkit-autofill,
+.inputTxt-atomo[data-variant="login"]:-webkit-autofill:hover,
+.inputTxt-atomo[data-variant="login"]:-webkit-autofill:focus,
+.inputTxt-atomo[data-variant="login"]:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  background: transparent !important;
+  -webkit-text-fill-color: #fff;
+  transition: background 5000s ease-in-out 0s !important;
+}
