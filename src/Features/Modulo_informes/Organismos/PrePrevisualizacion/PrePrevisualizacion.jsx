@@ -76,7 +76,6 @@ export function PrePrevisualizacion() {
     <div className="filtros">
       <TituloPagina path="/menu_Derivado_lacteo_fermentado" text="Informes y registros" />
 
-      {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>}
 
       {shwFltrs && (
         <div className="tabFilt" ref={tabFiltRef}>
@@ -117,8 +116,18 @@ export function PrePrevisualizacion() {
 
       <div className="selected">
         <p className="slctP">
-          seleccionados: <span className="slct">{nSlct}</span>
-          <button onClick={() => setSeleccionados(!seleccionados)}>Selected</button>
+          <span>
+            Seleccionados: <span className="slct">{nSlct}</span>
+          </span>
+
+           
+          <span className="cicle-btn" onClick={() => setSeleccionados(!seleccionados)}>
+            Seleccionados
+          <CircleCheckBig
+            style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
+          />
+          </span >
+          {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>}
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (
