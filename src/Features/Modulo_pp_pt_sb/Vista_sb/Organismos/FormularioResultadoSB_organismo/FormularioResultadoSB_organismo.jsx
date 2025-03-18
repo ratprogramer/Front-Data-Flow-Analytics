@@ -252,7 +252,7 @@ return (
             placeholder={"Ingrese cantidad de mohos y levaduras"}
             register={register}
             onChange={validacionesMoho}
-
+            isDisabled={true}
             variant={'formulario'}
             dataRequired
             />

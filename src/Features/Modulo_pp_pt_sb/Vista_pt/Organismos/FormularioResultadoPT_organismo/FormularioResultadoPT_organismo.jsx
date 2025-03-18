@@ -252,8 +252,7 @@ export function FormularioResultadoPT_organismo() {
               placeholder={"Ingrese cantidad de mohos y levaduras"}
               register={register}
               onChange={validacionesMoho}
-
-              
+              isDisabled={true}
               dataRequired
               variant={"formulario"}
               />
@@ -302,7 +301,7 @@ export function FormularioResultadoPT_organismo() {
               register={register}
               onChange={validacionesColiformes1}
               value={e_coli}
-
+              isDisabled={true}
               variant={"formulario"}
               dataRequired={true}
             />
@@ -314,7 +313,7 @@ export function FormularioResultadoPT_organismo() {
               register={register}
               value={coliformes}
               onChange={validacionesColiformes2}
-
+              isDisabled={true}
               
               dataRequired
               variant={"formulario"}
