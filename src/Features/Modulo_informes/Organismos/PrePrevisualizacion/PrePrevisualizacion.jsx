@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { CircleCheckBig, Filter } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import Swal from "sweetalert2";
 
-import { useGetFetch } from "../../../../helpers/useGetFetch";
+
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
-import "flatpickr/dist/flatpickr.min.css";
+import { useGetFetch } from "../../../../helpers/useGetFetch";
+
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
@@ -177,7 +179,11 @@ export function PrePrevisualizacion() {
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (
-            <div className={`info crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
+            <div 
+              className={`info crd ${card.select ? "crdSlct" : ""}`}  
+              key={index} 
+              onClick={(e) => handleSelect(index)}
+            >
               <div className={`info ${card.select ? "crdSlct" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} 
                   {card.select &&
