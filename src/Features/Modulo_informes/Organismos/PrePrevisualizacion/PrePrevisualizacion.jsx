@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGetFetch } from "../../../../helpers/useGetFetch";
-
-import "flatpickr/dist/flatpickr.min.css";
-import flatpickr from "flatpickr";
 import { CircleCheckBig, Filter } from "lucide-react";
-import "./PrePrevisualizacion.css";
+import flatpickr from "flatpickr";
 import Swal from "sweetalert2";
+
+import { useGetFetch } from "../../../../helpers/useGetFetch";
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
+import "flatpickr/dist/flatpickr.min.css";
+import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
   const navigate = useNavigate();
@@ -184,7 +184,7 @@ export function PrePrevisualizacion() {
         <div className="conj">
           {getFilteredCards().map((card, index) => (
             <div className={`info crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
-              <div className={`info crd ${card.select ? "crdSlct" : ""}`}>
+              <div className={`info ${card.select ? "crdSlct" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} 
                   {card.select &&
                     <CircleCheckBig />
@@ -201,3 +201,26 @@ export function PrePrevisualizacion() {
     </div>
   );
 }
+
+
+
+/*
+import { useLocation } from "react-router-dom";
+
+export function OtraVista() {
+  const location = useLocation();
+  const selectedCards = location.state?.selectedCards || []; // Accede a los datos
+
+  return (
+    <div>
+      <h1>Resumen de Selección</h1>
+      <ul>
+        {selectedCards.map((card, index) => (
+          <li key={index}>{card.nombre_pp || card.sabor} - Lote: {card.lote}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+*/

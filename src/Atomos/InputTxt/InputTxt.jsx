@@ -8,6 +8,7 @@ export function InputTxt({
   validaciones,
   value,
   onChange,
+  isDisabled,
 
   variant
 }) {
@@ -32,6 +33,9 @@ export function InputTxt({
       placeholder={placeholder}
       value={value}
       onBlur={onBlur}
+      
+      disabled={isDisabled}
+
       onChange={(e) => {
         // Primero ejecuta tu onChange personalizado (si existe)
         if (onChange) onChange(e);

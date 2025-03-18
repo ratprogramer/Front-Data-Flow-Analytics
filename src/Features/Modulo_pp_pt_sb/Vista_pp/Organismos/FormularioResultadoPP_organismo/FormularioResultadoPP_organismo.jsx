@@ -1,18 +1,17 @@
-import { useForm } from "react-hook-form";
-import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
 import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
-import { usePostFetch } from "../../../../../helpers/usePostFetch";
-import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGroup";
-import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
-import { useNavigate } from "react-router-dom";
-import { decodeToken } from "../../../../../helpers/decodeToken";
-import { useLocation } from "react-router-dom";
 import { controladorResultados } from "../../../../../helpers/controladorResultados";
+import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGroup";
+import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
+import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
+import { usePostFetch } from "../../../../../helpers/usePostFetch";
+import { decodeToken } from "../../../../../helpers/decodeToken";
+
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 import "./FormularioResultadoPP_organismo.css";
-import { useState } from "react";
-import { useEffect } from "react";
 
 export function FormularioResultadoPP_organismo (){
     const location = useLocation();
@@ -297,6 +296,7 @@ export function FormularioResultadoPP_organismo (){
               onChange={validacionesColiformes1}
               value={e_coli}
 
+              isDisabled={true}
               variant={'formulario'}
               dataRequired={'true'}
             />

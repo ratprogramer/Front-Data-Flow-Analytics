@@ -2,7 +2,7 @@ import { Label } from "../../../Atomos/Label/Label";
 import { InputTxt } from "../../../Atomos/InputTxt/InputTxt";
 import "./TxtGroup.css";
 
-export function TxtGroup({ id, label, type = "text", placeholder, register, value, validaciones, onChange, variant, dataRequired }) {
+export function TxtGroup({ id, label, type = "text", placeholder, register, value, validaciones, onChange, variant, dataRequired, isDisabled }) {
     return (
         <div className="inputGroup-molecula">
             <Label 
@@ -23,6 +23,7 @@ export function TxtGroup({ id, label, type = "text", placeholder, register, valu
                 register={register} 
                 validaciones={validaciones} 
                 value={value} 
+                isDisabled={isDisabled}
 
                 variant={variant} 
             />

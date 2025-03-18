@@ -238,6 +238,7 @@ export function FormularioIngresoPP_organismo() {
               placeholder={"Ingrese el punto alternativo"}
               register={register}
 
+
               dataRequired={'true'}
               variant='formulario'
             />
@@ -267,6 +268,7 @@ export function FormularioIngresoPP_organismo() {
             validaciones={validacionesObservaciones}
 
             variant='formulario'
+            isDisabled={false}
           />
           <InputSub text={"Ingresar"} variant={'formulario'} />
         </div>
