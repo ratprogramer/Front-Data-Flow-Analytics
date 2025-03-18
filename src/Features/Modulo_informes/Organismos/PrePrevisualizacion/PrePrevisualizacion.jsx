@@ -81,7 +81,7 @@ export function PrePrevisualizacion() {
         <div className="tabFilt" ref={tabFiltRef}>
           <div className="fltr">
             <p>Tipo</p>
-            <select className="slc" onChange={(e) => setProductType(e.target.value)}>
+            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)}>
               <option value="all">Todos</option>
               <option value="pp">Producto en proceso</option>
               <option value="pt">Producto terminado</option>
@@ -109,7 +109,13 @@ export function PrePrevisualizacion() {
           <hr />
           <div className="lt">
             <p>Lote:</p>
-            <input type="text" value={loteFilter} onChange={(e) => setLoteFilter(e.target.value)} />
+            <input 
+              type="text" 
+              id="lt" 
+              value={loteFilter} 
+              placeholder="Ingrese Lote"
+              onChange={(e) => setLoteFilter(e.target.value)} 
+            />
           </div>
         </div>
       )}
@@ -127,7 +133,8 @@ export function PrePrevisualizacion() {
             style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
           />
           </span >
-          {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>}
+          {/* {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>} */}
+          {!shwFltrs && <Filter className="btnMenu" onClick={() => setShwFltrs(true)} />}
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (

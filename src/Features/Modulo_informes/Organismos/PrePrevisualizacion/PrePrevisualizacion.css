@@ -6,7 +6,6 @@
   flex-direction: column;
 
   & .btnSlct {
-    width: 10rem;
     height: 2rem;
         
     background: #eee;
@@ -15,8 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    padding-inline: 1rem;
     
     font-weight: normal;
     
@@ -35,6 +32,7 @@
   & .btnMenu {
     width: fit-content;
     display: flex;
+    padding: .3rem;
     
     border-radius: 5px;
     border: none;
@@ -43,11 +41,14 @@
     
     outline: none;
     
-    z-index: 9999;
+    transition: all .2s ease-in-out;
+
+    z-index: 0;
   }
 
   & .btnMenu:hover {
     box-shadow: 0 0 10px 0 #ccc;
+    scale: 1.05;
   }
 
   & hr {
@@ -120,7 +121,7 @@
     & .fltr {
       width: 95%;
 
-      color: #666;
+      color: #555;
       
       display: flex;
       justify-content: space-between;
@@ -191,7 +192,7 @@
         align-items: center;
         justify-content: space-between;
         
-        padding-inline: 1rem;
+        padding: .4rem .5rem;
         
         font-weight: normal;
         
