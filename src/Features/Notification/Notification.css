@@ -45,6 +45,7 @@
   margin-top: 8px;
   opacity: 0;
   visibility: hidden;
+  padding-bottom: 6px;
   transition: all 0.3s ease;
   z-index: 1000;
   list-style: none;
