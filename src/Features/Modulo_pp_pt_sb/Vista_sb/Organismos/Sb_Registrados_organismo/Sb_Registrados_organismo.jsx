@@ -10,8 +10,10 @@ export function Sb_Registrados_organismo(){
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await useGetFetch("/producto/registrar_saborizacion", navigate);
-                setProductos(response.result);
+                const response = await useGetFetch("/producto/muestras_sb_incompletos", navigate);
+                console.log(response.data);
+                
+                setProductos(response.data);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
             }
@@ -35,6 +37,7 @@ export function Sb_Registrados_organismo(){
                     navRoute={"/ingreso_resultado_sb"}
                     sabor={producto.sabor}
                     lote={producto.lote}
+                    fecha24={producto.fecha_24h}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
                     responsableAnalisis={producto.responsable_analisis}
                     id_sb={producto.id_sb}

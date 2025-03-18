@@ -8,7 +8,13 @@ export function CardPP_molecula({
   responsableAnalisis,
   id_pp,
   navRoute,
+  fecha24
 }) {
+  if(fecha24){
+    console.log("fecha24");
+  }else{
+    console.log("no fecha24");
+  }
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(navRoute, {
@@ -29,7 +35,7 @@ export function CardPP_molecula({
   
   return (
     <>
-      <div className={`card-pp-molecula-container ${handleState('aprobado')}`} onClick={handleClick}>
+      <div className={`card-pp-molecula-container ${fecha24 ? "aprobado" : "pendiente"}`} onClick={handleClick}>
         <div className="data-pp-molecula">
           <p className="nombre-muestra">{nombreMuestra}</p>
           <p>Lote: <span>{lote}</span></p>
