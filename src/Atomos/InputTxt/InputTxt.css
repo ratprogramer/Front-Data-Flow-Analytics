@@ -26,6 +26,12 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+input[type="text"]:disabled {
+    background-color: #e4e4e7;
+    color: #71717a;
+}
+
+
 /*=========== estilos para el formulario ===========*/
 .inputTxt-atomo[data-variant="formulario"] {
     color: #000;

@@ -1,13 +1,7 @@
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import { useEffect, useState } from "react";
-import "./app.css";
-
 import { InicioSesion } from "./Features/Modulo_usuarios/Vista_inicio_sesion/Paginas/InicioSesion";
 
 import { MenuPrincipalAdmin }  from "./Features/Modulo_usuarios/Administrador/Menu_princial_admin/Pagina/MenuPrincipalAdmin/MenuPrincipalAdmin";
 import { Registro_Usuario_Pagina } from "./Features/Modulo_usuarios/Administrador/Vista_registro_usuario/Pagina/Registro_Usuario_Pagina";
-
-// import { MenuPrincipal } from "./Features/Modulo_menus/Paginas/MenuPrincipal";
 
 import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
 
@@ -36,8 +30,8 @@ import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
 
 import { Routes, Route, useLocation, useNavigationType } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { useEffect, useState } from "react";
 import "./app.css";
 
 function App() {
@@ -71,11 +65,11 @@ function App() {
       >
         <Routes location={location}>
           <Route path="/" element={<InicioSesion />} />
+
           <Route
             path="/menu"
             element={
               <ProtectedRoute>
-                {/* <MenuPrincipal /> */}
                 <IndicePP_PT />
               </ProtectedRoute>
             }
