@@ -36,6 +36,8 @@ export function InputTxt({
       
       disabled={isDisabled}
 
+      
+
       onChange={(e) => {
         // Primero ejecuta tu onChange personalizado (si existe)
         if (onChange) onChange(e);

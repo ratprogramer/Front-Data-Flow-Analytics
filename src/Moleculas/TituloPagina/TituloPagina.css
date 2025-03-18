@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .titulo-modulo-txt {
@@ -15,7 +15,7 @@
 
 @media screen and (min-width: 768px) {
   .tituloPagina-container {
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 20px;
 
   }

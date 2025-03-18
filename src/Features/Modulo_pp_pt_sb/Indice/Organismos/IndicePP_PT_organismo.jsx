@@ -1,12 +1,13 @@
+import { ClipboardList, FlaskConical, FileCheck, BarChart3, FilePlus, FileChartColumn } from "lucide-react";
 import { useState } from "react";
+
+import { UserOptions } from "../../../Modulo_usuarios/Analista/Vista_analistas/UserOptions/UserOptions";
 import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice";
-import { ClipboardList, FlaskConical, FileCheck, BarChart3, LogOut, FilePlus, FileChartColumn } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Notification } from '../../../Notification/Notification'
 import "./IndicePP_PT_organismo.css";
 
 export function IndicePP_PT_organismo() {
   const [openSection, setOpenSection] = useState(null);
-  const navigate = useNavigate();
 
   const sections = [
     {
@@ -48,14 +49,34 @@ export function IndicePP_PT_organismo() {
     setOpenSection(openSection === id ? null : id);
   };
 
+  /* 
+    Ejemplo de notificaciones, estos deberían reemplazarse con las cards. 
+    ver el componente Notification.jsx en Features.
+  */
+  const notif = [
+    { id: 1, message: 'Tienes nuevas notificaciones.' },  
+    { id: 2, message: 'Mensaje importante 1' },
+    { id: 3, message: 'Mensaje importante 2' },
+    { id: 4, message: 'Mensaje importante 3' },
+    { id: 5, message: 'Mensaje importante 4' },
+    { id: 6, message: 'Mensaje importante 5' },
+    { id: 7, message: 'Mensaje importante 6' },
+    { id: 8, message: 'Mensaje importante 7' },
+    { id: 9, message: 'Mensaje importante 8' },
+    { id: 10, message: 'Mensaje importante 9' },
+    { id: 11, message: 'Mensaje importante 10' },
+  ];
+
   return (
     <div className="Indice-container-organismo">
       <div className="tttlo">
         <h1>Menú</h1>
-        <LogOut style={{ cursor: "pointer" }} onClick={() => navigate("/")} />
+        <div style={{display: 'flex', alignItems: 'center'}}>
+        <Notification notif={notif} />
+        <UserOptions />
+        </div>
       </div>
   
-      {/* Renderizar todas las secciones excepto "Informes" */}
       {sections
         .filter(({ id }) => id !== "informes")
         .map(({ id, title, icon, buttons }) => (
@@ -74,7 +95,6 @@ export function IndicePP_PT_organismo() {
           </div>
         ))}
   
-      {/* Renderizar "Informes" como un botón independiente pero con el mismo estilo */}
       {sections.find(({ id }) => id === "informes") && (
         <div className="btn-sctn-a">
           <BotonesIndice

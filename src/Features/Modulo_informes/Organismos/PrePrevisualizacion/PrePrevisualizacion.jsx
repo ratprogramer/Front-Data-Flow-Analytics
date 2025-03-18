@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { CircleCheckBig, Filter } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import Swal from "sweetalert2";
-
-import { useGetFetch } from "../../../../helpers/useGetFetch";
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
-import "flatpickr/dist/flatpickr.min.css";
+import { useGetFetch } from "../../../../helpers/useGetFetch";
 import "./PrePrevisualizacion.css";
 
 export function PrePrevisualizacion() {
@@ -20,23 +19,19 @@ export function PrePrevisualizacion() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [nSlct, setNSlct] = useState(0);
 
+  const tabFiltRef = useRef(null);
+
   useEffect(() => {
-    async function fetchData() {
-      try{
+    (async () => {
+      try {
         const response = await useGetFetch("/producto/resultados_5d", navigate);
-        if(response.success){
-          const cardsWithSelect = response.data.map((card) => ({ ...card, select: false }));
-          console.log(cardsWithSelect);
-          
-          setCards(cardsWithSelect)
-        }else{
-          Swal.fire("Error", "Error al traer las muestras correspondientes", "error");
-        }
-      }catch(error){
+        response.success
+          ? setCards(response.data.map((card) => ({ ...card, select: false })))
+          : Swal.fire("Error", "Error al traer las muestras", "error");
+      } catch (error) {
         Swal.fire("Error", error, "error");
       }
-    }
-    fetchData();
+    })();
   }, []);
 
   useEffect(() => {
@@ -44,72 +39,37 @@ export function PrePrevisualizacion() {
     setSelectedCards(cards.filter((card) => card.select));
   }, [cards]);
 
+  useEffect(() => {
+    const handleClickOutside = ({ target }) => {
+      if (!tabFiltRef.current?.contains(target) && shwFltrs) {
+        setShwFltrs(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [shwFltrs]);
+
   const handleSelect = (index) => {
-    setCards(prev => 
-      prev.map((card, i) => 
-        i == index ? {...card, select: !card.select} : card
-      )
-    )
+    setCards((prev) =>
+      prev.map((card, i) => (i === index ? { ...card, select: !card.select } : card))
+    );
   };
 
-  const handleNavigate = () => {
-    if(selectedCards.length === 0){
-      alert("Pendejo")
-    }else{
-      navigate("/informe", { state: { selectedCards } });
-    }
-  };
-
-  const toggleFilters = () => setShwFltrs((prev) => !prev);
-  const formatDateToDMY = (dateString) => {
-    if (!dateString) return "";
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) return "";
-
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
+  const handleNavigate = () =>
+    selectedCards.length ? navigate("/informe", { state: { selectedCards } }) : alert("Pendejo");
 
   const getFilteredCards = () => {
-    let filteredCards = cards;
-
-    if (dateRange.length === 2) {
-      const [start, end] = dateRange;
-      filteredCards = filteredCards.filter((card) => {
-        const cardDate = new Date(card.fecha_analisis);
-        return cardDate >= start && cardDate <= end;
-      });
-    }
-
-    if (productType) {
-      filteredCards = filteredCards.filter((card) => {
-        console.log(productType);
-        
-        if (productType === "all") return true;
-        if (productType === "pp") return card.tipo == "PP";
-        if (productType === "pt") return card.tipo == "PT";
-        if (productType === "sb") return card.tipo == "SB";
-        return true;
-      });
-    }
-
-    if (loteFilter.trim() !== "") {
-      const search = loteFilter.replace(/\D/g, ""); 
-      filteredCards = filteredCards.filter((card) => {
-        const cardNumbers = card.lote.replace(/\D/g, ""); 
-        const regex = new RegExp(`^${search}`);
-        return regex.test(cardNumbers);
-      });
-    }
-    
-    if (seleccionados) {
-      filteredCards = filteredCards.filter((card) => card.select === true);
-    }
-
-    return filteredCards;
+    return cards
+      .filter((card) => !dateRange.length || (new Date(card.fecha_analisis) >= dateRange[0] && new Date(card.fecha_analisis) <= dateRange[1]))
+      .filter((card) =>
+        productType === "all" ? true :
+        productType === "pp" ? card.tipo === "PP" :
+        productType === "pt" ? card.tipo === "PT" :
+        productType === "sb" ? card.tipo === "SB" : true
+      )
+      .filter((card) => !loteFilter.trim() || new RegExp(`^${loteFilter.replace(/\D/g, "")}`).test(card.lote.replace(/\D/g, "")))
+      .filter((card) => !seleccionados || card.select);
   };
 
   return (
@@ -117,33 +77,18 @@ export function PrePrevisualizacion() {
       <TituloPagina path={"/menu"} text={"Informes y registros"} />
 
 
-      {!shwFltrs && (
-        <button className="btnMenu" onClick={toggleFilters}>
-          <Filter />
-        </button>
-      )}
-
       {shwFltrs && (
-        <div className="tabFilt">
-          <div className="xTab">
-            <p>Filters</p>
-          <button className="btnX" onClick={toggleFilters}>
-            X
-          </button>
-          </div>
+        <div className="tabFilt" ref={tabFiltRef}>
           <div className="fltr">
             <p>Tipo</p>
-            <select className="slc" name="tipo" onChange={(e) => setProductType(e.target.value)}>
+            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)}>
               <option value="all">Todos</option>
               <option value="pp">Producto en proceso</option>
               <option value="pt">Producto terminado</option>
               <option value="sb">Saborización</option>
             </select>
-
           </div>
-
           <hr />
-
           <div className="rfch">
             <p>Rango de fechas</p>
             <input
@@ -156,21 +101,20 @@ export function PrePrevisualizacion() {
                   dateFormat: "Y-m-d",
                   locale: { rangeSeparator: " a " },
                   maxDate: "today",
-                  onChange: (selectedDates) => setDateRange(selectedDates),
+                  onChange: (dates) => setDateRange(dates),
                 })
               }
             />
           </div>
-
           <hr />
           <div className="lt">
             <p>Lote:</p>
             <input 
               type="text" 
-              name="lote" 
               id="lt" 
-              value={loteFilter}
-              onChange={(e) => setLoteFilter(e.target.value)}
+              value={loteFilter} 
+              placeholder="Ingrese Lote"
+              onChange={(e) => setLoteFilter(e.target.value)} 
             />
           </div>
         </div>
@@ -178,19 +122,30 @@ export function PrePrevisualizacion() {
 
       <div className="selected">
         <p className="slctP">
-          seleccionados: <span className="slct">{nSlct}</span>
-          <button onClick={() => setSeleccionados(!seleccionados)}>Selected</button>
+          <span>
+            Seleccionados: <span className="slct">{nSlct}</span>
+          </span>
+
+           
+          <span className="cicle-btn" onClick={() => setSeleccionados(!seleccionados)}>
+            Seleccionados
+          <CircleCheckBig
+            style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
+          />
+          </span >
+          {/* {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>} */}
+          {!shwFltrs && <Filter className="btnMenu" onClick={() => setShwFltrs(true)} />}
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (
-            <div className={`info crd ${card.select ? "crdSlct" : ""}`}  key={index} onClick={(e) => handleSelect(index)}>
+            <div
+              className={`info crd ${card.select ? "crdSlct" : ""}`}
+              key={index}
+              onClick={() => handleSelect(index)}
+            >
               <div className={`info ${card.select ? "crdSlct" : ""}`}>
-                <h3>{card.nombre || "Error al cargar"} 
-                  {card.select &&
-                    <CircleCheckBig />
-                  }
-                </h3>
-                <p>Fecha de análisis: <span className="sPan">{formatDateToDMY(card.fecha_analisis)}</span></p>
+                <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>
+                <p>Fecha de análisis: <span className="sPan">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
                 <p>Lote: <span className="sPan">{card.lote}</span></p>
               </div>
             </div>
@@ -201,26 +156,3 @@ export function PrePrevisualizacion() {
     </div>
   );
 }
-
-
-
-/*
-import { useLocation } from "react-router-dom";
-
-export function OtraVista() {
-  const location = useLocation();
-  const selectedCards = location.state?.selectedCards || []; // Accede a los datos
-
-  return (
-    <div>
-      <h1>Resumen de Selección</h1>
-      <ul>
-        {selectedCards.map((card, index) => (
-          <li key={index}>{card.nombre_pp || card.sabor} - Lote: {card.lote}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-*/

@@ -1,8 +1,13 @@
+import { UserRound, CalendarFold, ChartLine, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 import "./DatosUsuario.css"
-import { UserRound, CalendarFold, ChartLine } from "lucide-react";
 
 
 export function DatosUsuario({rol, nombre}){
+
+    const navigate = useNavigate();
+
     const fecha = new Date();
     const año = fecha.getFullYear();
     const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // Mes inicia en 0, por lo que sumamos 1
@@ -11,9 +16,16 @@ export function DatosUsuario({rol, nombre}){
     return(
         <div className="datosUsuario-container">
             <div className="datosUsuario">
-                <p><span><ChartLine /></span>Analista</p>
-                <p><span><UserRound /></span>Julia R. Chalarca</p>
+                <p><span><ChartLine /></span>{ rol || "Analista" }</p>
+                <p><span><UserRound /></span>{ nombre || "Nombre Random" }</p>
                 <p><span><CalendarFold /></span><span className="fecha">Fecha:</span> {año}-{mes}-{dia}</p>
+                
+                <p className="logOut" onClick={() => navigate("/")}>
+                    <span>
+                        <LogOut/>
+                    </span>
+                    Log Out
+                </p>
             </div>
         </div>
     )

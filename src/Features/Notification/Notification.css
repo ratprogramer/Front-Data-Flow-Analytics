@@ -1,0 +1,111 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  padding: 4px;
+}
+
+.bell-icon {
+  transition: transform 0.2s;
+}
+
+.bell-icon:hover {
+  transform: scale(1.1);
+}
+
+.notification-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff4757;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: opacity 0.2s;
+}
+
+.list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  max-height: 400px;
+  padding: 8px 0 0 26px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  margin-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  list-style: none;
+}
+
+input:checked ~ .list {
+  opacity: 1;
+  visibility: visible;
+}
+
+.listitem {
+  cursor: pointer;
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s;
+}
+
+.listitem:hover {
+  background: #ecf7ff;
+}
+
+.listitem:active {
+  background: #e9ecef;
+}
+
+.listitem:last-child {
+  border-bottom: none;
+}
+
+.article {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Scrollbar styling */
+.webkit-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 transparent;
+}
+
+.webkit-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.webkit-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.webkit-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
