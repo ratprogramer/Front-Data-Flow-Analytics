@@ -1,0 +1,92 @@
+.card-pp-molecula-container {
+    width: 90%;
+    height: 6rem;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 4px solid transparent;
+    position: relative;
+    margin: 0.3rem 0;
+  
+    & .nombre-muestra {
+      color: #000;
+      font-size: 16px;
+      font-weight: bolder;
+      margin-bottom: 8px;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  /* Estados de las tarjetas, hay que ajustar en la lógica */
+  .card-pp-molecula-container.aprobado {
+    border-top-color: #ff1500;
+  }
+  
+  
+  .card-pp-molecula-container.pendiente {
+    border-top-color: #ffcc00;
+  }
+  
+  .data-pp-molecula {
+    flex-grow: 1;
+  }
+  
+  .data-pp-molecula p {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #000;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  
+    & span {
+      background: #eee;
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      padding: 1px 5px;
+      border-radius: 15px;
+    }
+  }
+  
+  .card-pp-molecula-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px #ccc;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card-pp-molecula-container {
+      width: 80%;
+      height: 5rem;
+    }
+  
+    .data-pp-molecula p {
+      font-size: 12px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .card-pp-molecula-container {
+      width: 80%;
+      height: 6rem;
+    }
+  
+    .data-pp-molecula p {
+      font-size: 12px;
+    }
+  
+    .data-pp-molecula .nombre-muestra {
+      font-size: 16px;
+    }
+  }
+  

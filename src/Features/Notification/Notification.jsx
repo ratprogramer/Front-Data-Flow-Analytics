@@ -1,13 +1,31 @@
 import { Bell } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-
-import { CardPP_molecula } from '../Modulo_pp_pt_sb/Vista_pp/Moleculas/CardPP_molecula/CardPP_molecula';
+import { useGetFetch } from '../../helpers/useGetFetch';
+import { useNavigate } from 'react-router-dom';
+import { CardNotificacion } from './CardNotificacion';
 import './Notification.css';
 
 export const Notification = ({ notif = [] }) => {
-  const [notifications, setNotifications] = useState(notif);
+  const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+
+  useEffect( () => {
+    const fetchData = async () => {
+        try {
+            const response = await useGetFetch("/producto/notificaciones", navigate);
+            console.log(response.data);
+            
+            setNotifications(response.data);
+        } catch (error) {
+            console.error("Error al obtener los datos:", error);
+        }
+    };
+    fetchData();
+  }, [])
+
 
   const handleRemoveNotification = (id) => {
     setNotifications(prev => prev.filter(notification => notification.id !== id));
@@ -49,15 +67,15 @@ export const Notification = ({ notif = [] }) => {
 
       <ul className={`list webkit-scrollbar ${isOpen ? 'visible' : ''}`} role="list" dir="auto">
         {notifications.map((notification) => (
-          <CardPP_molecula 
+          <CardNotificacion
             key={notification.id}   
-            navRoute={"/ingreso_resultado_producto_p"}
-            nombreMuestra={/*producto.nombre_pp  */ 'Nombre muestra'}  
-            lote={/*producto.lote*/  '0000'}
-            fechaAnalisis={/*formatFecha(producto.fecha_analisis )*/ '0000-00-00'}
-            fecha24={/*producto.fecha_24h*/ '0000-00-00'}
+            navRoute={notification.ruta}
+            nombreMuestra={notification.nombre}  
+            lote={notification.lote}
+            fechaAnalisis={notification.fecha_analisis}
+            fecha24={notification.f24}
             className="listitem"
-            responsableAnalisis={/*producto.responsable_analisis*/ '0'}
+            responsableAnalisis={notification.analista}
 
             role="listitem"
             handleRemoveNotification={handleRemoveNotification}
