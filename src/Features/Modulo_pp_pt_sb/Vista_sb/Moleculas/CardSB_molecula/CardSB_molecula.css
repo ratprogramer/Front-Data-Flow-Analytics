@@ -54,6 +54,14 @@
   box-shadow: 0 4px 12px #ccc;
 }
 
+
+.card-sb-molecula-container.aprobado {
+  border-top-color: #ff1500;
+}
+
+.card-sb-molecula-container.pendiente {
+  border-top-color: #ffcc00;
+}
 @media screen and (max-width: 768px) {
   .card-sb-molecula-container {
     width: 80%;

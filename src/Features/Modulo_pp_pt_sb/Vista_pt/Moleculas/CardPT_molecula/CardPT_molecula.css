@@ -26,11 +26,11 @@
 }
 
 .card-pt-molecula-container.aprobado {
-  border-top-color: #2ecc71;
+  border-top-color: #ff1500;
 }
 
 .card-pt-molecula-container.pendiente {
-  border-top-color: #f1c40f;
+  border-top-color: #ffcc00;
 }
 
 .data-pt-molecula {

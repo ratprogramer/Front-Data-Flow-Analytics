@@ -14,6 +14,7 @@ import "./PrePrevisualizacion.css";
 export function PrePrevisualizacion() {
   const navigate = useNavigate();
   const [shwFltrs, setShwFltrs] = useState(false);
+  const [seleccionados, setSeleccionados] = useState(false);
   const [dateRange, setDateRange] = useState([]);
   const [productType, setProductType] = useState("");
   const [loteFilter, setLoteFilter] = useState("");
@@ -106,6 +107,10 @@ export function PrePrevisualizacion() {
       });
     }
     
+    if (seleccionados) {
+      filteredCards = filteredCards.filter((card) => card.select === true);
+    }
+
     return filteredCards;
   };
 
@@ -176,6 +181,7 @@ export function PrePrevisualizacion() {
       <div className="selected">
         <p className="slctP">
           seleccionados: <span className="slct">{nSlct}</span>
+          <button onClick={() => setSeleccionados(!seleccionados)}>Selected</button>
         </p>
         <div className="conj">
           {getFilteredCards().map((card, index) => (
@@ -196,11 +202,13 @@ export function PrePrevisualizacion() {
             </div>
           ))}
         </div>
-        <button className="btnSlct" onClick={handleNavigate}>Seleccionar</button>
+        <button className="btnSlct" onClick={handleNavigate}>Generar informe</button>
       </div>
     </div>
   );
 }
+
+
 
 /*
 import { useLocation } from "react-router-dom";

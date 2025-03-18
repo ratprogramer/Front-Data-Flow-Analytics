@@ -10,22 +10,22 @@ export function Pp_Registrados_organismo(){
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await useGetFetch("/producto/producto_proceso", navigate);
-                setProductos(response.result);
+                const response = await useGetFetch("/producto/muestras_pp_incompletos", navigate);
+                console.log(response.data);
+                
+                setProductos(response.data);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);
             }
         };
         fetchData();
     }, [])
-
-
-
+    
     const formatFecha = (fechaISO) => {
         const fecha = new Date(fechaISO);
-        return fecha.toLocaleDateString(); // Formatea la fecha según la configuración local
+        return fecha.toLocaleDateString();
     };
-
+    
     return(
         <div className="pp_registrados_container">
             { !productos ? <h1>No hay productos en proceso registrados</h1> :
@@ -36,6 +36,7 @@ export function Pp_Registrados_organismo(){
                         nombreMuestra={producto.nombre_pp}
                         lote={producto.lote}
                         fechaAnalisis={formatFecha(producto.fecha_analisis)}
+                        fecha24={producto.fecha_24h}
                         responsableAnalisis={producto.responsable_analisis}
                         id_pp={producto.id_pp}
                     />

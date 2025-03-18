@@ -24,7 +24,7 @@ export function FormularioResultadoSB_organismo (){
       setValue
     } = useForm({
       defaultValues: {
-        fecha_analisis: new Date().toISOString().split("T")[0], // Valor inicial
+        fecha_analisis: new Date().toISOString().split("T")[0],
       },
     });
     const navigate = useNavigate();
@@ -71,7 +71,6 @@ export function FormularioResultadoSB_organismo (){
               setObservaciones(response.result[0].observaciones);
               setOpcionesMedio_cultivo(response.result[0].medio_cultivo);
               setOpcionesCabina(response.result[0].cabina);
-
 
               setValue("e_coli", response.result[0].e_coli);
               setValue("coliformes", response.result[0].coliformes);
@@ -302,7 +301,6 @@ return (
             register={register}
             onChange={validacionesColiformes1}
             value={e_coli}
-
             variant={'formulario'}
             dataRequired
           />

@@ -23,11 +23,6 @@ export function VistaInforme(){
                 <ArrowLeft onClick={() => navigate("/seleccion_muestras")}/>
                 <h1>Informe</h1>
             </div>
-
-            {/* Silencié el componente 'VistaInforme_organismo' por que no considero necesario otro componente, 
-            si usted considera que sí es necesario, relax, modifiquelo*/}
-
-            {/* <VistaInforme_organismo /> */}
             {selectedCards && (
                 <InformePDF selectedCards={selectedCards} />
             )}
