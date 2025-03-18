@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import "./Boton.css";
 
 export function Boton({ path, text, icon }) {
@@ -11,7 +12,7 @@ export function Boton({ path, text, icon }) {
   return (
     <button className="btn-atomo" onClick={handleNavigate} data-path={path}>
       <span>{icon}</span>
-      <b>{text}</b>
+      {text}
     </button>
   );
 }

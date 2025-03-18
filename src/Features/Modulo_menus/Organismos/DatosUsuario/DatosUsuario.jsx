@@ -1,5 +1,6 @@
 import { UserRound, CalendarFold, ChartLine, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 import "./DatosUsuario.css"
 
 
@@ -15,8 +16,8 @@ export function DatosUsuario({rol, nombre}){
     return(
         <div className="datosUsuario-container">
             <div className="datosUsuario">
-                <p><span><ChartLine /></span>Analista</p>
-                <p><span><UserRound /></span>Nombre Random</p>
+                <p><span><ChartLine /></span>{ rol || "Analista" }</p>
+                <p><span><UserRound /></span>{ nombre || "Nombre Random" }</p>
                 <p><span><CalendarFold /></span><span className="fecha">Fecha:</span> {año}-{mes}-{dia}</p>
                 
                 <p className="logOut" onClick={() => navigate("/")}>

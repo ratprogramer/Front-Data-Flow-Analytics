@@ -1,12 +1,14 @@
-import { CardPP_molecula } from "../../Moleculas/CardPP_molecula/CardPP_molecula"
-import { useEffect, useState } from "react"
-import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+
+import { CardPP_molecula } from "../../Moleculas/CardPP_molecula/CardPP_molecula"
+import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import "./Pp_Registrados_organismo.css"
 
 export function Pp_Registrados_organismo(){
     const [productos, setProductos] = useState([])
     const navigate = useNavigate();
+
     useEffect( () => {
         const fetchData = async () => {
             try {

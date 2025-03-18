@@ -32,21 +32,20 @@
   transform: scale(0);
   visibility: hidden;
 
-  transition: transform 0.5s ease, opacity 0.5s ease, visibility 0s 0.5s;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
 }
 
 .dropdown-checkbox:checked ~ .content-user-desp {
   opacity: 1;
   transform: scale(1);
   visibility: visible;
-  transition: transform 0.5s ease, opacity 0.5s ease, visibility 0s 0s;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0s;
 }
 
 .userImg {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
-  transition: opacity 0.3s ease 0.2s;
   opacity: 0;
 }
 
@@ -54,7 +53,7 @@
 .rolUser {
   text-align: center;
   margin-bottom: 8px;
-  transition: opacity 0.3s ease 0.2s;
+  transition: opacity 0.3s ease 0.3s;
   opacity: 0;
 }
 
@@ -69,6 +68,8 @@
   width: 50px;
   height: 50px;
   object-fit: cover;
+  border: 1px solid #000;
+  box-shadow: 0 0 10px 3px #aaa;
 }
 
 .nombreUser p {
@@ -94,7 +95,7 @@
     position: relative;
     display: inline-block;
   }
-  
+
   .dropdown-toggle {
     cursor: pointer;
     padding: 5px;
@@ -102,17 +103,17 @@
     border: 1px solid #aaa;
     background: #eee;
     border-radius: 50%;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .dropdown-toggle:hover {
     scale: 1.05;
   }
-  
+
   .dropdown-checkbox {
     display: none;
   }
-  
+
   .content-user-desp {
     position: absolute;
     right: 0;
@@ -124,21 +125,21 @@
     z-index: 1;
     transform-origin: top right;
     border: 1px solid #ccc;
-  
+
     opacity: 0;
     transform: scale(0);
     visibility: hidden;
-  
+
     transition: transform 0.5s ease, opacity 0.5s ease, visibility 0s 0.5s;
   }
-  
+
   .dropdown-checkbox:checked ~ .content-user-desp {
     opacity: 1;
     transform: scale(1);
     visibility: visible;
     transition: transform 0.5s ease, opacity 0.5s ease, visibility 0s 0s;
   }
-  
+
   .userImg {
     display: flex;
     justify-content: center;
@@ -146,7 +147,7 @@
     transition: opacity 0.3s ease 0.2s;
     opacity: 0;
   }
-  
+
   .nombreUser,
   .rolUser {
     text-align: center;
@@ -154,31 +155,31 @@
     transition: opacity 0.3s ease 0.2s;
     opacity: 0;
   }
-  
+
   .dropdown-checkbox:checked ~ .content-user-desp .userImg,
   .dropdown-checkbox:checked ~ .content-user-desp .nombreUser,
   .dropdown-checkbox:checked ~ .content-user-desp .rolUser {
     opacity: 1;
   }
-  
+
   .userImg img {
     border-radius: 50%;
     width: 50px;
     height: 50px;
     object-fit: cover;
   }
-  
+
   .nombreUser p {
     font-weight: bold;
     margin: 0;
   }
-  
+
   .rolUser p {
     color: #666;
     margin: 0;
     font-size: 14px;
   }
-  
+
   .logo-image {
     width: 50px;
     height: 50px;

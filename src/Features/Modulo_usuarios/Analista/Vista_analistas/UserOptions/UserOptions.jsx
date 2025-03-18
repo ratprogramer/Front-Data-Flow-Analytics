@@ -1,7 +1,8 @@
+import { useEffect, useRef } from "react"
+
 import { DatosUsuario } from "../../../../Modulo_menus/Organismos/DatosUsuario/DatosUsuario"
 import userPhoro from '../../../../../imgs/foto-perfil.png'
 import "./UserOptions.css"
-import { useEffect, useRef } from "react"
 
 export const UserOptions = () => {
   
