@@ -10,7 +10,7 @@ export function Pt_Registrados_organismo(){
     useEffect( () => {
         const fetchData = async () => {
             try {
-                const response = await useGetFetch("/producto/muestras_pp_incompletos", navigate);
+                const response = await useGetFetch("/producto/muestras_pt_incompletos", navigate);
                 if(response.tokenExpirado){
                     navigate("/")
                     Swal.fire(
@@ -19,6 +19,7 @@ export function Pt_Registrados_organismo(){
                         "error"
                     );
                 }
+                console.log(response.data) 
                 setProductos(response.data);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);

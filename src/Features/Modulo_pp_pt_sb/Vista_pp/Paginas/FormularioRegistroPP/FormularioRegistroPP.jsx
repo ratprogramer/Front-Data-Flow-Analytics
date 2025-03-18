@@ -10,7 +10,7 @@ export function FormularioRegistroPP_pagina(){
 
     return(
         <div className="FormularioIngresoPP-container-pagina">
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Registro"} />            
+            <TituloPagina path={"/menu"} text={"Registro"} />            
 
             <FormularioIngresoPP_organismo />
         </div>

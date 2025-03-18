@@ -5,7 +5,7 @@ export function Pt_Registrados(){
     
     return(
         <div >
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Productos terminados"} />
+            <TituloPagina path={"/menu"} text={"Productos terminados"} />
             <Pt_Registrados_organismo />
         </div>
     )

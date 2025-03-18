@@ -35,7 +35,7 @@ export function CardPP_molecula({
   
   return (
     <>
-      <div className={`card-pp-molecula-container ${fecha24 ? "aprobado" : "pendiente"}`} onClick={handleClick}>
+      <div className={`card-pp-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`} onClick={handleClick}>
         <div className="data-pp-molecula">
           <p className="nombre-muestra">{nombreMuestra}</p>
           <p>Lote: <span>{lote}</span></p>

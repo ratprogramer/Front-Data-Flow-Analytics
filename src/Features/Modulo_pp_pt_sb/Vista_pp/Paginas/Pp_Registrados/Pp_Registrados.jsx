@@ -6,7 +6,7 @@ export function Pp_Registrados(){
     
     return(
         <div className="pp_R">
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Productos en proceso"} />
+            <TituloPagina path={"/menu"} text={"Productos en proceso"} />
             <Pp_Registrados_organismo />
         </div>
     )

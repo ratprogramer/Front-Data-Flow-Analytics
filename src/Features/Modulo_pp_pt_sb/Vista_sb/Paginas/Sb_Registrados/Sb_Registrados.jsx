@@ -5,7 +5,7 @@ export function Sb_Registrados(){
     
     return(
         <div >
-            <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Saborizaciones"} />
+            <TituloPagina path={"/menu"} text={"Saborizaciones"} />
             <Sb_Registrados_organismo />
         </div>
     )

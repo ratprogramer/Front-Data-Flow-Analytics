@@ -69,15 +69,6 @@ function App() {
           />
 
           <Route
-            path="/menu_Derivado_lacteo_fermentado"
-            element={
-              <ProtectedRoute>
-                <IndicePP_PT />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
             path="/sub_menu_pp"
             element={
               <ProtectedRoute>

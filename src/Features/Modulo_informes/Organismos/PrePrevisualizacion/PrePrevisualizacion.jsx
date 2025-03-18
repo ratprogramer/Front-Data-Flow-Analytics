@@ -114,7 +114,7 @@ export function PrePrevisualizacion() {
 
   return (
     <div className="filtros">
-      <TituloPagina path={"/menu_Derivado_lacteo_fermentado"} text={"Informes y registros"} />
+      <TituloPagina path={"/menu"} text={"Informes y registros"} />
 
 
       {!shwFltrs && (

@@ -302,6 +302,7 @@ return (
             onChange={validacionesColiformes1}
             value={e_coli}
             variant={'formulario'}
+            isDisabled={true}
             dataRequired
           />
           
@@ -312,7 +313,7 @@ return (
             register={register}
             value={coliformes}
             onChange={validacionesColiformes2}
-
+            isDisabled={true}
             variant={'formulario'}
             dataRequired
           />
@@ -347,7 +348,7 @@ return (
             label={"Cabina"}
             opciones={opcionesCabina}
             placeHolder={false}
-
+            
             variant={'formulario'}
           />
 
