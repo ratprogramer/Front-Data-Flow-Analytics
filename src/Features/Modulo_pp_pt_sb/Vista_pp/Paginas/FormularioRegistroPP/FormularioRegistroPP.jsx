@@ -1,6 +1,5 @@
 import { TituloPagina } from "../../../../../Moleculas/TituloPagina/TituloPagina"
 import { FormularioIngresoPP_organismo } from "../../Organismos/FormularioIngresoPP_organismo/FormularioIngresoPP_organismo"
-import { BurgerMenu } from "../../../../../Atomos/BurgerMenu/BurgerMenu"
 import { useNavigate } from "react-router-dom"
 import "./FormularioRegistroPP.modules.css"
 

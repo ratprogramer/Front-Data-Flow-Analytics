@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom"
+
+import { UserOptions } from "../../Features/Modulo_usuarios/Analista/Vista_analistas/UserOptions/UserOptions";
+import { BurgerMenu } from "../../Atomos/BurgerMenu/BurgerMenu";
 import "./TituloPagina.css"
 
 export function TituloPagina({path, text }){
@@ -8,13 +11,11 @@ export function TituloPagina({path, text }){
     }
     return(
         <div className="tituloPagina-container">
-            <label className="burger" onClick={handleClick}>
-                <input type="checkbox" id="burger" />
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+            <BurgerMenu onclick={handleClick}/>
             <h1 className="titulo-modulo-txt">{text}</h1>
+            </div>
+            <UserOptions />
         </div>
     )
 }

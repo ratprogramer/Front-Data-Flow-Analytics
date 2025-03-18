@@ -6,9 +6,30 @@
   flex-direction: row;
   align-items: flex-start;
 
-  color: white;
-  background-color: #0284c7;
+  background: #fffcfc;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #000;
 }
+
+.datosUsuario .logOut {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 95%;
+  transition: all 0.2s ease-in-out;
+  padding: 0 0 0 .4rem;
+  margin: 0 0 5px 0;
+  background: #ffdbdb;
+  border-radius: 5px;
+}
+
+.datosUsuario .logOut:hover {
+  color: #fff;
+  background: #d30000;
+  padding: 0 0 0 .4rem;
+}
+
 
 .datosUsuario {
   width: 200px;
@@ -17,10 +38,12 @@
   flex-direction: column;
   align-items: flex-start;
 
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   margin: 0;
   padding: 0 0 0 0.5rem;
+
+
 
   & p {
     width: 100%;
@@ -28,7 +51,7 @@
     display: flex;
     align-items: center;
 
-    gap: 12px;
+    gap: 8px;
     margin: 0;
     padding: 0.3rem;
 
@@ -40,6 +63,7 @@
     }
   }
 
+
   & .fecha {
     font-weight: bold;
     background: transparent;
@@ -47,6 +71,23 @@
 }
 
 @media screen and (min-width: 768px) {
+
+  .datosUsuario .logOut {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 95%;
+    transition: all 0.2s ease-in-out;
+    padding: 0 0 0 .4rem;
+    margin: 0 0 5px 0;
+  }
+  
+  .datosUsuario .logOut:hover {
+    color: #fff;
+    background: #d30000;
+    padding: 0 0 0 .4rem;
+  }
+
   .datosUsuario-container {
     width: 100%;
     margin: 0;
@@ -55,8 +96,8 @@
     flex-direction: column;
     align-items: center;
 
-    color: white;
-    background-color: #0284c7;
+    background: #333;
+    color: #ccc;
   }
 
   .datosUsuario {

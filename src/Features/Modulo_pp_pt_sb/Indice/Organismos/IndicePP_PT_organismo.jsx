@@ -3,6 +3,7 @@ import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice
 import { ClipboardList, FlaskConical, FileCheck, BarChart3, LogOut, FilePlus, FileChartColumn } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./IndicePP_PT_organismo.css";
+import { UserOptions } from "../../../Modulo_usuarios/Analista/Vista_analistas/UserOptions/UserOptions";
 
 export function IndicePP_PT_organismo() {
   const [openSection, setOpenSection] = useState(null);
@@ -52,7 +53,7 @@ export function IndicePP_PT_organismo() {
     <div className="Indice-container-organismo">
       <div className="tttlo">
         <h1>Menú</h1>
-        <LogOut style={{ cursor: "pointer" }} onClick={() => navigate("/")} />
+        <UserOptions />
       </div>
   
       {/* Renderizar todas las secciones excepto "Informes" */}
