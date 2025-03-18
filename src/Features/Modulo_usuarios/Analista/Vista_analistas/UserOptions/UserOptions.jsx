@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 
 import { DatosUsuario } from "../../../../Modulo_menus/Organismos/DatosUsuario/DatosUsuario"
-import userPhoro from '../../../../../imgs/foto-perfil.png'
+import us from '../../../../../imgs/us.jpg'
 import "./UserOptions.css"
 
 export const UserOptions = () => {
@@ -19,17 +19,16 @@ export const UserOptions = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  
 
   return (
     <div className="user-options-container" ref={dropdownRef}>
       <label htmlFor="user-dropdown" className="dropdown-toggle">
-        <img src={userPhoro} alt="Logo" className="logo-image" />
+        <img src={us} alt="Logo" className="logo-image" />
       </label>
       <input type="checkbox" id="user-dropdown" className="dropdown-checkbox" ref={checkboxRef} />
       <div className="content-user-desp">
         <div className="userImg">
-          <img src={userPhoro} alt="userImg" />
+          <img src={us} alt="userImg" />
         </div>
         <DatosUsuario />
       </div>

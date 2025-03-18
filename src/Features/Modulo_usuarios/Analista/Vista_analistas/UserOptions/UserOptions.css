@@ -65,8 +65,8 @@
 
 .userImg img {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border: 1px solid #000;
   box-shadow: 0 0 10px 3px #aaa;
@@ -88,6 +88,7 @@
   height: 30px;
   cursor: pointer;
   display: block;
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 768px) {
