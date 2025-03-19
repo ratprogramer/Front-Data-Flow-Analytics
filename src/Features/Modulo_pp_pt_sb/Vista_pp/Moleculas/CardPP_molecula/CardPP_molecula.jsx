@@ -10,11 +10,6 @@ export function CardPP_molecula({
   navRoute,
   fecha24
 }) {
-  if(fecha24){
-    console.log("fecha24");
-  }else{
-    console.log("no fecha24");
-  }
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(navRoute, {

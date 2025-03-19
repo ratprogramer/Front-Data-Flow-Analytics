@@ -19,7 +19,6 @@ export function Pt_Registrados_organismo(){
                         "error"
                     );
                 }
-                console.log(response.data) 
                 setProductos(response.data);
             } catch (error) {
                 console.error("Error al obtener los datos:", error);

@@ -24,7 +24,6 @@ export function FormularioIngresoSB_organismo() {
   });
 
   const navigate = useNavigate();
-
   const [lote, setLote] = useState("");
   const [tanque, setTanque] = useState("");
   const [isMora, setIsMora] = useState(false);
@@ -80,7 +79,7 @@ export function FormularioIngresoSB_organismo() {
     const decode = decodeToken(token);
     data["responsable_analisis"] = parseInt(decode.id);
     data["lote"] = lote + posLote;
-    console.log(data);
+  
 
     const response = await usePostFetch(
       "/producto/registrar_saborizacion",
@@ -90,11 +89,10 @@ export function FormularioIngresoSB_organismo() {
     if (!response.success) {
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
-      Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+      Swal.fire("Exito", "La saborizacion fue registrada con exito", "success");
       navigate("/menu");
     }
   };
-
   const onError = (errors) => {
     for (const error in errors) {
       Swal.fire("Error", errors[error].message, "error");

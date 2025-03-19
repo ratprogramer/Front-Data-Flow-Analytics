@@ -16,8 +16,6 @@ export const Notification = ({ notif = [] }) => {
     const fetchData = async () => {
         try {
             const response = await useGetFetch("/producto/notificaciones", navigate);
-            console.log(response.data);
-            
             setNotifications(response.data);
         } catch (error) {
             console.error("Error al obtener los datos:", error);

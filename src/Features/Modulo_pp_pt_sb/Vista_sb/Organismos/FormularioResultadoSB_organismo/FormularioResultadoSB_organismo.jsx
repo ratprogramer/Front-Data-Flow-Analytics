@@ -122,7 +122,7 @@ export function FormularioResultadoSB_organismo (){
       if (!response.success) {
         Swal.fire("Error", JSON.stringify(response), "error");
       } else {
-        Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+        Swal.fire("Exito", "El resultado para la saborizacion, fue registrado con exito", "success");
         navigate("/menu");
       }
       

@@ -52,11 +52,9 @@ export function FormularioIngresoPT_organismo() {
     data["id_pp"] = parseInt(id_pp);
     const response = await usePostFetch("/producto/registrar_pt",data,navigate);
     if (!response.success) {
-      console.log(response);
-      
       Swal.fire("Error", JSON.stringify(response.message), "error");
     } else {
-      Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+      Swal.fire("Exito", "Producto terminado registrado con exito", "success");
       navigate("/menu");
     }
   };
@@ -85,7 +83,6 @@ export function FormularioIngresoPT_organismo() {
     { value: "Fresa", placeHolder: "Fresa" },
     { value: "Kumis", placeHolder: "Kumis" },
   ];
-
   const handleChange = (e) => {
     let inputVal = e.target.value;
     if (inputVal.length > 5) {

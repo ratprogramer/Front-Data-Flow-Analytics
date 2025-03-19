@@ -116,7 +116,7 @@ export function FormularioResultadoPT_organismo() {
         if (!response.success) {
           Swal.fire("Error", JSON.stringify(response), "error");
         } else {
-          Swal.fire("Exito", "Producto en proceso registrado con exito", "success");
+          Swal.fire("Exito", "El resultado para el producto terminado, fue registrado con exito", "success");
           navigate("/menu");
         }
         
