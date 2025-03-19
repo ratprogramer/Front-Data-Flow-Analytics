@@ -40,7 +40,7 @@ export function CardNotificacion({
 
   return (
     <>
-      <div className={`card-pp-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`} onClick={handleClick}>
+      <div className={`card-pp-molecula-container ${fecha24 != "Fecha 24" ? "pendiente" : "aprobado"}`} onClick={handleClick}>
         <div className="data-pp-molecula">
           <p className="nombre-muestra">{nombreMuestra}</p>
           <p>Lote: <span>{lote}</span></p>
