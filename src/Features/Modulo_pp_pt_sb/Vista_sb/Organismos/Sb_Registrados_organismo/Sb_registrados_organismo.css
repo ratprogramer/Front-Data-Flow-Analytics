@@ -4,14 +4,13 @@
   align-items: center;
   width: 100%;
   height: fit-content;
+  gap: 10px;
 }
 
 @media screen and (max-width: 768px) {
   .sb_registrados_container {
-    display: grid;
+    display: flex;
     width: 99.1vw;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
     margin: 0;
     padding: 0;
   }

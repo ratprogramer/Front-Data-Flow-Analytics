@@ -4,8 +4,10 @@ import { useEffect, useState } from "react"
 import { CardPP_molecula } from "../../Moleculas/CardPP_molecula/CardPP_molecula"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import "./Pp_Registrados_organismo.css"
+import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export function Pp_Registrados_organismo(){
+    const { contextTheme } = useThemeContext();
     const [productos, setProductos] = useState([])
     const navigate = useNavigate();
 

@@ -8,10 +8,13 @@ import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "../../../../../helpers/decodeToken";
 
+import { useThemeContext } from "../../../../../context/ThemeContext";
+
 import "./FormularioIngresoPP_organismo.css";
 import Swal from "sweetalert2";
 
 export function FormularioIngresoPP_organismo() {
+  const { contextTheme } = useThemeContext();
   const {
     register,
     handleSubmit,
@@ -155,7 +158,7 @@ export function FormularioIngresoPP_organismo() {
         className="formulrio-registro-pp-container"
         onSubmit={handleSubmit(onSubmit, onError)}
       >
-        <div className="formulario-pp-campos">
+        <div className="formulario-pp-campos" id={contextTheme}>
           <SelectGroup
             id={"nombre_pp"}
             register={register}

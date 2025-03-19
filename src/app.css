@@ -50,3 +50,43 @@
   transform: translateX(100%);
   transition: all 300ms ease-in-out;
 }
+
+/* Estilos Dark mode*/
+
+#Dark {
+  background: #282c34;
+  color: #ccc;
+  box-shadow: none;
+}
+
+#Dark p {
+  color: #ccc;
+}
+
+#Dark p>span {
+  color: #000;
+}
+#Dark .logOut {
+  background: rgb(172, 39, 39);
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+#Dark .logOut:hover {
+  background: #c02b2b;
+  color: #fff;
+}
+
+#Dark label > input[type="checkbox"]:checked + span {
+  color: #ccc;
+}
+
+/* Estilos para Light mode*/
+
+#Light {
+  background: #f2f4f6;
+  color: #0d3f67;
+}
+
+#Light p {
+  color: #0d3f67;
+}

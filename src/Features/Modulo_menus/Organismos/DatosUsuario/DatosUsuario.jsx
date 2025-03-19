@@ -1,36 +1,66 @@
 import { UserRound, CalendarFold, ChartLine, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Switch } from "../../../../Atomos/Switch/Switch";
 
-import "./DatosUsuario.css"
+import "./DatosUsuario.css";
+import { useThemeContext } from "../../../../context/ThemeContext";
 
+export function DatosUsuario({ rol, nombre, onChange }) {
+  const navigate = useNavigate();
 
-export function DatosUsuario({rol, nombre}){
+  const fecha = new Date();
+  const año = fecha.getFullYear();
+  const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // Mes inicia en 0, por lo que sumamos 1
+  const dia = String(fecha.getDate()).padStart(2, "0");
 
-    const navigate = useNavigate();
+  const handleNavigate = () => {
+    sessionStorage.setItem("token", "");
+    navigate("/");
+  };
 
-    const fecha = new Date();
-    const año = fecha.getFullYear();
-    const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // Mes inicia en 0, por lo que sumamos 1
-    const dia = String(fecha.getDate()).padStart(2, "0");
+  const { contextTheme, setContextTheme } =  useThemeContext();
 
-    const handleNavigate = () => {
-        sessionStorage.setItem("token", "");
-        navigate("/");
-    }
-    return(
-        <div className="datosUsuario-container">
-            <div className="datosUsuario">
-                <p><span><ChartLine /></span>{ rol || "Analista" }</p>
-                <p><span><UserRound /></span>{ nombre || "Nombre Random" }</p>
-                <p><span><CalendarFold /></span><span className="fecha">Fecha:</span> {año}-{mes}-{dia}</p>
-                
-                <p className="logOut" onClick={() => handleNavigate()}>
-                    <span>
-                        <LogOut/>
-                    </span>
-                    Cerrar sesión
-                </p>
-            </div>
+  const [checked, setChecked] = useState(false);
+
+  const handleSwitch = (nextChecked) => {
+    setContextTheme((state) => (state === "Light" ? "Dark" : "Light"));
+    setChecked(nextChecked);
+  };
+
+  return (
+    <div className="datosUsuario-container" id={contextTheme}>
+      <div className="datosUsuario">
+        <p>
+          <span>
+            <ChartLine />
+          </span>
+          {rol || "Analista"}
+        </p>
+        <p>
+          <span>
+            <UserRound />
+          </span>
+          {nombre || "Nombre Random"}
+        </p>
+        <p>
+          <span>
+            <CalendarFold />
+          </span>
+          <span className="fecha">Fecha:</span> {año}-{mes}-{dia}
+        </p>
+
+        <div>
+          <Switch onChange={handleSwitch} checked={checked} />
         </div>
-    )
+
+        <p className="logOut" onClick={handleNavigate} id={contextTheme}>
+          <span>
+            <LogOut />
+          </span>
+          Cerrar sesión
+        </p>
+      </div>
+    </div>
+  );
 }

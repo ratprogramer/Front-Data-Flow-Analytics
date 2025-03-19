@@ -4,12 +4,15 @@ import { useGetFetch } from '../../helpers/useGetFetch';
 import { useNavigate } from 'react-router-dom';
 import { CardNotificacion } from './CardNotificacion';
 import './Notification.css';
+import { useThemeContext } from '../../context/ThemeContext';
 
 export const Notification = ({ notif = [] }) => {
   const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+
+  const { contextTheme } = useThemeContext();
 
 
   useEffect( () => {
@@ -43,7 +46,7 @@ export const Notification = ({ notif = [] }) => {
   }, []);
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
+    <div className="dropdown" ref={dropdownRef} id={contextTheme}>
       <input
         hidden
         className="sr-only"
@@ -63,7 +66,7 @@ export const Notification = ({ notif = [] }) => {
         )}
       </label>
 
-      <ul className={`list webkit-scrollbar ${isOpen ? 'visible' : ''}`} role="list" dir="auto">
+      <ul className={`list webkit-scrollbar ${isOpen ? 'visible' : ''}`} role="list" dir="auto" id={contextTheme}>
         {notifications.map((notification) => (
           <CardNotificacion
             key={notification.id}   
