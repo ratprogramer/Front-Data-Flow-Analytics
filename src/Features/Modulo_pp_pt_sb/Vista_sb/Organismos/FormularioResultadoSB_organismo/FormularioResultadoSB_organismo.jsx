@@ -17,8 +17,6 @@ import { useEffect } from "react";
 export function FormularioResultadoSB_organismo (){
   const location = useLocation();
   const { id_sb } = location.state || {};
-  console.log(id_sb);
-  
   const {
       register,
       handleSubmit,
