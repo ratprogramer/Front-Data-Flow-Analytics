@@ -8,7 +8,8 @@ export function CardNotificacion({
   responsableAnalisis,
   id,
   navRoute,
-  fecha24
+  fecha24,
+  tipo
 }) {
   if(fecha24){
     console.log("fecha24");
@@ -17,9 +18,19 @@ export function CardNotificacion({
   }
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(navRoute, {
-      state: { id, nombreMuestra, lote },
-    });
+    if(tipo == "sb"){
+      navigate(navRoute, {
+        state: { id_sb: id, nombreMuestra, lote },
+      });  
+    }else if(tipo == "pt"){
+      navigate(navRoute, {
+        state: { id_PT: id, nombreMuestra, lote },
+      });
+    }else{
+      navigate(navRoute, {
+        state: { id_pp: id, nombreMuestra, lote },
+      });
+    }
   };
 
   const formatFecha = (fechaISO) => {

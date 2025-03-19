@@ -74,9 +74,10 @@ export const Notification = ({ notif = [] }) => {
             lote={notification.lote}
             fechaAnalisis={notification.fecha_analisis}
             fecha24={notification.f24}
+            tipo={notification.tipo}
             className="listitem"
             responsableAnalisis={notification.analista}
-
+            id={parseInt(notification.id)}
             role="listitem"
             handleRemoveNotification={handleRemoveNotification}
           />
