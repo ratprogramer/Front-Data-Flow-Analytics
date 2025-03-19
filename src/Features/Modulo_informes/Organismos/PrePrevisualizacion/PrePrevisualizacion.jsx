@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
 import { useGetFetch } from "../../../../helpers/useGetFetch";
 import "./PrePrevisualizacion.css";
+import { useThemeContext } from "../../../../context/ThemeContext";
 
 export function PrePrevisualizacion() {
+  const { contextTheme } = useThemeContext();
   const navigate = useNavigate();
   const [shwFltrs, setShwFltrs] = useState(false);
   const [seleccionados, setSeleccionados] = useState(false);
@@ -41,8 +43,13 @@ export function PrePrevisualizacion() {
 
   useEffect(() => {
     const handleClickOutside = ({ target }) => {
-      if (!tabFiltRef.current?.contains(target) && shwFltrs) {
-        setShwFltrs(false);
+      if (shwFltrs) {
+        const isInsideFilters = tabFiltRef.current?.contains(target);
+        const isInsideFlatpickr = target.closest('.flatpickr-calendar');
+        
+        if (!isInsideFilters && !isInsideFlatpickr) {
+          setShwFltrs(false);
+        }
       }
     };
 
@@ -143,7 +150,7 @@ export function PrePrevisualizacion() {
               key={index}
               onClick={() => handleSelect(index)}
             >
-              <div className={`info ${card.select ? "crdSlct" : ""}`}>
+              <div className={`info ${card.select ? "crdSlct" : ""}`} >
                 <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>
                 <p>Fecha de análisis: <span className="sPan">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
                 <p>Lote: <span className="sPan">{card.lote}</span></p>

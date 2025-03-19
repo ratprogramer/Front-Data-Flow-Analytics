@@ -63,7 +63,7 @@
   color: #ccc;
 }
 
-#Dark p>span {
+#Dark p > span {
   color: #000;
 }
 #Dark .logOut {
@@ -85,6 +85,10 @@
 #Light {
   background: #f2f4f6;
   color: #0d3f67;
+}
+
+#root > #Light {
+  background: #f2f4f6;
 }
 
 #Light p {
