@@ -1,4 +1,12 @@
 #root {
+  background: #fff;
+}
+
+#Light #root {
+  background: #f2f4f6;
+}
+
+#Dark #root {
   background: #282c34;
 }
 

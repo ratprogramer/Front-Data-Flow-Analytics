@@ -58,7 +58,7 @@ function App() {
         classNames={transitionDirection}
         unmountOnExit
       >
-        <Routes location={location}>
+        <Routes location={location} >
           <Route path="/" element={<InicioSesion />} />
 
           <Route
