@@ -3,8 +3,10 @@ import { useEffect, useRef } from "react"
 import { DatosUsuario } from "../../../../Modulo_menus/Organismos/DatosUsuario/DatosUsuario"
 import us from '../../../../../imgs/us.jpg'
 import "./UserOptions.css"
+import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export const UserOptions = () => {
+  const { contextTheme } = useThemeContext();
   
   const dropdownRef = useRef(null);
   const checkboxRef = useRef(null);
@@ -21,12 +23,12 @@ export const UserOptions = () => {
   }, []);
 
   return (
-    <div className="user-options-container" ref={dropdownRef}>
+    <div className="user-options-container" ref={dropdownRef} id={contextTheme}>
       <label htmlFor="user-dropdown" className="dropdown-toggle">
         <img src={us} alt="Logo" className="logo-image" />
       </label>
       <input type="checkbox" id="user-dropdown" className="dropdown-checkbox" ref={checkboxRef} />
-      <div className="content-user-desp">
+      <div className="content-user-desp" id={contextTheme}>
         <div className="userImg">
           <img src={us} alt="userImg" />
         </div>

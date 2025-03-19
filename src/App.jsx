@@ -26,8 +26,10 @@ import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
 
 import "./app.css";
+import { useThemeContext } from "./context/ThemeContext";
 
 function App() {
+  const { contextTheme } = useThemeContext();
   const location = useLocation();
   const navigationType = useNavigationType();
   const [loading, setLoading] = useState(true);
@@ -47,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className="route-transition-container">
+    <div className="route-transition-container" id={contextTheme}>
 
     <TransitionGroup component={null}>
       <CSSTransition

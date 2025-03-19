@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./CardPP_molecula.css";
+import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export function CardPP_molecula({
   nombreMuestra,
@@ -33,9 +34,10 @@ export function CardPP_molecula({
     }
   };
   
+  const { contextTheme } = useThemeContext();
   return (
     <>
-      <div className={`card-pp-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`} onClick={handleClick}>
+      <div className={`card-pp-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`} onClick={handleClick} id={contextTheme}>
         <div className="data-pp-molecula">
           <p className="nombre-muestra">{nombreMuestra}</p>
           <p>Lote: <span>{lote}</span></p>

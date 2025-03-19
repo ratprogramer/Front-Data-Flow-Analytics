@@ -5,6 +5,9 @@ import { UserOptions } from "../../../Modulo_usuarios/Analista/Vista_analistas/U
 import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice";
 import { Notification } from '../../../Notification/Notification'
 import "./IndicePP_PT_organismo.css";
+import { useThemeContext } from "../../../../context/ThemeContext";
+
+// import ReactSwitch from "react-switch";
 
 export function IndicePP_PT_organismo() {
   const [openSection, setOpenSection] = useState(null);
@@ -67,9 +70,11 @@ export function IndicePP_PT_organismo() {
     { id: 11, message: 'Mensaje importante 10' },
   ];
 
+  const { contextTheme } = useThemeContext();
+
   return (
-    <div className="Indice-container-organismo">
-      <div className="tttlo">
+    <div className="Indice-container-organismo" id={contextTheme}>
+      <div className="tttlo" id={contextTheme}>
         <h1>Menú</h1>
         <div style={{display: 'flex', alignItems: 'center'}}>
         <Notification notif={notif} />
@@ -80,15 +85,15 @@ export function IndicePP_PT_organismo() {
       {sections
         .filter(({ id }) => id !== "informes")
         .map(({ id, title, icon, buttons }) => (
-          <div key={id} className="btn-sctn-cntnr">
-            <div className="btn-sctn" onClick={() => toggleSection(id)}>
+          <div key={id} className="btn-sctn-cntnr" id={contextTheme}>
+            <div className="btn-sctn" onClick={() => toggleSection(id)} id={contextTheme}>
               <span>{icon}</span>
               {title}
             </div>
             {openSection === id && (
-              <div className="buttons-container">
+              <div className="buttons-container" id={contextTheme}>
                 {buttons.map((button, index) => (
-                  <BotonesIndice key={index} botones={[button]} />
+                  <BotonesIndice key={index} botones={[button]} id={contextTheme}/>
                 ))}
               </div>
             )}
