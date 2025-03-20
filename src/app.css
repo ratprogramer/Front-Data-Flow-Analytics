@@ -103,6 +103,16 @@
   border: 1px solid #555;
 }
 
+#Dark .datosSB-organismo-container{
+  color: #ccc;
+  border: 1px solid #555;
+  border-radius: 10px;
+}
+
+#Dark .formularioResultadoPT-pagina-container {
+  background: #282c34;
+}
+
 #Dark input[type="date"]:disabled {
   background: #575b63;
   color: #8f8f8f;

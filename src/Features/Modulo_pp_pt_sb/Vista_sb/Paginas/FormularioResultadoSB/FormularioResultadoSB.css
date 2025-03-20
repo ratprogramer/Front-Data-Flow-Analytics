@@ -1,7 +1,7 @@
 .formularioResultadoPT-pagina-container{
-    display: flex;
-    gap: 12px;
-    flex-direction: column;
-
-    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: #f1f1f1;
 }

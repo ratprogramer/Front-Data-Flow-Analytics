@@ -1,15 +1,15 @@
 .container-box-datos-sb {
-    background: #ddd;
     border-radius: 10px;
-    width: 50%;
+    width: 100vw;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
   }
   
   .datosSB-organismo-container {
     margin: 0;
-    padding: .5rem;
-  
+    width: 90%;
   }
   
   .datosSB-organismo-container p {
@@ -26,9 +26,9 @@
   
   @media screen and (max-width: 768px) {
     .container-box-datos-sb {
-      background: #ddd;
+      background: #ccc;
       border-radius: 10px;
-      width: 100%;
+      width: 92%;
       margin: 0;
       padding: 0;
     }
