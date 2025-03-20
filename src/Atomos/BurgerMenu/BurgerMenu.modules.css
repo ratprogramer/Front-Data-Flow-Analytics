@@ -5,6 +5,7 @@
   background: transparent;
   cursor: pointer;
   display: block;
+  margin-left: 10px;
 }
 
 .burger input {

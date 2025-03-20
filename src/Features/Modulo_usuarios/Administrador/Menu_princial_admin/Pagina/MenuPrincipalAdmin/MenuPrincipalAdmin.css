@@ -42,11 +42,35 @@
   font-size: 14px;
 }
 
+/* .main-content .content-container {
+  padding: 20px;
+  flex-grow: 1;
+  overflow-y: auto;
+} */
+
 .main-content .content-container {
+  position: relative;
   padding: 20px;
   flex-grow: 1;
   overflow-y: auto;
 }
+
+/* Imagen de fondo con opacidad y desenfoque */
+.main-content .content-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../../../../../../imgs/bgImg.jpg') no-repeat center center/cover;
+  filter: blur(10px);
+  z-index: 0;
+}
+
+/* Asegurar que el contenido esté encima */
+.main-content .content-container > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 @media screen and (max-width: 768px) {
   .app-container {

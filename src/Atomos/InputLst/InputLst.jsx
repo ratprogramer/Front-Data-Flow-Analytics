@@ -1,9 +1,12 @@
 import "./InputLst.css";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export function InputLst({ id, opciones, register, onChange, placeHolder = true }) {
+    const { contextTheme } = useThemeContext();
     return (
         <select
             className="selectInput"
+            id={contextTheme}
             {...register(id)}
             defaultValue=""
             onChange={onChange} // Asegura que puedas manejar el cambio

@@ -7,8 +7,10 @@ import Swal from "sweetalert2";
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
 import { useGetFetch } from "../../../../helpers/useGetFetch";
 import "./PrePrevisualizacion.css";
+import { useThemeContext } from "../../../../context/ThemeContext";
 
 export function PrePrevisualizacion() {
+  const { contextTheme } = useThemeContext();
   const navigate = useNavigate();
   const [shwFltrs, setShwFltrs] = useState(false);
   const [seleccionados, setSeleccionados] = useState(false);
@@ -41,8 +43,13 @@ export function PrePrevisualizacion() {
 
   useEffect(() => {
     const handleClickOutside = ({ target }) => {
-      if (!tabFiltRef.current?.contains(target) && shwFltrs) {
-        setShwFltrs(false);
+      if (shwFltrs) {
+        const isInsideFilters = tabFiltRef.current?.contains(target);
+        const isInsideFlatpickr = target.closest('.flatpickr-calendar');
+        
+        if (!isInsideFilters && !isInsideFlatpickr) {
+          setShwFltrs(false);
+        }
       }
     };
 
@@ -73,15 +80,15 @@ export function PrePrevisualizacion() {
   };
 
   return (
-    <div className="filtros">
+    <div className="filtros" id={contextTheme}>
       <TituloPagina path={"/menu"} text={"Informes y registros"} />
 
 
       {shwFltrs && (
-        <div className="tabFilt" ref={tabFiltRef}>
+        <div className="tabFilt" ref={tabFiltRef} id={contextTheme}>
           <div className="fltr">
             <p>Tipo</p>
-            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)}>
+            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)} id={contextTheme}>
               <option value="all">Todos</option>
               <option value="pp">Producto en proceso</option>
               <option value="pt">Producto terminado</option>
@@ -102,32 +109,35 @@ export function PrePrevisualizacion() {
                   locale: { rangeSeparator: " a " },
                   maxDate: "today",
                   onChange: (dates) => setDateRange(dates),
+                  
                 })
               }
+              id={contextTheme}
             />
           </div>
           <hr />
           <div className="lt">
             <p>Lote:</p>
             <input 
-              type="text" 
-              id="lt" 
+              type="number" 
+              className="lts" 
               value={loteFilter} 
               placeholder="Ingrese Lote"
               onChange={(e) => setLoteFilter(e.target.value)} 
+              id={contextTheme}
             />
           </div>
         </div>
       )}
 
-      <div className="selected">
-        <p className="slctP">
-          <span>
-            Seleccionados: <span className="slct">{nSlct}</span>
+      <div className="selected" id={contextTheme}>
+        <p className="slctP" id={contextTheme}>
+          <span className="slctP1" id={contextTheme}>
+            Seleccionados: <span className="slct" id={contextTheme}>{nSlct}</span>
           </span>
 
            
-          <span className="cicle-btn" onClick={() => setSeleccionados(!seleccionados)}>
+          <span className="cicle-btn" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
             Seleccionados
           <CircleCheckBig
             style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
@@ -143,7 +153,7 @@ export function PrePrevisualizacion() {
               key={index}
               onClick={() => handleSelect(index)}
             >
-              <div className={`info ${card.select ? "crdSlct" : ""}`}>
+              <div className={`info ${card.select ? "crdSlct" : ""}`} >
                 <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>
                 <p>Fecha de análisis: <span className="sPan">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
                 <p>Lote: <span className="sPan">{card.lote}</span></p>
@@ -151,7 +161,7 @@ export function PrePrevisualizacion() {
             </div>
           ))}
         </div>
-        <button className="btnSlct" onClick={handleNavigate}>Generar informe</button>
+        <button className="btnSlct" id={contextTheme} onClick={handleNavigate}>Generar informe</button>
       </div>
     </div>
   );

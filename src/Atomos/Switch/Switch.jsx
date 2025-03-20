@@ -1,11 +1,13 @@
 import { useId } from "react";
 import "./theme-switch.css";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export const Switch = ({ onChange, checked }) => {
+  const { contextTheme } = useThemeContext();
   const maskId = useId(); 
 
   return (
-    <label htmlFor="themeToggle" className="themeToggle st-sunMoonThemeToggleBtn">
+    <label htmlFor="themeToggle" className="themeToggle st-sunMoonThemeToggleBtn" id={contextTheme}>
       <input
         type="checkbox"
         id="themeToggle"
@@ -28,6 +30,8 @@ export const Switch = ({ onChange, checked }) => {
           <circle className="sunRay sunRay6" cx="14" cy="3.1718" r="1.5"></circle>
         </g>
       </svg>
+
+      <p>{contextTheme === "Light" ? "Light Mode" : "Dark Mode"}</p>
     </label>
   );
 };

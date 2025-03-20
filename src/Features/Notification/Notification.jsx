@@ -59,8 +59,9 @@ export const Notification = ({ notif = [] }) => {
         htmlFor="state-dropdown"
         className="trigger"
         aria-label="Notificaciones"
+        id={contextTheme}
       >
-        <Bell size={24} className="bell-icon" />
+        <Bell size={24} className="bell-icon" id={contextTheme} />
         {notifications.length > 0 && (
           <span className="notification-indicator"></span>
         )}
@@ -86,7 +87,7 @@ export const Notification = ({ notif = [] }) => {
         
         {notifications.length === 0 && (
           <li className="listitem" role="listitem">
-            <article className="article">No hay nuevas notificaciones</article>
+            <article className="article" id={contextTheme}>No hay nuevas notificaciones</article>
           </li>
         )}
       </ul>

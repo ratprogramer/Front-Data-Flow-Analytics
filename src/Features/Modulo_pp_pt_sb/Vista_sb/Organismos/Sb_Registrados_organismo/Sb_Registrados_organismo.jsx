@@ -3,8 +3,10 @@ import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import { useNavigate } from "react-router-dom"
 import "./Sb_Registrados_organismo.css"
+import { useThemeContext } from "../../../../../context/ThemeContext"
 
 export function Sb_Registrados_organismo(){
+    const { contextTheme } = useThemeContext();
     const [productos, setProductos] = useState([])
     const navigate = useNavigate();
     useEffect( () => {
@@ -29,7 +31,7 @@ export function Sb_Registrados_organismo(){
     };
 
     return(
-        <div className="sb_registrados_container">
+        <div className="sb_registrados_container" id={contextTheme}>
             { !productos ? <h1>No hay muestras de saborizacion registradas</h1> :
                 productos.map((producto, index) => (
                     <CardSB_molecula

@@ -1,5 +1,5 @@
 import { ButtonAdmin } from "../../Organismos/BotonesMenuAdmin/BotonAdmin";
-import logo from "../../../../../../imgs/logoDFA blanco.png";
+import logo from "../../../../../../imgs/logoDFAblanco.png";
 import { Icon } from "../../Organismos/IconList/Icon";
 import { ShieldUser } from "lucide-react";
 import "./Aside.css";

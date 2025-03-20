@@ -210,6 +210,7 @@ return (
     <form
       className="formulrio-resultado-sb-container"
       onSubmit={handleSubmit(onSubmit, onError)}
+      
     >
       <div className="formulario-resultado-sb-campos">
         <TimeGroup

@@ -75,44 +75,46 @@ export function IndicePP_PT_organismo() {
   return (
     <div className="Indice-container-organismo" id={contextTheme}>
       <div className="tttlo" id={contextTheme}>
-        <h1>Menú</h1>
-        <div style={{display: 'flex', alignItems: 'center'}}>
-        <Notification notif={notif} />
-        <UserOptions />
+        <h1 style={{marginLeft: "10px"}}>Menú</h1>
+        <div className="user-options-mn" style={{display: 'flex', alignItems: 'center', marginRight: "10px"}} id={contextTheme}>
+          <Notification notif={notif} />
+          <UserOptions />
         </div>
       </div>
   
-      {sections
-        .filter(({ id }) => id !== "informes")
-        .map(({ id, title, icon, buttons }) => (
-          <div key={id} className="btn-sctn-cntnr" id={contextTheme}>
-            <div className="btn-sctn" onClick={() => toggleSection(id)} id={contextTheme}>
-              <span>{icon}</span>
-              {title}
-            </div>
-            {openSection === id && (
-              <div className="buttons-container" id={contextTheme}>
-                {buttons.map((button, index) => (
-                  <BotonesIndice key={index} botones={[button]} id={contextTheme}/>
-                ))}
+      <div className="mn-cont" id={contextTheme}>
+        {sections
+          .filter(({ id }) => id !== "informes")
+          .map(({ id, title, icon, buttons }) => (
+            <div key={id} className="btn-sctn-cntnr" id={contextTheme}>
+              <div className="btn-sctn" onClick={() => toggleSection(id)} id={contextTheme}>
+                <span>{icon}</span>
+                {title}
               </div>
-            )}
+              {openSection === id && (
+                <div className="buttons-container" id={contextTheme}>
+                  {buttons.map((button, index) => (
+                    <BotonesIndice key={index} botones={[button]} id={contextTheme}/>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+    
+        {sections.find(({ id }) => id === "informes") && (
+          <div className="btn-sctn-a" id={contextTheme}>
+            <BotonesIndice
+              botones={[
+                {
+                  path: "/seleccion_muestras",
+                  text: "Informes",
+                  icon: <BarChart3 />,
+                },
+              ]}
+            />
           </div>
-        ))}
-  
-      {sections.find(({ id }) => id === "informes") && (
-        <div className="btn-sctn-a">
-          <BotonesIndice
-            botones={[
-              {
-                path: "/seleccion_muestras",
-                text: "Informes",
-                icon: <BarChart3 />,
-              },
-            ]}
-          />
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

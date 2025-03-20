@@ -53,9 +53,142 @@
 
 /* Estilos Dark mode*/
 
+.theme-transition {
+  transition: all 0.5s ease-in-out;
+}
+
+#Dark .datosUsuario-container {
+  background: #282c34;
+  color: #ccc;
+  box-shadow: none;
+  border: 1px solid #555;
+}
+
+#Dark .datosUsuario {
+  background: none;
+  color: #ccc;
+  box-shadow: none;
+  border: none;
+}
+
 #Dark {
   background: #282c34;
   color: #ccc;
+  box-shadow: none;
+}
+
+#Dark .formulario-pp-campos {
+  box-shadow: 0 20px 50px 5px #000;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark select {
+  background: #282c34;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark input[type="submit"] {
+  border: 1px solid #555;
+  color: #ccc;
+}
+
+#Dark input[type="time"],
+#Dark input[type="date"],
+#Dark input[type="number"],
+#Dark #observaciones {
+  background: #282c34;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark .datosSB-organismo-container{
+  color: #ccc;
+  border: 1px solid #555;
+  border-radius: 10px;
+}
+
+#Dark .formularioResultadoPT-pagina-container {
+  background: #282c34;
+}
+
+#Dark input[type="date"]:disabled {
+  background: #575b63;
+  color: #8f8f8f;
+}
+
+#Dark .FormularioIngresoPP-container-pagina {
+  background: #282c34;
+}
+
+#Dark .slctP1 {
+  color: #ccc;
+}
+
+#Dark .slct {
+  background: #ccc;
+  color: #000;
+}
+
+#Dark .cicle-btn,
+#Dark .btnSlct {
+  background: #242424;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark .tabFilt {
+  box-shadow: 0 0 50px 5px #000;
+  border: 1px solid #555;
+}
+
+#Dark .burger span {
+  background: #ccc;
+}
+
+#Dark .tituloPagina-container {
+  background: #1e1e1e;
+}
+
+#Dark .tituloPagina-subcontainer {
+  background: #1e1e1e;
+}
+
+#Dark .tituloPagina-subcontainer h1 {
+  color: #ccc;
+}
+
+#Dark .tttlo {
+  background: #1e1e1e;
+}
+
+#Dark .trigger svg {
+  background: #1e1e1e;
+}
+
+#Dark .trigger {
+  background: #1e1e1e;
+}
+
+#Dark .user-options-mn {
+  background: #1e1e1e;
+}
+
+#Dark .user-options-container {
+  background: #1e1e1e;
+}
+
+#Dark .fecha {
+  color: #ccc;
+}
+
+#Dark .content-user-desp {
+  box-shadow: 0 0 50px 5px #000;
+  border: 1px solid #555;
+}
+
+#Dark .userImg img {
   box-shadow: none;
 }
 
@@ -63,14 +196,21 @@
   color: #ccc;
 }
 
-#Dark p>span {
+#Dark p > span {
   color: #000;
 }
 #Dark .logOut {
-  background: rgb(172, 39, 39);
+  background: #991c1c;
   color: #fff;
   transition: all 0.2s ease-in-out;
 }
+
+#Dark .logOut-a {
+  background: #991c1c;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
 #Dark .logOut:hover {
   background: #c02b2b;
   color: #fff;
@@ -80,13 +220,37 @@
   color: #ccc;
 }
 
+#Dark .btn-sctn {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  transition: all 0.2s ease-in-out;
+}
+
+#Dark .btn-sctn:hover {
+  background: #222;
+}
+
+#Dark .btn-sctn-a button {
+  background: #1e1e1e;
+}
+
+#Dark button {
+  background: #333;
+  border: 1px solid #222;
+  transition: all 0.2s ease-in-out;
+}
+
+#Dark button:hover {
+  background: #222;
+}
+
 /* Estilos para Light mode*/
 
-#Light {
+/* #Light {
   background: #f2f4f6;
   color: #0d3f67;
 }
 
 #Light p {
   color: #0d3f67;
-}
+} */

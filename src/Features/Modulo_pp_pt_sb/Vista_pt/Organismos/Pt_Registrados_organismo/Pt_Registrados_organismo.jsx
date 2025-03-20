@@ -3,8 +3,10 @@ import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import { useNavigate } from "react-router-dom"
 import "./Pt_Registrados_organismo.css"
+import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export function Pt_Registrados_organismo(){
+    const { contextTheme } = useThemeContext();
     const [productos, setProductos] = useState([])
     const navigate = useNavigate()
     useEffect( () => {
@@ -36,7 +38,7 @@ export function Pt_Registrados_organismo(){
     };
 
     return(
-        <div className="pt_registrados_container">
+        <div className="pt_registrados_container" id={contextTheme}>
             { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPT_molecula

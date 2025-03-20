@@ -1,17 +1,16 @@
-/* a clone from joshwcomeau.com 
- * but this version runs on pure CSS
- */
-
 .themeToggle {
   color: #000;
   width: 1.5rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  margin-left: .5rem;
 }
 
 .st-sunMoonThemeToggleBtn {
   position: relative;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .st-sunMoonThemeToggleBtn .themeToggleInput {

@@ -30,33 +30,33 @@ export function DatosUsuario({ rol, nombre, onChange }) {
 
   return (
     <div className="datosUsuario-container" id={contextTheme}>
-      <div className="datosUsuario">
+      <div className="datosUsuario" id={contextTheme}>
         <p>
           <span>
-            <ChartLine />
+            <ChartLine id={contextTheme}/>
           </span>
           {rol || "Analista"}
         </p>
         <p>
           <span>
-            <UserRound />
+            <UserRound id={contextTheme}/>
           </span>
           {nombre || "Nombre Random"}
         </p>
         <p>
           <span>
-            <CalendarFold />
+            <CalendarFold id={contextTheme}/>
           </span>
-          <span className="fecha">Fecha:</span> {año}-{mes}-{dia}
+          <span className="fecha" id={contextTheme}>Fecha:</span> {año}-{mes}-{dia}
         </p>
 
         <div>
-          <Switch onChange={handleSwitch} checked={checked} />
+          <Switch onChange={handleSwitch} checked={checked}/>
         </div>
 
         <p className="logOut" onClick={handleNavigate} id={contextTheme}>
-          <span>
-            <LogOut />
+          <span style={{display: "flex", alignItems: "center"}}>
+            <LogOut className="logOut-a" id={contextTheme}/>
           </span>
           Cerrar sesión
         </p>

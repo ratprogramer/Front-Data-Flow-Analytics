@@ -14,7 +14,7 @@ export function TituloPagina({path, text }){
     }
     return(
         <div className="tituloPagina-container" id={contextTheme}>
-            <div style={{display: 'flex', alignItems: 'center'}} id={contextTheme}>
+            <div className="tituloPagina-subcontainer" style={{display: 'flex', alignItems: 'center', gap: '10px'}} id={contextTheme}>
                 <BurgerMenu onclick={handleClick}/>
                 <h1 className="titulo-modulo-txt">{text}</h1>
             </div>
