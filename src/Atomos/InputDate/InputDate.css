@@ -21,7 +21,7 @@ input {
 
 input[type="time"]::-webkit-calendar-picker-indicator {
   position: relative;
-  width: 78%;
+  width: 70%;
   display: flex;
   left: 0;
   top: 0;
@@ -30,7 +30,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   position: relative;
-  width: 75%;
+  width: 70%;
   display: flex;
   left: 0;
   top: 0;

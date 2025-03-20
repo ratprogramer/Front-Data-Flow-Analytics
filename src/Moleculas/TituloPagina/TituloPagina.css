@@ -2,21 +2,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100vw;  
 }
 
 .titulo-modulo-txt {
   font-weight: 550;
   font-size: 23px;
   color: #000;
-  align-items: flex-start;
-  margin-left: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .tituloPagina-container {
     justify-content: space-between;
     gap: 20px;
-
   }
 
   .titulo-modulo-txt {

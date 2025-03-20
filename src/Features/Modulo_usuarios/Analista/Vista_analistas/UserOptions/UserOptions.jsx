@@ -24,8 +24,8 @@ export const UserOptions = () => {
 
   return (
     <div className="user-options-container" ref={dropdownRef} id={contextTheme}>
-      <label htmlFor="user-dropdown" className="dropdown-toggle">
-        <img src={us} alt="Logo" className="logo-image" />
+      <label htmlFor="user-dropdown" className="dropdown-toggle" id={contextTheme}>
+        <img src={us} alt="Logo" className="logo-image" id={contextTheme} />
       </label>
       <input type="checkbox" id="user-dropdown" className="dropdown-checkbox" ref={checkboxRef} />
       <div className="content-user-desp" id={contextTheme}>

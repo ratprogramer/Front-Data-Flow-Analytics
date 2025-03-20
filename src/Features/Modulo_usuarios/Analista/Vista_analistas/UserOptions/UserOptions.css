@@ -1,6 +1,7 @@
 .user-options-container {
   position: relative;
   display: inline-block;
+  padding-right: 10px;
 }
 
 .dropdown-toggle {

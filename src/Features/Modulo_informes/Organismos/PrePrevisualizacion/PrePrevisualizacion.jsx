@@ -80,15 +80,15 @@ export function PrePrevisualizacion() {
   };
 
   return (
-    <div className="filtros">
+    <div className="filtros" id={contextTheme}>
       <TituloPagina path={"/menu"} text={"Informes y registros"} />
 
 
       {shwFltrs && (
-        <div className="tabFilt" ref={tabFiltRef}>
+        <div className="tabFilt" ref={tabFiltRef} id={contextTheme}>
           <div className="fltr">
             <p>Tipo</p>
-            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)}>
+            <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)} id={contextTheme}>
               <option value="all">Todos</option>
               <option value="pp">Producto en proceso</option>
               <option value="pt">Producto terminado</option>
@@ -109,32 +109,35 @@ export function PrePrevisualizacion() {
                   locale: { rangeSeparator: " a " },
                   maxDate: "today",
                   onChange: (dates) => setDateRange(dates),
+                  
                 })
               }
+              id={contextTheme}
             />
           </div>
           <hr />
           <div className="lt">
             <p>Lote:</p>
             <input 
-              type="text" 
-              id="lt" 
+              type="number" 
+              className="lts" 
               value={loteFilter} 
               placeholder="Ingrese Lote"
               onChange={(e) => setLoteFilter(e.target.value)} 
+              id={contextTheme}
             />
           </div>
         </div>
       )}
 
-      <div className="selected">
-        <p className="slctP">
-          <span>
-            Seleccionados: <span className="slct">{nSlct}</span>
+      <div className="selected" id={contextTheme}>
+        <p className="slctP" id={contextTheme}>
+          <span className="slctP1" id={contextTheme}>
+            Seleccionados: <span className="slct" id={contextTheme}>{nSlct}</span>
           </span>
 
            
-          <span className="cicle-btn" onClick={() => setSeleccionados(!seleccionados)}>
+          <span className="cicle-btn" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
             Seleccionados
           <CircleCheckBig
             style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
@@ -158,7 +161,7 @@ export function PrePrevisualizacion() {
             </div>
           ))}
         </div>
-        <button className="btnSlct" onClick={handleNavigate}>Generar informe</button>
+        <button className="btnSlct" id={contextTheme} onClick={handleNavigate}>Generar informe</button>
       </div>
     </div>
   );

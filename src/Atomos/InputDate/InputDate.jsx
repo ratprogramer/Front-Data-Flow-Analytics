@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useWatch } from "react-hook-form";
 import "./InputDate.css";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export function InputDate({ 
   id, 
@@ -13,6 +14,8 @@ export function InputDate({
 }) {
   const [minDate, setMinDate] = useState(null);
   const [maxDate, setMaxDate] = useState(null);
+
+  const { contextTheme } = useThemeContext();
 
   // Función para obtener una fecha formateada con un offset en días
   const getFormattedDate = (offsetDays, base = new Date()) => {

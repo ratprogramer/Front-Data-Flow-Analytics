@@ -2,7 +2,7 @@
 .route-transition-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
 }
 
 /* Clases para slide-left  (animación al navegar o ir a una nueva ruta)*/
@@ -59,6 +59,90 @@
   box-shadow: none;
 }
 
+#Dark .formulario-pp-campos {
+  box-shadow: 0 20px 50px 5px #000;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark input[type="time"], #Dark input[type="date"], #Dark input[type="number"], #Dark #observaciones {
+  background: #282c34;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark .FormularioIngresoPP-container-pagina {
+  background: #282c34;
+}
+
+#Dark .slctP1 {
+  color: #ccc;
+}
+
+#Dark .slct {
+  background: #ccc;
+  color: #000;
+}
+
+#Dark .cicle-btn, #Dark .btnSlct {
+  background: #242424;
+  color: #ccc;
+  border: 1px solid #555;
+}
+
+#Dark .tabFilt {
+  box-shadow:  0 0 50px 5px #000;
+  border: 1px solid #555;}
+
+#Dark .burger span {
+  background: #ccc;
+}
+
+#Dark .tituloPagina-container {
+  background: #1e1e1e;
+}
+
+#Dark .tituloPagina-subcontainer {
+  background: #1e1e1e;
+}
+
+#Dark .tituloPagina-subcontainer h1 {
+  color: #ccc;
+}
+
+#Dark .tttlo {
+  background: #1e1e1e;
+}
+
+#Dark .trigger svg {
+  background: #1e1e1e;
+}
+
+#Dark .trigger{
+  background: #1e1e1e;
+}
+
+#Dark .user-options-mn {
+  background: #1e1e1e;
+}
+
+#Dark .user-options-container {
+  background: #1e1e1e;
+}
+
+#Dark .fecha {
+  color: #ccc;
+}
+
+#Dark .content-user-desp {
+  box-shadow:  0 0 50px 5px #000;
+  border: 1px solid #555;
+}
+
+#Dark .userImg img {
+  box-shadow: none;
+}
+
 #Dark p {
   color: #ccc;
 }
@@ -81,13 +165,17 @@
 }
 
 #Dark .btn-sctn{
-  background: #333;
-  border: 1px solid #222;
+  background: #1e1e1e;
+  border: 1px solid #333;
   transition: all 0.2s ease-in-out;
 }
 
 #Dark .btn-sctn:hover{
   background: #222;
+}
+
+#Dark .btn-sctn-a button {
+  background: #1e1e1e;
 }
 
 #Dark button {
