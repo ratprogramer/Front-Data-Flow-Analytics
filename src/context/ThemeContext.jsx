@@ -10,7 +10,7 @@ export const ThemeContextProvider = ({ children }) => {
   };
   return (
     <ThemeContext.Provider value={values}>
-      <div className={contextTheme}>{children}</div>
+      <div className={contextTheme} id='theme-transition'>{children}</div>
     </ThemeContext.Provider>
   );
 };

@@ -30,7 +30,7 @@ export function DatosUsuario({ rol, nombre, onChange }) {
 
   return (
     <div className="datosUsuario-container" id={contextTheme}>
-      <div className="datosUsuario">
+      <div className="datosUsuario" id={contextTheme}>
         <p>
           <span>
             <ChartLine id={contextTheme}/>
@@ -55,8 +55,8 @@ export function DatosUsuario({ rol, nombre, onChange }) {
         </div>
 
         <p className="logOut" onClick={handleNavigate} id={contextTheme}>
-          <span>
-            <LogOut />
+          <span style={{display: "flex", alignItems: "center"}}>
+            <LogOut className="logOut-a" id={contextTheme}/>
           </span>
           Cerrar sesión
         </p>
