@@ -53,3 +53,8 @@ a menos que por defecto se vaya a considerar otro elemento como contenedor.
 
 
 
+.container-stats{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
