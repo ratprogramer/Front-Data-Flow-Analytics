@@ -244,8 +244,8 @@
       & .info {
         display: flex;
         flex-direction: column;
-        
         padding: 0 0.5rem;
+        height: 100%;
 
         & h3 {
           width: 100%;

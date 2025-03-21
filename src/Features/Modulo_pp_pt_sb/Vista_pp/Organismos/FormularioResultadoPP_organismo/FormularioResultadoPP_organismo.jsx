@@ -9,11 +9,14 @@ import { decodeToken } from "../../../../../helpers/decodeToken";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useThemeContext } from "../../../../../context/ThemeContext";
 import Swal from "sweetalert2";
 
 import "./FormularioResultadoPP_organismo.css";
 
 export function FormularioResultadoPP_organismo (){
+
+  const { contextTheme } = useThemeContext();
     const location = useLocation();
     const { id_pp } = location.state || {};
     const {
@@ -205,6 +208,7 @@ export function FormularioResultadoPP_organismo (){
       <form
         className="formulrio-resultado-pp-container"
         onSubmit={handleSubmit(onSubmit, onError)}
+        id={contextTheme}
       >
         <div className="formulario-resultado-pp-campos">
           <TimeGroup

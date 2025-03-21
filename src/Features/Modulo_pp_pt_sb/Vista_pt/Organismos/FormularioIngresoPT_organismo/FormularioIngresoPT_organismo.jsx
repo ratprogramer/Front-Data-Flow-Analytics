@@ -1,18 +1,21 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
-import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
-import { usePostFetch } from "../../../../../helpers/usePostFetch";
-import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGroup";
-import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
-import { useNavigate } from "react-router-dom";
-import { decodeToken } from "../../../../../helpers/decodeToken";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import "./FormularioIngresoPT_organismo.css";
 import Swal from "sweetalert2";
 
+import { SelectGroup } from "../../../../../Moleculas/InputGroup/SelectGroup/SelectGroup";
+import { TxtGroup } from "../../../../../Moleculas/InputGroup/TxtGroup/TxtGroup";
+import { TimeGroup } from "../../../../../Moleculas/InputGroup/TimeGroup/TimeGroup";
+import { usePostFetch } from "../../../../../helpers/usePostFetch";
+import { InputSub } from "../../../../../Atomos/InputSub/InputSub";
+import { decodeToken } from "../../../../../helpers/decodeToken";
+import "./FormularioIngresoPT_organismo.css";
+import { useThemeContext } from "../../../../../context/ThemeContext";
+
 export function FormularioIngresoPT_organismo() {
+
+  const { contextTheme } = useThemeContext();
+
   const { register, handleSubmit, watch, setValue } = useForm({
     defaultValues: {
       fecha_analisis: new Date().toISOString().split("T")[0],
@@ -117,6 +120,7 @@ export function FormularioIngresoPT_organismo() {
     <form
       className="formulrio-registro-pt-container"
       onSubmit={handleSubmit(onSubmit, onError)}
+      id={contextTheme}
     >
       <div className="formulario-pt-campos">
         <TimeGroup

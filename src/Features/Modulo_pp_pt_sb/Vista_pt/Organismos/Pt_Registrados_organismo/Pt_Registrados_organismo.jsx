@@ -52,8 +52,7 @@ export function Pt_Registrados_organismo(){
                     id_PT={producto.id_pt}
                     id_PP={producto.id_producto_proceso}
                 />
-                ))
-            }
+                )) }
         </div>
     )
 }

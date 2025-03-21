@@ -14,8 +14,8 @@ export function CardSB_molecula({sabor, lote, fechaAnalisis, responsableAnalisis
     return(
         <>
             <div className={`card-sb-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`} onClick={handleClick} id={contextTheme}>
-                <div className="data-sb-molecula">
-                    <h1 className="nombre-muestra-sb">{sabor}</h1>
+                <div className="data-sb-molecula" >
+                    <h1 className="nombre-muestra-sb" id={contextTheme}>{sabor}</h1>
                     <p>Lote: <span>{lote}</span></p>
                     <p>Fecha de analisis: <span>{fechaAnalisis}</span></p>   
                     <p>Responsable de analisis: <span>{responsableAnalisis}</span></p>    

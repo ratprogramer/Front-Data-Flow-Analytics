@@ -14,8 +14,8 @@ export function CardPT_molecula({nombreMuestra, lote, fechaAnalisis, responsable
     return(
         <>
             <div className={`card-pt-molecula-container ${fecha24 ? "pendiente" : "aprobado"}`}  onClick={handleClick} id={contextTheme}>
-                <div className="data-pt-molecula">
-                    <h1 className="nombre-muestra">{nombreMuestra}</h1>
+                <div className="data-pt-molecula" >
+                    <h1 className="nombre-muestra" id={contextTheme}>{nombreMuestra}</h1>
                     <p>Lote: {lote}</p>
                     <p>Fecha de analisis: {fechaAnalisis}</p>   
                     <p>Responsable de analisis: {responsableAnalisis}</p>    

@@ -57,6 +57,21 @@
   transition: all 0.5s ease-in-out;
 }
 
+#Dark .container-box-datos-pp {
+  background: #282c34;
+  color: #ccc;
+  box-shadow: none;
+  border: 1px solid #555;
+}
+
+#Dark #e_coli, #Dark #coliformes {
+  background: #575b63;
+  color: #8f8f8f;
+  border: none;
+}
+
+ 
+
 #Dark .datosUsuario-container {
   background: #282c34;
   color: #ccc;
@@ -97,7 +112,7 @@
 #Dark input[type="time"],
 #Dark input[type="date"],
 #Dark input[type="number"],
-#Dark #observaciones {
+#Dark #observaciones, #Dark #mohos_ley {
   background: #282c34;
   color: #ccc;
   border: 1px solid #555;
@@ -199,6 +214,31 @@
 #Dark p > span {
   color: #000;
 }
+
+#Dark .crdSlct {
+  background: #8f8f8f;
+  color: #1e1e1e;
+  box-shadow: none;
+}
+
+#Dark .crdSlct > p {
+  color: #1e1e1e;
+}
+
+#Dark .crdSlct > p > span.sPan {
+  color: #000;
+  border: 1px solid #000;
+}
+
+#Dark  .info > p > .sPan {
+  color: #ccc;
+}
+
+#Dark .info {
+  border: 1px solid #666;
+  border-radius: 10px;
+}
+
 #Dark .logOut {
   background: #991c1c;
   color: #fff;

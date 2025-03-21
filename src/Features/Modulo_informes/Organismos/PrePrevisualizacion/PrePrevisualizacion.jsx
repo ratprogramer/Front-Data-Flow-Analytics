@@ -1,13 +1,14 @@
 import { CircleCheckBig, Filter } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import Swal from "sweetalert2";
+
 import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
+import { useThemeContext } from "../../../../context/ThemeContext";
 import { useGetFetch } from "../../../../helpers/useGetFetch";
 import "./PrePrevisualizacion.css";
-import { useThemeContext } from "../../../../context/ThemeContext";
 
 export function PrePrevisualizacion() {
   const { contextTheme } = useThemeContext();
@@ -153,7 +154,7 @@ export function PrePrevisualizacion() {
               key={index}
               onClick={() => handleSelect(index)}
             >
-              <div className={`info ${card.select ? "crdSlct" : ""}`} >
+              <div className={`info ${card.select ? "crdSlct" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>
                 <p>Fecha de análisis: <span className="sPan">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
                 <p>Lote: <span className="sPan">{card.lote}</span></p>

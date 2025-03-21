@@ -1,0 +1,7 @@
+.FormularioIngresoPT-container-pagina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+}

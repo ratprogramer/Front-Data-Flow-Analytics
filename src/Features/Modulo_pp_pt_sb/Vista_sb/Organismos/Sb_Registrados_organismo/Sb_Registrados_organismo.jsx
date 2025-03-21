@@ -35,17 +35,17 @@ export function Sb_Registrados_organismo(){
             { !productos ? <h1>No hay muestras de saborizacion registradas</h1> :
                 productos.map((producto, index) => (
                     <CardSB_molecula
-                    key={index}
-                    navRoute={"/ingreso_resultado_sb"}
-                    sabor={producto.sabor}
-                    lote={producto.lote}
-                    fecha24={producto.fecha_24h}
-                    fechaAnalisis={formatFecha(producto.fecha_analisis)}
-                    responsableAnalisis={producto.responsable_analisis}
-                    id_sb={producto.id_sb}
-                />
-                ))
-            }
+                        key={index}
+                        navRoute={"/ingreso_resultado_sb"}
+                        sabor={producto.sabor}
+                        lote={producto.lote}
+                        fecha24={producto.fecha_24h}
+                        fechaAnalisis={formatFecha(producto.fecha_analisis)}
+                        responsableAnalisis={producto.responsable_analisis}
+                        id_sb={producto.id_sb}
+                        id={contextTheme}
+                    />
+                ))}
         </div>
     )
 }
