@@ -1,4 +1,9 @@
 import "./Usuarios.css";
+import { useEffect, useState } from "react";
+import { useGetFetch } from "../../../../../../helpers/useGetFetch";
+import { useNavigate } from "react-router-dom";
+import { UserCard } from "../../Moleculas/UserCard";
+import Swal from "sweetalert2";
 
 const usersList = [
   { id: 1, dni: "111111", nombre: "María López", rol: "Analista", contraseña: "111111" },
@@ -14,19 +19,28 @@ const usersList = [
 ];
 
 export const Usuarios = () => {
+  const navigate = useNavigate();
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect( () => {
+    const  fetchUsuarios = async () => {
+      try{
+        const result = await useGetFetch("/usuarios", navigate);
+        console.log(result);
+        setUsuarios(result.data)
+      }catch(err){
+        Swal.fire('Error',"Error al traer los usuarios","error")
+        console.log(err);
+      }
+    }
+    fetchUsuarios();
+  },[])
+  
   return (
     <div className="users-content">
       <h1>Usuarios</h1>
       <ul className="users-list">
-        {usersList.map(({ id, nombre, rol, dni }) => (
-          <li className="user-item" key={id}>
-            <div className="user-info">
-              <h3>{nombre}</h3>
-              <p className="user-role">{rol}</p>
-              <p className="user-dni">{dni}</p>
-            </div>
-          </li>
-        ))}
+        <UserCard usuarios={usuarios}></UserCard>
       </ul>
     </div>
   );

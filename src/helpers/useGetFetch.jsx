@@ -9,7 +9,6 @@ export async function useGetFetch(endPoint, navigate) {
                 "Content-Type": "application/json" 
             },
         });
-        console.log(response);
         
         const result = await response.json();
         
