@@ -29,13 +29,14 @@ export function Formulario_Registro_Usuario() {
     console.log(response);
     if (!response.success) {
       if (response.error?.name === "ZodError") {
-        // Formatear los errores de Zod
         const errorMessages = response.error.issues
           .map((issue) => `• ${issue.path.join(".")}: ${issue.message}`)
           .join("\n");
   
         Swal.fire("Error de validación", errorMessages, "error");
-      } else {
+      } else if (response.error?.code === "ER_DUP_ENTRY") {
+        Swal.fire("Error de validación", "El DNI o el email ya fueron registrados con anterioridad" , "error");
+      }else{ 
         // Otro tipo de error
         Swal.fire("Error", response.message || "Ocurrió un error inesperado", "error");
       }

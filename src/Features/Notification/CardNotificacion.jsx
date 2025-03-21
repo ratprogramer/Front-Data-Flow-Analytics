@@ -12,11 +12,6 @@ export function CardNotificacion({
   fecha24,
   tipo
 }) {
-  if(fecha24){
-    console.log("fecha24");
-  }else{
-    console.log("no fecha24");
-  }
   const navigate = useNavigate();
   const handleClick = () => {
     if(tipo == "sb"){

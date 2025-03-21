@@ -40,8 +40,8 @@ export const BarCharts = ({ filter }) => {
   return (
     <>
       {filter == 1 ? 
-        (<>
-          <ResponsiveContainer width="100%" height={300}>
+        (<div className='container-stats'>
+          <ResponsiveContainer width="50%" height={380}>
             <BarChart data={dataHoy}>
               <XAxis dataKey="fecha" />
               <YAxis />
@@ -51,7 +51,7 @@ export const BarCharts = ({ filter }) => {
               <Bar dataKey="Totales" fill="black" barSize={200} />
             </BarChart>
           </ResponsiveContainer>
-          <PieChart width={500} height={500}>
+          <PieChart width={500} height={350}>
             <Pie
               data={dataPastel}
               cx="50%"
@@ -68,7 +68,7 @@ export const BarCharts = ({ filter }) => {
             <Tooltip />
             <Legend />
           </PieChart>
-        </>
+        </div>
         ): filter == 2 ? 
         (
           <ResponsiveContainer width="100%" height={300}>
@@ -76,7 +76,7 @@ export const BarCharts = ({ filter }) => {
               <XAxis dataKey="fecha" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="Completadas" fill="black" barSize={200} />
+              <Bar dataKey="Completadas" fill="green" barSize={200} />
             </BarChart>
           </ResponsiveContainer>
         ) : filter == 3 ? 
@@ -86,7 +86,7 @@ export const BarCharts = ({ filter }) => {
             <XAxis dataKey="fecha" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="Completadas" fill="black" barSize={100} />
+            <Bar dataKey="Completadas" fill="green" barSize={100} />
           </BarChart>
         </ResponsiveContainer>
         ):
