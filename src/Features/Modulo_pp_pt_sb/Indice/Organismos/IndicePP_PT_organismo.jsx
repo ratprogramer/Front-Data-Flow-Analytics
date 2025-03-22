@@ -56,6 +56,7 @@ export function IndicePP_PT_organismo() {
     Ejemplo de notificaciones, estos deberían reemplazarse con las cards. 
     ver el componente Notification.jsx en Features.
   */
+ 
   const notif = [
     { id: 1, message: 'Tienes nuevas notificaciones.' },  
     { id: 2, message: 'Mensaje importante 1' },
