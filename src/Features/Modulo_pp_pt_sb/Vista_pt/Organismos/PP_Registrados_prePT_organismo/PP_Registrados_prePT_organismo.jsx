@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import Swal from "sweetalert2";
 import './PP_Registrados_prePT_organismo.css'
+import { useThemeContext } from "../../../../../context/ThemeContext";
 
 
 export function PP_Registrados_prePT_organismo(){
     const [productos, setProductos] = useState([])
     const navigate = useNavigate();
 
+    const { contextTheme } = useThemeContext();
     useEffect( () => {
         const fetchData = async () => {
             try {
@@ -37,7 +39,7 @@ export function PP_Registrados_prePT_organismo(){
     };
 
     return(
-        <div className="pp_registrados_container">
+        <div className="pp_registrados_container" id={contextTheme}>
             { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPP_molecula

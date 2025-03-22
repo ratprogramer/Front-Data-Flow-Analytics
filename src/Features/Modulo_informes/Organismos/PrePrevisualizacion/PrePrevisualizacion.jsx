@@ -134,16 +134,18 @@ export function PrePrevisualizacion() {
       <div className="selected" id={contextTheme}>
         <p className="slctP" id={contextTheme}>
           <span className="slctP1" id={contextTheme}>
-            Seleccionados: <span className="slct" id={contextTheme}>{nSlct}</span>
+            Seleccionados: <span className="slct" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>{nSlct}</span>
           </span>
 
            
-          <span className="cicle-btn" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
+          {/* <span className="cicle-btn" idw={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
             Seleccionados
-          <CircleCheckBig
-            style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
-          />
-          </span >
+            <CircleCheckBig
+              style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
+            />
+          </span > */}
+
+
           {/* {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>} */}
           {!shwFltrs && <Filter className="btnMenu" onClick={() => setShwFltrs(true)} />}
         </p>

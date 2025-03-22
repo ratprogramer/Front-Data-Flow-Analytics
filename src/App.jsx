@@ -23,13 +23,11 @@ import { VistaInforme } from "./Features/Modulo_informes/Paginas/VistaInforme/Vi
 import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
 import { ErrorPage } from "./Features/NotFound/Organisms/ErrorPage";
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
+import { useThemeContext } from "./context/ThemeContext";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
-
-
 import { UserProvider } from "./helpers/userContext";
 
 import "./app.css";
-import { useThemeContext } from "./context/ThemeContext";
 
 function App() {
   const { contextTheme } = useThemeContext();
@@ -55,184 +53,183 @@ function App() {
     
     <div className="route-transition-container" id={contextTheme}>
       <UserProvider>
+        <TransitionGroup component={null}>
+          <CSSTransition
+            key={location.key}
+            timeout={300}
+            classNames={transitionDirection}
+            unmountOnExit
+            >
+            <Routes location={location} >
+              <Route path="/" element={<InicioSesion />} />
 
-    <TransitionGroup component={null}>
-      <CSSTransition
-        key={location.key}
-        timeout={300}
-        classNames={transitionDirection}
-        unmountOnExit
-        >
-        <Routes location={location} >
-          <Route path="/" element={<InicioSesion />} />
+              <Route
+                path="/menu"
+                element={
+                  <ProtectedRoute>
+                    <IndicePP_PT />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/menu"
-            element={
-              <ProtectedRoute>
-                <IndicePP_PT />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/sub_menu_pp"
+                element={
+                  <ProtectedRoute>
+                    <SubIndicePP />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/sub_menu_pp"
-            element={
-              <ProtectedRoute>
-                <SubIndicePP />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_producto_p"
+                element={
+                  <ProtectedRoute>
+                    <FormularioRegistroPP_pagina />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_producto_p"
-            element={
-              <ProtectedRoute>
-                <FormularioRegistroPP_pagina />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/registrados_pp"
+                element={
+                  <ProtectedRoute>
+                    <Pp_Registrados />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/registrados_pp"
-            element={
-              <ProtectedRoute>
-                <Pp_Registrados />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_resultado_producto_p"
+                element={
+                  <ProtectedRoute>
+                    <FormularioResultadoPP />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_resultado_producto_p"
-            element={
-              <ProtectedRoute>
-                <FormularioResultadoPP />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/sub_menu_sb"
+                element={
+                  <ProtectedRoute>
+                    <SubIndiceSB/>
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/sub_menu_sb"
-            element={
-              <ProtectedRoute>
-                <SubIndiceSB/>
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_sb"
+                element={
+                  <ProtectedRoute>
+                    <FormularioRegistroSB_pagina />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_sb"
-            element={
-              <ProtectedRoute>
-                <FormularioRegistroSB_pagina />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/registrados_sb"
+                element={
+                  <ProtectedRoute>
+                    <Sb_Registrados />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/registrados_sb"
-            element={
-              <ProtectedRoute>
-                <Sb_Registrados />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_resultado_sb"
+                element={
+                  <ProtectedRoute>
+                    <FormularioResultadoSB/>
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_resultado_sb"
-            element={
-              <ProtectedRoute>
-                <FormularioResultadoSB/>
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/sub_menu_pt"
+                element={
+                  <ProtectedRoute>
+                    <SubIndicePT />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/sub_menu_pt"
-            element={
-              <ProtectedRoute>
-                <SubIndicePT />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/productos_registrados_pp_"
+                element={
+                  <ProtectedRoute>
+                    <PP_Registrados_PrePT_pagina />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/productos_registrados_pp_"
-            element={
-              <ProtectedRoute>
-                <PP_Registrados_PrePT_pagina />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_producto_t"
+                element={
+                  <ProtectedRoute>
+                    <FormularioRegistroPT_pagina />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_producto_t"
-            element={
-              <ProtectedRoute>
-                <FormularioRegistroPT_pagina />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/productos_registrados_pt"
+                element={
+                  <ProtectedRoute>
+                    <Pt_Registrados />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/productos_registrados_pt"
-            element={
-              <ProtectedRoute>
-                <Pt_Registrados />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/ingreso_resultado_producto_t"
+                element={
+                  <ProtectedRoute>
+                    <FormularioResultadoPT />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/ingreso_resultado_producto_t"
-            element={
-              <ProtectedRoute>
-                <FormularioResultadoPT />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/seleccion_muestras"
+                element={
+                  <ProtectedRoute>
+                    <PrePrevisualizacion />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/seleccion_muestras"
-            element={
-              <ProtectedRoute>
-                <PrePrevisualizacion />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/informe"
+                element={
+                  <ProtectedRoute>
+                    <VistaInforme/>
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/informe"
-            element={
-              <ProtectedRoute>
-                <VistaInforme/>
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/menu_admin"
+                element={
+                  <ProtectedRoute>
+                    <MenuPrincipalAdmin />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/menu_admin"
-            element={
-              <ProtectedRoute>
-                <MenuPrincipalAdmin />
-              </ProtectedRoute>
-            }
-            />
+              <Route
+                path="/registro_usuario"
+                element={
+                  <ProtectedRoute>
+                    <Registro_Usuario_Pagina />
+                  </ProtectedRoute>
+                }
+                />
 
-          <Route
-            path="/registro_usuario"
-            element={
-              <ProtectedRoute>
-                <Registro_Usuario_Pagina />
-              </ProtectedRoute>
-            }
-            />
-
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </CSSTransition>
-    </TransitionGroup>
-            </UserProvider>
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
+      </UserProvider>
     </div>
   );
 }

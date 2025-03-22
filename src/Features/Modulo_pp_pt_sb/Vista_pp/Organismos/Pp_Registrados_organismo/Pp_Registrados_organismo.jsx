@@ -29,7 +29,7 @@ export function Pp_Registrados_organismo(){
     };
     
     return(
-        <div className="pp_registrados_container">
+        <div className="pp_registrados_container" id={contextTheme}>
             { !productos ? <h1>No hay productos en proceso registrados</h1> :
                 productos.map((producto, index) => (
                     <CardPP_molecula
