@@ -73,6 +73,11 @@
 #Dark .dropdown {
   background: #1e1e1e;
 }
+
+#Dark .config span {
+  background: transparent;
+  color: #ccc;
+}
  
 #Dark .datosUsuario-container {
   background: #282c34;

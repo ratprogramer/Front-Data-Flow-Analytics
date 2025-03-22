@@ -26,6 +26,7 @@ import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { useThemeContext } from "./context/ThemeContext";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
 import { UserProvider } from "./helpers/userContext";
+import { Config } from "./Features/Configuraciones/Config"
 
 import "./app.css";
 
@@ -59,7 +60,7 @@ function App() {
             timeout={300}
             classNames={transitionDirection}
             unmountOnExit
-            >
+          >
             <Routes location={location} >
               <Route path="/" element={<InicioSesion />} />
 
@@ -208,13 +209,22 @@ function App() {
                 />
 
               <Route
+                path="/configuracion"
+                element={
+                  <ProtectedRoute>
+                    <Config />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
                 path="/menu_admin"
                 element={
                   <ProtectedRoute>
                     <MenuPrincipalAdmin />
                   </ProtectedRoute>
                 }
-                />
+              />
 
               <Route
                 path="/registro_usuario"

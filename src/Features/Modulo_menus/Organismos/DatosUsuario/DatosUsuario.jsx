@@ -1,4 +1,4 @@
-import { UserRound, CalendarFold, ChartLine, LogOut } from "lucide-react";
+import { UserRound, CalendarFold, ChartLine, LogOut, Settings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "../../../../Atomos/Switch/Switch";
@@ -54,6 +54,17 @@ export function DatosUsuario({ rol, nombre, onChange }) {
         <div>
           <Switch onChange={handleSwitch} checked={checked}/>
         </div>
+
+        <p
+          className="config" 
+          id={contextTheme}
+          onClick={() => navigate("/configuracion")}
+        >
+          <Settings id={contextTheme}/>
+          <span>
+            Configuración
+          </span>
+        </p>
 
         <p className="logOut" onClick={handleNavigate} id={contextTheme}>
           <span style={{display: "flex", alignItems: "center"}}>
