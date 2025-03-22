@@ -70,8 +70,10 @@
   border: none;
 }
 
+#Dark .dropdown {
+  background: #1e1e1e;
+}
  
-
 #Dark .datosUsuario-container {
   background: #282c34;
   color: #ccc;

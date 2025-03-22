@@ -1,10 +1,11 @@
-import { Bell } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import { useGetFetch } from '../../helpers/useGetFetch';
 import { useNavigate } from 'react-router-dom';
-import { CardNotificacion } from './CardNotificacion';
-import './Notification.css';
+
 import { useThemeContext } from '../../context/ThemeContext';
+import { useGetFetch } from '../../helpers/useGetFetch';
+import { CardNotificacion } from './CardNotificacion';
+import { Bell } from 'lucide-react';
+import './Notification.css';
 
 export const Notification = ({ notif = [] }) => {
   const [notifications, setNotifications] = useState([]);
