@@ -3,14 +3,17 @@ import { useState } from "react";
 
 import { UserOptions } from "../../../Modulo_usuarios/Analista/Vista_analistas/UserOptions/UserOptions";
 import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice";
-import { Notification } from '../../../Notification/Notification'
-import "./IndicePP_PT_organismo.css";
 import { useThemeContext } from "../../../../context/ThemeContext";
+import { Notification } from '../../../Notification/Notification';
+
+import "./IndicePP_PT_organismo.css";
+import { Modal } from "../../../Modal/Modal";
 
 // import ReactSwitch from "react-switch";
 
 export function IndicePP_PT_organismo() {
   const [openSection, setOpenSection] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const sections = [
     {
@@ -56,7 +59,7 @@ export function IndicePP_PT_organismo() {
     Ejemplo de notificaciones, estos deberían reemplazarse con las cards. 
     ver el componente Notification.jsx en Features.
   */
- 
+
   const notif = [
     { id: 1, message: 'Tienes nuevas notificaciones.' },  
     { id: 2, message: 'Mensaje importante 1' },
@@ -115,6 +118,9 @@ export function IndicePP_PT_organismo() {
             />
           </div>
         )}
+
+        <button onClick={() => setIsModalOpen(true)}>Abrir Modal</button>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </div>
   );

@@ -22,11 +22,11 @@ import { SubIndicePT } from "./Features/Modulo_pp_pt_sb/Vista_pt/Paginas/Subindi
 import { VistaInforme } from "./Features/Modulo_informes/Paginas/VistaInforme/VistaInforme";
 import { IndicePP_PT } from "./Features/Modulo_pp_pt_sb/Indice/Paginas/IndicePP_PT";
 import { ErrorPage } from "./Features/NotFound/Organisms/ErrorPage";
+import { Config } from "./Features/Configuraciones/Config";
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { useThemeContext } from "./context/ThemeContext";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
 import { UserProvider } from "./helpers/userContext";
-import { Config } from "./Features/Configuraciones/Config"
 
 import "./app.css";
 

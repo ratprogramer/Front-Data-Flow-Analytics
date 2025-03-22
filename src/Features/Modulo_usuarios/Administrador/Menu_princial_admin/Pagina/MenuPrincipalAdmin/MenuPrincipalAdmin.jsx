@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { Aside } from "../../Organismos/Aside/Aside";
-import { Icon } from "../../Organismos/IconList/Icon";
+import { LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+import { UsuariosAdd } from "../../Organismos/Usuarios/UsuariosAdd/UsuariosAdd.jsx";
+import { Configuracion } from "../../Organismos/Configuraciones/Configuracion";
 import { Dashboard } from "../../Organismos/Dashboard/Dashboard";
 import { Muestras } from "../../Organismos/Muestras/Muestras";
 import { Analisis } from "../../Organismos/Analisis/Analisis";
 import { Reportes } from "../../Organismos/Reportes/Reportes";
-import { Configuracion } from "../../Organismos/Configuraciones/Configuracion";
 import { Usuarios } from "../../Organismos/Usuarios/Usuarios";
-import { UsuariosAdd } from "../../Organismos/Usuarios/UsuariosAdd/UsuariosAdd.jsx";
-import { LogOut } from "lucide-react";
+import { Icon } from "../../Organismos/IconList/Icon";
+import { Aside } from "../../Organismos/Aside/Aside";
+
 import "./MenuPrincipalAdmin.css";
-import { useNavigate } from "react-router-dom";
 
 export const MenuPrincipalAdmin = () => {
     const [activeSection, setActiveSection] = useState("dashboard");
