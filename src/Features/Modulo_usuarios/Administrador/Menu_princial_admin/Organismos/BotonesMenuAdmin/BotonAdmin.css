@@ -4,9 +4,9 @@
   align-items: center;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   margin-bottom: 5px;
   padding: 10px;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-item .iconBtn {
@@ -21,6 +21,7 @@
 .nav-item .labelBtn {
   font-size: 16px;
   margin-left: 10px;
+
 }
 
 .nav-item:hover:not(.active) {
@@ -28,6 +29,7 @@
   color: #000;
   font-weight: bold;
   box-shadow: 0px 2px 5px 1px #ccc;
+  margin-left: 5px;
 }
 
 .nav-item:hover:not(.active) .iconBtn {
@@ -49,6 +51,9 @@
   background: #000;
   color: #ccc;
   padding: 1px 3px;
+  margin-left: 15px;
+  /* transform: translateX(10px); */
+
 }
 
 @media screen and (max-width: 767px) {

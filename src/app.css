@@ -276,13 +276,13 @@
   background: #1e1e1e;
 }
 
-#Dark button {
+#Dark button:not(.sidebar-nav > .nav-item) {
   background: #333;
   border: 1px solid #222;
   transition: all 0.2s ease-in-out;
 }
 
-#Dark button:hover {
+#Dark button:not(.sidebar-nav > .nav-item):hover {
   background: #222;
 }
 

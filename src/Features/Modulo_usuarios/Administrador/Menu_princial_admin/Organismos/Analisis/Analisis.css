@@ -9,7 +9,12 @@
 
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px #0000000d;
+    /* box-shadow: 0 2px 4px #0000000d; */
+    box-shadow: 0 10px 10px 5px #777;
+    transition: all 0.2s ease-in-out;
+
+
+    user-select: none;
 
     & .analysis-header {
       display: flex;
@@ -48,6 +53,11 @@
 
       font-size: 14px;
     }
+
+  }
+  & .analysis-card:hover {
+    box-shadow: 0 10px 10px 5px #777;
+    translate: 0 -3px;
   }
 }
 

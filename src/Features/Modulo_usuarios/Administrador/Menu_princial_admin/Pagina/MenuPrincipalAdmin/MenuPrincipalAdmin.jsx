@@ -1,33 +1,3 @@
-{/* 
-╔ -> alt + 201
-╚ -> alt + 200
-╗ -> alt + 187
-╝ -> alt + 188
-║ -> alt + 186
-═ -> alt + 205
-
-╔═════════════════════════════════════════════════════════╗
-║Este componente es el menu principal del admin anterior  ║
-╚═════════════════════════════════════════════════════════╝
-
-
-import { DatosAdmin } from "../../Organismos/DatosAdmin/DatosAdmin";
-import { BotonesMenuAdmin } from "../../Organismos/BotonesMenuAdmin/BotonesMenuAdmin";
-import "./MenuPrincipalAdmin.css"
-
-export function MenuPrincipalAdmin(){
-    return(
-        <div className="MenuPrincipal-container-pagina-admin">
-            <div className="main-menu-container-admin">
-                <h1  className="Menu-titulo-container-admin" >Menú</h1>
-                <BotonesMenuAdmin />
-            </div>
-            <DatosAdmin />
-        </div>
-    )
-}
-*/}
-
 import { useState } from "react";
 import { Aside } from "../../Organismos/Aside/Aside";
 import { Icon } from "../../Organismos/IconList/Icon";
@@ -55,9 +25,9 @@ export const MenuPrincipalAdmin = () => {
       muestras: <Muestras />,
       analisis: <Analisis />,
       reportes: <Reportes />,
-      configuracion: <Configuracion />,
       usuarios: <Usuarios />,
       usuarioAdd: <UsuariosAdd />,
+      configuracion: <Configuracion />,
     };
   
     const renderContent = () => sections[activeSection] || <div>Seleccione una opción</div>;
@@ -72,7 +42,7 @@ export const MenuPrincipalAdmin = () => {
               <Icon name="calendar" />
               {currentDate}
             </div>
-            <LogOut className="logOut" onClick={() => navigate("/")}/>
+            <LogOut className="logOutAdmin" onClick={() => navigate("/")}/>
           </header>
           <div className="content-container">{renderContent()}</div>
         </main>
