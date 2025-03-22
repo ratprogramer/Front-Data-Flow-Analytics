@@ -2,13 +2,14 @@ import { UserRound, CalendarFold, ChartLine, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Switch } from "../../../../Atomos/Switch/Switch";
+import { useUser } from "../../../../helpers/userContext";
+
 
 import "./DatosUsuario.css";
 import { useThemeContext } from "../../../../context/ThemeContext";
-
 export function DatosUsuario({ rol, nombre, onChange }) {
   const navigate = useNavigate();
-
+  const { user } = useUser()
   const fecha = new Date();
   const año = fecha.getFullYear();
   const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // Mes inicia en 0, por lo que sumamos 1
@@ -41,7 +42,7 @@ export function DatosUsuario({ rol, nombre, onChange }) {
           <span>
             <UserRound id={contextTheme}/>
           </span>
-          {nombre || "Nombre Random"}
+          {user || "Juan"}
         </p>
         <p>
           <span>

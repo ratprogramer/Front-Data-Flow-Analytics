@@ -2,12 +2,13 @@ import { useEffect, useRef } from "react"
 
 import { DatosUsuario } from "../../../../Modulo_menus/Organismos/DatosUsuario/DatosUsuario"
 import us from '../../../../../imgs/us.jpg'
+
 import "./UserOptions.css"
 import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export const UserOptions = () => {
   const { contextTheme } = useThemeContext();
-  
+
   const dropdownRef = useRef(null);
   const checkboxRef = useRef(null);
   

@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import { InputSub } from "../../../../Atomos/InputSub/InputSub";
 import "./LoginForm.css";
 
+import { useUser } from "../../../../helpers/userContext.jsx"
+
 import { decodeToken } from "../../../../helpers/decodeToken";
 import { usePostFetch } from "../../../../helpers/usePostFetch";
 import { useForm } from "react-hook-form";
@@ -19,6 +21,9 @@ export function LoginForm() {
   } = useForm();
   const navigate = useNavigate();
 
+  const { setUser} = useUser()
+  
+
   const onSubmit = async (data) => {
     if (data.dni.length > 11 || data.dni.length < 7) {
       return Swal.fire("Error", "Credenciales invalidas", "error");
@@ -29,7 +34,7 @@ export function LoginForm() {
     } else {
       sessionStorage.setItem("token", response.result);
       const token = decodeToken(response.result);
-
+      setUser(token.nombre)
       if (token.rol == "Analista" || token.rol == "analista") {
         navigate("/menu");
       } else if (token.rol == "Administrador" || token.rol == "administrador") {

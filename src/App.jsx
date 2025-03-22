@@ -25,6 +25,9 @@ import { ErrorPage } from "./Features/NotFound/Organisms/ErrorPage";
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { LoadPage } from "./Features/LoadPage/LoadPage";
 
+
+import { UserProvider } from "./helpers/userContext";
+
 import "./app.css";
 import { useThemeContext } from "./context/ThemeContext";
 
@@ -49,7 +52,9 @@ function App() {
   }
 
   return (
+    
     <div className="route-transition-container" id={contextTheme}>
+      <UserProvider>
 
     <TransitionGroup component={null}>
       <CSSTransition
@@ -57,7 +62,7 @@ function App() {
         timeout={300}
         classNames={transitionDirection}
         unmountOnExit
-      >
+        >
         <Routes location={location} >
           <Route path="/" element={<InicioSesion />} />
 
@@ -68,7 +73,7 @@ function App() {
                 <IndicePP_PT />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/sub_menu_pp"
@@ -77,7 +82,7 @@ function App() {
                 <SubIndicePP />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_producto_p"
@@ -86,7 +91,7 @@ function App() {
                 <FormularioRegistroPP_pagina />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/registrados_pp"
@@ -95,7 +100,7 @@ function App() {
                 <Pp_Registrados />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_resultado_producto_p"
@@ -104,7 +109,7 @@ function App() {
                 <FormularioResultadoPP />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/sub_menu_sb"
@@ -113,7 +118,7 @@ function App() {
                 <SubIndiceSB/>
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_sb"
@@ -122,7 +127,7 @@ function App() {
                 <FormularioRegistroSB_pagina />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/registrados_sb"
@@ -131,7 +136,7 @@ function App() {
                 <Sb_Registrados />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_resultado_sb"
@@ -140,7 +145,7 @@ function App() {
                 <FormularioResultadoSB/>
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/sub_menu_pt"
@@ -149,7 +154,7 @@ function App() {
                 <SubIndicePT />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/productos_registrados_pp_"
@@ -158,7 +163,7 @@ function App() {
                 <PP_Registrados_PrePT_pagina />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_producto_t"
@@ -167,7 +172,7 @@ function App() {
                 <FormularioRegistroPT_pagina />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/productos_registrados_pt"
@@ -176,7 +181,7 @@ function App() {
                 <Pt_Registrados />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/ingreso_resultado_producto_t"
@@ -185,7 +190,7 @@ function App() {
                 <FormularioResultadoPT />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/seleccion_muestras"
@@ -194,7 +199,7 @@ function App() {
                 <PrePrevisualizacion />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/informe"
@@ -203,7 +208,7 @@ function App() {
                 <VistaInforme/>
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/menu_admin"
@@ -212,7 +217,7 @@ function App() {
                 <MenuPrincipalAdmin />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route
             path="/registro_usuario"
@@ -221,12 +226,13 @@ function App() {
                 <Registro_Usuario_Pagina />
               </ProtectedRoute>
             }
-          />
+            />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </CSSTransition>
     </TransitionGroup>
+            </UserProvider>
     </div>
   );
 }
