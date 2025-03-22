@@ -14,6 +14,18 @@ import { InputTxt } from "../../../../Atomos/InputTxt/InputTxt";
 import { User, Lock } from "lucide-react";
 
 export function LoginForm() {
+  Swal.fire({
+    title: "Ingresa tu nombre",
+    input: "text",
+    inputPlaceholder: "Escribe aquí...",
+    showCancelButton: true,
+    confirmButtonText: "Enviar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log("Nombre ingresado:", result.value);
+    }
+  });
+  
   const {
     register,
     handleSubmit,

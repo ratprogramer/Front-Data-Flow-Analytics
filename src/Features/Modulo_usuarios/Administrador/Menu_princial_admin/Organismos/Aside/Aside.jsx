@@ -2,9 +2,12 @@ import { ButtonAdmin } from "../../Organismos/BotonesMenuAdmin/BotonAdmin";
 import logo from "../../../../../../imgs/logoDFAblanco.png";
 import { Icon } from "../../Organismos/IconList/Icon";
 import { ShieldUser } from "lucide-react";
+import { useUser } from"../../../../../../helpers/userContext"
+
 import "./Aside.css";
 
 export const Aside = ({ activeSection, setActiveSection }) => {
+  const {user} = useUser()
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -38,7 +41,7 @@ export const Aside = ({ activeSection, setActiveSection }) => {
           </div>
           <div className="user-info">
             <h3>Administrador</h3>
-            <p>Nombre del Administrador</p>
+            <p>{user}</p>
           </div>
         </div>
     </aside>
