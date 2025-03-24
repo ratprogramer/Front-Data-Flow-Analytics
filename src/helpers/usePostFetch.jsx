@@ -4,7 +4,7 @@ export async function usePostFetch(endPoint, data, navigate, token = true, metho
     let response;
     const tokenUser = sessionStorage.getItem('token');
     if(token){
-      response = await fetch( "http://localhost:3001" + endPoint, {
+      response = await fetch( import.meta.env.VITE_DOMINIO + endPoint, {
         method: method,
         headers: {  
           Authorization: `Bearer ${tokenUser}`,
@@ -15,7 +15,7 @@ export async function usePostFetch(endPoint, data, navigate, token = true, metho
       });
     }else{
       
-      response = await fetch( "http://localhost:3001" + endPoint, {
+      response = await fetch( import.meta.env.VITE_DOMINIO + endPoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -34,7 +34,7 @@ export async function usePostFetch(endPoint, data, navigate, token = true, metho
     }
     return result || "Sin mensaje en la respuesta";
   } catch (error) {
-    Swal.fire("Error", "Error interno del servidor", "error");
+    Swal.fire("Error", error, "error");
     console.log(error);
     
   }

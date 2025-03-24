@@ -64,7 +64,7 @@ export const Notification = ({ notif = [] }) => {
         aria-label="Notificaciones"
         id={contextTheme}
       >
-        <Bell size={24} className="bell-icon" id={contextTheme} />
+        <Bell size={30} className="bell-icon" id={contextTheme} />
         {notifications.length > 0 && (
           <span className="notification-indicator"></span>
         )}
