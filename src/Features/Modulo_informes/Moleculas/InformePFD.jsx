@@ -71,7 +71,6 @@ const dataSB = selectedCards
     fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
   }));
 
-
     const renderTable = (title, data, headers, fields) => (
         <>
             <Text style={{ textAlign: "center", fontSize: 14, marginVertical: 10, fontWeight: "bold" }}>{title}</Text>
