@@ -328,7 +328,7 @@ const renderConformidadTable = (dataLength) => (
             )}
         </PDFDownloadLink>
         ) : (
-        <button className="btnSlct" id={contextTheme} onClick={handleNavigate}>Descargar Informe</button>
+        <button className="btnSlct" id={contextTheme} onClick={handleNavigate} style={{display: "none"}}>Descargar Informe</button>
         )}
       </div>
     </div>
