@@ -6,8 +6,8 @@ import { BotonesIndice } from "../../../../Moleculas/BotonesIndice/BotonesIndice
 import { useThemeContext } from "../../../../context/ThemeContext";
 import { Notification } from '../../../Notification/Notification';
 
-import "./IndicePP_PT_organismo.css";
 import { Modal } from "../../../Modal/Modal";
+import "./IndicePP_PT_organismo.css";
 
 // import ReactSwitch from "react-switch";
 
