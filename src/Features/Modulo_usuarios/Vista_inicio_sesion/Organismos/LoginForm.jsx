@@ -53,9 +53,15 @@ export function LoginForm() {
   };
   return (
     <form
-      onSubmit={handleSubmit(onSubmit, onError)}
-      className="loginForm-organismo"
+    onSubmit={handleSubmit(onSubmit, onError)}
+    className="loginForm-organismo"
     >
+    <figure>
+      <img src="src\imgs\LogoNormal2.png" />
+      {/* <img src="src\imgs\LogoDFAblanco.png" alt="" /> */}
+      {/* <img src="src\imgs\LogoDFA negro.png" alt="" /> */}
+    </figure>
+      {/* <h1 className="titulo">Bienvenido</h1> */}
       <div className="group-container">
         <Label htmlFor={"dni"} text={""} variant={'login'}></Label>
         <div className="input-lg-container">
@@ -90,6 +96,7 @@ export function LoginForm() {
       </div>
 
       <InputSub text="Ingresar" type="submit" variant='login' />
+
     </form>
   );
 }

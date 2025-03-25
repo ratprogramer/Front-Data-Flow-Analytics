@@ -4,11 +4,11 @@
     justify-content: center;
     background: #4141413f;
     align-items: center;
-    width: 85%;
+    width: 90%;
     border: 1px solid #696969;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
-    padding: 3rem 1.5rem;
     border-radius: 10px;
+    padding: 1rem;
 }
 
 .input-lg-container {
@@ -23,7 +23,7 @@
     display: flex;
     margin-bottom: 24px;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
 }
 
 @media screen and (min-width: 768px) {
@@ -31,13 +31,23 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: #4141413f;
         align-items: center;
+        background: #4141413f;
         width: 30%;
         border: 1px solid #696969;
         box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.75);
-        padding: 3rem 1.5rem;
         border-radius: 10px;
+        padding: 3rem;
+        
+        & h1 {
+            font-size: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        figure > img {
+            width: 120px;
+            height: 120px;
+        }
     }
     
     .group-container {

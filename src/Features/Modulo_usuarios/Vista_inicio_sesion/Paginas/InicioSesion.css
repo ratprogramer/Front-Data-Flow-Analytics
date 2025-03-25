@@ -1,20 +1,23 @@
 .inicioSesion-pagina{
+    height: 100dvh;
+    width: 100dvw;
+
     display: flex;
     flex-direction: column;
-    height: 100dvh;
-    color: #ddd;
+    justify-content: center;
     align-items: center;
-    width: 100dvw;
-    gap: 100px;
-    justify-content: space-around;
+    
     background: linear-gradient(to bottom, #0f172a, #30425f);
+    color: #ddd;
+    
+    gap: 100px;
 }
-.titulo{
+/* .titulo{
     font-size: 44px;
     user-select: none;
-}
+} */
 
-img {
+/* img {
     pointer-events: none;
     user-select: none;
-}
+} */
