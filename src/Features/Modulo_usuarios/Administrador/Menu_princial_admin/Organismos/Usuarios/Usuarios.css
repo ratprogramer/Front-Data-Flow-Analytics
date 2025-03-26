@@ -1,5 +1,4 @@
 .users-list {
-  display: grid;
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
 
@@ -9,10 +8,10 @@
   padding: 15px;
 
   list-style: none;
-  background: red;
+  background: rgb(249, 249, 249);
 
   gap: 10px;
-
+  box-shadow: 0 4px 8px #0000000d;
   & .user-item {
     display: flex;
     align-items: center;
@@ -23,6 +22,7 @@
     background: #fff;
     box-shadow: 0 2px 4px #0000000d;
     border-radius: 8px;
+    border: 1px solid black;
 
     & .user-avatar {
       width: 50px;

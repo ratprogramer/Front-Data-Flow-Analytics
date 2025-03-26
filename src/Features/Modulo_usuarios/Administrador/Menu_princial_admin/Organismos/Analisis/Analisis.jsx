@@ -10,7 +10,6 @@ const analysisList = [
 export const Analisis = () => {
   return (
     <div className="analysis-content">
-      <h1>Análisis realizados</h1>
       <div className="analysis-grid">
         {analysisList.map(({ id, name, status, samples, date }) => (
           <div className="analysis-card" key={id}>

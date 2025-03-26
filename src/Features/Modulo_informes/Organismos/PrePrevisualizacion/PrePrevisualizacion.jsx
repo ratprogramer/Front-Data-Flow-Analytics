@@ -217,7 +217,7 @@ const renderConformidadTable = (dataLength) => (
 
   const handleNavigate = () => {
     if (!selectedCards.length) {
-        alert("Pendejo");
+        Swal.fire("Error", "Debes seleccionar al menos una muestra para generar el informe", "error");
         return;
     }
   };

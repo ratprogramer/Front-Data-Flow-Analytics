@@ -8,7 +8,6 @@ export const Dashboard = () => {
   const [filter, setFilter] = useState(1);
   return (
     <div className="dashboard-content">
-      <h1>Dashboard General de Muestras</h1>
       <div className="summary-cards">
         {[{ title: "Total de muestras", value: 14, subtitle: "Hoy" },
           { title: "Muestras completadas", value: 12, subtitle: "84% del total", className: "green" },

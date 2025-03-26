@@ -12,7 +12,6 @@ const samplesList = [
 export const Muestras = () => {
   return (
     <div className="samples-content">
-      <h1>Muestras</h1>
       <div className="samples-grid">
         {samplesList.map(({ id, lote, name, status, type, date }) => (
           <div className="sample-card" key={id}>

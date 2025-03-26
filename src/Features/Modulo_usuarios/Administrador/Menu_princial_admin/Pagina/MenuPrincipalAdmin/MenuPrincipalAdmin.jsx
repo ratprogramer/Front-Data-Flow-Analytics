@@ -28,8 +28,7 @@ export const MenuPrincipalAdmin = () => {
       analisis: <Analisis />,
       reportes: <Reportes />,
       usuarios: <Usuarios />,
-      usuarioAdd: <UsuariosAdd />,
-      configuracion: <Configuracion />,
+      usuarioAdd: <UsuariosAdd />
     };
   
     const renderContent = () => sections[activeSection] || <div>Seleccione una opción</div>;

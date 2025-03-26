@@ -22,8 +22,7 @@ export const Aside = ({ activeSection, setActiveSection }) => {
           { key: "analisis", label: "Análisis", icon: "clipboard" },
           { key: "reportes", label: "Reportes", icon: "file" },
           { key: "usuarios", label: "Usuarios", icon: "users" },
-          { key: "usuarioAdd", label: "Agregar Usuario", icon: "userPlus" },
-          { key: "configuracion", label: "Configuración", icon: "settings" },
+          { key: "usuarioAdd", label: "Agregar Usuario", icon: "userPlus" }
         ].map(({ key, label, icon }) => (
           <ButtonAdmin
             key={key}
