@@ -119,8 +119,10 @@ export function IndicePP_PT_organismo() {
           </div>
         )}
 
-        {/* <button onClick={() => setIsModalOpen(true)}>Abrir Modal</button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> */}
+        {/* 
+          <button onClick={() => setIsModalOpen(true)}>Abrir Modal</button>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} /> 
+        */}
       </div>
     </div>
   );
