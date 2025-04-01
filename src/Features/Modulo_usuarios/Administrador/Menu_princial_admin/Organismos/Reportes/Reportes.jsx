@@ -237,10 +237,10 @@ const renderConformidadTable = (dataLength) => (
   };
 
   return (
-    <div className="filtros" id={contextTheme}>
+    <div className="filtros-admin" id={contextTheme}>
       {shwFltrs && (
-        <div className="tabFilt" ref={tabFiltRef} id={contextTheme}>
-          <div className="fltr">
+        <div className="tabFilt-admin" ref={tabFiltRef} id={contextTheme}>
+          <div className="fltr-admin">
             <p>Tipo</p>
             <select style={{cursor: "pointer"}} onChange={(e) => setProductType(e.target.value)} id={contextTheme}>
               <option value="all">Todos</option>
@@ -250,7 +250,7 @@ const renderConformidadTable = (dataLength) => (
             </select>
           </div>
           <hr />
-          <div className="rfch">
+          <div className="rfch-admin">
             <p>Rango de fechas</p>
             <input
               type="text"
@@ -263,18 +263,17 @@ const renderConformidadTable = (dataLength) => (
                   locale: { rangeSeparator: " a " },
                   maxDate: "today",
                   onChange: (dates) => setDateRange(dates),
-                  
                 })
               }
               id={contextTheme}
             />
           </div>
           <hr />
-          <div className="lt">
+          <div className="lt-admin">
             <p>Lote:</p>
             <input 
               type="number" 
-              className="lts" 
+              className="lts-admin" 
               value={loteFilter} 
               placeholder="Ingrese Lote"
               onChange={(e) => setLoteFilter(e.target.value)} 
@@ -284,35 +283,25 @@ const renderConformidadTable = (dataLength) => (
         </div>
       )}
 
-      <div className="selected" id={contextTheme}>
-        <p className="slctP" id={contextTheme}>
-          <span className="slctP1" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
-            Seleccionados: <span className="slct" id={contextTheme}>{nSlct}</span>
+      <div className="selected-admin" id={contextTheme}>
+        <p className="slctP-admin" id={contextTheme}>
+          <span className="slctP1-admin" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
+            Seleccionados: <span className="slct-admin" id={contextTheme}>{nSlct}</span>
           </span>
 
-           
-          {/* <span className="cicle-btn" idw={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
-            Seleccionados
-            <CircleCheckBig
-              style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
-            />
-          </span > */}
-
-
-          {/* {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>} */}
-          {!shwFltrs && <Filter className="btnMenu" onClick={() => setShwFltrs(true)} />}
+          {!shwFltrs && <Filter className="btnMenu-admin" onClick={() => setShwFltrs(true)} />}
         </p>
-        <div className="conj">
+        <div className="conj-admin">
           {getFilteredCards().map((card, index) => (
             <div
-              className={`info crd ${card.select ? "crdSlct" : ""}`}
+              className={`info-admin crd-admin ${card.select ? "crdSlct-admin" : ""}`}
               key={index}
               onClick={() => handleSelect(index)}
             >
-              <div className={`info ${card.select ? "crdSlct" : ""}`}>
+              <div className={`info-admin ${card.select ? "crdSlct-admin" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>
-                <p>Fecha de análisis: <span className="sPan">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
-                <p>Lote: <span className="sPan">{card.lote}</span></p>
+                <p>Fecha de análisis: <span className="sPan-admin">{new Date(card.fecha_analisis).toLocaleDateString("es-ES")}</span></p>
+                <p>Lote: <span className="sPan-admin">{card.lote}</span></p>
               </div>
             </div>
           ))}
@@ -320,15 +309,15 @@ const renderConformidadTable = (dataLength) => (
         {selectedCards.length ? (
         <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} />} fileName="informe_productos.pdf">
             {({ loading }) => (
-            <button className="btnSlct" id={contextTheme}>
+            <button className="btnSlct-admin" id={contextTheme}>
                 {loading ? "Generando PDF..." : "Descargar Informe"}
             </button>
             )}
         </PDFDownloadLink>
         ) : (
-        <button className="btnSlct" id={contextTheme} onClick={handleNavigate} style={{display: "none"}}>Descargar Informe</button>
+        <button className="btnSlct-admin" id={contextTheme} onClick={handleNavigate} style={{display: "none"}}>Descargar Informe</button>
         )}
       </div>
     </div>
-  );
+);
 }

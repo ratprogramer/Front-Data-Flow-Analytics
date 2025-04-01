@@ -1,0 +1,361 @@
+.filtros-admin {
+    width: 100%;
+    height: 84vh;
+  
+    display: flex;
+    flex-direction: column;
+    
+    & .btnSlct-admin {
+      height: 2rem;
+      
+      background: #eee;
+      border-radius: 5px;
+
+      align-items: center;
+      justify-content: space-between;
+      
+      font-weight: bold;
+      
+      cursor: pointer;
+      font-size: 15px;
+      transition: all .3s ease-in-out;
+      border: none;
+      &:hover {
+        background: #ccc;
+        scale: 1.03;
+        font-weight: bold;
+      }
+    }
+    a.btnSlct-admin {
+        text-decoration: none;
+    }
+    & .btnMenu-admin {
+      width: fit-content;
+      display: flex;
+      padding: .3rem;
+      text-decoration: none;
+      border-radius: 5px;
+      border: none;
+      
+      cursor: pointer;
+      
+      outline: none;
+      
+      transition: all .2s ease-in-out;
+  
+      z-index: 0;
+    }
+  
+    & .btnMenu-admin:hover {
+      box-shadow: 0 0 10px 0 #ccc;
+      scale: 1.05;
+    }
+  
+    & hr {
+      width: 95%;
+    }
+  
+    & .titulo-admin {
+      height: 50px;
+      cursor: pointer;
+  
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      gap: 10px;
+  
+      & .bck-admin {
+        width: 32px;
+        height: 32px;
+  
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+  
+        & .bck-admin:hover {
+          width: 36px;
+          height: 36px;
+        }
+      }
+  
+      & .tt-admin {
+        font-size: 24px;
+        font-weight: bolder;
+  
+        padding-left: 1rem;
+      }
+    }
+  
+    & .tabFilt-admin {
+      width: 95%;
+  
+      position: fixed;
+  
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: center;
+  
+      padding: 1rem 0;
+      margin: 3rem 0 0 0;
+  
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 5px 10px 0 #666;
+  
+      & .btnX-admin {
+        font-size: larger;
+  
+        outline: none;
+  
+        border: none;
+        border-radius: 5px;
+  
+        cursor: pointer;
+      }
+  
+      & .btnX-admin:hover {
+        box-shadow: 0 0 10px 0 #ccc;
+      }
+  
+      & .fltr-admin {
+        width: 95%;
+  
+        color: #555;
+        
+        display: flex;
+        justify-content: space-between;
+  
+        & .ptit-admin {
+          font-weight: bold;
+        }
+  
+        & select {
+          width: 80%;
+  
+          border-radius: 10px;
+          color: #000;
+  
+          outline: none;
+  
+        }
+      }
+    
+      
+      & .rfch-admin {
+        width: 95%;
+  
+        display: flex;
+        align-items: center;
+  
+        color: #666;
+  
+        & .fechas-admin {
+          display: flex;
+        }
+      }
+  
+      & .lt-admin {
+        width: 95%;
+  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        color: #666;
+  
+        & .lts-admin {
+          width: 85%;
+        }
+      }
+    }
+  
+    & .selected-admin {
+      height: 95%;
+  
+      padding: 0 1rem;
+  
+      & .slctP-admin {
+        font-weight: bold;
+        cursor: pointer;
+  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+  
+        .cicle-btn-admin {
+          width: 10rem;
+          
+          background: #eee;
+          border-radius: 5px;
+  
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          
+          padding: .4rem .5rem;
+          
+          font-weight: normal;
+          
+          cursor: pointer;
+          
+          transition: all .3s ease-in-out;
+        }
+  
+        .cicle-btn-admin:hover {
+          background: #ccc;
+          scale: 1.03;
+        }
+  
+        & .slct-admin {
+          background: #ccc;
+          padding: 3px 7px;
+          border-radius: 50%;
+          font-weight: lighter;
+        }
+      }
+      
+      & .slctP1-admin {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        background: #f2f2f2;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        user-select: none;
+        
+        &:hover {
+          background: #ddd;
+          scale: 1.05;
+        }
+      }
+    }
+  
+    .conj-admin {
+      width: 90%;
+      justify-self: center;
+      gap: 1rem;
+  
+      & .crd-admin {
+        width: 98.5%;
+        height: 150px;
+        
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        
+        margin-bottom: 0.5rem;
+        
+        cursor: pointer;
+        
+        transition: all 0.3s ease-in-out;
+  
+        & .sup-admin {
+          width: 100%;
+          height: 5%;
+  
+          background: green;
+          border-radius: 10px 10px 0 0;
+        }
+  
+        & .info-admin {
+          display: flex;
+          flex-direction: column;
+          padding: 0 0.5rem;
+          height: 100%;
+  
+          & h3 {
+            width: 100%;
+            height: 1rem;
+  
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+  
+            & svg {
+              color: green;
+            }
+          }
+  
+          & p {
+            width: 100%;
+  
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+  
+            margin: 0.5rem 0;
+          }
+  
+          & .sPan-admin {
+            padding: 4px 10px;
+  
+            border-radius: 16px;
+            border: 1px solid #ccc;
+          }
+        }
+      }
+  
+      & .crdSlct-admin {
+        background: #eee;
+        box-shadow: inset 0 0 10px 5px #ddd;
+  
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+  
+        & svg {
+          color: green;
+        }
+      }
+    }
+  
+    .xTab-admin {
+      width: 95%;
+  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    @media screen and (min-width: 768px) {
+      .selected-admin {
+        background: #f5f8fb;
+      }
+  
+      .tabFilt-admin {
+        z-index: 99999;
+      }
+  
+      & .conj-admin {
+        width: 90%;
+  
+        justify-self: center;
+        
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        
+        gap: 1rem;
+  
+        & .crd-admin {
+          background: #fff;
+        }
+  
+        & .crdSlct-admin {
+          background: #eee;
+          
+          box-shadow: inset 0 0 10px 5px #ddd;
+          box-shadow: 0 4px 12px #ccc;
+          
+          translate: 0 -4px;
+        }
+  
+        & .crd-admin:hover:not(.crdSlct) {
+          transform: translateY(-4px);
+          box-shadow: 0 4px 12px #ccc;
+        }
+      }
+    }
+  }
+  

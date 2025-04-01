@@ -38,7 +38,6 @@ export const Usuarios = () => {
   
   return (
     <div className="users-content">
-      <h1>Usuarios</h1>
       <ul className="users-list">
         <UserCard usuarios={usuarios}></UserCard>
       </ul>

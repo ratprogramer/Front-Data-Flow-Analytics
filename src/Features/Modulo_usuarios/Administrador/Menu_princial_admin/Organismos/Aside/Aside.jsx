@@ -19,7 +19,6 @@ export const Aside = ({ activeSection, setActiveSection }) => {
         {[
           { key: "dashboard", label: "Dashboard", icon: "dashboard" },
           { key: "muestras", label: "Muestras", icon: "flask" },
-          { key: "analisis", label: "Análisis", icon: "clipboard" },
           { key: "reportes", label: "Reportes", icon: "file" },
           { key: "usuarios", label: "Usuarios", icon: "users" },
           { key: "usuarioAdd", label: "Agregar Usuario", icon: "userPlus" }
