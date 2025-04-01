@@ -10,6 +10,9 @@ import Swal from "sweetalert2";
 import { useThemeContext } from "../../../../../../context/ThemeContext";
 import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 
+const fechaActual = new Date().toISOString().split('T')[0];
+const fileName = 'informe_productos_' + fechaActual + '.pdf'
+
 
 const styles = StyleSheet.create({
   page: { padding: 20, fontSize: 8 },
