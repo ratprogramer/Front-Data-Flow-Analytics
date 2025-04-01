@@ -13,6 +13,9 @@ import "./PrePrevisualizacion.css";
 
 import logo from "../../../../imgs/logo_letras_negro.png"
 
+const fechaActual = new Date().toISOString().split('T')[0];
+const fileName = 'informe_productos_' + fechaActual + '.pdf'
+
 const styles = StyleSheet.create({
   page: { padding: 20, fontSize: 8 },
   table: {
@@ -187,105 +190,127 @@ export function PrePrevisualizacion() {
 
   const PDFDocument = ({ selectedCards, logoSrc }) => {
     const dataPP = selectedCards
-        .filter(card => card.tipo === "PP")
-        .map(card => ({
+      .filter(card => card.tipo === "PP")
+      .map(card => ({
         ...card,
         fecha_analisis: formatDateToDMY(card.fecha_analisis),
         fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
-        }));
-
+      }));
+  
     const dataPT = selectedCards
-        .filter(card => card.tipo === "PT")
-        .map(card => ({
+      .filter(card => card.tipo === "PT")
+      .map(card => ({
         ...card,
         fecha_analisis: formatDateToDMY(card.fecha_analisis),
         fecha_vencimiento: formatDateToDMY(card.fecha_vencimiento)
-        }));
-
+      }));
+  
     const dataSB = selectedCards
-        .filter(card => card.tipo === "SB")
-        .map(card => ({
+      .filter(card => card.tipo === "SB")
+      .map(card => ({
         ...card,
         fecha_analisis: formatDateToDMY(card.fecha_analisis),
         fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
-        }));
-
-  return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" , width: "100%", marginBottom: "50px"}}>
-          <View>
-            <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman"  }}>INFORME DE RESULTADOS</Text>
-            <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>LABORATORIO DE MICROBIOLOGÍA</Text>
+      }));
+  
+    const renderPageContent = (title, data, headers, fields) => (
+      <View style={styles.pageContent}>
+        {renderTable(title, data, headers, fields)}
+        {renderConformidadTable(data.length)}
+      </View>
+    );
+  
+    const renderFooter = () => (
+      <View style={styles.footer}>
+        <View>
+          <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "10px" }}>REFERENCIAS</Text>
+          <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "15px" }}>Valores de Referencia</Text>
+          <View style={{ display: "flex", flexDirection: "row" }}>
+            <Text style={{ fontSize: 10, fontWeight: "bold" }}>Coliformes totales: </Text>
+            <Text>-10 UFC CUMPLE, (10-100 UFC) CUMPLE PARCIALMENTE n=2</Text>
           </View>
-          <View>
-            <Image style={{ width: "100px", height: "100px", marginRight: "10px"}} src={logoSrc} />
+          <View style={{ display: "flex", flexDirection: "row" }}>
+            <Text style={{ fontSize: 10, fontWeight: "bold" }}>E. coli: </Text>
+            <Text>-10UFC CUMPLE</Text>
+          </View>
+          <View style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+            <Text style={{ fontSize: 10, fontWeight: "bold" }}>Mohos y Levaduras: </Text>
+            <Text>-200 UFC CUMPLE (200-500 UFC) CUMPLE PARCIALMENTE n=2</Text>
+          </View>
+  
+          <View style={{ display: "flex", flexDirection: "column" }}>
+            <Text>• Los límites contra los que se evalúa el producto, son según Resolución 1407 de 2022. Numeral 1.11 - Leche fermentada. </Text>
+            <Text>• El producto analizado cumple con los parámetros establecidos.</Text>
           </View>
         </View>
-
+        <Text style={styles.footerText}>Fecha de impresión: {formatDateToDMY(new Date())}</Text>
+        <Text>_____________________________________________</Text>
+      </View>
+    );
+  
+    return (
+      <Document>
         {dataPP.length > 0 && (
-          <View style={styles.pageContent}>
-            {renderTable("Producto Proceso (PP)", dataPP,
-              ["Lote", "Fecha Análisis", "Nombre", "Punto de Muestra", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-              ["lote", "fecha_analisis", "nombre", "punto_muestra", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
-            )}
-            {renderConformidadTable(dataPP.length)}
-          </View>
+          <Page size="A4" style={styles.page}>
+            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "50px" }}>
+              <View>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>INFORME DE RESULTADOS</Text>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>LABORATORIO DE MICROBIOLOGÍA</Text>
+              </View>
+              <View>
+                <Image style={{ width: "100px", height: "100px", marginRight: "10px" }} src={logoSrc} />
+              </View>
+            </View>
+            {renderPageContent("Producto Proceso (PP)", dataPP, 
+              ["Lote", "Fecha Análisis", "Nombre", "Punto de Muestra", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"], 
+              ["lote", "fecha_analisis", "nombre", "punto_muestra", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"])}
+            <View style={{ flexGrow: 1 }} /> {/* This ensures the footer is pushed to the bottom */}
+            {renderFooter()}
+          </Page>
         )}
-
+  
         {dataPT.length > 0 && (
-          <View style={styles.pageContent}>
-            {renderTable("Producto Terminado (PT)", dataPT,
-              ["Lote", "Fecha Análisis", "Referencia", "Presentación", "Punto de Muestra", "Fecha de Vencimiento", "Hora Empaque", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-              ["lote", "fecha_analisis", "ref", "presentacion", "maquina_envasadora", "fecha_vencimiento", "hora_empaque", "coliformes", "mohos_ley"]
-            )}
-            {renderConformidadTable(dataPT.length)}
-          </View>
+          <Page size="A4" style={styles.page}>
+            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "50px" }}>
+              <View>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>INFORME DE RESULTADOS</Text>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>LABORATORIO DE MICROBIOLOGÍA</Text>
+              </View>
+              <View>
+                <Image style={{ width: "100px", height: "100px", marginRight: "10px" }} src={logoSrc} />
+              </View>
+            </View>
+            {renderPageContent("Producto Terminado (PT)", dataPT,
+              ["Lote", "Fecha Análisis", "Referencia", "Presentación", "Punto de Muestra", "Fecha de Vencimiento", "Hora Empaque", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"], 
+              ["lote", "fecha_analisis", "ref", "presentacion", "maquina_envasadora", "fecha_vencimiento", "hora_empaque", "coliformes", "mohos_ley"])}
+            <View style={{ flexGrow: 1 }} /> {/* This ensures the footer is pushed to the bottom */}
+            {renderFooter()}
+          </Page>
         )}
-
+  
         {dataSB.length > 0 && (
-          <View style={styles.pageContent}>
-            {renderTable("Saborización (SB)", dataSB,
-              ["Lote", "Fecha Análisis", "Sabor", "Tanque", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-              ["lote", "fecha_analisis", "nombre", "tanque", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
-            )}
-            {renderConformidadTable(dataSB.length)}
-          </View>
+          <Page size="A4" style={styles.page}>
+            <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "100%", marginBottom: "50px" }}>
+              <View>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>INFORME DE RESULTADOS</Text>
+                <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>LABORATORIO DE MICROBIOLOGÍA</Text>
+              </View>
+              <View>
+                <Image style={{ width: "100px", height: "100px", marginRight: "10px" }} src={logoSrc} />
+              </View>
+            </View>
+            {renderPageContent("Saborización (SB)", dataSB,
+              ["Lote", "Fecha Análisis", "Sabor", "Tanque", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"], 
+              ["lote", "fecha_analisis", "nombre", "tanque", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"])}
+            <View style={{ flexGrow: 1 }} /> {/* This ensures the footer is pushed to the bottom */}
+            {renderFooter()}
+          </Page>
         )}
-
-        <View style={{ marginTop: "50px", display: "flex", flexDirection: "column", alignItems: "left" }}>
-          <View>
-            <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "10px" }}>REFERENCIAS</Text>
-            <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "15px" }}>Valores de Referencia</Text>
-            <View style={{  display: "flex", flexDirection: "row"  }}>
-              <Text style={{ fontSize: 10, fontWeight: "bold" }}>Coliformes totales: </Text>
-              <Text>-10 UFC CUMPLE, (10-100 UFC) CUMPLE PARCIALMENTE n=2</Text>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row" }}>
-              <Text style={{ fontSize: 10, fontWeight: "bold" }}>E. coli: </Text>
-              <Text>-10UFC CUMPLE</Text>
-            </View>
-            <View style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <Text style={{ fontSize: 10, fontWeight: "bold" }}>Mohos y Levaduras: </Text>
-              <Text>-200 UFC CUMPLE (200-500 UFC) CUMPLE PARCIALMENTE n=2</Text>
-            </View>
-
-            <View style={{ display: "flex", flexDirection: "column" }}>
-              <Text>• Los límites contra los que se evalúa el producto, son según Resolución 1407 de 2022. Numeral 1.11 - Leche  fermentada. </Text>
-              <Text>• El producto analizado cumple con los parámetros establecidos.</Text>
-            </View>
-          </View>
-          <Text style={styles.footerText}>Fecha de impresión: {formatDateToDMY(new Date())}</Text>
-          <Text>_____________________________________________</Text>
-        </View>
-
-      </Page>
-
-      {/* <Page size="A4" style={styles.page}>
-      </Page> */}
-    </Document>
+      </Document>
     );
   };
+  
+
 
   const handleNavigate = () => {
     if (!selectedCards.length) {
@@ -392,7 +417,7 @@ export function PrePrevisualizacion() {
           ))}
         </div>
         {selectedCards.length ? (
-        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} logoSrc={logo} />} fileName="informe_productos.pdf">
+        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} logoSrc={logo} />} fileName={fileName}>
             {({ loading }) => (
             <button className="btnSlct" id={contextTheme}>
                 {loading ? "Generando PDF..." : "Descargar Informe"}

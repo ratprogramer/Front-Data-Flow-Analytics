@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { useThemeContext } from "../../../../../../context/ThemeContext";
 import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 
+
 const styles = StyleSheet.create({
   page: { padding: 20, fontSize: 8 },
   table: {
@@ -307,7 +308,7 @@ const renderConformidadTable = (dataLength) => (
           ))}
         </div>
         {selectedCards.length ? (
-        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} />} fileName="informe_productos.pdf">
+        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} />} fileName={fileName}>
             {({ loading }) => (
             <button className="btnSlct-admin" id={contextTheme}>
                 {loading ? "Generando PDF..." : "Descargar Informe"}
