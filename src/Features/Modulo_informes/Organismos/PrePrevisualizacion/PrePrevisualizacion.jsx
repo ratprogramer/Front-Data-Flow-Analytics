@@ -1,4 +1,4 @@
-import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet, PDFDownloadLink, Image } from "@react-pdf/renderer";
 import { CircleCheckBig, Filter, FileDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ import { TituloPagina } from "../../../../Moleculas/TituloPagina/TituloPagina";
 import { useThemeContext } from "../../../../context/ThemeContext";
 import { useGetFetch } from "../../../../helpers/useGetFetch";
 import "./PrePrevisualizacion.css";
+
+import logo from "../../../../imgs/logo_letras_negro.png"
 
 const styles = StyleSheet.create({
   page: { padding: 20, fontSize: 8 },
@@ -137,7 +139,7 @@ export function PrePrevisualizacion() {
 
   const renderTable = (title, data, headers, fields) => (
     <>
-      <Text style={{ textAlign: "center", fontSize: 14, marginVertical: 10, fontWeight: "bold" }}>{title}</Text>
+      <Text style={{ textAlign: "center", fontSize: 14, padding: 4 , marginVertical: 7, fontWeight: "bold", backgroundColor: "#4bacc6" }}>{title}</Text>
       <View style={styles.table}>
       <View style={[styles.row, { backgroundColor: "#ddd" }]}>
           {headers.map((header, index) => (
@@ -161,7 +163,7 @@ export function PrePrevisualizacion() {
 
   const renderConformidadTable = (dataLength) => (
     <>
-      <Text style={{ textAlign: "center", fontSize: 12, marginVertical: 10, fontWeight: "bold" }}>DECLARACIÓN DE CONFORMIDAD</Text>
+      <Text style={{ textAlign: "center", fontSize: 12, padding: 4, marginVertical: 7, fontWeight: "bold", backgroundColor: "#4f81bd" }}>DECLARACIÓN DE CONFORMIDAD</Text>
       <View style={styles.table2}>
         <View style={[styles.row, { backgroundColor: "#ddd" }]}>
           {["Análisis", "n", "c", "Número de muestras fuera de parámetros", "Concepto"].map((header, index) => (
@@ -183,73 +185,115 @@ export function PrePrevisualizacion() {
     </>
   );
 
-  const PDFDocument = ({ selectedCards }) => {
-  const dataPP = selectedCards
-      .filter(card => card.tipo === "PP")
-      .map(card => ({
-      ...card,
-      fecha_analisis: formatDateToDMY(card.fecha_analisis),
-      fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
-      }));
+  const PDFDocument = ({ selectedCards, logoSrc }) => {
+    const dataPP = selectedCards
+        .filter(card => card.tipo === "PP")
+        .map(card => ({
+        ...card,
+        fecha_analisis: formatDateToDMY(card.fecha_analisis),
+        fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
+        }));
 
-  const dataPT = selectedCards
-      .filter(card => card.tipo === "PT")
-      .map(card => ({
-      ...card,
-      fecha_analisis: formatDateToDMY(card.fecha_analisis),
-      fecha_vencimiento: formatDateToDMY(card.fecha_vencimiento)
-      }));
+    const dataPT = selectedCards
+        .filter(card => card.tipo === "PT")
+        .map(card => ({
+        ...card,
+        fecha_analisis: formatDateToDMY(card.fecha_analisis),
+        fecha_vencimiento: formatDateToDMY(card.fecha_vencimiento)
+        }));
 
-  const dataSB = selectedCards
-      .filter(card => card.tipo === "SB")
-      .map(card => ({
-      ...card,
-      fecha_analisis: formatDateToDMY(card.fecha_analisis),
-      fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
-      }));
+    const dataSB = selectedCards
+        .filter(card => card.tipo === "SB")
+        .map(card => ({
+        ...card,
+        fecha_analisis: formatDateToDMY(card.fecha_analisis),
+        fecha_toma_muestra: formatDateToDMY(card.fecha_toma_muestra)
+        }));
 
   return (
-      <Document>
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" , width: "100%", marginBottom: "50px"}}>
+          <View>
+            <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman"  }}>INFORME DE RESULTADOS</Text>
+            <Text style={{ fontSize: 16, color: "gray", fontWeight: "bold", fontFamily: "Times-Roman" }}>LABORATORIO DE MICROBIOLOGÍA</Text>
+          </View>
+          <View>
+            <Image style={{ width: "100px", height: "100px", marginRight: "10px"}} src={logoSrc} />
+          </View>
+        </View>
+
         {dataPP.length > 0 && (
-            <Page size="A4" style={styles.page}>
+          <View style={styles.pageContent}>
             {renderTable("Producto Proceso (PP)", dataPP,
-                ["Lote", "Fecha Análisis", "Nombre", "Punto de Muestra", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-                ["lote", "fecha_analisis", "nombre", "punto_muestra", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
+              ["Lote", "Fecha Análisis", "Nombre", "Punto de Muestra", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
+              ["lote", "fecha_analisis", "nombre", "punto_muestra", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
             )}
             {renderConformidadTable(dataPP.length)}
-            </Page>
+          </View>
         )}
-        
+
         {dataPT.length > 0 && (
-            <Page size="A4" style={styles.page}>
+          <View style={styles.pageContent}>
             {renderTable("Producto Terminado (PT)", dataPT,
-                ["Lote", "Fecha Análisis", "Referencia", "Presentación", "Punto de Muestra", "Fecha de Vencimiento", "Hora Empaque", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-                ["lote", "fecha_analisis", "ref", "presentacion", "maquina_envasadora", "fecha_vencimiento", "hora_empaque", "coliformes", "mohos_ley"]
+              ["Lote", "Fecha Análisis", "Referencia", "Presentación", "Punto de Muestra", "Fecha de Vencimiento", "Hora Empaque", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
+              ["lote", "fecha_analisis", "ref", "presentacion", "maquina_envasadora", "fecha_vencimiento", "hora_empaque", "coliformes", "mohos_ley"]
             )}
             {renderConformidadTable(dataPT.length)}
-            </Page>
+          </View>
         )}
-        
+
         {dataSB.length > 0 && (
-            <Page size="A4" style={styles.page}>
+          <View style={styles.pageContent}>
             {renderTable("Saborización (SB)", dataSB,
-                ["Lote", "Fecha Análisis", "Sabor", "Tanque", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
-                ["lote", "fecha_analisis", "nombre", "tanque", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
+              ["Lote", "Fecha Análisis", "Sabor", "Tanque", "Fecha de Toma de Muestra", "Hora Toma de Muestra", "COLIFORMES TOTALES UFC / ml", "Mohos y Levaduras UFC / ml"],
+              ["lote", "fecha_analisis", "nombre", "tanque", "fecha_toma_muestra", "hora_toma_muestra", "coliformes", "mohos_ley"]
             )}
             {renderConformidadTable(dataSB.length)}
-            </Page>
+          </View>
         )}
-      </Document>
+
+        <View style={{ marginTop: "50px", display: "flex", flexDirection: "column", alignItems: "left" }}>
+          <View>
+            <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "10px" }}>REFERENCIAS</Text>
+            <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "15px" }}>Valores de Referencia</Text>
+            <View style={{  display: "flex", flexDirection: "row"  }}>
+              <Text style={{ fontSize: 10, fontWeight: "bold" }}>Coliformes totales: </Text>
+              <Text>-10 UFC CUMPLE, (10-100 UFC) CUMPLE PARCIALMENTE n=2</Text>
+            </View>
+            <View style={{ display: "flex", flexDirection: "row" }}>
+              <Text style={{ fontSize: 10, fontWeight: "bold" }}>E. coli: </Text>
+              <Text>-10UFC CUMPLE</Text>
+            </View>
+            <View style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <Text style={{ fontSize: 10, fontWeight: "bold" }}>Mohos y Levaduras: </Text>
+              <Text>-200 UFC CUMPLE (200-500 UFC) CUMPLE PARCIALMENTE n=2</Text>
+            </View>
+
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Text>• Los límites contra los que se evalúa el producto, son según Resolución 1407 de 2022. Numeral 1.11 - Leche  fermentada. </Text>
+              <Text>• El producto analizado cumple con los parámetros establecidos.</Text>
+            </View>
+          </View>
+          <Text style={styles.footerText}>Fecha de impresión: {formatDateToDMY(new Date())}</Text>
+          <Text>_____________________________________________</Text>
+        </View>
+
+      </Page>
+
+      {/* <Page size="A4" style={styles.page}>
+      </Page> */}
+    </Document>
     );
   };
 
   const handleNavigate = () => {
     if (!selectedCards.length) {
-        Swal.fire("Error", "Debes seleccionar al menos una muestra para generar el informe", "error");
-        return;
+      Swal.fire("Error", "Debes seleccionar al menos una muestra para generar el informe", "error");
+      return;
     }
   };
-
+  
   const getFilteredCards = () => {
     return cards
       .filter((card) => !dateRange.length || (new Date(card.fecha_analisis) >= dateRange[0] && new Date(card.fecha_analisis) <= dateRange[1]))
@@ -348,7 +392,7 @@ export function PrePrevisualizacion() {
           ))}
         </div>
         {selectedCards.length ? (
-        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} />} fileName="informe_productos.pdf">
+        <PDFDownloadLink document={<PDFDocument selectedCards={selectedCards} logoSrc={logo} />} fileName="informe_productos.pdf">
             {({ loading }) => (
             <button className="btnSlct" id={contextTheme}>
                 {loading ? "Generando PDF..." : "Descargar Informe"}
