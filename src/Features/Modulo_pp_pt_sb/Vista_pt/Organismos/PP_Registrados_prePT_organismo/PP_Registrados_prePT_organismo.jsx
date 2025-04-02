@@ -48,7 +48,7 @@ export function PP_Registrados_prePT_organismo(){
                     nombreMuestra={producto.nombre_pp}
                     lote={producto.lote}
                     fechaAnalisis={formatFecha(producto.fecha_analisis)}
-                    responsableAnalisis={producto.responsable_analisis}
+                    responsableAnalisis={"Santiago Perez"}
                     id_pp={producto.id_pp}
                 />
                 ))

@@ -335,8 +335,6 @@ export function PrePrevisualizacion() {
   return (
     <div className="filtros" id={contextTheme}>
       <TituloPagina path={"/menu"} text={"Informes y registros"} />
-
-
       {shwFltrs && (
         <div className="tabFilt" ref={tabFiltRef} id={contextTheme}>
           <div className="fltr">
@@ -389,16 +387,6 @@ export function PrePrevisualizacion() {
             Seleccionados: <span className="slct" id={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>{nSlct}</span>
           </span>
 
-           
-          {/* <span className="cicle-btn" idw={contextTheme} onClick={() => setSeleccionados(!seleccionados)}>
-            Seleccionados
-            <CircleCheckBig
-              style={{ color: "green", alignSelf: "center", cursor: "pointer" }} 
-            />
-          </span > */}
-
-
-          {/* {!shwFltrs && <button className="btnMenu" onClick={() => setShwFltrs(true)}><Filter /></button>} */}
           {!shwFltrs && <Filter className="btnMenu" onClick={() => setShwFltrs(true)} />}
         </p>
         <div className="conj">
