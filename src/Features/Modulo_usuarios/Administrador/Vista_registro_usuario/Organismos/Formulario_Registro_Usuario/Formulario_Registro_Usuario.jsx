@@ -133,7 +133,7 @@ export function Formulario_Registro_Usuario() {
           placeholder={"Ingrese la contraseña del analista"}
           register={register}
           validaciones={validacionesContraseña}
-
+          type="password"
           variant={'formulario'}
           dataRequired
         />
@@ -144,7 +144,7 @@ export function Formulario_Registro_Usuario() {
           placeholder={"Ingrese la contraseña del analista"}
           register={register}
           validaciones={validaciones}
-
+          type="password"
           variant={'formulario'}
           dataRequired
         />
