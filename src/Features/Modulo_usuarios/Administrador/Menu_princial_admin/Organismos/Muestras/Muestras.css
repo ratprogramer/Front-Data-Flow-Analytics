@@ -9,7 +9,6 @@
     transition: all 0.2s ease-in-out;
     background: #fff;
     border-radius: 8px;
-    /* box-shadow: 0 2px 4px #0000000d; */
     box-shadow: 0 10px 10px 5px #777;
     padding: 20px;
     user-select: none;
@@ -23,23 +22,37 @@
         background: #ffffff;
         color: #ffffff;
       }
-
+      
       & .pending {
         background: #fef5e7;
         color: #e67e22;
       }
     }
-
+    
     & .sample-details p {
       margin-bottom: 8px;
       font-size: 14px;
     }
   }
-
+  
   & .sample-card:hover {
     box-shadow: 0 10px 10px 5px #777;
     translate: 0 -3px;
   }
+}
+
+.btnMstrs {
+  background: #333;
+  color: #fff;
+  padding: 7px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btnMstrs:hover {
+  background: #555;
 }
 
 @media screen and (max-width: 768px) {
@@ -47,7 +60,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-
+  
   .sample-card {
     display: flex;
     flex-direction: column;

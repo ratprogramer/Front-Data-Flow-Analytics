@@ -3,7 +3,7 @@ import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { UsuariosAdd } from "../../Organismos/Usuarios/UsuariosAdd/UsuariosAdd.jsx";
-import { Configuracion } from "../../Organismos/Configuraciones/Configuracion";
+// import { Configuracion } from "../../Organismos/Configuraciones/Configuracion";
 import { Dashboard } from "../../Organismos/Dashboard/Dashboard";
 import { Muestras } from "../../Organismos/Muestras/Muestras";
 import { Analisis } from "../../Organismos/Analisis/Analisis";
