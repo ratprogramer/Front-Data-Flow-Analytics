@@ -1,33 +1,50 @@
 import "./PpSub.css";
+import { useGetFetch } from "../../../../../../helpers/useGetFetch";
+import { useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const PtSub = () => {
-
-  const samplePtList = [
-    { id: 1, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "01/03/2025" },
-    { id: 2, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 3, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 4, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "01/03/2025" },
-    { id: 5, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 6, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 7, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "01/03/2025" },
-    { id: 8, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 9, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "02/03/2025" },
-    { id: 10, lote: "12345", name: "Productos en proceso", type: "PT", status: "Completada", date: "01/03/2025" },
-  ]
+  const navigate = useNavigate();
+  
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+      (async () => {
+        try {
+          const response = await useGetFetch("/producto/producto_terminado", navigate);
+          response.success
+            ? setCards(response.result)
+            : Swal.fire("Error", "Error al traer las muestras", "error");
+        } catch (error) {
+          Swal.fire("Error", error, "error");
+        }
+      })();
+  }, []);
+  
+  const formatDateToDMY = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return "";
+  
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+  
+    return `${day}/${month}/${year}`;
+  };
+  
   return (
     <div className="ppSb">
       {
-        samplePtList.map(({ id, lote, name, status, date }) => (
-          <div className="sampleCardPp" key={id}>
+          cards.map(({ id_pt, lote, nombre_pp, fecha_analisis,nombre_analista }) => (
+          <div className="sampleCardPp" key={id_pt}>
             <div className="">
-              <h3>{name}</h3>
-              <span className={`sample-status ${status === "Completada" ? "completed" : "in-progress"}`}>
-                {status}
-              </span>
+              <h3>{nombre_pp}</h3>
             </div>
             <div className="sample-details">
               <p><strong>Lote:</strong> {lote}</p>
-              <p><strong>Fecha:</strong> {date}</p>
+              <p><strong>Fecha de analisis:</strong> {formatDateToDMY(fecha_analisis)}</p>
+              <p><strong>Analista:</strong> {nombre_analista}</p>
             </div>
           </div>
         ))
