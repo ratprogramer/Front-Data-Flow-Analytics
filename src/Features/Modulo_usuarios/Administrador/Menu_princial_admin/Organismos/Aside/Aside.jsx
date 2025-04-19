@@ -8,6 +8,7 @@ import "./Aside.css";
 
 export const Aside = ({ activeSection, setActiveSection }) => {
   const {user} = useUser()
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -34,14 +35,14 @@ export const Aside = ({ activeSection, setActiveSection }) => {
         ))}
       </nav>
       <div className="user-profile">
-          <div className="avatar">
+          <div className="avatar" title="Admin">
           <ShieldUser />
           </div>
           <div className="user-info">
             <h3>Administrador</h3>
             <p>{user}</p>
           </div>
-        </div>
+      </div>
     </aside>
   );
 };
