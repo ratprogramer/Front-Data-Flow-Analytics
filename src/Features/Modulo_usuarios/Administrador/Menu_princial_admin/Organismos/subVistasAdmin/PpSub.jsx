@@ -43,7 +43,7 @@ export const PpSub = () => {
           key={card.id_pp}
           onClick={() => setSelectedCard(card)}
         >
-          <div>
+          <div className="sample-header">
             <h3>{card.nombre_pp}</h3>
           </div>
           <div className="sample-details">

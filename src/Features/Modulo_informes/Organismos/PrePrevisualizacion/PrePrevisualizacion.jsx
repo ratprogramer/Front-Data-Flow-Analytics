@@ -227,15 +227,15 @@ export function PrePrevisualizacion() {
           <Text style={{ fontSize: 10, fontWeight: "bold", textDecoration: "underline", marginBottom: "15px" }}>Valores de Referencia</Text>
           <View style={{ display: "flex", flexDirection: "row" }}>
             <Text style={{ fontSize: 10, fontWeight: "bold" }}>Coliformes totales: </Text>
-            <Text>-10 UFC CUMPLE, (10-100 UFC) CUMPLE PARCIALMENTE n=2</Text>
+            <Text>&lt;10 UFC CUMPLE, (10-100 UFC) CUMPLE PARCIALMENTE n=2</Text>
           </View>
           <View style={{ display: "flex", flexDirection: "row" }}>
             <Text style={{ fontSize: 10, fontWeight: "bold" }}>E. coli: </Text>
-            <Text>-10UFC CUMPLE</Text>
+            <Text>&lt;10UFC CUMPLE</Text>
           </View>
           <View style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
             <Text style={{ fontSize: 10, fontWeight: "bold" }}>Mohos y Levaduras: </Text>
-            <Text>-200 UFC CUMPLE (200-500 UFC) CUMPLE PARCIALMENTE n=2</Text>
+            <Text>&lt;200 UFC CUMPLE (200-500 UFC) CUMPLE PARCIALMENTE n=2</Text>
           </View>
   
           <View style={{ display: "flex", flexDirection: "column" }}>
