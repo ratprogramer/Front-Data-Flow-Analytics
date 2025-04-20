@@ -8,6 +8,8 @@ export const SbSub = () => {
   const navigate = useNavigate();
   
   const [cards, setCards] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
+
   useEffect(() => {
       (async () => {
         try {
@@ -36,19 +38,39 @@ export const SbSub = () => {
   return (
     <div className="ppSb">
       {
-          cards.map(({ id_sb, lote, sabor, fecha_analisis, nombre_analista }) => (
-          <div className="sampleCardPp" key={id_sb}>
+          cards.map((card) => (
+          <div 
+            className="sampleCardPp" 
+            key={card.id_sb}
+            onClick={() => setSelectedCard(card)}
+          >
             <div className="">
-              <h3>{sabor}</h3>
+              <h3>{card.sabor}</h3>
             </div>
             <div className="sample-details">
-              <p><strong>Lote:</strong> {lote}</p>
-              <p><strong>Fecha de analisis:</strong> {formatDateToDMY(fecha_analisis)}</p>
-              <p><strong>Analista:</strong> {nombre_analista}</p>
+              <p><strong>Lote:</strong> {card.lote}</p>
+              <p><strong>Fecha de analisis:</strong> {formatDateToDMY(card.fecha_analisis)}</p>
+              <p><strong>Analista:</strong> {card.nombre_analista}</p>
             </div>
           </div>
         ))
       }
+
+      {selectedCard && (
+        <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>{selectedCard.sabor}</h2>
+            <p><strong>Lote:</strong> {selectedCard.lote}</p>
+            <p><strong>Fecha de análisis:</strong> {formatDateToDMY(selectedCard.fecha_analisis)}</p>
+            <p><strong>Fecha toma de muestra:</strong> {formatDateToDMY(selectedCard.fecha_toma_muestra)}</p>
+            <p><strong>Hora toma de muestra:</strong> {selectedCard.hora_toma_muestra}</p>
+            <p><strong>Analista:</strong> {selectedCard.nombre_analista}</p>
+            <p><strong>Tanque:</strong> {selectedCard.tanque}</p>
+            <p><strong>Observaciones:</strong> {selectedCard.observaciones}</p>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }
