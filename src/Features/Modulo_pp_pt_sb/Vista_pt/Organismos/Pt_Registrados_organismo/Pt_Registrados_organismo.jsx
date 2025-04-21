@@ -2,7 +2,7 @@ import { CardPT_molecula } from "../../Moleculas/CardPT_molecula/CardPT_molecula
 import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import { useNavigate } from "react-router-dom"
-import "./Pt_Registrados_organismo.css"
+import "./Pt_registrados_organismo.css"
 import { useThemeContext } from "../../../../../context/ThemeContext";
 
 export function Pt_Registrados_organismo(){
