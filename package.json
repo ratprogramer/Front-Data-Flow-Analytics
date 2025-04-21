@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview", 
+    "start": "serve dist -s -n -L -p $PORT"
   },
   "dependencies": {
     "@mui/icons-material": "^6.4.7",
@@ -24,6 +25,7 @@
     "react-to-print": "^3.0.5",
     "react-transition-group": "^4.4.5",
     "recharts": "^2.15.1",
+    "serve": "^14.2.4",
     "sweetalert2": "^11.14.5"
   },
   "devDependencies": {
