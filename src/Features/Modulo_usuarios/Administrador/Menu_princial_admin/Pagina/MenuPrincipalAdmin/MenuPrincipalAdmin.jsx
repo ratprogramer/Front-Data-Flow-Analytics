@@ -12,12 +12,12 @@ import { Usuarios } from "../../Organismos/Usuarios/Usuarios";
 import { Icon } from "../../Organismos/IconList/Icon";
 import { Aside } from "../../Organismos/Aside/Aside";
 
-// import { useThemeContext } from "../../../../../../context/ThemeContext.jsx";
+import { useThemeContext } from "../../../../../../context/ThemeContext.jsx";
 
 import "./MenuPrincipalAdmin.css";
 
 export const MenuPrincipalAdmin = () => {
-  // const { contextTheme } = useThemeContext();
+  const { contextTheme } = useThemeContext();
 
     const [activeSection, setActiveSection] = useState("dashboard");
     const currentDate = new Date().toLocaleDateString("es-ES", {
@@ -39,11 +39,10 @@ export const MenuPrincipalAdmin = () => {
     const navigate = useNavigate();
   
     return (
-      <div className="app-container">
+      <div className="app-container" id={contextTheme}>
         <Aside activeSection={activeSection} setActiveSection={setActiveSection} />
         <main className="main-content">
           <header className="main-header">
-            🎛️
             <div className="date-display">
               <Icon name="calendar" />
               {currentDate}
