@@ -2,7 +2,7 @@ import { CardSB_molecula } from "../../Moleculas/CardSB_molecula/CardSB_molecula
 import { useEffect, useState } from "react"
 import { useGetFetch } from "../../../../../helpers/useGetFetch"
 import { useNavigate } from "react-router-dom"
-import "./Sb_Registrados_organismo.css"
+import "./Sb_registrados_organismo.css"
 import { useThemeContext } from "../../../../../context/ThemeContext"
 
 export function Sb_Registrados_organismo(){
