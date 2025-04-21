@@ -4,6 +4,7 @@ import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 import { useNavigate } from "react-router-dom";
 import { UserCard } from "../../Moleculas/UserCard";
 import Swal from "sweetalert2";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 const usersList = [
   { id: 1, dni: "111111", nombre: "María López", rol: "Analista", contraseña: "111111" },
@@ -22,6 +23,8 @@ export const Usuarios = () => {
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([]);
 
+  const { contextTheme } = useThemeContext();
+
   useEffect( () => {
     const  fetchUsuarios = async () => {
       try{
@@ -38,7 +41,7 @@ export const Usuarios = () => {
   
   return (
     <div className="users-content">
-      <ul className="users-list">
+      <ul className="users-list" id={contextTheme}>
         <UserCard usuarios={usuarios}></UserCard>
       </ul>
     </div>

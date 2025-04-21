@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import "flatpickr/dist/flatpickr.min.css";
 import flatpickr from "flatpickr";
 import Swal from "sweetalert2";
-
 import { useThemeContext } from "../../../../../../context/ThemeContext";
+
 import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 
 import logo from "../../../../../../imgs/logo_letras_negro.png" 
@@ -394,6 +394,7 @@ const renderTable = (title, data, headers, fields) => (
               className={`info-admin crd-admin ${card.select ? "crdSlct-admin" : ""}`}
               key={index}
               onClick={() => handleSelect(index)}
+              id={contextTheme}
             >
               <div className={`info-admin ${card.select ? "crdSlct-admin" : ""}`}>
                 <h3>{card.nombre || "Error al cargar"} {card.select && <CircleCheckBig />}</h3>

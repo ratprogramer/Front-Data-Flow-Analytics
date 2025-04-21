@@ -3,12 +3,15 @@ import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 import { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 export const PtSub = () => {
   const navigate = useNavigate();
   
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+
+  const { contextTheme } = useThemeContext();
 
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export const PtSub = () => {
 
       {selectedCard && (
         <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content" id={contextTheme} onClick={(e) => e.stopPropagation()}>
             <h2>{selectedCard.nombre_pp}</h2>
             <p><strong>Referencia:</strong> {selectedCard.ref}</p>
             <p><strong>ID Producto en Proceso:</strong> {selectedCard.id_pp}</p>

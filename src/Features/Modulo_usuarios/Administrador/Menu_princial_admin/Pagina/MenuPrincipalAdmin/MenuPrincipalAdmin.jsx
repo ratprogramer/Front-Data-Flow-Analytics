@@ -41,15 +41,15 @@ export const MenuPrincipalAdmin = () => {
     return (
       <div className="app-container" id={contextTheme}>
         <Aside activeSection={activeSection} setActiveSection={setActiveSection} />
-        <main className="main-content">
-          <header className="main-header">
+        <main className="main-content" id={contextTheme}>
+          <header className="main-header" id={contextTheme}>
             <div className="date-display">
               <Icon name="calendar" />
               {currentDate}
             </div>
             <LogOut className="logOutAdmin" onClick={() => navigate("/")}/>
           </header>
-          <div className="content-container">{renderContent()}</div>
+          <div className="content-container" id={contextTheme}>{renderContent()}</div>
         </main>
       </div>
     );

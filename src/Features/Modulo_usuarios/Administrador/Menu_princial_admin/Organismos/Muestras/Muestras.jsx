@@ -3,6 +3,7 @@ import { PpSub } from "../subVistasAdmin/PpSub";
 import { PtSub } from "../subVistasAdmin/PtSub";
 import { SbSub } from "../subVistasAdmin/SbSub";
 import { useState } from "react";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 const samplesList = [
   { id: 1, lote: "12345", name: "Productos en proceso", type: "PP", status: "Completada", date: "01/03/2025" },
@@ -13,6 +14,8 @@ const samplesList = [
 export const Muestras = () => {
   const [activeSubSection, setActiveSubSection] = useState("");
   const [showBlankContainer, setShowBlankContainer] = useState(false);
+
+  const { contextTheme } = useThemeContext();
 
   const subSections = {
     PP: <PpSub />, 
@@ -44,12 +47,9 @@ export const Muestras = () => {
       ) : (
         <div className="samples-grid">
           {samplesList.map(({ id, name, type, status }) => (
-            <div className="sample-card" key={id} onClick={() => handleClick(type)}>
+            <div className="sample-card" id={contextTheme} key={id} onClick={() => handleClick(type)}>
               <div className="sample-header">
                 <h3>{name}</h3>
-                <span className={`sample-status ${status === "Completada" ? "completed" : "pending"}`}>
-                  {status}
-                </span>
               </div>
             </div>
           ))}

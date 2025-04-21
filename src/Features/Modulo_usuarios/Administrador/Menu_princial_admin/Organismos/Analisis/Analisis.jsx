@@ -1,4 +1,5 @@
 import "./Analisis.css";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 const analysisList = [
   { id: 1, name: "Resultado PP", samples: 12, status: "Completado", date: "01/03/2025" },
@@ -8,6 +9,7 @@ const analysisList = [
 ];
 
 export const Analisis = () => {
+  const { contextTheme } = useThemeContext();
   return (
     <div className="analysis-content">
       <div className="analysis-grid">

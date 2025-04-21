@@ -70,13 +70,6 @@
   border: none;
 }
 
-#Dark .main-header {
-  background: #282c34;
-  color: #ccc;
-  box-shadow: none;
-  border: 1px solid #555;
-}
-
 #Dark .dropdown {
   background: #1e1e1e;
 }
@@ -308,3 +301,78 @@
 #Light p {
   color: #0d3f67;
 } */
+
+/* ========================= Estilos para el dark mode del admin ============================= */
+
+#Dark .main-header {
+  background: #282c34;
+  color: #ccc;
+  box-shadow: none;
+  border: 1px solid #555;
+}
+
+#Dark .nav-item {
+  background: #282c34;
+}
+
+#Dark .chart-container {
+  background: #333;
+}
+
+#Dark .sample-card {
+  background: #202530;
+  box-shadow: 0 10px 10px 5px #0d121f;
+}
+
+#Dark .sampleCardPp {
+  background: #202530;
+  box-shadow: 0 0 10px 1px #0d121f;
+}
+
+#Dark .sampleCardPp:hover {
+  box-shadow: 0 0 10px 5px #0d121f;
+}
+
+#Dark .modal-content h2 {
+}
+
+#Dark .modal-content p {
+  color: #333;
+  border-radius: 5px;
+}
+
+#Dark .crd-admin span {
+  color: #ccc;
+}
+
+#Dark .slctP1-admin {
+  background: #202530;
+  color: #ccc;
+}
+
+#Dark .crdSlct-admin {
+  background: #1e2739;
+}
+
+#Dark .users-list li {
+  background: #1e2739;
+}
+
+#Dark .formulario-registro-usuario input {
+  background: #202530;
+  border: none;
+
+}
+
+#Dark .formulario-registro-usuario input[type="submit"] {
+  background: #000;
+}
+
+#Dark .card {
+  background: #191f2b;
+  color: #ccc;
+}
+
+#Dark .card > h3 {
+  color: #ccc;
+}

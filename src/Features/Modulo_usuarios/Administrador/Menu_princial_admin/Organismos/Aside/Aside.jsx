@@ -73,6 +73,7 @@ export const Aside = ({ activeSection, setActiveSection }) => {
           className="dropdown-menu"
           ref={modalRef}
           onClick={(e) => e.stopPropagation()}
+          id={contextTheme}
         >
           <ul>
             <li><a href="#">Opción 2</a></li>
@@ -85,7 +86,7 @@ export const Aside = ({ activeSection, setActiveSection }) => {
           </ul>
         </div>
       )}
-      <div className="user-profile" onClick={() => setModal(!modal)}>
+      <div className="user-profile" id={contextTheme} onClick={() => setModal(!modal)}>
         <div className="avatar" title="Admin">
           <ShieldUser />
         </div>

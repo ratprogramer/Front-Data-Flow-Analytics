@@ -3,9 +3,12 @@ import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 export const PpSub = () => {
   const navigate = useNavigate();
+
+  const { contextTheme } = useThemeContext();
 
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -42,6 +45,7 @@ export const PpSub = () => {
           className="sampleCardPp"
           key={card.id_pp}
           onClick={() => setSelectedCard(card)}
+          id={contextTheme}
         >
           <div className="sample-header">
             <h3>{card.nombre_pp}</h3>
@@ -55,8 +59,8 @@ export const PpSub = () => {
       ))}
 
       {selectedCard && (
-        <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-overlay" onClick={() => setSelectedCard(null)} >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()} id={contextTheme}>
             <h2>{selectedCard.nombre_pp}</h2>
             <p><strong>Lote:</strong> {selectedCard.lote}</p>
             <p><strong>Fecha de análisis:</strong> {formatDateToDMY(selectedCard.fecha_analisis)}</p>

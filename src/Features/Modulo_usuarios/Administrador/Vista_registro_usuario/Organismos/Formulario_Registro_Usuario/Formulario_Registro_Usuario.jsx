@@ -5,8 +5,10 @@ import { InputSub } from "../../../../../../Atomos/InputSub/InputSub";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Formulario_Registro_Usuario.css";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 export function Formulario_Registro_Usuario() {
+  const { contextTheme } = useThemeContext();
   const {
     register,
     handleSubmit,
@@ -91,6 +93,7 @@ export function Formulario_Registro_Usuario() {
     <form
       className="formulario-registro-usuario"
       onSubmit={handleSubmit(onSubmit, onError)}
+      id={contextTheme}
     >
       <p>Registro de Analista</p>
       <div className="formulario-usuario-campos">

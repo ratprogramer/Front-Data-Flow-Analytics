@@ -3,12 +3,15 @@ import { useGetFetch } from "../../../../../../helpers/useGetFetch";
 import { useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useThemeContext } from "../../../../../../context/ThemeContext";
 
 export const SbSub = () => {
   const navigate = useNavigate();
   
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+
+  const { contextTheme } = useThemeContext();
 
   useEffect(() => {
       (async () => {
@@ -58,7 +61,7 @@ export const SbSub = () => {
 
       {selectedCard && (
         <div className="modal-overlay" onClick={() => setSelectedCard(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-content" id={contextTheme} onClick={(e) => e.stopPropagation()}>
             <h2>{selectedCard.sabor}</h2>
             <p><strong>Lote:</strong> {selectedCard.lote}</p>
             <p><strong>Fecha de análisis:</strong> {formatDateToDMY(selectedCard.fecha_analisis)}</p>
