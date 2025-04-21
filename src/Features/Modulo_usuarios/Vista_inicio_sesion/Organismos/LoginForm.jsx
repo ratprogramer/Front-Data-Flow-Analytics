@@ -4,7 +4,7 @@ import { InputSub } from "../../../../Atomos/InputSub/InputSub";
 import "./LoginForm.css";
 
 import { useUser } from "../../../../helpers/userContext.jsx"
-
+import logo from "../../../../imgs/LogoNormal2.png"
 import { decodeToken } from "../../../../helpers/decodeToken";
 import { usePostFetch } from "../../../../helpers/usePostFetch";
 import { useForm } from "react-hook-form";
@@ -57,7 +57,7 @@ export function LoginForm() {
     className="loginForm-organismo"
     >
     <figure>
-      <img src="src\imgs\LogoNormal2.png" />
+      <img src={logo} />
       {/* <img src="src\imgs\LogoDFAblanco.png" alt="" /> */}
       {/* <img src="src\imgs\LogoDFA negro.png" alt="" /> */}
     </figure>
