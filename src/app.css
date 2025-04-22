@@ -393,9 +393,14 @@
   width: 100%;
   margin-right: 10px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 #Dark .switchDiv:hover {
   box-shadow: 0 5px 10px 2px #000;
   border-radius: 10px;
+}
+
+#Dark .main-header {
+  background: #191f2b;
 }
