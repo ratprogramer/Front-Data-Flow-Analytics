@@ -3,6 +3,7 @@
   display: flex;
 }
 
+
 .main-content {
   flex-grow: 1;
   display: flex;
@@ -15,9 +16,16 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 20px;
-  gap: 10px;
+  gap: 20px;
   background: #fff;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.supDiv {
+  display: flex;
+  width: 270px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logOutAdmin {

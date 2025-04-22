@@ -313,10 +313,20 @@
 
 #Dark .nav-item {
   background: #282c34;
+  box-shadow: none;
+}
+
+#Dark .nav-item:hover {
+  background: #1f232c;
+}
+
+#Dark .active {
+  box-shadow: inset 0 0 10px 2px #000;
 }
 
 #Dark .chart-container {
-  background: #333;
+  background: #282c34;
+  box-shadow: 0 10px 10px 5px #0d121f;
 }
 
 #Dark .sample-card {
@@ -331,14 +341,6 @@
 
 #Dark .sampleCardPp:hover {
   box-shadow: 0 0 10px 5px #0d121f;
-}
-
-#Dark .modal-content h2 {
-}
-
-#Dark .modal-content p {
-  color: #333;
-  border-radius: 5px;
 }
 
 #Dark .crd-admin span {
@@ -370,8 +372,30 @@
 #Dark .card {
   background: #191f2b;
   color: #ccc;
+  box-shadow: 0 10px 10px 5px #0a0e18;
 }
 
 #Dark .card > h3 {
   color: #ccc;
+}
+
+#Dark .logOutAdmin {
+  background: #990000;
+}
+
+#Dark .logOutAdmin:hover {
+  background: #ff0000;
+  color: #fff;
+}
+
+#Dark .switchDiv {
+  background: #282c34;
+  width: 100%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+#Dark .switchDiv:hover {
+  box-shadow: 0 5px 10px 2px #000;
+  border-radius: 10px;
 }
