@@ -165,7 +165,7 @@ export function FormularioIngresoSB_organismo() {
           register={register}
           validaciones={validaciones}
           defaultDate={true}
-          isDisabled={true}
+          //isDisabled={true}
         />
 
         <TimeGroup

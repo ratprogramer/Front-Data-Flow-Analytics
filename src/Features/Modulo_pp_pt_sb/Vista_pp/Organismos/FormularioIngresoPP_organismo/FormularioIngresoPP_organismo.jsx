@@ -179,7 +179,7 @@ export function FormularioIngresoPP_organismo() {
             type={"date"}
             register={register}
             validaciones={validaciones}
-            isDisabled={true}
+            //isDisabled={true}
             defaultDate={true}
 
             variant='formulario'

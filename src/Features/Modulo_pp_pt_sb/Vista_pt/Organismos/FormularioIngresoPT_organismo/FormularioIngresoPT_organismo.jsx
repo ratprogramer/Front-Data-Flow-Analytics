@@ -130,6 +130,7 @@ export function FormularioIngresoPT_organismo() {
           register={register}
           validaciones={validaciones}
           defaultDate={true}
+          //isDisabled={true}
         />
 
         <TimeGroup

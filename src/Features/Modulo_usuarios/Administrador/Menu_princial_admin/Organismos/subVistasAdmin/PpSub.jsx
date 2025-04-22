@@ -17,15 +17,18 @@ export const PpSub = () => {
     (async () => {
       try {
         const response = await useGetFetch("/producto/producto_proceso", navigate);
-        response.success
-          ? setCards(response.result)
-          : Swal.fire("Error", "Error al traer las muestras", "error");
+        if(response.success){
+          setCards(response.result)
+          console.log(response.result);
+        }else{
+          Swal.fire("Error", "Error al traer las muestras", "error");
+        }
       } catch (error) {
         Swal.fire("Error", error, "error");
       }
     })();
   }, []);
-
+  
   const formatDateToDMY = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);

@@ -215,7 +215,7 @@ export function FormularioResultadoPT_organismo() {
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-            isDisabled={true}
+            //isDisabled={true}
 
             dataRequired
             variant={"formulario"}
