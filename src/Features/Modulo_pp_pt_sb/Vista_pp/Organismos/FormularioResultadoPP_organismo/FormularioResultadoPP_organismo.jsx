@@ -218,7 +218,7 @@ export function FormularioResultadoPP_organismo (){
             register={register}
             validaciones={validaciones}
             defaultDate={true}
-            // isDisabled={true}
+            isDisabled={true}
 
             dataRequired={'true'}
           />
